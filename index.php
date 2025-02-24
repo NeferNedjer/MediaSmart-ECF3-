@@ -1,4 +1,0 @@
-<?php
-
-
-//debut du code

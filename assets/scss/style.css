@@ -1,0 +1,239 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  font-family: sans-serif;
+}
+
+#top-mobile {
+  display: flex;
+  margin: 8px;
+  justify-content: space-around;
+  border-bottom: 1px solid #F4F7FA;
+  height: 7vh;
+  align-items: center;
+}
+
+#top-mobile > figure > img#logo {
+  margin-right: 350px;
+}
+
+#top-mobile > a > img#burger {
+  height: 50px;
+}
+
+#search-product {
+  width: 100%;
+  margin: 8px;
+  border: 1px solid rgb(223, 223, 223);
+  height: 3vh;
+}
+
+div.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section#product > div.product-keyword {
+  display: flex;
+  margin: 16px;
+}
+
+.list-keyword {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  font-size: 14px;
+}
+
+.list-keyword > li:first-child {
+  border-radius: 10px;
+  background-color: #3498db;
+  color: white;
+  width: 70px;
+  height: 24px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-keyword > li:not(:first-child) {
+  border-radius: 10px;
+  background-color: #f3f3f3;
+  color: rgb(0, 0, 0);
+  width: 70px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#product > h1 {
+  margin: 16px;
+}
+
+.card-product {
+  margin: 16px;
+}
+
+.card-product > .card {
+  height: 150px;
+  border-radius: 10px;
+  width: 111px;
+  background-color: #FFFFFF;
+}
+
+.card-product > .card img {
+  height: 80%;
+  border-radius: 4px;
+}
+
+.flex {
+  display: flex;
+}
+
+.title-product,
+.auteur-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#last-add {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+#last-add h1 {
+  margin: 0 0 5px 2px;
+}
+
+/* From Uiverse.io by LeonKohli */
+.radio {
+  display: flex;
+  justify-content: start;
+  gap: 7px;
+  flex-direction: row-reverse;
+}
+
+.radio > input {
+  position: absolute;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.radio > label {
+  cursor: pointer;
+  font-size: 15px;
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.radio > label > svg {
+  fill: #666;
+  transition: fill 0.3s ease;
+}
+
+.radio > label::before,
+.radio > label::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: #ff9e0b;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  animation: particle-explosion 1s ease-out;
+}
+
+.radio > label::before {
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+}
+
+.radio > label::after {
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+}
+
+.radio > label:hover::before,
+.radio > label:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.5);
+}
+
+.radio > label:hover {
+  transform: scale(1.2);
+  animation: pulse 0.6s infinite alternate;
+}
+
+.radio > label:hover > svg,
+.radio > label:hover ~ label > svg {
+  fill: #ff9e0b;
+  filter: drop-shadow(0 0 15px rgba(255, 158, 11, 0.9));
+  animation: shimmer 1s ease infinite alternate;
+}
+
+.radio > input:checked + label > svg,
+.radio > input:checked + label ~ label > svg {
+  fill: #ff9e0b;
+  filter: drop-shadow(0 0 15px rgba(255, 158, 11, 0.9));
+  animation: pulse 0.8s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+@keyframes particle-explosion {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+@keyframes shimmer {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 158, 11, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgb(255, 158, 11));
+  }
+}
+.radio > input:checked + label:hover > svg,
+.radio > input:checked + label:hover ~ label > svg {
+  fill: #e58e09;
+}
+
+.radio > label:hover > svg,
+.radio > label:hover ~ label > svg {
+  fill: #ff9e0b;
+}
+
+.radio input:checked ~ label svg {
+  fill: #ffa723;
+}
+
+.right-last-add {
+  margin: 25px;
+}/*# sourceMappingURL=style.css.map */
