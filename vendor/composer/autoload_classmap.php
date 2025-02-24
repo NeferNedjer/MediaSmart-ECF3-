@@ -8,4 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'AltoRouter' => $vendorDir . '/altorouter/altorouter/AltoRouter.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Model' => $baseDir . '/entity/model.php',
+    'User' => $baseDir . '/entity/User.php',
 );
