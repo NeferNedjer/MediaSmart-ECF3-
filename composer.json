@@ -1,0 +1,14 @@
+{
+    "require": {
+      "altorouter/altorouter": "1.1.0"
+    },
+    "autoload": {
+      "classmap": [
+        "entity/",
+        "controller/",
+        "model/",
+        "view/"
+      ]
+    }
+  }
+  
