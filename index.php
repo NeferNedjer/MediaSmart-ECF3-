@@ -10,3 +10,6 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 $router = new AltoRouter();
 $router->setBasePath('/mediasmart');
 
+/*----------USER----------*/
+
+$router->map('GET|POST', 'login', 'ControllerUser#login', 'login');
