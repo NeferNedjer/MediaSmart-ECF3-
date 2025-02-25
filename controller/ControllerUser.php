@@ -9,16 +9,17 @@ class ControllerUser {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             // vérifie si le prenom le nom et le mot de passe sont remplis
-            if(!empty($_POST['name']) && !empty($_POST['firstname']) && !empty($_POST['password'])){
-                $user = $model->getUser($_POST['name'], $_POST['firstname']);
+            if(!empty($_POST['email']) && !empty($_POST['password'])){
+                $user = $model->getUserByEmail($_POST['email']);
                 //vérifie si les données du user et le mot de passe sont corrects
                 if($user && password_verify($_POST['password'], $user->getPassword())) {
                     $_SESSION['id_user'] = $user->getId_user();
                     $_SESSION['name'] = $user->getName();
+                    $_SESSION['firstname'] = $user->getFirstname();
                     header('Location: /mediasmart');
                     exit;
                 }else {
-                    $error = 'Nom ou mot de passe invalide';
+                    $error = 'Email ou mot de passe invalide';
                 }
             }else {
                 $error = 'Toutes les cases doivent être remplies.';
@@ -31,7 +32,7 @@ class ControllerUser {
 
         global $router;
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(!empty($_POST['name']) && !empty($_POST['firstname']) && !empty($_POST['password'])) {
+            if(!empty($_POST['name']) && !empty($_POST['firstname']) && !empty($_POST['email']) && !empty($_POST['password'])) {
                 if($_POST['password'] === $_POST['password_verify']) {
                     $model = new ModelUser();
                     if($model->checkUserMail($_POST['email'])) {
@@ -44,13 +45,13 @@ class ControllerUser {
                     }
                 }else {
                     echo "Les mots de passe ne correspondent pas.";
-                    require_once './view/login.php';
+                    require_once './view/signup.php';
                 }
             }else {
                 echo "Toutes les cases doivent être remplies";
             }
         }else {
-            require_once './view/login.php';
+            require_once './view/signup.php';
         }
     }
 }

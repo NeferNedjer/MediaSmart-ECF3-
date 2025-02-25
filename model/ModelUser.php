@@ -2,10 +2,18 @@
 
 class ModelUser extends Model {
 
-    public function getUser(string $name, string $firstname) {
+    public function getUserById(int $id_user) {
 
         $user = $this->getDb()->prepare('SELECT `id_user`, `name`, `firstname`, `email`, `password`, `address`, `phone`, `status`, `email_verified`, `token`, `signup_date` FROM `user` WHERE `id_user` = :id_user');
         $user->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $user->execute();
+        return new User($user->fetch(PDO::FETCH_ASSOC));
+    }
+
+    public function getUserByEmail(string $email) {
+
+        $user = $this->getDb()->prepare('SELECT `id_user`, `name`, `firstname`, `email`, `password`, `address`, `phone`, `status`, `email_verified`, `token`, `signup_date` FROM user WHERE `email` = :email');
+        $user->bindParam(':email', $email, PDO::PARAM_STR);
         $user->execute();
         return new User($user->fetch(PDO::FETCH_ASSOC));
     }
@@ -19,7 +27,7 @@ class ModelUser extends Model {
 
     public function createUser(string $name, string $firstname, string $email, string $password, string $address, int $phone) {
 
-        $user  = $this->getDb()->prepare('INSERT INTO `user` (`name`, `firstname`, `email`, `password`, `address`, `phone`, `signup_date` VALUES (:name, :firstname, :email, :password, :address, :phone, NOW())');
+        $user  = $this->getDb()->prepare('INSERT INTO `user` (`name`, `firstname`, `email`, `password`, `address`, `phone`) VALUES (:name, :firstname, :email, :password, :address, :phone)');
         $password = password_hash($password, PASSWORD_BCRYPT);
         $user->bindParam(':name', $name, PDO::PARAM_STR);
         $user->bindParam(':firstname', $firstname, PDO::PARAM_STR);
