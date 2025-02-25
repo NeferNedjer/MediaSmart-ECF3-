@@ -98,7 +98,7 @@ class ControllerMedia {
     public function update($id) {
         global $router;
         $model = new ModelMedia();
-        $data = $model->read($id);
+        $data = $model->getMediaById($id);
         require_once('./view/updatemedia.php');
 
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])){
