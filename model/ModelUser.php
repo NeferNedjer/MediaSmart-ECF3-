@@ -4,7 +4,7 @@ class ModelUser extends Model {
 
     public function getUserById(int $id_user) {
 
-        $user = $this->getDb()->prepare('SELECT `id_user`, `name`, `firstname`, `email`, `password`, `address`, `phone`, `status`, `email_verified`, `token`, `signup_date` FROM `user` WHERE `id_user` = :id_user');
+        $user = $this->getDb()->prepare('SELECT `id_user`, `name`, `firstname`, `email`, `password`, `adress`, `phone`, `status`, `email_verified`, `token`, `signup_date` FROM `user` WHERE `id_user` = :id_user');
         $user->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $user->execute();
         return new User($user->fetch(PDO::FETCH_ASSOC));

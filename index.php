@@ -30,6 +30,7 @@ $router->map('GET|POST', '/media/update/[i:id]', 'ControllerMedia#update', 'upda
 
 /*----------USER----------*/
 
+
 $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
@@ -46,4 +47,6 @@ if(is_array($match)){
     if(is_callable(array($obj, $action))){
         call_user_func_array(array($obj, $action), $match['params']);
     }
+
 }
+
