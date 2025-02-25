@@ -44,13 +44,13 @@ class ControllerUser {
                     }
                 }else {
                     echo "Les mots de passe ne correspondent pas.";
-                    require_once './view/login.php';
+                    require_once './view/signup.php';
                 }
             }else {
                 echo "Toutes les cases doivent être remplies";
             }
         }else {
-            require_once './view/login.php';
+            require_once './view/signup.php';
         }
     }
 }

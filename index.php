@@ -13,3 +13,4 @@ $router->setBasePath('/mediasmart');
 /*----------USER----------*/
 
 $router->map('GET|POST', 'login', 'ControllerUser#login', 'login');
+$router->map('GET|POST', 'ControllerUser#register', 'register');
