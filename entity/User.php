@@ -4,10 +4,10 @@ class User {
 
     private $id_user;
     private $name;
-    private $firstname;
+    private $first_name;
     private $email;
     private $password;
-    private $address;
+    private $adress;
     private $phone;
     private $status;
     private $email_verified;
@@ -37,8 +37,8 @@ class User {
         return $this->name;
     }
 
-    public function getFirstname() {
-        return $this->firstname;
+    public function getFirst_name() {
+        return $this->first_name;
     }
 
     public function getEmail() {
@@ -49,8 +49,8 @@ class User {
         return $this->password;
     }
 
-    public function getAddress() {
-        return $this->address;
+    public function getAdress() {
+        return $this->adress;
     }
 
     public function getPhone() {
@@ -82,8 +82,8 @@ class User {
         $this->name = $name;
     }
 
-    public function setFirstname(string $firstname) {
-        $this->firstname = $firstname;
+    public function setFirst_name(string $first_name) {
+        $this->first_name = $first_name;
     }
 
     public function setEmail(string $email) {
@@ -94,8 +94,8 @@ class User {
         $this->password = $password;
     }
 
-    public function setAddress(string $address) {
-        $this->address = $address;
+    public function setAdress(string $adress) {
+        $this->adress = $adress;
     }
 
     public function setPhone(int $phone) {

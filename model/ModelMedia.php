@@ -5,10 +5,11 @@ class ModelMedia extends Model{
     public function mediaHome(){
 
         $req = $this->getDb()->query('SELECT    c.id_category, c.name, s.id_subcategory, s.theme, 
-                                                id_media, title, id_author, description, image 
-                                        FROM    category c, subcategory s, media m 
+                                                id_media, title, m.id_author, description, image , a.name as author
+                                        FROM    category c, subcategory s, media m, author a 
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory
+                                        AND     m.id_author = a.id_author
                                         ORDER BY id_media DESC LIMIT 10;');
 
 
@@ -24,10 +25,11 @@ class ModelMedia extends Model{
     public function getMediaById(int $id){
 
         $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
-                                                id_media, title, id_author, description, image 
-                                        FROM    category c, subcategory s, media m 
+                                                id_media, title, m.id_author, description, image , a.name as author
+                                        FROM    category c, subcategory s, media m, author a
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory 
+                                        AND     m.id_author = a.id_author
                                         AND     id_media = :id;');
         $req->bindParam(':id', $id, PDO::PARAM_INT);
         $req->execute();
@@ -41,10 +43,11 @@ class ModelMedia extends Model{
     public function getMediaByAuthor(int $id){
 
         $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
-                                                id_media, title, id_author, description, image 
-                                        FROM    category c, subcategory s, media m 
+                                                id_media, title, m.id_author, description, image , a.name as author
+                                        FROM    category c, subcategory s, media m, author a
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory 
+                                        AND     m.id_author = a.id_author
                                         AND     id_author = :id;');
         $req->bindParam(':id', $id, PDO::PARAM_INT);
         $req->execute();
@@ -61,10 +64,11 @@ class ModelMedia extends Model{
     public function getMediaByCategory(int $id){
 
         $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
-                                                id_media, title, id_author, description, image 
-                                        FROM    category c, subcategory s, media m 
+                                                id_media, title, m.id_author, description, image , a.name as author
+                                        FROM    category c, subcategory s, media m, author a
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory 
+                                        AND     m.id_author = a.id_author
                                         AND     c.id_category = :id;');
         $req->bindParam(':id', $id, PDO::PARAM_INT);
         $req->execute();
@@ -81,10 +85,11 @@ class ModelMedia extends Model{
     public function getMediaBySubcategory(int $id){
 
         $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
-                                                id_media, title, id_author, description, image 
-                                        FROM    category c, subcategory s, media m 
+                                                id_media, title, m.id_author, description, image , a.name as author
+                                        FROM    category c, subcategory s, media m, author a 
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory 
+                                        AND     m.id_author = a.id_author
                                         AND     s.id_subcategory = :id;');
         $req->bindParam(':id', $id, PDO::PARAM_INT);
         $req->execute();
@@ -98,7 +103,7 @@ class ModelMedia extends Model{
         return $arrayobj;
     }
 
-    public function create(int $id_subcategory, string $title, int $id_author, string $description, string $image){
+    public function createMedia(int $id_subcategory, string $title, int $id_author, string $description, string $image){
         $req = $this->getDb()->prepare('INSERT INTO media (id_subcategory, title, id_author, description, image) 
                                                 VALUES (:id_subcategory, :title, :id_author, :description, :image);');
 
@@ -117,7 +122,7 @@ class ModelMedia extends Model{
         $req->execute();
     }
 
-    public function update(int $id_media, int $id_subcategory, string $title, int $id_author, string $description, string $image){
+    public function updateMedia(int $id_media, int $id_subcategory, string $title, int $id_author, string $description, string $image){
         $req = $this->getDb()->prepare('UPDATE media SET id_subcategory=:id_subcategory, title=:title, id_author=:id_author,
                                                         description=:description, image=:image 
                                         WHERE id_media=:id_media ;');

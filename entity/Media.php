@@ -1,8 +1,8 @@
 <?php
 
-use SplFileInfo;
+// use SplFileInfo;
 
-class Media extends subcategory {
+class Media extends Subcategory {
 
     private $id_media;
     private $id_subcategory;
@@ -10,6 +10,7 @@ class Media extends subcategory {
     private $id_author;
     private $description;
     private $image;
+    private $author;
 
     public function __construct(array $datas) {
         $this->hydrate($datas);
@@ -50,6 +51,10 @@ class Media extends subcategory {
         return $this->image;
     }
 
+    public function getAuthor() {
+        return $this->author;
+    }
+
     //SETTERS
     public function setId_media(int $id_media) {
         $this->id_media = $id_media;
@@ -71,7 +76,11 @@ class Media extends subcategory {
         $this->description = $description;
     }
 
-    public function setImage(SplFileInfo $image) {
-        $this->image = $image;
+    public function setAuthor(string $author) {
+        $this->author = $author;
     }
+
+//     public function setImage(SplFileInfo $image) {
+//         $this->image = $image;
+//     }
 }
