@@ -7,9 +7,9 @@
 </head>
 <body>
     <div>
-        <h1 class="text-center">Signup</h1>
-        <form action="signup.php" method="POST"></form>
-        <div class="form-group">
+        <h1>Signup</h1>
+        <form action="signup.php" method="POST">
+    
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control" required><br><br>
 
@@ -30,8 +30,9 @@
 
             <label for="confmotdepasse">Confirmer le mot de passe :</label>
             <input type="password" id="confmotdepasse" name="confpassword" required><br><br>
-        </div>
-        <button type="submit" class="btn btn-primary">Signup</button>
+        </form>
+    
+        <button type="submit">Signup</button>
     </div>
 </body>
 </html>
