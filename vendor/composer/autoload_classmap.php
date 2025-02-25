@@ -7,7 +7,15 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AltoRouter' => $vendorDir . '/altorouter/altorouter/AltoRouter.php',
+    'Author' => $baseDir . '/entity/Author.php',
+    'Category' => $baseDir . '/entity/Category.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'Model' => $baseDir . '/entity/model.php',
+    'ControllerUser' => $baseDir . '/controller/ControllerUser.php',
+    'Employee' => $baseDir . '/entity/Employee.php',
+    'Exemplaire' => $baseDir . '/entity/Exemplaire.php',
+    'Media' => $baseDir . '/entity/Media.php',
+    'Model' => $baseDir . '/entity/Model.php',
+    'ModelUser' => $baseDir . '/model/ModelUser.php',
+    'Subcategory' => $baseDir . '/entity/Subcategory.php',
     'User' => $baseDir . '/entity/User.php',
 );
