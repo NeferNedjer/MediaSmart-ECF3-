@@ -9,6 +9,7 @@
 <body>
 
 
+
     <div id="top-mobile">
         <figure>
             <img src="./assets/img/Group 7.png" alt="Logo" id="logo" style="height: 50px;">
@@ -140,5 +141,6 @@
 
 
     <script src="main.js"></script>
+
 </body>
 </html>
