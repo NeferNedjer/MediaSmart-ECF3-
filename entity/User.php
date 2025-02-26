@@ -12,7 +12,7 @@ class User {
     private $status;
     private $email_verified;
     private $token;
-    private $signup_date;
+    private $inscription_date;
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -69,8 +69,8 @@ class User {
         return $this->token;
     }
 
-    public function getSignup_date() {
-        return $this->signup_date;
+    public function getInscription_date() {
+        return $this->inscription_date;
     }
 
     //SETTERS
@@ -114,7 +114,7 @@ class User {
         $this->token = $token;
     }
 
-    public function setSignup_date(string $signup_date) {
-        $this->signup_date = new DateTime($signup_date);
+    public function setInscription_date(string $inscription_date) {
+        $this->inscription_date = new DateTime($inscription_date);
     }
 }
