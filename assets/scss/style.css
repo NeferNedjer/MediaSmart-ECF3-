@@ -1,0 +1,380 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  font-family: sans-serif;
+}
+
+#top-mobile {
+  display: flex;
+  margin: 8px;
+  justify-content: space-around;
+  border-bottom: 1px solid #F4F7FA;
+  height: 7vh;
+  align-items: center;
+}
+
+#top-mobile > figure > img#logo {
+  margin-right: 350px;
+}
+
+#top-mobile > a > img#burger {
+  height: 50px;
+}
+
+#top-mobile > a > img#burger {
+  height: 50px;
+}
+
+/* Menu BUrger */
+#burger-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: #333;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+#burger-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#burger-menu li {
+  margin: 10px 0;
+}
+
+#burger-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+#search-product {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+  border: 1px solid rgb(223, 223, 223);
+  height: 3vh;
+}
+
+div.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section#product > div.product-keyword {
+  display: flex;
+  margin: 12px 0 0 55px;
+}
+
+.list-keyword {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  font-size: 14px;
+}
+
+.list-keyword > li:first-child {
+  border-radius: 10px;
+  background-color: #3498db;
+  color: white;
+  width: 70px;
+  height: 24px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-keyword > li:not(:first-child) {
+  border-radius: 10px;
+  background-color: #f3f3f3;
+  color: rgb(0, 0, 0);
+  width: 70px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#product > h1 {
+  margin-left: 60px;
+}
+
+.card-product {
+  margin: 16px;
+}
+
+.card-product > .card {
+  height: 150px;
+  border-radius: 10px;
+  width: 111px;
+  background-color: #FFFFFF;
+}
+
+.card-product > .card img {
+  height: 80%;
+  border-radius: 4px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-product,
+.auteur-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  max-width: 200px;
+  width: 100%;
+}
+
+#last-add > .card-product > .card > img {
+  max-height: 170px;
+  height: 100%;
+}
+
+#last-add {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+#last-add h1 {
+  margin: 0 0 5px 2px;
+}
+
+.description-product-latest {
+  font-size: 13px;
+  margin: 5px;
+}
+
+.horizontal-lign {
+  border-top: 1px solid rgb(215, 213, 213);
+  width: 100%;
+  margin-top: 15px;
+}
+
+.auteur-product-latest {
+  margin: 5px;
+  font-size: 13px;
+}
+
+.title-product-latest {
+  margin: 15px 0 0 5px;
+}
+
+/* From Uiverse.io by andrew-demchenk0 */
+.rating:not(:checked) > input {
+  position: relative;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.rating {
+  margin-left: 5px;
+}
+
+.rating:not(:checked) > label {
+  float: left;
+  cursor: pointer;
+  font-size: 17px;
+  color: #666;
+  flex-direction: row-reverse;
+}
+
+.rating:not(:checked) > label:before {
+  content: "★";
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
+
+.right-last-add {
+  margin: 25px;
+}
+
+#bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 4vh;
+  width: 100%;
+  background-color: #3498db;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  z-index: 10;
+}
+
+.bottom-nav-list {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bottom-nav-list li a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.3s ease;
+}
+
+.bottom-nav-list li a:hover {
+  color: black;
+}
+
+.btn-add {
+  position: absolute;
+  bottom: 18px;
+  left: 43%;
+  background-color: #ffffff;
+  color: rgb(4, 4, 4);
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-add:hover {
+  background-color: #F39C12;
+  transform: scale(1.1);
+}
+
+#grid-signup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: linear-gradient(90deg, rgba(130, 80, 0, 0.375) 14%, rgb(255, 255, 255) 100%);
+  position: relative;
+  padding: 20px 10px;
+  justify-items: center;
+  align-items: center;
+}
+
+#grid-signup h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+#form-signup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 850px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#form-signup label {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+#form-signup input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease-in-out;
+}
+
+#form-signup input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+#submit-signup {
+  background: linear-gradient(90deg, rgba(130, 80, 0, 0.375) 14%, rgb(255, 255, 255) 100%);
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit-signup:hover {
+  background-color: #b66f03;
+}
+
+#right-signup img {
+  max-width: 97%;
+  height: 100%;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.conteiner-form {
+  background-color: rgb(207, 207, 207);
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+/* Media queries pour mobile */
+@media (max-width: 768px) {
+  #grid-signup {
+    grid-template-columns: 1fr; /* Sur mobile, passer à une seule colonne */
+    padding: 20px;
+  }
+  #form-signup {
+    max-width: 100%;
+  }
+  #right-signup img {
+    max-width: 90%;
+    margin: 20px auto;
+  }
+}/*# sourceMappingURL=style.css.map */
