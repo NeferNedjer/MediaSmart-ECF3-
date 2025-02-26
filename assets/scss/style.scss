@@ -3,12 +3,23 @@
 $color-background: #F4F7FA;        
 $color-text-primary: #333333;      
 $color-text-secondary: #777777;   
-$color-button: #3498db;           // Boutons et liens
-$color-button-hover: #2980b9;     
+$color-button: #b66f03;          // Boutons et liens
+$color-button-hover: #d98e21;    
 $color-accent: #F39C12;           // Couleur accent (or)
 $color-card-background: #FFFFFF;  // Fond des cartes ou sections
 $color-error: #E74C3C;            // Couleur erreur
 
+
+:root {
+  --color-primary: #b66f03;
+  --color-secondary: #d98e21;
+  --color-background: #ffffff;
+  --color-text: #333333;
+  --color-text-light: #ffffff;
+  --shadow-standard: 0 4px 15px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.2);
+  --transition-standard: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
 // ---------------------------- POLICES ----------------------------
 
 $font-primary: 'Arial', sans-serif; 
@@ -137,6 +148,10 @@ div.search {
 
 
 
+section#product{
+  height: 150vh;
+}
+
 section#product > div.product-keyword {
     display: $flex;
    margin: 12px 0 0 55px;
@@ -176,29 +191,27 @@ section#product > div.product-keyword {
 }
 
 // ---------------------------- .card-product ----------------------------
-
 .card-product {
     margin: $spacing-medium;
     
+   
 }
 
 .card-product > .card {
-    height: 150px;
     @include border-radius(10px);
-    width: 111px;
+    max-width: 251px;
     background-color: $color-card-background;
 }
 
 .card-product > .card img {
-    height: 80%;
+    height: 100%;
+    width: 100%;
     @include border-radius(4px);
 }
-
 
 .flex {
     @include center-flex();
 }
-
 
 .title-product,
 .auteur-product {
@@ -208,59 +221,62 @@ section#product > div.product-keyword {
     width: 100%;
   
 }
-
 // AJOUT RECENT -------------------
 
 #last-add > .card-product > .card > img {
-  max-height: 170px;
+  max-height: 350px;
   height: 100%;
 }
 
 #last-add {
     display: $grid;
-    grid-template-columns: 30% 70%;
+
+    grid-template-columns: 38% 62%;
 }
 
 #last-add h1 {
     margin : 0 0 5px 2px;
 }
 
-.description-product-latest{
-  font-size: 13px;
-  margin: 5px;
-}
+
 
 .horizontal-lign {
   border-top: 1px solid rgb(215, 213, 213);
   width: 100%;
-  margin-top: 15px;
+  margin-top: 22px;
 
 }
 
 .auteur-product-latest{
-  margin: 5px;
-  font-size: 13px;
+  margin: 3px 0 0 17px;
+  font-size: 12px;
 }
 
 .title-product-latest{
-  margin: 15px 0 0 5px;
+  margin: 15px 0 0 15px;
+  font-style: 13px;
+  
 }
 
+.description-product-latest{
+  font-size: 11px;
+  margin: 3px 0 0 15px;
+}
 
 /* From Uiverse.io by andrew-demchenk0 */ 
 .rating:not(:checked) > input {
   position: relative;
   appearance: none;
-
   
 }
 .rating{
-  margin-left: 5px;
+  margin-right: 55px;
+  float: left;
 
 }
 
 .rating:not(:checked) > label {
-  float: left;
+  float: right;
   
   cursor: pointer;
   font-size: 17px;
@@ -296,67 +312,155 @@ section#product > div.product-keyword {
 }
 
 //  ---------------------------bottom nav-bar
+
+
 #bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 4vh;
   width: 100%;
-  background-color: $color-button;
+  height: 60px;
+  background: linear-gradient(90deg, rgba(182, 111, 3, 0.95) 0%, rgba(217, 142, 33, 0.95) 100%);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 10px;
-  z-index: 10;
- 
+  padding: 0;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
-
 
 .bottom-nav-list {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  max-width: 500px;
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
+  position: relative;
 }
 
+.bottom-nav-list li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+}
 
 .bottom-nav-list li a {
-  color: white;
+  color: var(--color-text-light);
   text-decoration: none;
-  font-size: 13px;
-  transition: color 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: var(--transition-standard);
+  padding: 8px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.bottom-nav-list li a:hover {
-  color: black;
+
+.bottom-nav-list li a:hover, 
+.bottom-nav-list li a.active {
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
+.bottom-nav-list li a:hover::before,
+.bottom-nav-list li a.active::before {
+  transform: scale(1.2);
+}
+
+.bottom-nav-list li a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-text-light);
+  border-radius: 50%;
+}
 
 .btn-add {
   position: absolute;
-  bottom: 18px; 
-  left: 43%;
-  background-color: #ffffff; 
-  color: rgb(4, 4, 4);
-  font-size: 30px; 
-  width: 50px;
-  height: 50px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-text-light);
+  font-size: 24px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: none;
+  box-shadow: var(--shadow-standard);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: var(--transition-standard);
+  z-index: 1001;
+}
+
+.btn-add span {
+  transition: var(--transition-standard);
+}
+
+.btn-add:hover {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-add:hover span {
+  transform: rotate(90deg);
 }
 
 
-.btn-add:hover {
-  background-color: $color-accent;
-  transform: scale(1.1);
+.btn-add:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+@media (max-width: 380px) {
+  .bottom-nav-list li a {
+    font-size: 12px;
+  }
+  
+  .bottom-nav-list li a::before {
+    font-size: 16px;
+  }
+  
+  .btn-add {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+/* Animation d'entrée pour la navbar */
+@keyframes slideUpIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#bottom-nav {
+  animation: slideUpIn 0.5s forwards;
 }
 
 
@@ -516,11 +620,17 @@ section#product > div.product-keyword {
 
 .login-container {
   max-width: 400px;
+
   padding: 40px; 
   background: rgba(255, 255, 255, 0.915) o;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   animation: fadeInDown 1s both;
+  transition: .5 ease-in;
+}
+
+.login-container:hover {
+  transform: scale(1.5);
 }
 
 @keyframes fadeInDown {
