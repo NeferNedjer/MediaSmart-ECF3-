@@ -114,6 +114,11 @@ class ControllerMedia {
         }
     }
 
+    public function notfound() {
+
+        require_once './view/404.php';
+    }
+
 
 
 
