@@ -39,6 +39,9 @@ $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
 
 $router->map('POST', '/verify-token', 'ControllerUser#verify', 'verify-token');
 
+$router->map('GET|POST', '/resend-token/[i:id]', 'ControllerUser#resend', 'resend-token');
+
+
 
 $match = $router->match();
 

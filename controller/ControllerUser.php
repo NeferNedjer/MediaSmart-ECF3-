@@ -133,19 +133,66 @@ class ControllerUser {
                 $model = new ModelUser();
                 $user = $model->getUserByToken($token);
         
-                $email = $user->getEmail();
-                $inscription_date= $user->getInscription_date();
+                if ($user) { // Check if $user is not null
+                    $email = $user->getEmail();
+                    $inscription_date = $user->getInscription_date();
+                    $id_user = $user->getId_user();
 
-                $model->updateEmail($email);
 
-                require_once './view/login.php';
+                    $currentDateTime = new DateTime();
+    
+                    // Check if $inscription_date is a string
+                    if (!($inscription_date instanceof DateTime)) {
+                    // Convert $inscription_date to DateTime object
+                        $inscriptionDateTime = new DateTime($inscription_date);
+                    } else {
+                        $inscriptionDateTime = $inscription_date;
+                    }
+    
+                    // Calculate the difference in minutes
+                    $interval = $currentDateTime->diff($inscriptionDateTime);
+                    $minutesDifference = $interval->days * 24 * 60 + $interval->h * 60 + $interval->i;
+    
 
-            exit();
+
+                    var_dump($inscriptionDateTime);
+                    var_dump($currentDateTime);
+                    var_dump($interval);
+                    var_dump($minutesDifference);
+
+
+
+
+
+                    if ($minutesDifference <= 15) {
+                        $model->updateEmail($email);
+                        require_once './view/login.php';
+                        exit();
+                    } else {
+                        // echo "Le lien de vérification a expiré.";
+                        require_once './view/resend-token.php?id=$id_user';
+                    }
+                } else {
+                    echo "Token invalide.";
+                }
             }
         }
     }
 
+    public function resend($id) {
+  
+        global $router;
 
+        $token = bin2hex(random_bytes(16));
+
+
+        $model = new ModelUser();
+        $user = $model->updateToken($id, $token);
+       
+       
+       
+        exit();
+    }
 
 
 
