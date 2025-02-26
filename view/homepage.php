@@ -6,9 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <?php if($_SESSION){
-        echo "bonjour " . $_SESSION['first_name'];
-    } ?>
+    <?php if($_SESSION): ?>
+        <h2>Bonjour <?= $_SESSION['first_name']; ?></h2>
+        <a href="<?= $router->generate('logout'); ?>">Déconnexion</a>
+    <?php else: ?>
+        <a href="<?= $router->generate('login'); ?>">Connexion</a>
+        <a href="<?= $router->generate('register'); ?>">inscription</a>
+    <?php endif; ?>
+
     <h1>Les derniers médias disponibles</h1>
     <?php foreach ($datas as $data): ?>
         <article>

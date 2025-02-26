@@ -35,6 +35,8 @@ $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
 
+$router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
+
 
 $match = $router->match();
 
