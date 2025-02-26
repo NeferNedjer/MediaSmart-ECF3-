@@ -27,7 +27,7 @@ class ModelUser extends Model {
 
     public function createUser(string $name, string $first_name, string $email, string $password, string $adress, int $phone, string $token) {
 
-        $user  = $this->getDb()->prepare('INSERT INTO `user` (`name`, `first_name`, `email`, `password`, `adress`, `phone`, token) VALUES (:name, :first_name, :email, :password, :adress, :phone, :token)');
+        $user  = $this->getDb()->prepare('INSERT INTO `user` (`name`, `first_name`, `email`, `password`, `adress`, `phone`, token, inscription_date) VALUES (:name, :first_name, :email, :password, :adress, :phone, :token, NOW())');
         $password = password_hash($password, PASSWORD_BCRYPT);
         $user->bindParam(':name', $name, PDO::PARAM_STR);
         $user->bindParam(':first_name', $first_name, PDO::PARAM_STR);
@@ -57,7 +57,7 @@ class ModelUser extends Model {
     
     public function getUserByToken(string $token) {
 
-        $user = $this->getDb()->prepare('SELECT email, inscription_date FROM `user` WHERE token = :token');
+        $user = $this->getDb()->prepare('SELECT id_user, email, inscription_date FROM `user` WHERE token = :token');
         $user->bindParam(':token', $token, PDO::PARAM_STR);
         $user->execute();
         
@@ -70,6 +70,15 @@ class ModelUser extends Model {
         $updateReq->bindParam(':email', $email, PDO::PARAM_STR);
         $updateReq->execute();
     }
+
+    public function updatetoken(int $id_user, string $token) {
+
+        $updateReq = $this->getDb()->prepare("UPDATE user SET token=:token, inscription_date=NOW() WHERE id_user = :id_user");
+        $updateReq->bindParam(':token', $token, PDO::PARAM_STR);
+        $updateReq->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $updateReq->execute();
+    }
+
 
 
 }
