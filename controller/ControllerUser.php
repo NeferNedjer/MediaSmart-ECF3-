@@ -54,4 +54,16 @@ class ControllerUser {
             require_once './view/signup.php';
         }
     }
+
+    
+    public function logout() {
+  
+        session_unset();
+        session_destroy();
+        header('Location: /mediasmart');
+        exit();
+    }
+
+
+
 }
