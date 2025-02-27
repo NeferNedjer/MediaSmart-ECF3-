@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/scss/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
 
@@ -14,16 +15,25 @@
         <figure>
             <img src="./assets/img/Group 7.png" alt="Logo" id="logo" style="height: 50px;">
         </figure>
-        <a href="">
+
+        <ul class="flex">
+
+            <!-- EN FONCTION DE LA SESSION AFFICHER L'UN ou L'AUTRE -->
+             
+            <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
+            <li><a id="connexion-home" href="login">Connexion</a></li>
+        </ul>
+        <a href="#">
             <img src="./assets/img/menu.png" alt="" id="burger" style="height: 50px;">
         </a>
     </div>
 
-    <nav id="burger-menu" style="display: none">
+    <nav id="burger-menu" style="display:none">
         <ul>
             <li><a href="#">Accueil</a></li>
             <li><a href="#">Produits</a></li>
             <li><a href="#">Contact</a></li>
+            <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
         </ul>
     </nav>
 
@@ -32,7 +42,7 @@
         <label for="search-product"></label>
     </div>
 
-                                                    <!-- PRODUIT EN VEDETEES -->
+                            <!-- PRODUIT EN VEDETEES -->
 
                                                     <?php if($_SESSION){
     echo "bonjour " . $_SESSION['first_name'];
@@ -46,12 +56,13 @@
                 <li>Romans</li>
                 <li>Science</li>
                 <li>BD</li>
+                
             </ul>
         </div>
 
 
         <?php foreach ($datas as $data): ?>
-        <div class="flex">
+        <div class="flex-product">
             <div class="card-product">
                 <div class="card">
                     
@@ -81,13 +92,6 @@
         <?php endforeach; ?>
                                                 <!-- AJOUT RECENT -->
 
-    
-   
- 
-      
-
-
-
         <section id="last-add">
             <div class="card-product">
                 <h1>Ajout récent</h1>
@@ -115,32 +119,30 @@
                 </div>
                 <div class="horizontal-lign">  </div>
                 <div class="description-product-latest"><?php echo $data->getDescription(); ?></div>
-                <!-- From Uiverse.io by LeonKohli -->
                     <!-- From Uiverse.io by andrew-demchenk0 --> 
                
                 </div>
         </section>
+
+        
     </section>
 
 
     <div id="bottom-nav">
     <ul class="bottom-nav-list">
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">Catégories</a></li>
-        <li><a href="#">Mon Compte</a></li>
-        <li><a href="#">Panier</a></li>
+        <li><a href="#"> <img src="./assets/img/home (2).png" alt="" height="20px">Accueil</a> </li>
+        <li><a href="#"> Catégories</a></li>
+        <li><a href="#"><img src="./assets/img/icons8-basket-64.png" alt="" height="20px">Panier</a></li>
+        <li><a href="#" > <img src="./assets/img/icons8-user-50.png" alt="" height="20px">Mon Compte</a></li>
     </ul>
     <button class="btn-add">
         <span>+</span>
     </button>
 </div>
 
+    <script src="./assets/js/burger.js"></script>
 
-
-
-
-
-    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 
 </body>
 </html>
