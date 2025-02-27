@@ -47,18 +47,12 @@ class ControllerUser {
                         $model->createUser($_POST['name'], $_POST['first_name'], $_POST['email'], $_POST['password'], $_POST['adress'], $_POST['phone'], $token);
                         $error =  "Compte créé avec succès. Un email de confirmation vous a été envoyé.";
 
-
-                     
                         require 'vendor/autoload.php';
                         
-                       
                             $first_name = $_POST['first_name'];
                             $email = $_POST['email'];
 
                             $verificationLink = "http://localhost/mediasmart/view/verify-token.php?token=$token";
-
-                            // $verificationLink = $router->generate('verify-token', ['token' => $token]);
-
 
                         $mail = new PHPMailer(true);
                         
@@ -88,14 +82,6 @@ class ControllerUser {
                         } catch (Exception $e) {
                             echo "L'envoi de l'email a échoué: {$mail->ErrorInfo}";
                         }
-                        
-                        
-
-
-
-
-
-
                         require_once './view/login.php';
                     }else {
                         $error = "Email déjà utilisé.";
@@ -122,6 +108,7 @@ class ControllerUser {
         exit();
     }
 
+
     public function verify() {
       global $router;
 
@@ -131,15 +118,19 @@ class ControllerUser {
 
                 $token = $_POST['token'];
                 $model = new ModelUser();
-                $user = $model->getUserByToken($token);
-        
+                $result = $model->getUserByToken($token);
+
+                if ($result) {
+                $user = $result['user']; // Access the User object
+                $now_date = $result['now_date']; // Access the now_date value
+
                 if ($user) { // Check if $user is not null
                     $email = $user->getEmail();
                     $inscription_date = $user->getInscription_date();
                     $id_user = $user->getId_user();
 
 
-                    $currentDateTime = new DateTime();
+                    $currentDateTime = new DateTime($now_date);
     
                     // Check if $inscription_date is a string
                     if (!($inscription_date instanceof DateTime)) {
@@ -152,51 +143,81 @@ class ControllerUser {
                     // Calculate the difference in minutes
                     $interval = $currentDateTime->diff($inscriptionDateTime);
                     $minutesDifference = $interval->days * 24 * 60 + $interval->h * 60 + $interval->i;
-    
-
-
-                    var_dump($inscriptionDateTime);
-                    var_dump($currentDateTime);
-                    var_dump($interval);
-                    var_dump($minutesDifference);
-
-
-
-
 
                     if ($minutesDifference <= 15) {
                         $model->updateEmail($email);
                         require_once './view/login.php';
                         exit();
                     } else {
-                        // echo "Le lien de vérification a expiré.";
-                        require_once './view/resend-token.php?id=$id_user';
+                        $this->resend($id_user);
+                        require_once './view/resend-token.php';
+                        exit();
                     }
                 } else {
                     echo "Token invalide.";
                 }
+            } else {
+                echo "Aucun utilisateur trouvé pour ce token.";
+            }
             }
         }
     }
+
 
     public function resend($id) {
   
         global $router;
 
-        $token = bin2hex(random_bytes(16));
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            $token = bin2hex(random_bytes(16));
+            $model = new ModelUser();
+            $model->updateToken($id, $token);
+       
+            $user = $model->getUserById($id);
 
-        $model = new ModelUser();
-        $user = $model->updateToken($id, $token);
-       
-       
-       
+            require 'vendor/autoload.php';
+                        
+                       
+            $first_name = $user->getFirst_name();
+            $email = $user->getEmail();
+
+            $verificationLink = "http://localhost/mediasmart/view/verify-token.php?token=$token";
+
+            $mail = new PHPMailer(true);
+    
+            try {
+                // Configuration de l'expéditeur
+                $mail->setFrom('no-reply@mediasmart.com', 'Votre Site');
+    
+                // Configuration du destinataire
+                $mail->addAddress($email, $first_name);
+    
+                 // Configuration du contenu de l'email
+                $mail->isHTML(true); // Indique que le contenu de l'email est en HTML
+                $mail->Subject = 'Vérifiez votre adresse email';
+                $mail->Body    = "Bonjour $first_name, \n\nPour vérifier votre inscription, cliquez sur le lien suivant : <a href=\"" . $verificationLink . "\">Confirmation de votre adresse mail</a>";
+    
+                // Configuration du serveur SMTP (Mailtrap)
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.mailtrap.io';
+                $mail->Port       = 2525; // Port de Mailtrap
+                $mail->SMTPAuth   = true;
+                $mail->Username   = 'b41082ebc7e4bf'; // Remplacez par votre nom d'utilisateur Mailtrap
+                $mail->Password   = '1fcb7750bb513a'; // Remplacez par votre mot de passe Mailtrap
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    
+                $mail->send();
+                echo 'Email envoyé avec succès';
+            } catch (Exception $e) {
+                echo "L'envoi de l'email a échoué: {$mail->ErrorInfo}";
+            }
+
+            require_once './view/resend-token.php';
+            exit();
+        }
+        require_once './view/resend-token.php';
         exit();
     }
-
-
-
-
-
 
 }
