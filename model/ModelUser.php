@@ -57,11 +57,16 @@ class ModelUser extends Model {
     
     public function getUserByToken(string $token) {
 
-        $user = $this->getDb()->prepare('SELECT id_user, email, inscription_date FROM `user` WHERE token = :token');
+        $user = $this->getDb()->prepare('SELECT id_user, email, inscription_date, NOW() as now_date FROM `user` WHERE token = :token');
         $user->bindParam(':token', $token, PDO::PARAM_STR);
         $user->execute();
-        
-        return new User($user->fetch(PDO::FETCH_ASSOC));
+
+        if($user->rowCount() == 0) {
+            return null;
+        } else {
+            $userData = $user->fetch(PDO::FETCH_ASSOC);
+            return ['user' => new User($userData), 'now_date' => $userData['now_date']];
+        }
     }
 
     public function updateEmail(string $email) {
