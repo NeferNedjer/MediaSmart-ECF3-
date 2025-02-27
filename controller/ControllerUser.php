@@ -73,8 +73,8 @@ class ControllerUser {
                             $mail->Host       = 'smtp.mailtrap.io';
                             $mail->Port       = 2525; // Port de Mailtrap
                             $mail->SMTPAuth   = true;
-                            $mail->Username   = 'b41082ebc7e4bf'; // Remplacez par votre nom d'utilisateur Mailtrap
-                            $mail->Password   = '1fcb7750bb513a'; // Remplacez par votre mot de passe Mailtrap
+                            $mail->Username   = 'be44f3de8868b4'; // Remplacez par votre nom d'utilisateur Mailtrap
+                            $mail->Password   = '900c50ffd39dfc'; // Remplacez par votre mot de passe Mailtrap
                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                         
                             $mail->send();
