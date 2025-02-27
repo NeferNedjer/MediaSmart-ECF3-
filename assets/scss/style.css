@@ -38,30 +38,85 @@
   height: 50px;
 }
 
+#connexion-home {
+  padding: 8px 7px;
+  font-size: 14px;
+  width: 24%;
+  text-decoration: none;
+  border-radius: 7px;
+  margin: 0 15px;
+  list-style-type: none;
+  background-color: var(--color-primary);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#connexion-home:hover {
+  background-color: var(--color-secondary);
+  opacity: 0.9;
+}
+
 /* Menu BUrger */
 #burger-menu {
   position: absolute;
   top: 60px;
   left: 0;
+  border-radius: 5px;
   background-color: #333;
   width: 100%;
   text-align: center;
   padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border-radius: 0 0 8px 8px;
 }
 
 #burger-menu ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 #burger-menu li {
-  margin: 10px 0;
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+#burger-menu li:hover {
+  transform: translateX(5px);
 }
 
 #burger-menu a {
   color: white;
   text-decoration: none;
   font-size: 18px;
+  font-weight: 500;
+  display: block;
+  padding: 5px 0;
+}
+
+#burger-menu a:hover {
+  color: #ddd;
+}
+
+#deconnexion-home {
+  padding: 8px 7px;
+  font-size: 14px;
+  width: 24%;
+  border-radius: 7px;
+  text-decoration: none;
+  background-color: var(--color-primary);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#deconnexion-home:hover {
+  background-color: var(--color-secondary);
+  opacity: 0.9;
 }
 
 #search-product {
@@ -99,7 +154,7 @@ section#product > div.product-keyword {
 
 .list-keyword > li:first-child {
   border-radius: 10px;
-  background-color: #b66f03;
+  background-color: var(--color-primary);
   color: white;
   width: 70px;
   height: 24px;
@@ -146,13 +201,18 @@ section#product > div.product-keyword {
   align-items: center;
 }
 
+.flex-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title-product,
 .auteur-product {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 12px;
-  max-width: 200px;
   width: 100%;
 }
 
@@ -205,11 +265,13 @@ section#product > div.product-keyword {
 }
 
 .rating:not(:checked) > label {
+
+
   float: right;
+
   cursor: pointer;
   font-size: 17px;
   color: #666;
-  flex-direction: row-reverse;
 }
 
 .rating:not(:checked) > label:before {
@@ -237,6 +299,55 @@ section#product > div.product-keyword {
   margin: 25px;
 }
 
+@media (min-width: 768px) {
+  div#bottom-nav {
+    display: none;
+  }
+  #burger,
+  nav#burger-menu {
+    display: none;
+  }
+  .search {
+    max-width: 700px;
+    margin: 20px auto;
+  }
+  #product {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  #product .flex {
+    justify-content: space-around;
+  }
+  #product .card-product {
+    margin: 20px;
+  }
+  #product .card-product .card {
+    width: 220px;
+    height: 280px;
+  }
+  #product .card-product .card img {
+    height: 70%;
+  }
+  #product #last-add {
+    grid-template-columns: 20% 80%;
+    margin: 20px;
+  }
+  #product #last-add .card-product .card {
+    width: 200px;
+    height: 300px;
+  }
+  #product #last-add .right-last-add {
+    margin: 20px;
+  }
+  #product div.product-keyword > ul.list-keyword > li {
+    font-size: 18px;
+    width: 110px;
+  }
+  #product .title-product,
+  #product .auteur-product {
+    font-size: 1.1rem;
+  }
+}
 #bottom-nav {
   position: fixed;
   bottom: 0;
@@ -409,11 +520,11 @@ section#product > div.product-keyword {
 #form-signup {
   display: flex;
   flex-direction: column;
-  height: 85vh;
+  gap: 14px;
   max-width: 450px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 30px;
+  padding: 5px 12px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -427,7 +538,7 @@ section#product > div.product-keyword {
 }
 
 #form-signup input {
-  padding: 9px 15px;
+  padding: 4px 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
@@ -443,6 +554,28 @@ section#product > div.product-keyword {
   outline: none;
   background-color: #fff;
   box-shadow: 0 0 5px rgba(182, 111, 3, 0.3);
+}
+
+label#phone-label {
+  margin-left: 40px;
+}
+
+input#phone {
+  width: 129px;
+  margin-left: 35px;
+}
+
+input#adress {
+  width: 225px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
 }
 
 #submit-signup {
@@ -489,11 +622,13 @@ section#product > div.product-keyword {
   transform: scale(1.02);
 }
 
-/* Media queries pour mobile */
-@media (max-width: 768px) {
+@media (max-width: 868px) {
   #grid-signup {
     grid-template-columns: 1fr;
     padding: 30px 15px;
+  }
+  div.flex {
+    margin-right: 270px;
   }
   #form-signup {
     max-width: 100%;
@@ -510,7 +645,76 @@ section#product > div.product-keyword {
     display: none;
   }
   #grid-signup h1 {
+    font-size: 20px;
+    max-width: 300px;
+    margin-left: 50px;
+  }
+  .flex2 {
+    flex-direction: column;
+  }
+  .input-group input#adress {
+    display: block;
+    width: 212px;
+    height: auto;
+    position: relative;
+    right: 25px;
+  }
+  div.flex .input-group input#phone {
+    width: 147px;
+    height: auto;
+    position: relative;
+    right: 55px;
+  }
+  .input-group #label-adress {
+    position: relative;
+    right: 17px;
+  }
+  .input-group #phone-label {
+    position: relative;
+    right: 59px;
+  }
+}
+@media (max-width: 768px) {
+  #grid-signup {
+    padding: 20px 15px;
+  }
+  #grid-signup h1 {
     font-size: 26px;
+    margin-bottom: 20px;
+  }
+  .left-side {
+    width: 100%;
+    padding: 10px;
+  }
+  #form-signup {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .flex {
+    gap: 0;
+    flex-direction: row;
+  }
+  #right-signup {
+    margin-top: 20px;
+    width: 100%;
+  }
+  #right-signup img {
+    max-height: 300px;
+  }
+}
+@media (max-width: 480px) {
+  #grid-signup {
+    padding: 15px 10px;
+  }
+  #form-signup {
+    padding: 15px;
+  }
+  #right-signup img {
+    display: none;
+  }
+  #submit-signup {
+    height: 45px;
+    font-size: 14px;
   }
 }
 @keyframes fadeIn {
