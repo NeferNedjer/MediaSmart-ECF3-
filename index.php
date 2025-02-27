@@ -29,6 +29,8 @@ $router->map('POST', '/media/delete', 'ControllerMedia#delete', 'deleteMedia');
 
 $router->map('GET|POST', '/media/update/[i:id]', 'ControllerMedia#update', 'updateMedia');
 
+$router->map('GET', '/404', 'ControllerMedia#notfound', 'notfound');
+
 /*----------USER----------*/
 
 
@@ -41,6 +43,7 @@ $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
 $router->map('POST', '/verify-token', 'ControllerUser#verify', 'verify-token');
 
 $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
+
 
 
 $match = $router->match();

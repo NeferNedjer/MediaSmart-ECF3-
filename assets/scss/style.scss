@@ -1,0 +1,759 @@
+// ---------------------------- COULEURS ----------------------------
+
+$color-background: #F4F7FA;        
+$color-text-primary: #333333;      
+$color-text-secondary: #777777;   
+$color-button: #b66f03;          // Boutons et liens
+$color-button-hover: #d98e21;    
+$color-accent: #F39C12;           // Couleur accent (or)
+$color-card-background: #FFFFFF;  // Fond des cartes ou sections
+$color-error: #E74C3C;            // Couleur erreur
+
+
+:root {
+  --color-primary: #b66f03;
+  --color-secondary: #d98e21;
+  --color-background: #ffffff;
+  --color-text: #333333;
+  --color-text-light: #ffffff;
+  --shadow-standard: 0 4px 15px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.2);
+  --transition-standard: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+// ---------------------------- POLICES ----------------------------
+
+$font-primary: 'Arial', sans-serif; 
+$font-secondary: 'Helvetica', sans-serif;  // Autre police sans-serif (title)
+$font-size-base: 1rem; 
+$font-size-heading: 1.2rem;              // Taille pour h1, h2, etc.
+
+// ---------------------------- ESPACEMENTS ----------------------------
+
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 32px;
+
+// ---------------------------- DISPLAY ----------------------------
+
+$flex: flex;
+$grid: grid;
+$none: none;
+
+// ---------------------------- MIXINS ----------------------------
+
+// Mixin pour centrer avec Flex
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+// Mixin pour centrer avec Grid
+@mixin center-grid {
+    display: grid;
+    place-items: center;
+}
+
+// Mixin pour une bordure arrondie avec un rayon personnalisable
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// Mixin pour utiliser une police personnalisée
+@mixin font-face($font-family, $font-url) {
+    @font-face {
+        font-family: $font-family;
+        src: url($font-url) format('truetype');
+    }
+}
+
+// ---------------------------- MAIN CSS ----------------------------  
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-family: sans-serif;
+}
+
+
+#top-mobile { 
+    display: $flex;
+    margin: $spacing-small;
+    justify-content: space-around;
+    border-bottom: 1px solid $color-background;
+    height: 7vh;
+    align-items: center;
+}
+
+#top-mobile > figure > img#logo {
+    margin-right: 350px;
+}
+
+#top-mobile > a > img#burger {
+    height: 50px;
+}
+
+
+#top-mobile > a > img#burger {
+  height: 50px;
+}
+
+/* Menu BUrger */
+
+#burger-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: #333;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+#burger-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#burger-menu li {
+  margin: 10px 0;
+}
+
+#burger-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+
+
+// ---------------------------- #search-product ----------------------------
+
+#search-product {
+    width: 85%;
+    @include center-flex();
+    margin: $spacing-small;
+    border: 1px solid rgb(223, 223, 223);
+    height: 3vh;
+}
+
+div.search {
+    @include center-flex();
+}
+
+// ---------------------------- section#product ----------------------------
+
+
+
+section#product{
+  height: 150vh;
+}
+
+section#product > div.product-keyword {
+    display: $flex;
+   margin: 12px 0 0 55px;
+}
+
+.list-keyword {
+    @include center-flex();
+    gap: 25px;
+    font-size: 14px;
+}
+
+
+.list-keyword > li:first-child {
+    @include border-radius(10px);
+    background-color: $color-button;
+    color: white;
+    width: 70px;
+    height: 24px;
+    font-size: $font-size-base;
+    @include center-flex();
+}
+
+
+.list-keyword > li:not(:first-child) {
+    @include border-radius(10px);
+    background-color: #f3f3f3;
+    color: rgb(0, 0, 0);
+    width: 70px;
+    height: 24px;
+    @include center-flex();
+}
+
+
+#product > h1 {
+    margin-left: 60px;
+
+}
+
+// ---------------------------- .card-product ----------------------------
+.card-product {
+    margin: $spacing-medium;
+    
+   
+}
+
+.card-product > .card {
+    @include border-radius(10px);
+    max-width: 251px;
+    background-color: $color-card-background;
+}
+
+.card-product > .card img {
+    height: 100%;
+    width: 100%;
+    @include border-radius(4px);
+}
+
+.flex {
+    @include center-flex();
+}
+
+.title-product,
+.auteur-product {
+    @include center-flex();
+    font-size: 12px;
+    max-width: 200px;
+    width: 100%;
+  
+}
+// AJOUT RECENT -------------------
+
+#last-add > .card-product > .card > img {
+  max-height: 350px;
+  height: 100%;
+}
+
+#last-add {
+    display: $grid;
+
+    grid-template-columns: 38% 62%;
+}
+
+#last-add h1 {
+    margin : 0 0 5px 2px;
+}
+
+
+
+.horizontal-lign {
+  border-top: 1px solid rgb(215, 213, 213);
+  width: 100%;
+  margin-top: 22px;
+
+}
+
+.auteur-product-latest{
+  margin: 3px 0 0 17px;
+  font-size: 12px;
+}
+
+.title-product-latest{
+  margin: 15px 0 0 15px;
+  font-style: 13px;
+  
+}
+
+.description-product-latest{
+  font-size: 11px;
+  margin: 3px 0 0 15px;
+}
+
+/* From Uiverse.io by andrew-demchenk0 */ 
+.rating:not(:checked) > input {
+  position: relative;
+  appearance: none;
+  
+}
+.rating{
+  margin-right: 55px;
+  float: left;
+
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  
+  cursor: pointer;
+  font-size: 17px;
+  color: #666;
+  flex-direction: row-reverse;
+}
+
+.rating:not(:checked) > label:before {
+  content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
+
+  
+.right-last-add{
+  margin: 25px;
+
+}
+
+//  ---------------------------bottom nav-bar
+
+
+#bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(90deg, rgba(182, 111, 3, 0.95) 0%, rgba(217, 142, 33, 0.95) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.bottom-nav-list {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 500px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 10px;
+  position: relative;
+}
+
+.bottom-nav-list li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+}
+
+.bottom-nav-list li a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: var(--transition-standard);
+  padding: 8px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+
+.bottom-nav-list li a:hover, 
+.bottom-nav-list li a.active {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.bottom-nav-list li a:hover::before,
+.bottom-nav-list li a.active::before {
+  transform: scale(1.2);
+}
+
+.bottom-nav-list li a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-text-light);
+  border-radius: 50%;
+}
+
+.btn-add {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-text-light);
+  font-size: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-standard);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: var(--transition-standard);
+  z-index: 1001;
+}
+
+.btn-add span {
+  transition: var(--transition-standard);
+}
+
+.btn-add:hover {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-add:hover span {
+  transform: rotate(90deg);
+}
+
+
+.btn-add:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+@media (max-width: 380px) {
+  .bottom-nav-list li a {
+    font-size: 12px;
+  }
+  
+  .bottom-nav-list li a::before {
+    font-size: 16px;
+  }
+  
+  .btn-add {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+/* Animation d'entrée pour la navbar */
+@keyframes slideUpIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#bottom-nav {
+  animation: slideUpIn 0.5s forwards;
+}
+
+
+// -------------------------------signup
+
+#grid-signup {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  position: relative;
+  padding: 40px 20px;
+  justify-items: center;
+  align-items: center;
+  // max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+#grid-signup h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 1px;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+#form-signup {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  max-width: 450px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#form-signup label {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+}
+
+#form-signup input {
+  padding: 9px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 5px;
+}
+
+#form-signup input:focus {
+  border-color: #b66f03;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(182, 111, 3, 0.3);
+}
+
+#submit-signup {
+  background: linear-gradient(90deg, rgba(182, 111, 3, 0.8) 0%, rgba(217, 142, 33, 0.9) 100%);
+  color: white;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#submit-signup:hover {
+  background: linear-gradient(90deg, rgba(217, 142, 33, 0.9) 0%, rgba(182, 111, 3, 0.8) 100%);
+  box-shadow: 0 4px 10px rgba(182, 111, 3, 0.4);
+  transform: translateY(-2px);
+}
+
+#right-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#right-signup img {
+  max-width: 100%;
+  height: 60%;
+  margin-right: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+#right-signup img:hover {
+  transform: scale(1.02);
+}
+
+
+/* Media queries pour mobile */
+@media (max-width: 768px) {
+  #grid-signup {
+    grid-template-columns: 1fr;
+    padding: 30px 15px;
+  }
+
+  #form-signup {
+  
+    max-width: 100%;
+    padding: 25px 20px;
+  }
+
+  #right-signup {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  #form-signup input {
+    max-width: 400px;
+  }
+
+  #right-signup img {
+   display: none;
+  }
+  
+  #grid-signup h1 {
+    font-size: 26px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#form-signup {
+  animation: fadeIn 0.5s ease-out;
+}
+
+// ---------------------------login
+
+.login-container {
+  max-width: 400px;
+
+  padding: 40px; 
+  background: rgba(255, 255, 255, 0.915) o;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  animation: fadeInDown 1s both;
+  transition: .5 ease-in;
+}
+
+.login-container:hover {
+  transform: scale(1.5);
+}
+
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.login-container h2 {
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #3E2723;
+}
+
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccd1d9;
+}
+
+.btn-login {
+  background-color: #3E2723;
+  color: white;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #5D4037;
+}
+
+.login-container h2 {
+  color : #3E2723;
+}
+
+#register {
+  color : #3E2723 ;
+ 
+}
+
+.text-center a {
+  color: #007bff;
+}
+
+.text-center a:hover {
+  text-decoration: none;
+  color: #0056b3;
+}
+#background {
+  background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// ---------------------------- #verify-token ----------------------------
+
+#background-form{
+  background-color: $color-background;
+  background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  height: 100vh;
+  @include center-flex();
+  width: 100%;
+  @include border-radius(10px);
+}
+
+
+#verify-token h2 {
+  color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+#verify-token p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+#form-verify-token{
+
+  @include center-flex();
+  margin-top: 5%;
+  gap: 10px;
+}
+
+#btn-submit{
+  border: none;
+  @include center-flex();
+  color: white;
+  background-color: $color-button;
+  width: 15%;
+  height: 30px;
+  @include border-radius(10px);
+  
+  
+}
+#btn-submit:hover{
+  background-color: $color-button-hover;
+
