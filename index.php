@@ -44,7 +44,9 @@ $router->map('POST', '/verify-token', 'ControllerUser#verify', 'verify-token');
 
 $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 
+/*----------EMPLOYEE----------*/
 
+$router->map('GET|POST', '/createEmployee', 'ControllerEmployee#create', 'create-employee');
 
 $match = $router->match();
 
