@@ -13,7 +13,7 @@
 
     <div id="top-mobile">
         <figure>
-            <img src="./assets/img/Group 7.png" alt="Logo" id="logo" style="height: 50px;">
+            <img src="" alt="Logo" id="logo" style="height: 50px;">
         </figure>
 
         <ul class="flex">
@@ -101,30 +101,12 @@
                     </div>
                 </div>
 
-                <div class="horizontal-lign">  </div>
-                <div class="description-product-latest"><?php echo $data->getDescription(); ?></div>
-                    <!-- From Uiverse.io by andrew-demchenk0 --> 
-               
-
-
                     <div class="right-last-add">
                         <div class="title-product-latest"><?php echo $data->getTitle(); ?></div>
-                        
                         <div class="auteur-product-latest">De '<?php echo $data->getAuthor(); ?>'</div>
 
-                
-                        <div class="rating">
-                        <input value="5" name="rate" id="star5" type="radio">
-                        <label title="text" for="star5"></label>
-                        <input value="4" name="rate" id="star4" type="radio">
-                        <label title="text" for="star4"></label>
-                        <input value="3" name="rate" id="star3" type="radio" checked="">
-                        <label title="text" for="star3"></label>
-                        <input value="2" name="rate" id="star2" type="radio">
-                        <label title="text" for="star2"></label>
-                        <input value="1" name="rate" id="star1" type="radio">
-                        <label title="text" for="star1"></label>
-                        </div>
+        
+                      
                         <div class="horizontal-lign">  </div>
                         <div class="description-product-latest"><?php echo $data->getDescription(); ?></div>
                         </div>
@@ -143,18 +125,7 @@
                         <div class="auteur-product-latest">De '<?php echo $data->getAuthor(); ?>'</div>
 
                 
-                        <div class="rating">
-                        <input value="5" name="rate" id="star5" type="radio">
-                        <label title="text" for="star5"></label>
-                        <input value="4" name="rate" id="star4" type="radio">
-                        <label title="text" for="star4"></label>
-                        <input value="3" name="rate" id="star3" type="radio" checked="">
-                        <label title="text" for="star3"></label>
-                        <input value="2" name="rate" id="star2" type="radio">
-                        <label title="text" for="star2"></label>
-                        <input value="1" name="rate" id="star1" type="radio">
-                        <label title="text" for="star1"></label>
-                        </div>
+                
                         <div class="horizontal-lign">  </div>
                         <div class="description-product-latest"><?php echo $data->getDescription(); ?></div>
                         </div>
