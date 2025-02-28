@@ -11,6 +11,9 @@
     <label for="name">Nom :</label>
     <input type="text" name="name"><br><br>
 
+    <label for="first_name">Prénom :</label>
+    <input type="text" name="first_name"><br><br>
+
     <label for="password">Password :</label>
     <input type="password" name="password"><br><br>
 

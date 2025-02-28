@@ -8,11 +8,13 @@ class ControllerEmployee {
         $model = new ModelEmployee();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(!empty($_POST['name']) && !empty($_POST['password'])) {
+            if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['password'])) {
                 if($_POST['password'] === $_POST['confpassword']) {
                     $model = new ModelEmployee();
-                    $model->createEmployee($_POST['name'], $_POST['password']);
-                    require_once './view/homepage.php';
+                    $model->createEmployee($_POST['name'], $_POST['first_name'], $_POST['password']);
+                    // require_once './view/homepage.php';
+                    header('Location: /mediasmart');
+                    exit();
                 }else {
                     echo "Les mots de pass ne correspondent pas.";
                 }
@@ -36,6 +38,8 @@ class ControllerEmployee {
                 if($employee && password_verify($_POST['password'], $employee->getPassword())) {
                     $_SESSION['id_employee'] = $employee->getId_employee();
                     $_SESSION['name'] = $employee->getName();
+                    $_SESSION['first_name'] = $employee->getFirst_name();
+                    $_SESSION['type_user'] = '2';
                     header('Location: /mediasmart');
                     exit();
                 }else {
