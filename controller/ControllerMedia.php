@@ -65,19 +65,24 @@ class ControllerMedia {
 
         global $router;
 
+        // Validation du formulaire
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(!empty($_POST['id_subcategory']) && !empty($_POST['title']) && !empty($_POST['id_author']) && !empty($_POST['description'])) {
                 $model = new ModelMedia();
                 $model->createMedia($_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'], $_POST['image']);
 
-                    header('Location: /');
+                    require_once('./view/newmedia.php');
                     exit();
                 
             } else {
                 $error = "Tous les champs doivent être remplis (hormis l'image)";
                 require_once('./view/newmedia.php');
             }
-        } else {
+        } else {   // appel du formulaire avec chargement des données Category, Subcategory et Author
+            $model = new ModelMedia();
+            $categories = $model->getCategories();
+            $subcategories = $model->getSubcategories();
+            $authors = $model->getAuthors();
             require_once('./view/newmedia.php');
         }
     }

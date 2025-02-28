@@ -137,6 +137,48 @@ class ModelMedia extends Model{
         $req->execute();
     }
 
+    public function getCategories(){
+
+        $req = $this->getDb()->query('SELECT * FROM category;');
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Category($data);
+        }
+
+        return $arrayobj;
+    }
+
+    public function getSubcategories(){
+
+        $req = $this->getDb()->query('SELECT * FROM subcategory;');
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Subcategory($data);
+        }
+
+        return $arrayobj;
+    }
+
+    public function getAuthors(){
+
+        $req = $this->getDb()->query('SELECT * FROM author;');
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Author($data);
+        }
+
+        return $arrayobj;
+    }
+
+
+
+
 
 }
 
