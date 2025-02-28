@@ -80,7 +80,7 @@ class Media extends Subcategory {
         $this->author = $author;
     }
 
-//     public function setImage(SplFileInfo $image) {
-//         $this->image = $image;
-//     }
+    public function setImage(string $image) {
+        $this->image = $image;
+    }
 }
