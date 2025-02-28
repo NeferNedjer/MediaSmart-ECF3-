@@ -635,7 +635,7 @@ section#product > div.product-keyword {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
+  gap: 8px;
   background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
   position: relative;
   padding: 40px 20px;
@@ -658,10 +658,12 @@ section#product > div.product-keyword {
   font-family: 'Poppins', sans-serif;
 }
 
+
+
 #form-signup {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
   max-width: 450px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
@@ -703,6 +705,7 @@ label#phone-label{
 
 input#phone{
   width: 129px;
+  
   margin-left: 35px;
 }
 
@@ -713,11 +716,15 @@ input#adress{
 .input-group label {
   display: block;
   margin-bottom: 5px;
+  
+    display: flex;
+    flex-direction: column; /* Ajouté pour disposer le label et input en colonne */
+ 
 }
 
 .input-group input {
   width: 100%;  
-  // @include center-flex();
+  
 }
 
 #submit-signup {
@@ -765,6 +772,7 @@ input#adress{
 
 
 
+
 @media (max-width: 868px) {
   #grid-signup {
   
@@ -772,9 +780,9 @@ input#adress{
     padding: 30px 15px;
   }
 
-  div.flex{
-    margin-right: 270px;
-  }
+  // div.flex{
+  //   margin-right: 270px;
+  // }
 
   #form-signup {
   
@@ -804,6 +812,11 @@ input#adress{
   .flex2 {
     flex-direction: column;
   }
+
+  // section#grid-signup > form#form-signup > div.flex-product{
+  //   margin-right: 400px;
+  //   background-color: red;
+  // }     FONCTIONNE PAS ?????
   
   .input-group input#adress {
     display: block;

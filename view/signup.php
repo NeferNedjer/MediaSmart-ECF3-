@@ -15,36 +15,41 @@
    
     <section id="grid-signup">
     
-    <form action="/mediasmart/register" method="POST" id="form-signup">
+    <form action="/MediaSmart/register" method="POST" id="form-signup">
         <h1>Bonjour, Bienvenue sur MediaSmart</h1>
         <label for="name">Nom :</label>
-        <input type="text" name="name" id="name" value="<?php if (!empty($_POST)) echo $_POST['name'] ?>" required>
+        <input type="text" name="name" id="name" value="<?php if (!empty($_POST)) echo $_POST['name'] ;?>" required>
 
         <label for="first_name">Prénom :</label>
-        <input type="text" name="first_name" id="first_name" value="<?php if (!empty($_POST)) echo $_POST['first_name'] ?>" required>
+        <input type="text" name="first_name" id="first_name" value="<?php if (!empty($_POST)) echo $_POST['first_name'] ;?>" required>
         
         <div class="flex-product">
-        <label for="adress">Adresse :</label>
-        <input type="text" name="adress" value="<?php if (!empty($_POST)) echo $_POST['adress'] ?>" required>
+                    <div class="input-group">
+                    <label for="adress">Adresse :</label>
+                    <input type="text" name="adress" id="adress" value="<?php if (!empty($_POST)) echo $_POST['adress']; ?>" required>
+                </div>
 
-        <label for="phone">Téléphone :</label>
-        <input type="text" name="phone" value="<?php if (!empty($_POST)) echo $_POST['phone'] ?>" required></div>
+                <div class="input-group">
+                    <label for="phone">Téléphone :</label>
+                    <input type="text" name="phone" id="phone" value="<?php if (!empty($_POST)) echo $_POST['phone']; ?>" required>
+                </div>
+         </div>
 
-        <label for="emmail">Email :</label>
-        <input type="text" name="email" id="email" value="<?php if (!empty($_POST)) echo $_POST['email'] ?>" required>
+        <label for="email">Email :</label>
+        <input type="text" name="email" id="email" value="<?php if (!empty($_POST)) echo $_POST['email']; ?>" required>
         <label for="password">Mot de passe :</label>
-        <input type="password" name="password" id="password" required><br><br>
+        <input type="password" name="password" id="password" required>
 
         <label for="confmotdepasse">Confirmer le mot de passe :</label>
-        <input type="password" id="confmotdepasse" name="confpassword" required><br><br>
+        <input type="password" id="confmotdepasse" name="confpassword" required>
 
         <input id="submit-signup" type="submit" name="submit" value="inscription">
     </form>
     <section id="right-signup">
         <img src="./assets/img/signup.jpg" alt="Image d'inscription">
     </section>
-</section>
-</div>
+    </section> 
+</div> 
    
 </body>
 </html>
