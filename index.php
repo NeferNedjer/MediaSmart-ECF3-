@@ -48,6 +48,8 @@ $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 
 $router->map('GET|POST', '/createEmployee', 'ControllerEmployee#create', 'create-employee');
 
+$router->map('GET|POST', '/loginEmployee', 'ControllerEmployee#loginEmployee', 'login-employee');
+
 $match = $router->match();
 
 // var_dump($router);
