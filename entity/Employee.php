@@ -4,6 +4,7 @@ class Employee {
 
     private $id_employee;
     private $name;
+    private $first_name;
     private $password;
 
     public function __construct(array $datas) {
@@ -29,6 +30,10 @@ class Employee {
        return $this->name;
     }
 
+    public function getFirst_name() {
+        return $this->first_name;
+    }
+
     public function getPassword() {
        return $this->password;
     }
@@ -42,6 +47,10 @@ class Employee {
         $this->name = $name;
     }
 
+    public function setFirst_name(string $first_name) {
+        $this->first_name = $first_name;
+    }
+    
     public function setPassword(string $password) {
         $this->password = $password;
     }

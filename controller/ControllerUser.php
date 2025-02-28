@@ -20,6 +20,7 @@ class ControllerUser {
                     $_SESSION['id_user'] = $user->getId_user();
                     $_SESSION['name'] = $user->getName();
                     $_SESSION['first_name'] = $user->getFirst_name();
+                    $_SESSION['type_user'] = '1';
                     header('Location: /mediasmart');
                     exit;
                 }else {
