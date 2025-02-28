@@ -5,6 +5,8 @@ class ControllerEmployee {
     public function create() {
 
         global $router;
+        $model = new ModelEmployee();
+
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(!empty($_POST['name']) && !empty($_POST['password'])) {
                 if($_POST['password'] === $_POST['confpassword']) {
@@ -20,6 +22,30 @@ class ControllerEmployee {
         }else {
             require_once('./view/createEmployee.php');
         }
+    }
+
+    public function loginEmployee() {
+
+        //on doit rajouter un first-name à la bdd et à la class Employee
+
+        global $router;
+        $model = new ModelEmployee();
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!empty($_POST['name']) && !empty($_POST['password'])) {
+                $employee = $model->getEmployeeByName($_POST['name']);
+                if($employee && password_verify($_POST['password'], $employee->getPassword())) {
+                    $_SESSION['id_employee'] = $employee->getId_employee();
+                    $_SESSION['name'] = $employee->getName();
+                    header('Location: /mediasmart');
+                    exit();
+                }else {
+                    echo "Email ou mot de passe invalide.";
+                }
+            }else {
+                echo "Toutes les cases doivent être remplis.";
+            }
+        }
+        require_once './view/loginEmployee.php';
     }
 
 }
