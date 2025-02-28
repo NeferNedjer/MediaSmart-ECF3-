@@ -135,6 +135,10 @@ div.search {
   align-items: center;
 }
 
+section#product {
+  height: 150vh;
+}
+
 section#product > div.product-keyword {
   display: flex;
   margin: 12px 0 0 55px;
@@ -180,14 +184,14 @@ section#product > div.product-keyword {
 }
 
 .card-product > .card {
-  height: 150px;
   border-radius: 10px;
-  width: 111px;
+  max-width: 251px;
   background-color: #FFFFFF;
 }
 
 .card-product > .card img {
-  height: 80%;
+  height: 100%;
+  width: 100%;
   border-radius: 4px;
 }
 
@@ -213,37 +217,38 @@ section#product > div.product-keyword {
 }
 
 #last-add > .card-product > .card > img {
-  max-height: 170px;
+  max-height: 350px;
   height: 100%;
 }
 
 #last-add {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 38% 62%;
 }
 
 #last-add h1 {
   margin: 0 0 5px 2px;
 }
 
-.description-product-latest {
-  font-size: 13px;
-  margin: 5px;
-}
-
 .horizontal-lign {
   border-top: 1px solid rgb(215, 213, 213);
   width: 100%;
-  margin-top: 15px;
+  margin-top: 22px;
 }
 
 .auteur-product-latest {
-  margin: 5px;
-  font-size: 13px;
+  margin: 3px 0 0 17px;
+  font-size: 12px;
 }
 
 .title-product-latest {
-  margin: 15px 0 0 5px;
+  margin: 15px 0 0 15px;
+  font-style: 13px;
+}
+
+.description-product-latest {
+  font-size: 11px;
+  margin: 3px 0 0 15px;
 }
 
 /* From Uiverse.io by andrew-demchenk0 */
@@ -255,10 +260,15 @@ section#product > div.product-keyword {
 }
 
 .rating {
-  margin-left: 5px;
+  margin-right: 55px;
+  float: left;
 }
 
 .rating:not(:checked) > label {
+
+
+  float: right;
+
   cursor: pointer;
   font-size: 17px;
   color: #666;
@@ -728,6 +738,11 @@ input#adress {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   animation: fadeInDown 1s both;
+  transition: 0.5 ease-in;
+}
+
+.login-container:hover {
+  transform: scale(1.5);
 }
 
 @keyframes fadeInDown {
@@ -845,12 +860,26 @@ input#adress {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #3498db;
+  background-color: #b66f03;
   width: 15%;
   height: 30px;
   border-radius: 10px;
 }
 
 #btn-submit:hover {
-  background-color: #2980b9;
+  background-color: #d98e21;
+}
+
+#resend-token {
+  background-color: #F4F7FA;
+  background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
 }/*# sourceMappingURL=style.css.map */

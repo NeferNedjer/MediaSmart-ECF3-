@@ -6,6 +6,7 @@ session_start();
 require_once './vendor/autoload.php';
 require_once './vendor/altorouter/altorouter/AltoRouter.php';
 
+
 //INITIALISATION OF ALTOROUTER
 $router = new AltoRouter();
 $router->setBasePath('/mediasmart');
@@ -41,10 +42,11 @@ $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
 
 $router->map('POST', '/verify-token', 'ControllerUser#verify', 'verify-token');
 
-$router->map('GET|POST', '/resend-token/[i:id]', 'ControllerUser#resend', 'resend-token');
+$router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 
+/*----------EMPLOYEE----------*/
 
-
+$router->map('GET|POST', '/createEmployee', 'ControllerEmployee#create', 'create-employee');
 
 $match = $router->match();
 
