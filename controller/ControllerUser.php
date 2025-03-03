@@ -21,7 +21,7 @@ class ControllerUser {
                     $_SESSION['name'] = $user->getName();
                     $_SESSION['first_name'] = $user->getFirst_name();
                     $_SESSION['type_user'] = '1';
-                    header('Location: /mediasmart');
+                    header('Location: /');
                     exit;
                 }else {
                     $error = 'Email ou mot de passe invalide';
@@ -53,7 +53,7 @@ class ControllerUser {
                             $first_name = $_POST['first_name'];
                             $email = $_POST['email'];
 
-                            $verificationLink = "http://localhost/mediasmart/view/verify-token.php?token=$token";
+                            $verificationLink = "http://mediasmart/view/verify-token.php?token=$token";
 
                         $mail = new PHPMailer(true);
                         
@@ -105,7 +105,7 @@ class ControllerUser {
   
         session_unset();
         session_destroy();
-        header('Location: /mediasmart');
+        header('Location: /');
         exit();
     }
 
@@ -183,7 +183,7 @@ class ControllerUser {
             $first_name = $user->getFirst_name();
             $email = $user->getEmail();
 
-            $verificationLink = "http://localhost/mediasmart/view/verify-token.php?token=$token";
+            $verificationLink = "http://mediasmart/view/verify-token.php?token=$token";
 
             $mail = new PHPMailer(true);
     
@@ -204,8 +204,8 @@ class ControllerUser {
                 $mail->Host       = 'smtp.mailtrap.io';
                 $mail->Port       = 2525; // Port de Mailtrap
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'b41082ebc7e4bf'; // Remplacez par votre nom d'utilisateur Mailtrap
-                $mail->Password   = '1fcb7750bb513a'; // Remplacez par votre mot de passe Mailtrap
+                $mail->Username   = 'be44f3de8868b4'; // Remplacez par votre nom d'utilisateur Mailtrap
+                $mail->Password   = '900c50ffd39dfc'; // Remplacez par votre mot de passe Mailtrap
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     
                 $mail->send();

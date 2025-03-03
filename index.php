@@ -9,7 +9,6 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 
 //INITIALISATION OF ALTOROUTER
 $router = new AltoRouter();
-$router->setBasePath('/mediasmart');
 
 /*----------MEDIA----------*/
 
@@ -49,6 +48,8 @@ $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 $router->map('GET|POST', '/createEmployee', 'ControllerEmployee#create', 'create-employee');
 
 $router->map('GET|POST', '/loginEmployee', 'ControllerEmployee#loginEmployee', 'login-employee');
+
+$router->map('GET', '/dashboardEmployee', 'Controller#Employee', 'dashboard-employee');
 
 $match = $router->match();
 
