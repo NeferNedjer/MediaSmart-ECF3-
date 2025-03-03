@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/scss/style.css">
 </head>
 <body>
+
 <div id=background>
     <div id="createEmployee" class='flex-container'>
         <h2>Création d'un employé</h2> <br><br>
@@ -31,7 +32,9 @@
             <input type="submit" value="Valider">
             </div>
         </form>
+      <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
     </div>
 </div>
+
 </body>
 </html>

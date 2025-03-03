@@ -13,7 +13,7 @@ class ControllerEmployee {
                     $model = new ModelEmployee();
                     $model->createEmployee($_POST['name'], $_POST['first_name'], $_POST['password']);
                     // require_once './view/homepage.php';
-                    header('Location: /mediasmart');
+                    header('Location: /');
                     exit();
                 }else {
                     echo "Les mots de pass ne correspondent pas.";
@@ -40,7 +40,7 @@ class ControllerEmployee {
                     $_SESSION['name'] = $employee->getName();
                     $_SESSION['first_name'] = $employee->getFirst_name();
                     $_SESSION['type_user'] = '2';
-                    header('Location: /mediasmart');
+                    header('Location: /');
                     exit();
                 }else {
                     echo "Email ou mot de passe invalide.";
@@ -50,6 +50,26 @@ class ControllerEmployee {
             }
         }
         require_once './view/loginEmployee.php';
+    }
+
+    public function dashboardEmployee() {
+
+        global $router;
+        $model = new ModelEmployee();
+        $datas = $model->employeeHome();
+
+        require_once('./view/dashboardEmployee.php');
+    }
+
+    public function getUser($id) {
+
+        global $router;
+        var_dump($id);
+        $model = new ModelUser;
+        $data = $model->getUserById($id);
+
+        require_once('./view/getUser.php');
+
     }
 
 }
