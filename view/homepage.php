@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,8 @@
 
     <div id="top-mobile">
         <figure>
-            <img src="" alt="Logo" id="logo" style="height: 50px;">
+            <img src="./assets/img/logo2.png
+            " alt="Logo" id="logo" style="height: 150px;">
         </figure>
 
         <ul class="flex">

@@ -64,7 +64,6 @@ class ControllerEmployee {
     public function getUser($id) {
 
         global $router;
-        var_dump($id);
         $model = new ModelUser;
         $data = $model->getUserById($id);
 
