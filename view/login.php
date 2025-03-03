@@ -21,7 +21,7 @@
                 <p style="color:red"><?php echo htmlspecialchars($message); ?></p>
             <?php endif; ?>
 
-            <form action="/mediasmart/login" method="POST">
+            <form action="/login" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Adresse e-mail</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
