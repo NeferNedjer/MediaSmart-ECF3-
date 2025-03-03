@@ -75,7 +75,7 @@
 </form>
 
 <p id="bonjour">bjr</p>
-
+<a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     const radioButtons = document.querySelectorAll('input[name="id_category"]');
