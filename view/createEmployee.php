@@ -22,5 +22,6 @@
 
     <input type="submit" value="Valider">
     </form>
+    <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
 </body>
 </html>

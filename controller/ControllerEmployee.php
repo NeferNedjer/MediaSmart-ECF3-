@@ -54,6 +54,22 @@ class ControllerEmployee {
 
     public function dashboardEmployee() {
 
+        global $router;
+        $model = new ModelEmployee();
+        $datas = $model->employeeHome();
+
+        require_once('./view/dashboardEmployee.php');
+    }
+
+    public function getUser($id) {
+
+        global $router;
+        var_dump($id);
+        $model = new ModelUser;
+        $data = $model->getUserById($id);
+
+        require_once('./view/getUser.php');
+
     }
 
 }
