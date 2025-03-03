@@ -22,4 +22,16 @@ class ModelEmployee extends Model {
 
         return new Employee($req->fetch(PDO::FETCH_ASSOC));
     }
+
+    public function employeeHome() {
+
+        $req = $this->getDb()->query('SELECT * FROM USER');
+        
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[]= new User($data);
+        }
+        return $arrayobj;
+    }
 }
