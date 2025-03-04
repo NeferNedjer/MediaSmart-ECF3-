@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./assets/scss/style.css">
 </head>
 <body>
+
+
+
     <h1>Création de nouveaux médias</h1>
 
         <?php if (isset($error)): ?>
@@ -14,7 +17,7 @@
         <?php endif?>
 
 
-<p id="bonjour-m">BONJOUR</p>
+    <p id="bonjour-m">BONJOUR</p>
 
 <form action="mediasmart/media/create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form">
     <h2 class="form-title">Ajouter un nouveau média</h2>
