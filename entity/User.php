@@ -102,7 +102,7 @@ class User {
         $this->phone = $phone;
     }
 
-    public function setStatus(int $statut) {
+    public function setStatut(int $statut) {
         $this->statut = $statut;
     }
 

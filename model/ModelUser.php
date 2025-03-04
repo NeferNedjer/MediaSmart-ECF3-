@@ -22,6 +22,7 @@ class ModelUser extends Model {
 
         if(isset($_SESSION['id_user'])) {
             header('Location: /mediasmart');
+            exit();
         }
     }
 
