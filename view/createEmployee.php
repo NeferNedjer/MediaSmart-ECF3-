@@ -10,8 +10,9 @@
 
 <div id=background class='flex-container'>
     <div id="createEmployee-container" >
-        <h2>Création d'un employé</h2> <br><br>
-        <form action="/mediasmart/createEmployee" method="POST">
+        
+        <form action="/createEmployee" method="POST">
+        <h2 class= "text-center">Création d'un employé</h2> <br><br>
             <div class="mb-3">
             <label for="name">Nom :</label>
             <input type="text" name="name"><br><br>
@@ -30,9 +31,10 @@
             </div>
             <div class="mb-3">
             <input type="submit" value="Valider">
-            </div>
+            </div> <br><br>
+            <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
         </form>
-      <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
+      
     </div>
 </div>
 
