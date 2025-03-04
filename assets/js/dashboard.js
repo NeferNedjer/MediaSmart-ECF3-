@@ -1,19 +1,18 @@
-// Select all elements using correct class names
-const idUserElements = document.querySelectorAll('.id-user-dashboard'); // Multiple elements
-const activityVisible = document.querySelectorAll('.activity-visible'); // Multiple elements
-const activityHidden = document.querySelectorAll('.activity-hidden'); // Multiple elements
+const idUserElements = document.querySelectorAll('.id-user-dashboard'); 
+const activityVisible = document.querySelectorAll('.activity-visible'); 
+const activityHidden = document.querySelectorAll('.activity-hidden');
 
-// Loop through all the "id-user-dashboard" elements and attach click event listeners
 idUserElements.forEach((idUser) => {
     idUser.addEventListener('click', function() {
-        // Toggle visibility of activity-visible elements
+        
         activityVisible.forEach((element) => {
-            element.style.display = 'none'; // Hide all elements with the "activity-visible" class
+            element.style.display = 'none'; 
         });
-
-        // Toggle visibility of activity-hidden elements
         activityHidden.forEach((element) => {
-            element.style.display = 'block'; // Show all elements with the "activity-hidden" class
+            element.style.display = 'block'; 
         });
     });
 });
+
+console.log(idUserElements);
+console.log(activityVisible);
