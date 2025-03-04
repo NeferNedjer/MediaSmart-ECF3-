@@ -224,24 +224,42 @@ class ControllerUser {
     public function modifUser($id_user) {
 
         global $router;
+
+        $model = new ModelUser();
+        $data = $model->getUserById($id_user);
+        require_once './view/modifUser.php';
+        exit();
+         
+    }
+
+    public function update() {
+        global $router;
         
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-             if ($_POST['update']){
-                if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['password'])){
-
-                }
+            
+            if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['adress']) && !empty($_POST['phone']) && !empty($_POST['statut'])){   
+                $model = new ModelUser();
+                $model->updateUser($_POST['name'], $_POST['first_name'], $_POST['email'], $_POST['adress'], $_POST['phone'], $_POST['statut'], $_POST['id_user']);
+                header('Location: dashboardEmployee');
             } else {
                 $error = "Toutes les cases doivent être remplies";
             }
-        } else {
-            $model = new ModelUser();
-            $data = $model->getUserById($id_user);
-            require_once './view/modifUser.php';
-            exit();
-        }
+         }
+    }
 
-       
+    public function delete() {
+
+        global $router;
+        if($_SERVER['REQUEST_METHOD'] === 'POST') { 
+
+            $model = new ModelUser();
+            $model->deleteUser($_POST['id_user']);
+            header('Location: dashboardEmployee');
+        }
+        
     }
 
 }
+
+

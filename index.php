@@ -53,7 +53,11 @@ $router->map('GET', '/dashboardEmployee', 'ControllerEmployee#dashboardEmployee'
 
 $router->map('GET', '/getUser/[i:id]' ,'ControllerEmployee#getUser', 'getUser' );
 
-$router->map('GET', '/modif-user/[i:id_user]', 'ControllerUser#modifUser', 'modif-user');
+$router->map('GET|POST', '/modif-user/[i:id_user]', 'ControllerUser#modifUser', 'modif-user');
+
+$router->map('GET|POST', '/update','ControllerUser#update', 'update-user' );
+
+$router->map('GET|POST', '/delete', 'ControllerUser#delete', 'delete-user');
 
 $match = $router->match();
 

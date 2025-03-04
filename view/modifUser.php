@@ -15,8 +15,10 @@
    
     <section id="grid-signup">
     
-    <form action="/modif-user" method="POST" id="form-signup">
+    <form action="<?php echo $router->generate('update-user');  ?>" method="POST" id="form-signup">
         <h1>Bonjour, Bienvenue sur MediaSmart</h1>
+
+        <input type="hidden" name="id_user" value="<?php echo $data->getId_user(); ?>">
         <label for="name">Nom :</label>
         <input type="text" name="name" id="name" value="<?php echo $data->getName() ;?>" required>
 
@@ -39,10 +41,20 @@
         <input type="text" name="email" id="email" value="<?php echo $data->getEmail(); ?>" required>
         
         <label for="statut">Statut :</label>
-        <input type="number" id="statut" name="statut">
+        <input type="number" id="statut" name="statut" value="<?php echo $data->getStatut(); ?>">
 
-        <input id="submit-signup" type="submit" name="update" value="Modifier">
-        <input id="submit-signup" type="submit" name="delete" value="Supprimer">
+        <a href="/update"><input id="submit-signup" type="submit" name="update" value="Modifier"></a>
+        
+        
+    </form>
+    <form action="<?php echo $router->generate('delete-user');  ?>" method="POST" id="form-signup">
+
+        <input type="hidden" name="id_user" value="<?php echo $data->getId_user(); ?>">
+
+        <a href="/delete"><input id="submit-signup" type="submit" name="delete" value="Supprimer"></a>
+
+        <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
+
     </form>
     <section id="right-signup">
         <img src="./assets/img/signup.jpg" alt="Image d'inscription">

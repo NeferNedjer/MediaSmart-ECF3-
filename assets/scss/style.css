@@ -1003,12 +1003,18 @@ input#adress {
   background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   border-radius: 10px;
+}
+
+#createEmployee-container h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
 }
 
 #form-create-employee {
@@ -1019,11 +1025,16 @@ input#adress {
   margin-top: 5%;
 }
 
+#a {
+  margin-left: 40px;
+}
+
 #background {
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  min-height: 40vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -1355,6 +1366,7 @@ ul.user-gestion-list > li:last-child > button,
   display: none;
 }
 
+
 .add-media {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1428,4 +1440,5 @@ ul.user-gestion-list > li:last-child > button,
 
 .btn-add-dashboard:active {
   transform: translateX(-50%) scale(0.95);
+
 }/*# sourceMappingURL=style.css.map */
