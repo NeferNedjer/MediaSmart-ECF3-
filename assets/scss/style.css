@@ -996,7 +996,6 @@ input#adress {
   background-color: var(--color-secondary);
 }
 
-
 #createEmployee-container {
   max-width: 400px;
   padding: 40px;
@@ -1005,7 +1004,6 @@ input#adress {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   height: 60vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1038,6 +1036,7 @@ input#adress {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
 
 #side-bar-dash {
   height: 100vh;
@@ -1257,4 +1256,8 @@ ul.user-gestion-list > li:last-child > button,
 
 .activity-hidden {
   display: none;
+}
+
+.bazffe {
+  margin: 0;
 }/*# sourceMappingURL=style.css.map */
