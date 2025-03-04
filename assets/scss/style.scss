@@ -1158,11 +1158,13 @@ input#adress{
 
 // ---------------------------- #createemployee ----------------------------
 
-#createEmployee {
+#createEmployee-container {
   max-width: 400px;
   padding: 40px;
   background-color: $color-background;
   background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   height: 100vh;
   @include center-flex();
   width: 100%;
@@ -1177,9 +1179,6 @@ input#adress{
 
 
 #background {
-  background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  border-radius: 10pc;
   background-size: cover;
   background-position: center;
   min-height: 100vh;

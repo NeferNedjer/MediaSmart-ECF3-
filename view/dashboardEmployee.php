@@ -12,6 +12,7 @@
 <body>
     <!-- <header>
         <nav>
+
            <?php if ($_SESSION) {
                 echo "Bonjour" . $_SESSION['first_name'];
             } ?> 
@@ -120,6 +121,7 @@
     </section>
 
     <script src="./assets/js/dashboard.js"></script>
+
 </body>
 
 </html>

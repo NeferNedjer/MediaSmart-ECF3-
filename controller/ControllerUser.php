@@ -221,4 +221,27 @@ class ControllerUser {
         exit();
     }
 
+    public function modifUser($id_user) {
+
+        global $router;
+        
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+             if ($_POST['update']){
+                if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['password'])){
+
+                }
+            } else {
+                $error = "Toutes les cases doivent être remplies";
+            }
+        } else {
+            $model = new ModelUser();
+            $data = $model->getUserById($id_user);
+            require_once './view/modifUser.php';
+            exit();
+        }
+
+       
+    }
+
 }
