@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<div id=background>
-    <div id="createEmployee" class='flex-container'>
+<div id=background class='flex-container'>
+    <div id="createEmployee-container" >
         <h2>Création d'un employé</h2> <br><br>
         <form action="/mediasmart/createEmployee" method="POST">
             <div class="mb-3">
