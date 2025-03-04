@@ -522,7 +522,7 @@ section#product > div.product-keyword {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
+  gap: 8px;
   background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
   position: relative;
   padding: 40px 20px;
@@ -547,7 +547,7 @@ section#product > div.product-keyword {
 #form-signup {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
   max-width: 450px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
@@ -599,6 +599,8 @@ input#adress {
 .input-group label {
   display: block;
   margin-bottom: 5px;
+  display: flex;
+  flex-direction: column; /* Ajouté pour disposer le label et input en colonne */
 }
 
 .input-group input {
@@ -653,9 +655,6 @@ input#adress {
   #grid-signup {
     grid-template-columns: 1fr;
     padding: 30px 15px;
-  }
-  div.flex {
-    margin-right: 270px;
   }
   #form-signup {
     max-width: 100%;
@@ -836,7 +835,6 @@ input#adress {
 }
 
 #background {
-  background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -1035,4 +1033,46 @@ input#adress {
 
 .btn-submit:hover {
   background-color: var(--color-secondary);
+}
+
+#createEmployee-container {
+  max-width: 400px;
+  padding: 40px;
+  background-color: #F4F7FA;
+  background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#createEmployee-container h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+#form-create-employee {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5%;
+}
+
+#a {
+  margin-left: 40px;
+}
+
+#background {
+  background-size: cover;
+  background-position: center;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
