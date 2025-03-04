@@ -53,6 +53,8 @@ $router->map('GET', '/dashboardEmployee', 'ControllerEmployee#dashboardEmployee'
 
 $router->map('GET', '/getUser/[i:id]' ,'ControllerEmployee#getUser', 'getUser' );
 
+$router->map('GET', '/modif-user/[i:id_user]', 'ControllerUser#modifUser', 'modif-user');
+
 $match = $router->match();
 
 // var_dump($router);

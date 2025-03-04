@@ -64,8 +64,10 @@ class ControllerEmployee {
     public function getUser($id) {
 
         global $router;
-        $model = new ModelUser;
+        $model = new ModelUser();
         $data = $model->getUserById($id);
+        $modelemprunt = new ModelEmprunt();
+        $emprunts = $modelemprunt->getEmpruntByUser($id);
 
         require_once('./view/getUser.php');
 

@@ -18,7 +18,7 @@
     <h1>Dashboard Employee</h1>
            <h2>Liste des Utilisateurs</h2>
            <?php foreach($datas as $data): ?>
-            <p>Nom : <a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>"><?php echo $data->getName()?> <?php echo $data->getFirst_name()?></a><br> Status :<?php echo $data->getStatut(); ?></div>
+            <p>Nom : <a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>"><?php echo $data->getName()?> <?php echo $data->getFirst_name()?></a> <a href="<?php echo $router->generate('modif-user', ['id_user' => $data->getId_user()]); ?>">modif</a><br> Status :<?php echo $data->getStatut(); ?><br> <?php echo $data->getInscription_date()->format('d/m/Y '); ?></div>
             <?php endforeach; ?></p>
 
             <a href="<?php echo $router->generate('home') ?>">Page d'accueil</a>
