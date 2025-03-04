@@ -101,7 +101,7 @@
                         <img src="./assets/img/livre-cuisine-tout-en-pot-jean-pierre-dezavelle.webp" alt="">
                     </div>
                 </div>
-
+w
                     <div class="right-last-add">
                         <div class="title-product-latest"><?php echo $data->getTitle(); ?></div>
                         <div class="auteur-product-latest">De '<?php echo $data->getAuthor(); ?>'</div>

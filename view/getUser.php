@@ -15,9 +15,12 @@
         <p>Date d'inscription : <?php echo $data->getInscription_date()->format('d/m/Y à H:i'); ?></p>
         <h2>Emprunts en cours :</h2>
         <ul>
-            <li>emprunt 1 : <a href=""></a></li>
-            <li>emprunt 2 : <a href=""></a></li>
-            <li>emprunt 3 : <a href=""></a></li>
+        <?php 
+        $number = 0;
+        foreach($emprunts as $emprunt): $number++; ?>
+
+            <li>emprunt <?php echo $number ?> : <a href=""><?php echo $emprunt->getTitle();?> </a>emprunté le :  <?php echo $emprunt->getEmprunt_date()->format('d/m/Y');?> à rendre le : <?php echo $emprunt->getMax_return_date()->format('d/m/Y'); ?>.</li>
+        <?php endforeach; ?></p>  
         </ul>
         <h2>Historique des emprunts :</h2>
 
