@@ -237,29 +237,25 @@ class ControllerUser {
         
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
-            if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['adress']) && !empty($_POST['phone']) && !empty($_POST['statut'])){   
+            if(isset($_POST['update'])) {
+                if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['adress']) && !empty($_POST['phone']) && !empty($_POST['statut'])){   
+                    $model = new ModelUser();
+                    $model->updateUser($_POST['name'], $_POST['first_name'], $_POST['email'], $_POST['adress'], $_POST['phone'], $_POST['statut'], $_POST['id_user']);
+                    header('Location: dashboardEmployee');
+                } else {
+                    $error = "Toutes les cases doivent être remplies";
+                }
+            } elseif (isset($_POST['delete'])) {
                 $model = new ModelUser();
-                $model->updateUser($_POST['name'], $_POST['first_name'], $_POST['email'], $_POST['adress'], $_POST['phone'], $_POST['statut'], $_POST['id_user']);
+                $model->deleteUser($_POST['id_user']);
                 header('Location: dashboardEmployee');
-            } else {
-                $error = "Toutes les cases doivent être remplies";
+            } elseif (isset($_POST['retour'])) {
+                header('Location: dashboardEmployee');
             }
-         }
+         }      
     }
 
-    public function delete() {
-
-        global $router;
-        if($_SERVER['REQUEST_METHOD'] === 'POST') { 
-
-            $model = new ModelUser();
-            $model->deleteUser($_POST['id_user']);
-            header('Location: dashboardEmployee');
-        }
-        
-    }
-
+    
 }
 
 
