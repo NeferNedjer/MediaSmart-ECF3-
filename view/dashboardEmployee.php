@@ -27,7 +27,7 @@
                 <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
                 <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
                 <li><a href="#"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span>  </a></li>
-                <li><a href="#"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Emprunts</span> </a></li>
+                <li><a href="#"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
                 <li><a href="#"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
                 <li>
@@ -65,11 +65,15 @@
                     <?php foreach ($datas as $data): ?>
                         <div class="user-row">
                             <div class="user-dashboard">
-                                <p class="id-user-dashboard">#14567</p>
-                                <p class="name-dashboard"><a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>"><?php echo $data->getName() ?> <?php echo $data->getFirst_name() ?></a></p>
-                                <p class="date-dashboard">dd/mm/AA</p>
-                                <p class="livre-non">/</p>
-                                <button type="submit" id="more-dashboard">More</button>
+                                <p class="id-user-dashboard"><?php echo $data->getId_user() ?></p>
+                                <p class="name-dashboard"><?php echo $data->getName() ?> <?php echo $data->getFirst_name() ?></p>
+                                <p class="date-dashboard"><?php echo $data->getLast_connexion()->format('d/m/y') ?></p>
+                                <p class="livre-non"><?php if (null !== $data->getNb_outdated_emprunt()): ?>
+                                    <?php echo $data->getNb_outdated_emprunt(); ?>
+                                    <?php else: ?>
+                                              0
+                                    <?php endif; ?></p>
+                                <a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>"><button type="submit" id="more-dashboard">More</button></a>
                             </div>
                         </div>
                     <?php endforeach; ?>
