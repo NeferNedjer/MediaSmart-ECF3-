@@ -86,21 +86,21 @@
                                 <caption>Dernier emprunt</caption>
                                 <thead>
                                     <tr>
-                                        <th>ID USER</th>
-                                        <th>DATE D'EMPRUNT</th>
-                                        <th>COMPORTEMENT USER</th>
-                                        <th>DERNIERE CONNEXION</th>
-                                        <th>NB D'EMPRUNT</th>
+                                        <th>NOM UTILISATEUR</th>
+                                        <th>CATEGORIE</th>
+                                        <th>TITRE</th>
+                                        <th>DATE EMPRUNT</th>
+                                        <th>DATE RETOUR</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($datas as $data): ?>
+                                    <?php foreach ($emprunts as $emprunt): ?>
                                         <tr>
-                                            <td><a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>"><?php echo $data->getName() ?> <?php echo $data->getFirst_name() ?></a></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><?php echo $data->getInscription_date()->format('d/m/Y'); ?></td>
-                                            <td></td>
+                                            <td><?php echo $emprunt->getUser_name() ?> <?php echo $emprunt->getFirst_name() ?></td>
+                                            <td><?php echo $emprunt->getName() ?></td>
+                                            <td><?php echo $emprunt->getTitle() ?></td>
+                                            <td><?php echo $emprunt->getEmprunt_date()->format('d/m/y')?></td>
+                                            <td><?php echo $emprunt->getMax_return_date()->format('d/m/y') ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
