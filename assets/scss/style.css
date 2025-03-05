@@ -871,8 +871,13 @@ input#adress {
 }
 
 .media-form {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+  max-height: 700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 2rem;
   background-color: #fff;
   border-radius: 8px;
@@ -888,18 +893,19 @@ input#adress {
 }
 
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .group-label, label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   color: #555;
   font-weight: 500;
 }
 
 .form-control, .form-select, .form-textarea {
-  width: 100%;
+  width: 90%;
+  height: 40%;
   padding: 0.8rem;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -915,7 +921,7 @@ input#adress {
 }
 
 .form-textarea {
-  min-height: 100px;
+  min-height: 70px;
   resize: vertical;
 }
 
@@ -954,7 +960,7 @@ input#adress {
   top: 0;
   opacity: 0;
   width: 100%;
-  height: 100%;
+  height: 70%;
   cursor: pointer;
 }
 
@@ -1366,16 +1372,17 @@ ul.user-gestion-list > li:last-child > button,
   display: flex;
   gap: 25px;
   margin: 25px;
-  font-size: 14px;
+  font-size: 1.2rem;
 }
 
 .list-keyword-dashboard > li:first-child {
   border-radius: 10px;
   background-color: var(--color-primary);
   color: white;
-  width: 70px;
-  height: 24px;
-  font-size: 1rem;
+  width: 87px;
+  height: 29px;
+  font-size: 1.2rem;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1385,8 +1392,9 @@ ul.user-gestion-list > li:last-child > button,
   border-radius: 10px;
   background-color: #f3f3f3;
   color: rgb(0, 0, 0);
-  width: 70px;
-  height: 24px;
+  width: 87px;
+  cursor: pointer;
+  height: 29px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1394,8 +1402,8 @@ ul.user-gestion-list > li:last-child > button,
 
 .btn-add-dashboard {
   position: absolute;
-  top: 40px;
-  left: 50%;
+  top: 30px;
+  left: 45%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   color: var(--color-text-light);
@@ -1428,4 +1436,162 @@ ul.user-gestion-list > li:last-child > button,
 
 .btn-add-dashboard:active {
   transform: translateX(-50%) scale(0.95);
+}
+
+.search-pp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-product-dashboard {
+  width: 55%;
+  margin: 25px 10px;
+  border: 1px solid rgb(223, 223, 223);
+  height: 3vh;
+}
+
+::-moz-placeholder {
+  text-align: center;
+}
+
+::placeholder {
+  text-align: center;
+}
+
+#grid-product-dashboard {
+  display: grid;
+  margin: 10px 25px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  max-height: 80vh;
+  height: 100%;
+}
+
+section#cardd {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-height: 270px;
+  width: 190px;
+  flex-direction: column;
+  border-radius: 4px;
+  box-shadow: var(--shadow-standard);
+}
+
+.card-product-dashboard {
+  background-color: #ecf0f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.edit-product {
+  position: absolute;
+  left: 20%;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+  top: 50%;
+  color: white;
+  display: none;
+  z-index: 1000;
+}
+
+.edit-form {
+  position: fixed;
+  top: 50%;
+  width: 500px;
+  left: 50%;
+  translate: transform(50% 50%);
+  z-index: 1000;
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.card-product-dashboard figure img {
+  max-height: 180px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+section#cardd .contain-product {
+  height: 250px;
+  margin-top: 5px;
+}
+
+.detail-product {
+  display: grid;
+  gap: 15px;
+  margin: 15px;
+  width: 1000px;
+  grid-template-columns: 20% 80%;
+}
+
+.detail-product img {
+  height: auto;
+  width: 100%;
+}
+
+--------------PAGINATION #pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.page-numbers {
+  display: flex;
+}
+
+.page-number {
+  padding: 8px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s;
+}
+
+.page-number:hover {
+  background-color: #ddd;
+}
+
+.prev-page, .next-page {
+  padding: 8px 12px;
+  margin: 0 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+.prev-page:hover, .next-page:hover {
+  background-color: #ddd;
 }/*# sourceMappingURL=style.css.map */
