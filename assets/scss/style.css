@@ -1003,8 +1003,7 @@ input#adress {
   background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-
-  height: 100vh;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1366,7 +1365,6 @@ ul.user-gestion-list > li:last-child > button,
   display: none;
 }
 
-
 .add-media {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1440,5 +1438,55 @@ ul.user-gestion-list > li:last-child > button,
 
 .btn-add-dashboard:active {
   transform: translateX(-50%) scale(0.95);
+}
 
+.user-details {
+  background-color: #F4F7FA;
+  background: linear-gradient(90deg, rgba(130, 80, 0, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+}
+
+.user-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-info p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.user-info ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.user-info ul li {
+  color: #555;
+  margin: 5px 0;
+}
+
+#background {
+  background-size: cover;
+  background-position: center;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
