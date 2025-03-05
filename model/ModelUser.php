@@ -105,6 +105,12 @@ class ModelUser extends Model {
         $req->execute();
     }
 
+    public function updateconnexion(int $id_user) {
+        $req = $this->getDb()->prepare('UPDATE `user` SET `last_connexion`= NOW() WHERE id_user = :id_user;');
+        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $req->execute();
+    }
 
+    
 
 }

@@ -17,6 +17,7 @@ class ControllerUser {
                 $user = $model->getUserByEmail($_POST['email']);
                 //vérifie si les données du user et le mot de passe sont corrects
                 if($user && password_verify($_POST['password'], $user->getPassword())) {
+                    $model->updateconnexion($user->getId_user());
                     $_SESSION['id_user'] = $user->getId_user();
                     $_SESSION['name'] = $user->getName();
                     $_SESSION['first_name'] = $user->getFirst_name();
