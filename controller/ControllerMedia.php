@@ -67,6 +67,15 @@ class ControllerMedia {
 
         // Validation du formulaire
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            // $model = new ModelMedia();
+
+            // if (isset($_POST['search'])) {
+            //     $search = $_POST['search'] . '%';
+            //     $searchauthors = $model->getSearchAuthors($search);
+            //     echo json_encode($searchauthors);
+            //     exit();
+            // }
+
             if(!empty($_POST['id_subcategory']) && !empty($_POST['title']) && !empty($_POST['id_author']) && !empty($_POST['description'])) {
                 $model = new ModelMedia();
                 $model->createMedia($_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'], $_POST['image']);
