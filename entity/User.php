@@ -13,6 +13,10 @@ class User {
     private $email_verified;
     private $token;
     private $inscription_date;
+    private $last_connexion;
+    private $nb_emprunts;
+    private $nb_resa;
+    private $nb_outdated_emprunt;
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -73,6 +77,23 @@ class User {
         return $this->inscription_date;
     }
 
+    public function getLast_connexion() {
+        return $this->last_connexion;
+    }
+
+    public function getNb_emprunt() {
+        return $this->nb_emprunts;
+    }
+
+    public function getNb_resa() {
+        return $this->nb_resa;
+    }
+
+    public function getNb_outdated_emprunt() {
+        return $this->nb_outdated_emprunt;
+    }
+
+
     //SETTERS
     public function setId_user(int $id_user) {
         $this->id_user = $id_user;
@@ -117,4 +138,21 @@ class User {
     public function setInscription_date(string $inscription_date) {
         $this->inscription_date = new DateTime($inscription_date);
     }
+
+    public function setLast_connexion(string $last_connexion) {
+        $this->last_connexion = new DateTime($last_connexion);
+    }
+
+    public function setNb_emprunts(int $nb_emprunts) {
+        $this->nb_emprunts =  $nb_emprunts;
+    }
+
+    public function setNb_resa(int $nb_resa) {
+        $this->nb_resa = $nb_resa;
+    }
+
+    public function setNb_outdated_emprunt(int $nb_outdated_emprunt) {
+        $this->nb_outdated_emprunt = $nb_outdated_emprunt;
+    }
+
 }

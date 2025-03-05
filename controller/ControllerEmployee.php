@@ -57,7 +57,8 @@ class ControllerEmployee {
         global $router;
         $model = new ModelEmployee();
         $datas = $model->employeeHome();
-        
+        $modelemprunt = new ModelEmprunt();
+        $emprunts = $modelemprunt->empruntHome();
 
         require_once('./view/dashboardEmployee.php');
     }
@@ -69,7 +70,7 @@ class ControllerEmployee {
         $data = $model->getUserById($id);
         $modelemprunt = new ModelEmprunt();
         $emprunts = $modelemprunt->getEmpruntByUser($id);
-        var_dump($emprunts);
+    
         require_once('./view/getUser.php');
 
     }
