@@ -9,7 +9,8 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 
 //INITIALISATION OF ALTOROUTER
 $router = new AltoRouter();
-$router->setBasePath('/mediasmart');
+// $router->setBasePath('/mediasmart');
+ 
 
 /*----------MEDIA----------*/
 
@@ -24,6 +25,8 @@ $router->map('GET', '/media/category/[i:id]', 'ControllerMedia#category', 'categ
 $router->map('GET', '/media/subcategory/[i:id]', 'ControllerMedia#subcategory', 'subcategoryMedia');
 
 $router->map('GET|POST', '/media/create', 'ControllerMedia#create', 'createMedia');
+
+$router->map('GET|POST', '/searchAuthor', 'ControllerAuthor#searchAuthor', 'searchAuthor');
 
 $router->map('POST', '/media/delete', 'ControllerMedia#delete', 'deleteMedia');
 
