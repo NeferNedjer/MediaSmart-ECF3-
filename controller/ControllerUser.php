@@ -20,7 +20,8 @@ class ControllerUser {
                     $_SESSION['id_user'] = $user->getId_user();
                     $_SESSION['name'] = $user->getName();
                     $_SESSION['first_name'] = $user->getFirst_name();
-                    header('Location: /mediasmart');
+                    $_SESSION['type_user'] = '1';
+                    header('Location: /');
                     exit;
                 }else {
                     $error = 'Email ou mot de passe invalide';
@@ -52,7 +53,7 @@ class ControllerUser {
                             $first_name = $_POST['first_name'];
                             $email = $_POST['email'];
 
-                            $verificationLink = "http://localhost/mediasmart/view/verify-token.php?token=$token";
+                            $verificationLink = "http://mediasmart/view/verify-token.php?token=$token";
 
                         $mail = new PHPMailer(true);
                         
@@ -104,7 +105,7 @@ class ControllerUser {
   
         session_unset();
         session_destroy();
-        header('Location: /mediasmart');
+        header('Location: /');
         exit();
     }
 
@@ -182,7 +183,7 @@ class ControllerUser {
             $first_name = $user->getFirst_name();
             $email = $user->getEmail();
 
-            $verificationLink = "http://localhost/mediasmart/view/verify-token.php?token=$token";
+            $verificationLink = "http://mediasmart/view/verify-token.php?token=$token";
 
             $mail = new PHPMailer(true);
     
@@ -203,8 +204,8 @@ class ControllerUser {
                 $mail->Host       = 'smtp.mailtrap.io';
                 $mail->Port       = 2525; // Port de Mailtrap
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'b41082ebc7e4bf'; // Remplacez par votre nom d'utilisateur Mailtrap
-                $mail->Password   = '1fcb7750bb513a'; // Remplacez par votre mot de passe Mailtrap
+                $mail->Username   = 'be44f3de8868b4'; // Remplacez par votre nom d'utilisateur Mailtrap
+                $mail->Password   = '900c50ffd39dfc'; // Remplacez par votre mot de passe Mailtrap
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     
                 $mail->send();
@@ -220,4 +221,45 @@ class ControllerUser {
         exit();
     }
 
+    public function modifUser($id_user) {
+
+        global $router;
+
+        $model = new ModelUser();
+        $data = $model->getUserById($id_user);
+        require_once './view/modifUser.php';
+        exit();
+         
+    }
+
+    public function update() {
+        global $router;
+        
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['adress']) && !empty($_POST['phone']) && !empty($_POST['statut'])){   
+                $model = new ModelUser();
+                $model->updateUser($_POST['name'], $_POST['first_name'], $_POST['email'], $_POST['adress'], $_POST['phone'], $_POST['statut'], $_POST['id_user']);
+                header('Location: dashboardEmployee');
+            } else {
+                $error = "Toutes les cases doivent être remplies";
+            }
+         }
+    }
+
+    public function delete() {
+
+        global $router;
+        if($_SERVER['REQUEST_METHOD'] === 'POST') { 
+
+            $model = new ModelUser();
+            $model->deleteUser($_POST['id_user']);
+            header('Location: dashboardEmployee');
+        }
+        
+    }
+
 }
+
+

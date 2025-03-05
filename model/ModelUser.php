@@ -22,6 +22,7 @@ class ModelUser extends Model {
 
         if(isset($_SESSION['id_user'])) {
             header('Location: /mediasmart');
+            exit();
         }
     }
 
@@ -82,6 +83,26 @@ class ModelUser extends Model {
         $updateReq->bindParam(':token', $token, PDO::PARAM_STR);
         $updateReq->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $updateReq->execute();
+    }
+
+    public function updateUser(string $name, string $first_name, string $email, string $adress, string $phone, int $statut, int $id_user) {
+
+        $req = $this->getDb()->prepare('UPDATE `user` SET `name`= :name,`first_name`= :first_name,`email`= :email,`adress`= :adress,`phone`= :phone,`statut`= :statut WHERE id_user = :id_user');
+        $req->bindParam(':name', $name, PDO::PARAM_STR);
+        $req->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+        $req->bindParam(':email', $email, PDO::PARAM_STR);
+        $req->bindParam(':adress', $adress, PDO::PARAM_STR);
+        $req->bindParam(':phone' ,$phone, PDO::PARAM_STR);
+        $req->bindParam(':statut', $statut, PDO::PARAM_INT);
+        $req->bindParam(':id_user', $id_user,PDO::PARAM_INT);
+        $req->execute();
+
+    }
+
+    public function deleteUser(int $id_user) {
+        $req = $this->getDb()->prepare('DELETE FROM user WHERE id_user = :id_user');
+        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $req->execute();
     }
 
 

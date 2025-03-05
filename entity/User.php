@@ -9,7 +9,7 @@ class User {
     private $password;
     private $adress;
     private $phone;
-    private $status;
+    private $statut;
     private $email_verified;
     private $token;
     private $inscription_date;
@@ -57,8 +57,8 @@ class User {
         return $this->phone;
     }
 
-    public function getStatus() {
-        return $this->status;
+    public function getStatut() {
+        return $this->statut;
     }
 
     public function getEmail_verified() {
@@ -98,12 +98,12 @@ class User {
         $this->adress = $adress;
     }
 
-    public function setPhone(int $phone) {
+    public function setPhone(string $phone) {
         $this->phone = $phone;
     }
 
-    public function setStatus(int $status) {
-        $this->status = $status;
+    public function setStatut(int $statut) {
+        $this->statut = $statut;
     }
 
     public function setEmail_verified(int $email_verified) {

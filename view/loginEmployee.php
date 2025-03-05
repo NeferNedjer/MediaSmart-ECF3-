@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion Employee</title>
 </head>
 <body>
-    <form action="/mediasmart/loginEmployee" method="post">
+    <form action="/loginEmployee" method="post">
 
     <label for="name">Nom :</label>
     <input type="text" name="name"><br><br>

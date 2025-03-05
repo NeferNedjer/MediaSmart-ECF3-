@@ -9,8 +9,10 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 
 //INITIALISATION OF ALTOROUTER
 $router = new AltoRouter();
+
 // $router->setBasePath('/mediasmart');
  
+
 
 /*----------MEDIA----------*/
 
@@ -24,7 +26,7 @@ $router->map('GET', '/media/category/[i:id]', 'ControllerMedia#category', 'categ
 
 $router->map('GET', '/media/subcategory/[i:id]', 'ControllerMedia#subcategory', 'subcategoryMedia');
 
-$router->map('GET|POST', '/media/create', 'ControllerMedia#create', 'createMedia');
+$router->map('GET|POST', '/media-create', 'ControllerMedia#create', 'createMedia');
 
 $router->map('GET|POST', '/searchAuthor', 'ControllerAuthor#searchAuthor', 'searchAuthor');
 
@@ -52,6 +54,16 @@ $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 $router->map('GET|POST', '/createEmployee', 'ControllerEmployee#create', 'create-employee');
 
 $router->map('GET|POST', '/loginEmployee', 'ControllerEmployee#loginEmployee', 'login-employee');
+
+$router->map('GET', '/dashboardEmployee', 'ControllerEmployee#dashboardEmployee', 'dashboard-employee');
+
+$router->map('GET', '/getUser/[i:id]' ,'ControllerEmployee#getUser', 'getUser' );
+
+$router->map('GET|POST', '/modif-user/[i:id_user]', 'ControllerUser#modifUser', 'modif-user');
+
+$router->map('GET|POST', '/update','ControllerUser#update', 'update-user' );
+
+$router->map('GET|POST', '/delete', 'ControllerUser#delete', 'delete-user');
 
 $match = $router->match();
 

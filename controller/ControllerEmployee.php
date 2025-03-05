@@ -8,11 +8,13 @@ class ControllerEmployee {
         $model = new ModelEmployee();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(!empty($_POST['name']) && !empty($_POST['password'])) {
+            if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['password'])) {
                 if($_POST['password'] === $_POST['confpassword']) {
                     $model = new ModelEmployee();
-                    $model->createEmployee($_POST['name'], $_POST['password']);
-                    require_once './view/homepage.php';
+                    $model->createEmployee($_POST['name'], $_POST['first_name'], $_POST['password']);
+                    // require_once './view/homepage.php';
+                    header('Location: /');
+                    exit();
                 }else {
                     echo "Les mots de pass ne correspondent pas.";
                 }
@@ -36,7 +38,9 @@ class ControllerEmployee {
                 if($employee && password_verify($_POST['password'], $employee->getPassword())) {
                     $_SESSION['id_employee'] = $employee->getId_employee();
                     $_SESSION['name'] = $employee->getName();
-                    header('Location: /mediasmart');
+                    $_SESSION['first_name'] = $employee->getFirst_name();
+                    $_SESSION['type_user'] = '2';
+                    header('Location: /');
                     exit();
                 }else {
                     echo "Email ou mot de passe invalide.";
@@ -46,6 +50,28 @@ class ControllerEmployee {
             }
         }
         require_once './view/loginEmployee.php';
+    }
+
+    public function dashboardEmployee() {
+
+        global $router;
+        $model = new ModelEmployee();
+        $datas = $model->employeeHome();
+        
+
+        require_once('./view/dashboardEmployee.php');
+    }
+
+    public function getUser($id) {
+
+        global $router;
+        $model = new ModelUser();
+        $data = $model->getUserById($id);
+        $modelemprunt = new ModelEmprunt();
+        $emprunts = $modelemprunt->getEmpruntByUser($id);
+        var_dump($emprunts);
+        require_once('./view/getUser.php');
+
     }
 
 }
