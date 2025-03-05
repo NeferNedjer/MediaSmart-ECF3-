@@ -26,10 +26,10 @@ class ModelEmployee extends Model {
     public function employeeHome() {
 
         $req = $this->getDb()->query('SELECT u.*, 
-                                        (SELECT count(*) FROM emprunt_resa er WHERE u.id_user = er.id_user AND resa=0 GROUP BY er.id_user) as nb_emprunts,
-                                        (SELECT count(*) FROM emprunt_resa er WHERE u.id_user = er.id_user AND resa=1 GROUP BY er.id_user) as nb_resa,
-                                        (SELECT count(*) FROM emprunt_resa er WHERE u.id_user = er.id_user AND max_return_date < NOW() AND resa=0 GROUP BY er.id_user) as nb_outdated_emprunt
-                                    FROM user u;');
+                        COALESCE((SELECT count(*) FROM emprunt_resa er WHERE u.id_user = er.id_user AND resa=0 GROUP BY er.id_user), 0) as nb_emprunts,
+                        COALESCE((SELECT count(*) FROM emprunt_resa er WHERE u.id_user = er.id_user AND resa=1 GROUP BY er.id_user),0) as nb_resa,
+                        COALESCE((SELECT count(*) FROM emprunt_resa er WHERE u.id_user = er.id_user AND max_return_date < NOW() AND resa=0 GROUP BY er.id_user),0) as nb_outdated_emprunt
+                    FROM user u;');
         
         $arrayobj = [];
 
