@@ -44,20 +44,12 @@
         <input type="number" id="statut" name="statut" value="<?php echo $data->getStatut(); ?>">
 
         <a href="/update"><input id="submit-signup" type="submit" name="update" value="Modifier"></a>
-        
-        
+        <a href="/update"><input id="submit-signup" type="submit" name="delete" value="Supprimer"></a>
+        <a href="/update"><input id="submit-signup" type="submit" name="retour" value="Retour"></a>
     </form>
-    <form action="<?php echo $router->generate('delete-user');  ?>" method="POST" id="form-signup">
-
-        <input type="hidden" name="id_user" value="<?php echo $data->getId_user(); ?>">
-
-        <a href="/delete"><input id="submit-signup" type="submit" name="delete" value="Supprimer"></a>
-
-        <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
-
-    </form>
+    
     <section id="right-signup">
-        <img src="./assets/img/signup.jpg" alt="Image d'inscription">
+        <img src="../assets/img/signup.jpg" alt="Image d'inscription">
     </section>
     </section> 
 </div> 
