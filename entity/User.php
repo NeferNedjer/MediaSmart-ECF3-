@@ -144,7 +144,7 @@ class User {
     }
 
     public function setNb_emprunts(int $nb_emprunts) {
-        $this->nb_emprunts = $nb_emprunts;
+        $this->nb_emprunts =  $nb_emprunts;
     }
 
     public function setNb_resa(int $nb_resa) {
