@@ -57,6 +57,8 @@ class ControllerEmployee {
         global $router;
         $model = new ModelEmployee();
         $datas = $model->employeeHome();
+        $modelemprunt = new ModelEmprunt();
+        $emprunts = $modelemprunt->empruntHome();
 
         require_once('./view/dashboardEmployee.php');
     }

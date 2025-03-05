@@ -96,7 +96,7 @@
                                 <tbody>
                                     <?php foreach ($emprunts as $emprunt): ?>
                                         <tr>
-                                            <td><?php echo $emprunt->getUser_name() ?> <?php echo $emprunt->getFirst_name() ?></td>
+                                            <td><?php echo $emprunt->getUser_name() ?> <?php echo $emprunt->getUser_first_name() ?></td>
                                             <td><?php echo $emprunt->getName() ?></td>
                                             <td><?php echo $emprunt->getTitle() ?></td>
                                             <td><?php echo $emprunt->getEmprunt_date()->format('d/m/y')?></td>
