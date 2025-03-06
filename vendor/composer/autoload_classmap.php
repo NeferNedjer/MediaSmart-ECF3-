@@ -22,6 +22,7 @@ return array(
     'ModelAuthor' => $baseDir . '/model/ModelAuthor.php',
     'ModelEmployee' => $baseDir . '/model/ModelEmployee.php',
     'ModelEmprunt' => $baseDir . '/model/ModelEmprunt.php',
+    'ModelExemplaire' => $baseDir . '/model/ModelExemplaire.php',
     'ModelMedia' => $baseDir . '/model/ModelMedia.php',
     'ModelUser' => $baseDir . '/model/ModelUser.php',
     'Subcategory' => $baseDir . '/entity/Subcategory.php',

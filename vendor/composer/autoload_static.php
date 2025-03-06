@@ -37,6 +37,7 @@ class ComposerStaticInitfdb55ab3a826cc81720434dd90eab926
         'ModelAuthor' => __DIR__ . '/../..' . '/model/ModelAuthor.php',
         'ModelEmployee' => __DIR__ . '/../..' . '/model/ModelEmployee.php',
         'ModelEmprunt' => __DIR__ . '/../..' . '/model/ModelEmprunt.php',
+        'ModelExemplaire' => __DIR__ . '/../..' . '/model/ModelExemplaire.php',
         'ModelMedia' => __DIR__ . '/../..' . '/model/ModelMedia.php',
         'ModelUser' => __DIR__ . '/../..' . '/model/ModelUser.php',
         'Subcategory' => __DIR__ . '/../..' . '/entity/Subcategory.php',

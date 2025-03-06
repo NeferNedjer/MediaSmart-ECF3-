@@ -65,6 +65,8 @@ $router->map('GET|POST', '/update','ControllerUser#update', 'update-user' );
 
 $router->map('GET|POST', '/delete', 'ControllerUser#delete', 'delete-user');
 
+$router->map('GET|POST', '/dashboardMedia', 'ControllerEmployee#dashboardMedia', 'dashboard-media');
+
 $match = $router->match();
 
 // var_dump($router);
