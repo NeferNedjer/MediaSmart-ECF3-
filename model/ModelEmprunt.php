@@ -16,6 +16,7 @@ class ModelEmprunt extends Model {
                                         AND     e.id_exemplaire = er.id_exemplaire
                                         AND     er.id_user = u.id_user
                                         AND     er.id_user = :id_user
+                                        AND     er.resa = 0
                                         ORDER BY emprunt_date;');
         $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $req->execute();

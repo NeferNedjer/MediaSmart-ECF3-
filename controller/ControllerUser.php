@@ -9,20 +9,36 @@ class ControllerUser {
     public function login() {
         global $router;
         $model = new ModelUser();
+        $modelEmployee = new ModelEmployee();
         $model->isLoggedIn();// Verifie si le user est déjà loggé.
-
+        $error = '';
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $error = '';
             // vérifie si le prenom le nom et le mot de passe sont remplis
             if(!empty($_POST['email']) && !empty($_POST['password'])){
                 $user = $model->getUserByEmail($_POST['email']);
+                $employee = $modelEmployee->getEmployeeByName($_POST['email']);
                 //vérifie si les données du user et le mot de passe sont corrects
                 if($user && password_verify($_POST['password'], $user->getPassword())) {
+                    if($user->getEmail_verified() == 0) {
+                        $error = 'Veuillez vérifier votre adresse email.';
+                        require_once './view/login.php';
+                        exit();
+                    }
                     $model->updateconnexion($user->getId_user());
                     $_SESSION['id_user'] = $user->getId_user();
                     $_SESSION['name'] = $user->getName();
                     $_SESSION['first_name'] = $user->getFirst_name();
                     $_SESSION['type_user'] = '1';
                     header('Location: /');
+                    exit;
+                }elseif($employee && password_verify($_POST['password'], $employee->getPassword())) {
+                    $_SESSION['id_employee'] = $employee->getId_employee();
+                    $_SESSION['name'] = $employee->getName();
+                    $_SESSION['first_name'] = $employee->getFirst_name();
+                    $_SESSION['type_user'] = '2';
+                    //require_once('./view/dashboardEmployee.php');
+                    header('Location: dashboardEmployee/0');
                     exit;
                 }else {
                     $error = 'Email ou mot de passe invalide';

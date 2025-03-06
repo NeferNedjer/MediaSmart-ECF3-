@@ -20,7 +20,14 @@ class ModelEmployee extends Model {
         $req->bindParam(':name', $name, PDO::PARAM_STR);
         $req->execute();
 
-        return new Employee($req->fetch(PDO::FETCH_ASSOC));
+        //return new Employee($req->fetch(PDO::FETCH_ASSOC));
+
+        if($req->rowCount() == 0) {
+            return null;
+        } else {
+            return new Employee($req->fetch(PDO::FETCH_ASSOC));
+        }
+        
     }
 
     public function employeeHome() {
