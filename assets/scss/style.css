@@ -1448,7 +1448,6 @@ ul.user-gestion-list > li:last-child > button,
   transform: translateX(-50%) scale(0.95);
 }
 
-
 .search-pp {
   display: flex;
   justify-content: center;
@@ -1605,6 +1604,7 @@ section#cardd .contain-product {
 
 .prev-page:hover, .next-page:hover {
   background-color: #ddd;
+}
 
 .user-details {
   background-color: #F4F7FA;
@@ -1613,7 +1613,7 @@ section#cardd .contain-product {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 60%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -1647,7 +1647,7 @@ section#cardd .contain-product {
   margin: 5px 0;
 }
 
-#background {
+.background {
   background-size: cover;
   background-position: center;
   min-height: 40vh;
@@ -1655,5 +1655,4 @@ section#cardd .contain-product {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }/*# sourceMappingURL=style.css.map */
