@@ -81,4 +81,20 @@ class ControllerEmployee {
 
     }
 
+    public function dashboardMedia() {
+
+        global $router;
+        $model = new ModelMedia();
+        $datas = $model->mediaHome();
+        $modelexemplaire = new ModelExemplaire();
+        $exemplaires = $modelexemplaire->exemplaireHome();
+        require_once('./view/dashboardMedia.php');
+        if($id_media == 0) {
+            require_once('./view/dashboardMedia.php');
+        } else {
+            $exemplairemedia = $modelexemplaire->getExemplaireById($id_media);
+            require_once('./view/dashboardMedia.php');
+        }
+    }
+
 }
