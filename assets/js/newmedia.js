@@ -1,26 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const radioButtons = document.querySelectorAll('input[name="id_category"]');
-    const subcategorySelect = document.getElementById('id_subcategory');
+const btnShowForm = document.querySelector('.btn-add-dashboard');
+const formCreateMedia = document.getElementById('form-create-media');
+const editForm = document.querySelector('.edit-product');
+const imgProduct = document.querySelector('.img-product') ;
 
-    // Stocker les options des sous-catégories dans une variable
-    const subcategoryOptions = Array.from(subcategorySelect.options);
+console.log(imgProduct);
+console.log(editForm);
 
-    radioButtons.forEach(function(radio) {
-        radio.addEventListener('change', function() {
-            const selectedCategoryId = this.value;
-
-            // Clear 
-            subcategorySelect.innerHTML = '<option value=""></option>';
-
-        // Ajout d'une nvl option en fonction de la caté
-            subcategoryOptions.forEach(function(option) {
-                if (option.getAttribute('data-category-id') === selectedCategoryId) {
-                    subcategorySelect.appendChild(option);
-                }
-            });
-        });
+    btnShowForm.addEventListener('click', function() {
+        
+        if (formCreateMedia.style.display === 'none') {
+            formCreateMedia.style.display = 'block'; 
+        } else {
+            formCreateMedia.style.display = 'none'; 
+        }
     });
-});
+
+
+
 
 
 
