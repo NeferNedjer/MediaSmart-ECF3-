@@ -23,10 +23,13 @@
                 $number = 0;
                 foreach($emprunts as $emprunt): $number++; ?>
 
-                <li>emprunt <?php echo $number ?> : <a href=""><?php echo $emprunt->getTitle();?> </a>emprunté le :  <?php echo $emprunt->getEmprunt_date()->format('d/m/Y');?> à rendre le : <?php echo $emprunt->getMax_return_date()->format('d/m/Y'); ?>.</li>
-                <?php endforeach; ?></p>  
-                </ul><br><br>
-                <h2>Historique des emprunts :</h2><br><br>
+
+            <li>emprunt <?php echo $number ?> : <a href=""><?php echo $emprunt->getTitle();?> </a>emprunté le :  <?php echo $emprunt->getEmprunt_date()->format('d/m/Y');?> à rendre le : <?php echo $emprunt->getMax_return_date()->format('d/m/Y'); ?>.</li>
+        <?php endforeach; ?></p>  
+        </ul>
+        <h2>Historique des emprunts :</h2>
+
+    <a href="<?php echo $router->generate('dashboard-employee', ['id_user' => 0]) ?>">retour</a>
 
             
                 <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>

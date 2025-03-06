@@ -4,6 +4,8 @@ const activityHidden = document.querySelectorAll('.activity-hidden');
 
 idUserElements.forEach((idUser) => {
     idUser.addEventListener('click', function() {
+        const idUserValue = idUser.textContent || idUser.innerText;
+        console.log('ID User Value:', idUserValue);
         
         activityVisible.forEach((element) => {
             element.style.display = 'none'; 

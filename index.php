@@ -55,7 +55,7 @@ $router->map('GET|POST', '/createEmployee', 'ControllerEmployee#create', 'create
 
 $router->map('GET|POST', '/loginEmployee', 'ControllerEmployee#loginEmployee', 'login-employee');
 
-$router->map('GET', '/dashboardEmployee', 'ControllerEmployee#dashboardEmployee', 'dashboard-employee');
+$router->map('GET|POST', '/dashboardEmployee/[i:id_user]', 'ControllerEmployee#dashboardEmployee', 'dashboard-employee');
 
 $router->map('GET', '/getUser/[i:id]' ,'ControllerEmployee#getUser', 'getUser' );
 
