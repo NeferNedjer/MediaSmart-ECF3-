@@ -17,14 +17,14 @@
         <div class="login-container">
             <h2 class="text-center custom-color">Connexion</h2>
 
-            <?php if (!empty($message)): ?>
-                <p style="color:red"><?php echo htmlspecialchars($message); ?></p>
+            <?php if (!empty($error)): ?>
+                <p style="color:red"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
 
             <form action="/login" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Adresse e-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                 </div>
 
                 <div class="mb-3">

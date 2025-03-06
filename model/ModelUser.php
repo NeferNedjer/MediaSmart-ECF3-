@@ -15,7 +15,15 @@ class ModelUser extends Model {
         $user = $this->getDb()->prepare('SELECT `id_user`, `name`, `first_name`, `email`, `password`, `adress`, `phone`, `statut`, `email_verified`, `token`, `inscription_date` FROM user WHERE `email` = :email');
         $user->bindParam(':email', $email, PDO::PARAM_STR);
         $user->execute();
-        return new User($user->fetch(PDO::FETCH_ASSOC));
+        
+        //return new User($user->fetch(PDO::FETCH_ASSOC));
+
+        if($user->rowCount() == 0) {
+            return null;
+        } else {
+            return new User($user->fetch(PDO::FETCH_ASSOC));
+        }
+        
     }
 
     public function isLoggedIn() {
