@@ -52,7 +52,7 @@ class ControllerEmployee {
         require_once './view/loginEmployee.php';
     }
 
-    public function dashboardEmployee() {
+    public function dashboardEmployee($id_user) {
 
         global $router;
         $model = new ModelEmployee();
@@ -60,7 +60,13 @@ class ControllerEmployee {
         $modelemprunt = new ModelEmprunt();
         $emprunts = $modelemprunt->empruntHome();
 
-        require_once('./view/dashboardEmployee.php');
+        if($id_user == 0) {
+            require_once('./view/dashboardEmployee.php');
+        } else {
+            $empruntsuser = $modelemprunt->getEmpruntByUser($id_user);
+            require_once('./view/dashboardEmployee.php');
+        }
+        
     }
 
     public function getUser($id) {

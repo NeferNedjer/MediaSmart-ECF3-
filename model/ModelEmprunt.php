@@ -7,7 +7,7 @@ class ModelEmprunt extends Model {
         $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
                                                 m.id_media, title, m.id_author, description, image , a.name as author,
                                                 e.id_exemplaire, emprunt_date, max_return_date, resa, mail_sent,
-                                                er.id_user, u.name as user_name, u.first_name as user_first_name
+                                                er.id_user, u.name as user_name, u.first_name as user_first_name, status
                                         FROM    category c, subcategory s, media m, author a, emprunt_resa er, exemplaire e, user u
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory 
@@ -34,7 +34,7 @@ class ModelEmprunt extends Model {
         $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
                                                 m.id_media, title, m.id_author, description, image , a.name as author,
                                                 e.id_exemplaire, emprunt_date, max_return_date, resa, mail_sent,
-                                                er.id_user, u.name as user_name, u.first_name as user_first_name
+                                                er.id_user, u.name as user_name, u.first_name as user_first_name, status
                                         FROM    category c, subcategory s, media m, author a, emprunt_resa er, exemplaire e, user u
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory 

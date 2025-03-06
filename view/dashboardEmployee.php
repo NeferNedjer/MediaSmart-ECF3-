@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dashboard Employee</title>
-    <link rel="stylesheet" href="./assets/scss/style.css">
+    <link rel="stylesheet" href="../assets/scss/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -65,7 +65,14 @@
                     <?php foreach ($datas as $data): ?>
                         <div class="user-row">
                             <div class="user-dashboard">
-                                <p class="id-user-dashboard"><?php echo $data->getId_user() ?></p>
+                            
+                                <a href="<?php echo $router->generate('dashboard-employee', ['id_user' => $data->getId_user()]); ?>">
+                                    <p class="id-user-dashboard"><?php echo $data->getId_user() ?></p>
+                                </a>
+                            
+                            
+                                
+
                                 <p class="name-dashboard"><?php echo $data->getName() ?> <?php echo $data->getFirst_name() ?></p>
                                 <p class="date-dashboard"><?php echo $data->getLast_connexion()->format('d/m/y') ?></p>
                                 <p class="livre-non"><?php if (null !== $data->getNb_outdated_emprunt()): ?>
@@ -79,8 +86,8 @@
                     <?php endforeach; ?>
                 </section>
                 <section id="right-grid">
-                    
-                    <div class="activity-visible">
+              
+                    <div class="<?php echo ($id_user == 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Dernier emprunt</caption>
@@ -107,8 +114,8 @@
                             </table>
                         </div>
                     </div>
-
-                    <div class="activity-hidden">
+                 
+                    <div class="<?php echo ($id_user > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Activité de l'utilisateur</caption>
@@ -122,13 +129,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($datas as $data): ?>
+                                    <?php foreach ($empruntsuser as $data): ?>
                                         <tr>
-                                            <td><a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>"><?php echo $data->getName() ?> <?php echo $data->getFirst_name() ?></a></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?php echo $data->getId_media() ?></td>
+                                            <td><?php echo $data->getTitle() ?></td>
+                                            <td><?php echo $data->getStatus() ?></td>
+                                            <td><?php echo $data->getEmprunt_date()->format('d/m/y') ?></td>
+                                            <td><?php echo $data->getMax_return_date()->format('d/m/y') ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -140,7 +147,7 @@
         </section>
     </section>
 
-    <script src="../assets/js/dashboard.js"></script>
+    <!-- <script src="./../assets/js/dashboard.js"></script> -->
 
 
 </body>
