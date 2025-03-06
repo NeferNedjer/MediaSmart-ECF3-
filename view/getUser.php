@@ -29,10 +29,9 @@
         </ul>
         <h2>Historique des emprunts :</h2>
 
-    <a href="<?php echo $router->generate('dashboard-employee', ['id_user' => 0]) ?>">retour</a>
+                <a href="<?php echo $router->generate('dashboard-employee', ['id_user' => 0]) ?>">retour</a>
 
-            
-                <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
+
             </div>
         </div>
     </div>
