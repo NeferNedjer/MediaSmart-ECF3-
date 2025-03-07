@@ -186,7 +186,15 @@ class ModelMedia extends Model{
 
     }
 
+    public function searchMedia() {
 
+        $searchMedia = $_POST['searchMedia'].'%';
+        $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :searchMedia');
+        $req->bindParam(':searchMedia', $searchMedia, PDO::PARAM_STR);
+        $req->execute();
+
+        echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
+    }
 
 }
 
