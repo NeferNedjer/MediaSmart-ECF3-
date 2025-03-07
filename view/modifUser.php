@@ -16,7 +16,7 @@
     <section id="grid-signup">
     
     <form action="<?php echo $router->generate('update-user');  ?>" method="POST" id="form-signup">
-        <h1>Bonjour, Bienvenue sur MediaSmart</h1>
+       
 
         <input type="hidden" name="id_user" value="<?php echo $data->getId_user(); ?>">
         <label for="name">Nom :</label>

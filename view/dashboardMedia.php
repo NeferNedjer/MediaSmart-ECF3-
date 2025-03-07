@@ -51,9 +51,13 @@
             <section id="grid-user-gestion">
                 <section id="left-grid">
                     <h1>Gestion des Medias</h1>
+                    <button class="btn-add-dashboard">
+                        <span>+</span>
+                    </button>
                     <form action="" method="post" id="search_formMedia" >
-                        <label for="searchMedia">Rechercher un média :</label>
-                        <input type="text" name="searchMedia" id="searchMedia">
+                        <!-- <label for="searchMedia">Rechercher un média :</label> -->
+                        <input type="text" placeholder="Recherchez des produits" id="search-product-dashboard">
+
                     </form>
                     <div id="responseMedia" >
                         <ul></ul>
@@ -66,24 +70,29 @@
                             <li>titre</li>  
                         </ul>
                     </div>
-                    <?php foreach ($datas as $data): ?>
+                    <!-- <?php foreach ($datas as $data): ?> -->
                         <div class="user-row">
                             <div class="user-dashboard">
                             
-                            <a href="<?php echo $router->generate('dashboard-media', ['id_media' => $data->getId_media()]); ?>">
+                            <!-- <a href="<?php echo $router->generate('dashboard-media', ['id_media' => $data->getId_media()]); ?>">
                                 <p class="id-user-dashboard"><?php echo $data->getId_media() ?></p>
                                 </a>
                                 <p class="date-dashboard"><?php echo $data->getName() ?></p>
                                 <p class="livre-non"><?php echo $data->getId_subcategory() ?></p>
-                                <p class="name-dashboard"><?php echo $data->getTitle() ?></p>
+                                <p class="name-dashboard"><?php echo $data->getTitle() ?></p> -->
+
+                                <img src="../assets/img/icons8-orange-edit-50 (1).png" alt="" style="height: 25px;">
+                                
                                 <button type="submit" id="more-dashboard">More</button>
+                               
+                                    
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </section>
                 <section id="right-grid">
               
-                    <div class="<?php echo ($id_media == 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+                    <!-- <div class="<?php echo ($id_media == 0) ? 'activity-visible' : 'activity-hidden'; ?>"> -->
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Derniers Medias</caption>
@@ -97,7 +106,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($datas as $data): ?>
+                                    <!-- <?php foreach ($datas as $data): ?>
                                         <tr>
                                             <td><?php echo $data->getId_media() ?></td>
                                             <td><?php echo $data->getName() ?></td>
@@ -105,12 +114,12 @@
                                             <td><?php echo $data->getTitle() ?></td>
                                             <td></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endforeach; ?> -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="<?php echo ($id_media > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+                    <!-- <div class="<?php echo ($id_media > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Exemplaires du média :<?php echo $data->getTitle() ?> </caption>
@@ -132,7 +141,7 @@
                                             <td></td>
                                             <td></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endforeach; ?> -->
                                 </tbody>
                             </table>
                         </div>
@@ -141,6 +150,63 @@
             </section>
         </section>
     </section>
+
+      <form action="mediasmart/media/create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form" style="display: none;">
+                <h2 class="form-title">Ajouter un nouveau média</h2>
+                <div class="form-group">
+                    <label for="title">Titre :</label>
+                    <input type="text" name="title" id="title" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_author">Auteur :</label>
+                    <input type="text" name="id_author" id="id_author" class="form-select">
+
+                </div>
+
+                <div class="form-group category-group">
+                    <label class="group-label">Catégorie :</label>
+                    <div class="radio-container">
+                        <?php foreach ($categories as $category): ?>
+                            <div class="radio-item">
+                                <input type="radio" name="id_category" id="id_category_<?php echo $category->getId_category(); ?>" value="<?php echo $category->getId_category(); ?>" class="radio-input">
+                                <label for="id_category_<?php echo $category->getId_category(); ?>" class="radio-label"><?php echo $category->getName(); ?></label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_subcategory">Genre :</label>
+                    <select name="id_subcategory" id="id_subcategory" class="form-select">
+                        <option value="">Sélectionner un genre</option>
+                        <?php foreach ($subcategories as $subcategory): ?>
+                            <option value="<?php echo $subcategory->getId_subcategory(); ?>" data-category-id="<?php echo $subcategory->getId_category(); ?>"><?php echo $subcategory->getTheme(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description :</label>
+                    <textarea name="description" id="description" class="form-textarea" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image" class="file-label">Image :</label>
+                    <div class="file-upload">
+                        <input type="file" name="image" id="image" class="file-input" required>
+                        <span class="file-custom">Choisir un fichier</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Créer</button>
+                </div>
+            </form>
+
+
+
     <script src="../assets/js/ajaxMedia.js"></script>
+    <script src="../assets/js/newmedia.js"></script>
 </body>
 </html>

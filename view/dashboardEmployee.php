@@ -23,10 +23,10 @@
     <section id="side-bar-dash">
         <section id="navbar-left">
             <ul class="nav-menu">
-                <li><a href=""><img src="../assets/img/home-24.ico" alt=""><span>Home</span>  </a></li>
+                <li><a href=""><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
                 <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
                 <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
-                <li><a href="#"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span>  </a></li>
+                <li><a href="#"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
                 <li><a href="#"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
                 <li><a href="#"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
@@ -45,48 +45,53 @@
                             </svg>
                         </span>
                     </label>
-                </li> 
+                </li>
             </ul>
         </section>
         <section id="dashboard">
             <section id="grid-user-gestion">
                 <section id="left-grid">
                     <h1>Gestion des Utilisateurs</h1>
+                    <button class="btn-add-user">
+                        <span>+</span>
+                    </button>
                     <div class="user-container">
                         <ul class="user-gestion-list">
                             <li>id</li>
                             <li>Name</li>
                             <li>Date</li>
                             <li>Livre non retourné</li>
-                            
+
                         </ul>
                     </div>
 
                     <?php foreach ($datas as $data): ?>
                         <div class="user-row">
                             <div class="user-dashboard">
-                            
+
                                 <a href="<?php echo $router->generate('dashboard-employee', ['id_user' => $data->getId_user()]); ?>">
                                     <p class="id-user-dashboard"><?php echo $data->getId_user() ?></p>
                                 </a>
-                            
-                            
-                                
+
+
+
 
                                 <p class="name-dashboard"><?php echo $data->getName() ?> <?php echo $data->getFirst_name() ?></p>
                                 <p class="date-dashboard"><?php echo $data->getLast_connexion()->format('d/m/y') ?></p>
                                 <p class="livre-non"><?php if (null !== $data->getNb_outdated_emprunt()): ?>
-                                    <?php echo $data->getNb_outdated_emprunt(); ?>
+                                        <?php echo $data->getNb_outdated_emprunt(); ?>
                                     <?php else: ?>
-                                              0
+                                        0
                                     <?php endif; ?></p>
                                 <a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>"><button type="submit" id="more-dashboard">More</button></a>
+
+                                <a href=""><img id="edit-user" src="../assets/img/icons8-orange-edit-50 (1).png" alt=""></a>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </section>
                 <section id="right-grid">
-              
+
                     <div class="<?php echo ($id_user == 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
@@ -106,7 +111,7 @@
                                             <td><?php echo $emprunt->getUser_name() ?> <?php echo $emprunt->getUser_first_name() ?></td>
                                             <td><?php echo $emprunt->getName() ?></td>
                                             <td><?php echo $emprunt->getTitle() ?></td>
-                                            <td><?php echo $emprunt->getEmprunt_date()->format('d/m/y')?></td>
+                                            <td><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></td>
                                             <td><?php echo $emprunt->getMax_return_date()->format('d/m/y') ?></td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -114,7 +119,7 @@
                             </table>
                         </div>
                     </div>
-                 
+
                     <div class="<?php echo ($id_user > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
@@ -145,9 +150,81 @@
                 </section>
             </section>
         </section>
+
+        <div class="form-container" id="form-container" style="display :"> 
+        <form action="/createEmployee" method="POST" id="employee-form">
+            <h2 class="text-center" id="form-title">Création d'un Employé</h2>
+            
+            <div class="form-group" id="name-group">
+                <label for="name" class="form-label">Nom :</label>
+                <input type="text" name="name" id="name" class="form-input" placeholder="Entrez le nom" required>
+            </div>
+
+            <div class="form-group" id="first-name-group">
+                <label for="first_name" class="form-label">Prénom :</label>
+                <input type="text" name="first_name" id="first_name" class="form-input" placeholder="Entrez le prénom" required>
+            </div>
+
+            <div class="form-group" id="password-group">
+                <label for="password" class="form-label">Mot de passe :</label>
+                <input type="password" name="password" id="password" class="form-input" placeholder="Entrez le mot de passe" required>
+            </div>
+
+            <div class="form-group" id="confpassword-group">
+                <label for="confpassword" class="form-label">Confirmez le mot de passe :</label>
+                <input type="password" name="confpassword" id="confpassword" class="form-input" placeholder="Confirmez le mot de passe" required>
+                <span id="password-error" class="error-message"></span>
+            </div>
+
+            <div class="form-group submit-btn" id="submit-btn-group">
+                <input type="submit" value="Valider" id="submit-btn" class="submit-input">
+                
+            </div>
+        </form>
+    </div>
+
+        <form action="<?php echo $router->generate('update-user');  ?>" method="POST" id="edit-form">
+
+
+            <input type="hidden" name="id_user" value="<?php echo $data->getId_user(); ?>">
+            <label for="name">Nom :</label>
+            <input type="text" name="name" id="name" value="<?php echo $data->getName(); ?>" required>
+
+            <label for="first_name">Prénom :</label>
+            <input type="text" name="first_name" id="first_name" value="<?php echo $data->getFirst_name(); ?>" required>
+
+            <div class="flex-product">
+                <div class="input-group">
+                    <label for="adress">Adresse :</label>
+                    <input type="text" name="adress" id="adress" value="<?php echo $data->getAdress(); ?>" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Téléphone :</label>
+                    <input type="text" name="phone" id="phone" value="<?php echo $data->getPhone(); ?>" required>
+                </div>
+            </div>
+
+            <label for="email">Email :</label>
+            <input type="text" name="email" id="email" value="<?php echo $data->getEmail(); ?>" required>
+
+            <label for="statut">Statut :</label>
+            <input type="number" id="statut" name="statut" value="<?php echo $data->getStatut(); ?>">
+
+            <div class="edit-flex">
+                <a href="/update"><input class="modifier" type="submit" name="update" value="Enregistrer les modifs"></a>
+                <a href="/update"><input id="supprimer" class="supprimer" type="submit" name="delete" value="Supprimer"></a>
+                <a href="/update"><input id="annuler" type="submit" name="retour" value="Retour"></a>
+            </div>
+        </form>
+
+
     </section>
 
-    <!-- <script src="./../assets/js/dashboard.js"></script> -->
+
+
+    <script src="./../assets/js/dashboard.js"></script>
+
 
 
 </body>

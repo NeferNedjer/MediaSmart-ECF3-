@@ -43,9 +43,9 @@
             <section id="grid-user-gestion">
                 <section id="left-grid">
                     <h1>Gestion des Media</h1>
-                    <button class="btn-add-dashboard">
-                        <span>+</span>
-                    </button>
+                    <input type="text" placeholder="Recherchez des produits" id="search-product">
+                    <label for="search-product-dashboard"></label>
+                    
 
                     <div class="user-container">
                         <ul class="user-gestion-list">
