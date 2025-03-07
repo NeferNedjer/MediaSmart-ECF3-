@@ -51,6 +51,13 @@
             <section id="grid-user-gestion">
                 <section id="left-grid">
                     <h1>Gestion des Medias</h1>
+                    <form action="" method="post" id="search_formMedia" >
+                        <label for="searchMedia">Rechercher un média :</label>
+                        <input type="text" name="searchMedia" id="searchMedia">
+                    </form>
+                    <div id="responseMedia" >
+                        <ul></ul>
+                    </div>
                     <div class="user-container">
                         <ul class="user-gestion-list">
                             <li>id</li>
@@ -63,7 +70,7 @@
                         <div class="user-row">
                             <div class="user-dashboard">
                             
-                            <a href="<?php echo $router->generate('dashboard-media', ['id_user' => $data->getId_media()]); ?>">
+                            <a href="<?php echo $router->generate('dashboard-media', ['id_media' => $data->getId_media()]); ?>">
                                 <p class="id-user-dashboard"><?php echo $data->getId_media() ?></p>
                                 </a>
                                 <p class="date-dashboard"><?php echo $data->getName() ?></p>
@@ -134,5 +141,6 @@
             </section>
         </section>
     </section>
+    <script src="../assets/js/ajaxMedia.js"></script>
 </body>
 </html>
