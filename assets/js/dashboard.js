@@ -20,39 +20,42 @@ console.log(idUserElements);
 console.log(activityVisible);
 
 // ----------------------------EDIT USER
-
 document.addEventListener('DOMContentLoaded', function() {
     
-    const editButtons = document.querySelectorAll('#edit-user');
-    const editForm = document.getElementById('edit-form');
+    const editLinks = document.querySelectorAll('.edit-user');
     
- 
-    editButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            
-            e.preventDefault();
-            e.stopPropagation();
-           
-            const userRow = this.closest('.user-dashboard');
-            const idUser = userRow.querySelector('.id-user-dashboard').textContent.trim();
+    editLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const userId = this.getAttribute('data-id');
             
             
-            document.querySelector('#edit-form input[name="id_user"]').value = idUser;
+            const allForms = document.querySelectorAll('.edit-form');
+            allForms.forEach(form => {
+                form.style.display = 'none';
+            });
             
           
-            editForm.style.visibility = 'visible';
-            
-            return false; 
+            const form = document.getElementById('edit-form-' + userId);
+            if (form) {
+                form.style.display = 'block'; // 
+            }
         });
     });
     
 
-    document.getElementById('annuler').addEventListener('click', function(e) {
-        e.preventDefault();
-        editForm.style.visibility = 'hidden';
-        return false;
-    });
+    function hideEditForm(userId) {
+        const form = document.getElementById('edit-form-' + userId);
+        if (form) {
+            form.style.display = 'none'; // Masquer le formulaire
+        }
+    }
 });
+
+
+
+
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -72,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+
 // ----------------------ADD USER 
 document.addEventListener("DOMContentLoaded", function(){
     const addEmploye = document.querySelector('.btn-add-user');
@@ -86,3 +90,28 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     })
 })
+
+// -----------------------Show detail user 
+
+    // document.addEventListener('DOMContentLoaded', function () {
+     
+    //     const moreDashboardButton = document.getElementById('more-dashboard');
+    //     const userDetails = document.getElementById('user-details');
+    //     const backButton = document.getElementById('back-button');
+        
+       
+    //     moreDashboardButton.addEventListener('click', function() {
+    //         userDetails.style.display = 'block'; 
+    //         backButton.style.display = 'none';    
+    //         moreDashboardButton.style.display = 'none'; 
+    //     });
+
+        
+    //     backButton.addEventListener('click', function(e) {
+    //         e.preventDefault(); 
+    //         userDetails.style.display = 'none';  
+    //         backButton.style.display = 'none';  
+    //         moreDashboardButton.style.display = 'block'; 
+    //     });
+    // });
+

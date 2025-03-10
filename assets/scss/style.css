@@ -1035,13 +1035,89 @@ input#adress {
   align-items: center;
 }
 
+#user-details {
+  position: absolute;
+  border-radius: 5px;
+  box-shadow: var(--shadow-standard);
+  top: 20%;
+  font-family: "Arial", sans-serif;
+  padding: 15px;
+  background-color: #2c3e50;
+  border-radius: 8px;
+  box-shadow: var(--shadow-standard);
+  max-width: 800px;
+  margin: 20px auto;
+  left: 35%;
+  transform: translate(-50% -50%);
+}
+
+.user-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+div.user-info > h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+div.user-info > h2 {
+  font-size: 24px;
+  color: #555;
+  margin-top: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+div.user-info > p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin: 8px 0;
+}
+
+div.user-info > ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+div.user-info > li {
+  font-size: 16px;
+  color: #333;
+  margin: 5px 0;
+}
+
+div.user-info > a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+div.user-info > a:hover {
+  text-decoration: underline;
+}
+
+div.user-info > ul li a {
+  font-weight: bold;
+}
+
+div.user-info > ul li a:hover {
+  color: #0056b3;
+}
+
+div.user-info > .user-info {
+  margin: 15px;
+}
+
 #side-bar-dash {
   height: 100vh;
   position: relative;
   background-color: #2c3e50;
 }
 
-#search-user {
+#search-user,
+#searchEmployee {
   width: 98%;
   border-radius: 5px;
   margin: 25px 10px;
@@ -1219,7 +1295,7 @@ ul.user-gestion-list > li:last-child > button,
 #edit-form {
   visibility: hidden;
   position: absolute;
-  top: 25%;
+  top: 5%;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -1238,7 +1314,7 @@ ul.user-gestion-list > li:last-child > button,
   margin: 10px;
 }
 
-* .activity-hidden {
+.activity-hidden {
   display: none;
 }
 
@@ -1530,10 +1606,18 @@ label.form-label {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: 0.5s ease;
+}
+
+.user-row:hover {
+  background-color: #2c3e50;
+  color: white;
+  transform: scale(1.015);
+  transition: 0.5s ease;
 }
 
 .user-dashboard {
-  display: contents; /* Cela permet aux éléments de la div de participer à la grille */
+  display: contents;
 }
 
 .user-dashboard img {
@@ -1551,12 +1635,14 @@ label.form-label {
   border-radius: 5px;
 }
 
-.gestion-user {
+.gestion-user,
+.gestion-user2 {
   overflow: auto;
   width: 100%;
 }
 
-.gestion-user table {
+.gestion-user table,
+.gestion-user2 table {
   border: 1px solid #dededf;
   height: 100%;
   max-width: 800px;
@@ -1567,14 +1653,16 @@ label.form-label {
   text-align: center;
 }
 
-.gestion-user caption {
+.gestion-user caption,
+.gestion-user2 caption {
   caption-side: top;
   margin: 15px;
   font-size: 1.5rem;
   text-align: left;
 }
 
-.gestion-user th {
+.gestion-user th,
+.gestion-user2 th {
   border: 1px solid #dededf;
   background-color: #e67e22;
   border-radius: 2px;
@@ -1584,7 +1672,8 @@ label.form-label {
   max-width: 5px;
 }
 
-.gestion-user td {
+.gestion-user td,
+.gestion-user2 td {
   border: 1px solid #dededf;
   background-color: #ffffff;
   color: #000000;
@@ -1830,4 +1919,61 @@ section#cardd .contain-product {
 
 .prev-page:hover, .next-page:hover {
   background-color: #ddd;
+}
+
+#dashboard-user {
+  background: #ecf0f1;
+  width: 93vw;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 8px;
+  position: absolute;
+  left: 100px;
+  top: 25px;
+  height: 97vh;
+}
+
+#grid-dash-user {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 8px;
+  height: 60%;
+}
+
+#top-carousel {
+  grid-column: span 3;
+  grid-row: span 3;
+  box-shadow: var(--shadow-standard);
+  width: 84%;
+  margin: 25px 0 0 25px;
+  height: auto;
+}
+#top-carousel img {
+  max-height: 200px;
+  width: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#recommendation {
+  grid-column: span 3;
+  grid-row: span 2;
+  box-shadow: var(--shadow-standard);
+  width: 84%;
+  height: auto;
+  margin: 0 25px 5px 25px;
+}
+
+.gestion-user2 {
+  grid-column: span 2;
+  grid-row: span 5;
+  grid-column-start: 4;
+  width: 100%;
+}
+
+#last-add-user {
+  box-shadow: var(--shadow-standard);
+  width: 98%;
+  margin: 25px;
+  height: 34vh;
 }/*# sourceMappingURL=style.css.map */
