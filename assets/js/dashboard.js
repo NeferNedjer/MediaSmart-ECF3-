@@ -24,7 +24,7 @@ console.log(activityVisible);
 document.addEventListener('DOMContentLoaded', function() {
     
     const editButtons = document.querySelectorAll('#edit-user');
-    const editForm = document.getElementById('edit-form');
+    const editForm = document.getElementById('edit-form' );
     
  
     editButtons.forEach(button => {
