@@ -69,6 +69,8 @@ $router->map('GET|POST', '/dashboardMedia', 'ControllerEmployee#dashboardMedia',
 
 $router->map('GET|POST', '/searchMedia', 'ControllerMedia#searchMedia', 'search-media');
 
+$router->map('GET|POST', '/searchEmployee', 'ControllerEmployee#searchEmployee', 'search-Employee');
+
 $match = $router->match();
 
 // var_dump($router);

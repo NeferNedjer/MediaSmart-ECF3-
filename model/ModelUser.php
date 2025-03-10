@@ -119,6 +119,13 @@ class ModelUser extends Model {
         $req->execute();
     }
 
+    public function getUtilisateur($search) {
+
+        $req = $this->getDb()->prepare('SELECT name FROM `user` WHERE `name` LIKE :search');
+        $req->bindParam('search', $search, PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 
 }
