@@ -162,6 +162,7 @@
         </section>
 
         <div class="form-container" id="form-container" style="display :none"> 
+
         <form action="/createEmployee" method="POST" id="employee-form">
             <h2 class="text-center" id="form-title">Création d'un Employé</h2>
             
@@ -197,11 +198,13 @@
 
 
             <input type="hidden" name="id_user" value="<?php echo $data->getId_user(); ?>">
-            <label for="name">Nom :</label>
-            <input type="text" name="name" id="name2" value="<?php echo $data->getName(); ?>" required>
 
-            <label for="first_name">Prénom :</label>
-            <input type="text" name="first_name" id="first_name2" value="<?php echo $data->getFirst_name(); ?>" required>
+            <label for="name_user">Nom :</label>
+            <input type="text" name="name_user" id="name_user" value="<?php echo $data->getName(); ?>" required>
+
+            <label for="first_name_user">Prénom :</label>
+            <input type="text" name="first_name_user" id="first_name_user" value="<?php echo $data->getFirst_name(); ?>" required>
+
 
             <div class="flex-product">
                 <div class="input-group">
