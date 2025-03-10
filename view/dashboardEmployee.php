@@ -199,11 +199,11 @@
 
             <input type="hidden" name="id_user" value="<?php echo $data->getId_user(); ?>">
 
-            <label for="name2">Nom :</label>
-            <input type="text" name="name2" id="name2" value="<?php echo $data->getName(); ?>" required>
+            <label for="name_user">Nom :</label>
+            <input type="text" name="name_user" id="name_user" value="<?php echo $data->getName(); ?>" required>
 
-            <label for="first_name2">Prénom :</label>
-            <input type="text" name="first_name2" id="first_name2" value="<?php echo $data->getFirst_name(); ?>" required>
+            <label for="first_name_user">Prénom :</label>
+            <input type="text" name="first_name_user" id="first_name_user" value="<?php echo $data->getFirst_name(); ?>" required>
 
 
             <div class="flex-product">
