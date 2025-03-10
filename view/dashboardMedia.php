@@ -23,9 +23,10 @@
         <section id="navbar-left">
             <ul class="nav-menu">
                 <li><a href=""><img src="../assets/img/home-24.ico" alt=""><span>Home</span>  </a></li>
+                <li><a href=""><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span>  </a></li>
                 <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
                 <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
-                <li><a href=""><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span>  </a></li>
+                
                 <li><a href="#"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
                 <li><a href="#"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
@@ -55,7 +56,7 @@
                         <span>+</span>
                     </button>
                     <form action="" method="post" id="search_formMedia" >
-                        <!-- <label for="searchMedia">Rechercher un média :</label> -->
+                       
                         <input type="text" placeholder="Recherchez des produits" id="search-product-dashboard">
 
                     </form>
@@ -64,26 +65,27 @@
                     </div>
                     <div class="user-container">
                         <ul class="user-gestion-list">
-                            <li>id</li>
-                            <li>Categorie</li>
-                            <li>Sous Categorie</li>
-                            <li>titre</li>  
+                            <li>ID MEDIA</li>
+                            <li>CATEGORIES</li>
+                            <li>GENRE</li>
+                            <li>TITRE</li>  
                         </ul>
                     </div>
-                    <!-- <?php foreach ($datas as $data): ?> -->
+                    <?php foreach ($datas as $data): ?> 
                         <div class="user-row">
                             <div class="user-dashboard">
                             
-                            <!-- <a href="<?php echo $router->generate('dashboard-media', ['id_media' => $data->getId_media()]); ?>">
+                            <a href="<?php echo $router->generate('dashboard-media', ['id_media' => $data->getId_media()]); ?>">
                                 <p class="id-user-dashboard"><?php echo $data->getId_media() ?></p>
                                 </a>
                                 <p class="date-dashboard"><?php echo $data->getName() ?></p>
                                 <p class="livre-non"><?php echo $data->getId_subcategory() ?></p>
-                                <p class="name-dashboard"><?php echo $data->getTitle() ?></p> -->
+                                <p class="name-dashboard"><?php echo $data->getTitle() ?></p>
 
-                                <img src="../assets/img/icons8-orange-edit-50 (1).png" alt="" style="height: 25px;">
+                                
                                 
                                 <button type="submit" id="more-dashboard">More</button>
+                                <img src="../assets/img/icons8-orange-edit-50 (1).png" alt="" style="height: 25px;">
                                
                                     
                             </div>
@@ -92,7 +94,7 @@
                 </section>
                 <section id="right-grid">
               
-                    <!-- <div class="<?php echo ($id_media == 0) ? 'activity-visible' : 'activity-hidden'; ?>"> -->
+                    <div class="<?php echo ($id_media == 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Derniers Medias</caption>
@@ -106,7 +108,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <?php foreach ($datas as $data): ?>
+                                   <?php foreach ($datas as $data): ?>
                                         <tr>
                                             <td><?php echo $data->getId_media() ?></td>
                                             <td><?php echo $data->getName() ?></td>
@@ -114,12 +116,12 @@
                                             <td><?php echo $data->getTitle() ?></td>
                                             <td></td>
                                         </tr>
-                                    <?php endforeach; ?> -->
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <!-- <div class="<?php echo ($id_media > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+                    <div class="<?php echo ($id_media > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Exemplaires du média :<?php echo $data->getTitle() ?> </caption>
@@ -141,7 +143,7 @@
                                             <td></td>
                                             <td></td>
                                         </tr>
-                                    <?php endforeach; ?> -->
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -150,6 +152,8 @@
             </section>
         </section>
     </section>
+
+    
 
       <form action="mediasmart/media/create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form" style="display: none;">
                 <h2 class="form-title">Ajouter un nouveau média</h2>
@@ -206,7 +210,9 @@
 
 
 
+
     <script src="../assets/js/ajaxMedia.js"></script>
     <script src="../assets/js/newmedia.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
 </body>
 </html>

@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-   
 
     document.getElementById('annuler').addEventListener('click', function(e) {
         e.preventDefault();
@@ -56,19 +55,34 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
 document.addEventListener("DOMContentLoaded", function() {
-    // Sélection du bouton et du formulaire
+ 
     const addUserButton = document.querySelector('.btn-add-user');
     const formContainer = document.getElementById('form-container');
     
-    // Écouteur d'événement pour afficher le formulaire
+  
     addUserButton.addEventListener('click', function() {
-        // Si le formulaire est caché, on l'affiche
+        
         if (formContainer.style.display === 'none' || formContainer.style.display === '') {
             formContainer.style.display = 'block';
         } else {
-            formContainer.style.display = 'none'; // Si déjà affiché, on cache
+            formContainer.style.display = 'none'; 
         }
     });
 });
+
+
+// ----------------------ADD USER 
+document.addEventListener("DOMContentLoaded", function(){
+    const addEmploye = document.querySelector('.btn-add-user');
+    const formEmploye = document.getElementById('employee-form');
+
+    addEmploye.addEventListener('click', function(){
+        if(formEmploye.style.display === 'none' || formEmploye.style.display === ''){
+            formEmploye.style.display = 'block';
+
+        }else{
+            formEmploye.style.display = 'none';
+        }
+    })
+})
