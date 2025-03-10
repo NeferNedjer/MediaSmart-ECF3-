@@ -8,35 +8,39 @@
 </head>
 <body>
 
-<div id=background class='flex-container'>
-    <div id="createEmployee-container" >
-        
-        <form action="/createEmployee" method="POST">
-        <h2 class= "text-center">Création d'un employé</h2> <br><br>
-            <div class="mb-3">
-            <label for="name">Nom :</label>
-            <input type="text" name="name"><br><br>
+
+<div class="form-container" id="form-container">
+        <form action="/createEmployee" method="POST" id="employee-form">
+            <h2 class="text-center" id="form-title">Création d'un Employé</h2>
+            
+            <div class="form-group" id="name-group">
+                <label for="name" class="form-label">Nom :</label>
+                <input type="text" name="name" id="name" class="form-input" placeholder="Entrez le nom" required>
             </div>
-            <div class="mb-3">       
-            <label for="first_name">Prénom :</label>
-            <input type="text" name="first_name"><br><br>
+
+            <div class="form-group" id="first-name-group">
+                <label for="first_name" class="form-label">Prénom :</label>
+                <input type="text" name="first_name" id="first_name" class="form-input" placeholder="Entrez le prénom" required>
             </div>
-            <div class="mb-3">
-            <label for="password">Password :</label>
-            <input type="password" name="password"><br><br>
+
+            <div class="form-group" id="password-group">
+                <label for="password" class="form-label">Mot de passe :</label>
+                <input type="password" name="password" id="password" class="form-input" placeholder="Entrez le mot de passe" required>
             </div>
-            <div class="mb-3">
-            <label for="confpassword">Confirmez le password :</label>
-            <input type="password" name="confpassword" id="confpassword"><br><br>
+
+            <div class="form-group" id="confpassword-group">
+                <label for="confpassword" class="form-label">Confirmez le mot de passe :</label>
+                <input type="password" name="confpassword" id="confpassword" class="form-input" placeholder="Confirmez le mot de passe" required>
+                <span id="password-error" class="error-message"></span>
             </div>
-            <div class="mb-3">
-            <input type="submit" value="Valider">
-            </div> <br><br>
-            <a href="<?php echo $router->generate('dashboard-employee') ?>">retour</a>
+
+            <div class="form-group submit-btn" id="submit-btn-group">
+                <input type="submit" value="Valider" id="submit-btn" class="submit-input">
+                
+            </div>
         </form>
-      
     </div>
-</div>
+
 
 </body>
 </html>
