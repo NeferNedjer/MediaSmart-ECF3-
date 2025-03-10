@@ -23,6 +23,9 @@
              
             <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
             <li><a id="connexion-home" href="login">Connexion</a></li>
+            <li><a id="connexion-home" href="/dashboardEmployee/0">Employee</a></li>
+            <li><a id="connexion-home" href="/dashboardMedia/0">Media</a></li>
+            
         </ul>
         <a href="#">
             <img src="./assets/img/menu.png" alt="" id="burger" style="height: 50px;">
@@ -31,17 +34,19 @@
 
     <nav id="burger-menu" style="display:none">
         <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Produits</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/login">Connexion</a></li>
+            <li><a href="/dashboardMedia/0">Media</a></li>
+            <li><a href="/dashboardEmployee/0">Employee</a></li>
             <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
         </ul>
     </nav>
 
-    <div class="search">
-        <input type="text" placeholder="Recherchez des produits" id="search-product">
-        <label for="search-product"></label>
-    </div>
+    <form action="" method="post" id="search_formMedia" >
+                       
+                        <input type="text" name="searchMedia"  placeholder="Recherchez des produits" id="search-product-dashboard">
+
+                    </form>
 
                             <!-- PRODUIT EN VEDETEES -->
 
@@ -154,6 +159,6 @@ w
     <script src="./assets/js/burger.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-
+    <script src="../assets/js/ajaxMedia.js"></script>
 </body>
 </html>
