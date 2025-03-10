@@ -21,5 +21,7 @@ class ModelExemplaire extends Model {
 
         $req = $this->getDb()->prepare('');
     }
+
+    
     
 }

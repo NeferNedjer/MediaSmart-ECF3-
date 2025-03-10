@@ -52,9 +52,16 @@
             <section id="grid-user-gestion">
                 <section id="left-grid">
                     <h1>Gestion des Utilisateurs</h1>
+
+                    <form action="" method="post" id="search_formEmployee" >
+                        <label for="searchEmployee">Rechercher un utilisateur :</label>
+                        <input type="text" name="searchEmployee" id="searchEmployee">
+                    </form>
+
                     <button class="btn-add-user">
                         <span>+</span>
                     </button>
+
                     <div class="user-container">
                         <ul class="user-gestion-list">
                             <li>id</li>
@@ -66,6 +73,7 @@
                     </div>
 
                     <?php foreach ($datas as $data): ?>
+                        <a href="" id="responseEmployee"></a>
                         <div class="user-row">
                             <div class="user-dashboard">
 
@@ -123,7 +131,7 @@
                     <div class="<?php echo ($id_user > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
-                                <caption>Activité de l'utilisateur</caption>
+                                <caption>Emprunts de l'utilisateur</caption>
                                 <thead>
                                     <tr>
                                         <th>ID MEDIA</th>
@@ -226,7 +234,7 @@
     <script src="./../assets/js/dashboard.js"></script>
 
 
-
+    <script src="../assets/js/ajaxEmployee.js"></script>
 </body>
 
 </html>
