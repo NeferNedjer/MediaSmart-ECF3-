@@ -1391,7 +1391,7 @@ ul.user-gestion-list > li:last-child > button,
   transform: translateX(-50%) scale(0.95);
 }
 
-#edit-form{
+#edit-form, #update{
  visibility: hidden;
   position: absolute;
   top: 25%;
