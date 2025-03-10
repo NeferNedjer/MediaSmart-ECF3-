@@ -65,7 +65,7 @@ $router->map('GET|POST', '/update','ControllerUser#update', 'update-user' );
 
 $router->map('GET|POST', '/delete', 'ControllerUser#delete', 'delete-user');
 
-$router->map('GET|POST', '/dashboardMedia', 'ControllerEmployee#dashboardMedia', 'dashboard-media');
+$router->map('GET|POST', '/dashboardMedia/[i:id_media]', 'ControllerEmployee#dashboardMedia', 'dashboard-media');
 
 $router->map('GET|POST', '/searchMedia', 'ControllerMedia#searchMedia', 'search-media');
 
