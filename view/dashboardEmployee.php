@@ -23,13 +23,13 @@
     <section id="side-bar-dash">
         <section id="navbar-left">
             <ul class="nav-menu">
-                <li><a href=""><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
+                <li><a href="/"><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
                 <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
                 <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
-                <li><a href="#"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
-                <li><a href="#"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
+                <li><a href="/dashboardEmployee/0"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
+                <li><a href="/dashboardMedia"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
-                <li><a href="#"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
+                <li><a href="/logout"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
                 <li>
                     <label class="switch">
                         <input checked="true" id="checkbox" type="checkbox" />
@@ -75,7 +75,7 @@
                     </div>
 
                     <?php foreach ($datas as $data): ?>
-                        <a href="" id="responseEmployee"></a>
+                        <a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>" id="responseEmployee"></a>
                         <div class="user-row">
                             <div class="user-dashboard">
 
@@ -144,13 +144,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($empruntsuser as $data): ?>
+                                    <?php foreach ($empruntsuser as $dataM): ?>
                                         <tr>
-                                            <td><?php echo $data->getId_media() ?></td>
-                                            <td><?php echo $data->getTitle() ?></td>
-                                            <td><?php echo $data->getStatus() ?></td>
-                                            <td><?php echo $data->getEmprunt_date()->format('d/m/y') ?></td>
-                                            <td><?php echo $data->getMax_return_date()->format('d/m/y') ?></td>
+                                            <td><?php echo $dataM->getId_media() ?></td>
+                                            <td><?php echo $dataM->getTitle() ?></td>
+                                            <td><?php echo $dataM->getStatus() ?></td>
+                                            <td><?php echo $dataM->getEmprunt_date()->format('d/m/y') ?></td>
+                                            <td><?php echo $dataM->getMax_return_date()->format('d/m/y') ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
