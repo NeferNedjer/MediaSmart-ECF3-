@@ -59,9 +59,7 @@
                         <input type="text" placeholder="Recherchez des produits" id="search-product-dashboard">
 
                     </form>
-                    <div id="responseMedia" >
-                        <ul></ul>
-                    </div>
+                    
                     <div class="user-container">
                         <ul class="user-gestion-list">
                             <li>id</li>
@@ -70,7 +68,10 @@
                             <li>titre</li>  
                         </ul>
                     </div>
-                    <!-- <?php foreach ($datas as $data): ?> -->
+
+                    <?php foreach ($datas as $data): ?>
+                        <a href="" id="responseMedia"></a>
+
                         <div class="user-row">
                             <div class="user-dashboard">
                             
@@ -92,7 +93,9 @@
                 </section>
                 <section id="right-grid">
               
-                    <!-- <div class="<?php echo ($id_media == 0) ? 'activity-visible' : 'activity-hidden'; ?>"> -->
+
+                    <div class="<?php //echo ($id_media == 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Derniers Medias</caption>
@@ -119,7 +122,9 @@
                             </table>
                         </div>
                     </div>
-                    <!-- <div class="<?php echo ($id_media > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+
+                    <div class="<?php //echo ($id_media > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Exemplaires du média :<?php echo $data->getTitle() ?> </caption>
