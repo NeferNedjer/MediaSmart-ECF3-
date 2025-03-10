@@ -17,10 +17,7 @@ class ModelExemplaire extends Model {
 
     }
 
-    public function getExemplaireById(int $id) {
 
-        $req = $this->getDb()->prepare('');
-    }
 
     
     

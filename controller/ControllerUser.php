@@ -243,8 +243,10 @@ class ControllerUser {
         global $router;
 
         $model = new ModelUser();
+
         $data = $model->getUserById($id_user);
         require_once './view/dashboardEmployee.php';
+
         exit();
          
     }

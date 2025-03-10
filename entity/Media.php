@@ -11,6 +11,9 @@ class Media extends Subcategory {
     private $description;
     private $image;
     private $author;
+    private $nb_exemplaires;
+    private $nb_emprunts;
+    private $nb_resa;
 
     public function __construct(array $datas) {
         $this->hydrate($datas);
@@ -55,6 +58,16 @@ class Media extends Subcategory {
         return $this->author;
     }
 
+    public function getNb_exemplaires() {
+        return $this->nb_exemplaires;
+    }
+    public function getNb_emprunts() {
+        return $this->nb_emprunts;
+    }
+    public function getNb_resa() {
+        return $this->nb_resa;
+    }
+
     //SETTERS
     public function setId_media(int $id_media) {
         $this->id_media = $id_media;
@@ -82,5 +95,15 @@ class Media extends Subcategory {
 
     public function setImage(string $image) {
         $this->image = $image;
+    }
+    
+    public function setNb_exemplaires(string $nb_exemplaires) {
+        $this->nb_exemplaires = $nb_exemplaires;
+    }
+    public function setNb_emprunts(string $nb_emprunts) {
+        $this->nb_emprunts = $nb_emprunts;
+    }
+    public function setNb_resa(string $nb_resa) {
+        $this->nb_resa = $nb_resa;
     }
 }
