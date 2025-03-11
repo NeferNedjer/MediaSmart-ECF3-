@@ -179,6 +179,61 @@ section#product > div.product-keyword {
   margin-left: 60px;
 }
 
+.carrousel-container {
+  position: relative;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px 0 0 0;
+  overflow: hidden;
+}
+
+.carrousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carrousel-item {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.carrousel-item img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1;
+}
+
+button.prev {
+  left: 0;
+}
+
+button.next {
+  right: 0;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carrousel-item img {
+  transition: transform 0.5s ease-in-out;
+}
+
 .card-product {
   margin: 16px;
 }
@@ -1039,7 +1094,6 @@ input#adress {
   position: absolute;
   border-radius: 5px;
   box-shadow: var(--shadow-standard);
-  top: 20%;
   font-family: "Arial", sans-serif;
   padding: 15px;
   background-color: #2c3e50;
@@ -1110,15 +1164,43 @@ div.user-info > .user-info {
   margin: 15px;
 }
 
+#media {
+  display: flex;
+  justify-content: center;
+}
+#media .media-detail {
+  display: flex;
+  flex-direction: column;
+  border: #333;
+}
+#media .media-detail img {
+  width: 20rem;
+  height: 30rem;
+}
+#media .media-detail h1 {
+  color: #333;
+}
+#media .media-detail h2 {
+  color: #333;
+  padding: 0.5rem;
+}
+#media .media-detail p {
+  color: #333;
+}
+#media .media-detail a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem;
+}
+
 #side-bar-dash {
   height: 100vh;
   position: relative;
   background-color: #2c3e50;
 }
 
-#search-user,
 #searchEmployee {
-  width: 98%;
+  width: 97%;
   border-radius: 5px;
   margin: 25px 10px;
   border: 1px solid rgb(223, 223, 223);
@@ -1295,7 +1377,6 @@ ul.user-gestion-list > li:last-child > button,
 #edit-form {
   visibility: hidden;
   position: absolute;
-  top: 5%;
   display: flex;
   flex-direction: column;
   gap: 18px;

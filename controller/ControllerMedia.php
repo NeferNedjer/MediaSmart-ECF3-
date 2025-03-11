@@ -5,7 +5,8 @@ class ControllerMedia {
 
         global $router;
 
-        $model = new ModelMedia();  
+        $model = new ModelMedia();
+
         $datas = $model->mediaHome();
 
         // var_dump($datas);
@@ -78,9 +79,15 @@ class ControllerMedia {
 
             if(!empty($_POST['id_subcategory']) && !empty($_POST['title']) && !empty($_POST['id_author']) && !empty($_POST['description'])) {
                 $model = new ModelMedia();
-                $model->createMedia($_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'], $_POST['image']);
 
-                    require_once('./view/newmedia.php');
+                //$model->createMedia($_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'], $_POST['image']);
+                $id_media = $model->createMedia($_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'],  $_POST['image_recto'], $_POST['image_verso']);
+                if (isset($_POST['nbex']) && $_POST['nbex'] > 0){
+                    $model->createExemplaire($_POST['nbex'], $id_media);
+                }
+                    //require_once('./view/dashboardMedia.php');
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $id_media]));
+
                     exit();
                 
             } else {
@@ -118,7 +125,7 @@ class ControllerMedia {
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])){
             if(!empty($_POST['id_subcategory']) && !empty($_POST['title']) && !empty($_POST['id_author']) && !empty($_POST['description'])) {
                 $model = new ModelMedia();
-                $model->updateMedia($_POST['id'], $_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'], $_POST['image']);
+                $model->updateMedia($_POST['id'], $_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'], $_POST['image_recto'], $_POST['image_verso']);
                 header('Location: /');
                 exit();
             } else {
@@ -134,7 +141,26 @@ class ControllerMedia {
     }
 
 
+    public function searchMedia() {
 
+        global $router;
+
+        $model = new ModelMedia();
+        $search = $_POST['searchMedia'] . '%';
+        $searchMedia = $model->getMedia($search);
+        Header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode($searchMedia);
+        
+    }
+
+    public function getMedia($id_media) {
+
+        global $router;
+        $model = new ModelMedia();
+        $media = $model->getMediaById($id_media);
+
+        require_once('./view/getMedia.php');
+    }
 
 
 
