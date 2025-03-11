@@ -9,7 +9,8 @@ class Media extends Subcategory {
     private $title;
     private $id_author;
     private $description;
-    private $image;
+    private $image_recto;
+    private $image_verso;
     private $author;
     private $nb_exemplaires;
     private $nb_emprunts;
@@ -50,8 +51,12 @@ class Media extends Subcategory {
         return $this->description;
     }
 
-    public function getImage() {
-        return $this->image;
+    public function getImage_recto() {
+        return $this->image_recto;
+    }
+
+    public function getImage_verso() {
+        return $this->image_verso;
     }
 
     public function getAuthor() {
@@ -93,8 +98,12 @@ class Media extends Subcategory {
         $this->author = $author;
     }
 
-    public function setImage(string $image) {
-        $this->image = $image;
+    public function setImage_recto(string $image_recto) {
+        $this->image_recto = $image_recto;
+    }
+
+    public function setImage_verso(string $image_verso) {
+        $this->image_verso = $image_verso;
     }
     
     public function setNb_exemplaires(string $nb_exemplaires) {

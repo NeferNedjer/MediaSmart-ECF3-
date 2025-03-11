@@ -36,6 +36,8 @@ $router->map('GET|POST', '/media/update/[i:id]', 'ControllerMedia#update', 'upda
 
 $router->map('GET', '/404', 'ControllerMedia#notfound', 'notfound');
 
+$router->map('GET', '/getMedia/[i:id_media]', 'ControllerMedia#getMedia', 'getMedia');
+
 /*----------USER----------*/
 
 
