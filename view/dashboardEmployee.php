@@ -144,6 +144,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php if (isset($empruntsuser)) : ?>
                                     <?php foreach ($empruntsuser as $data): ?>
                                         <tr>
                                             <td><?php echo $data->getId_media() ?></td>
@@ -152,7 +153,8 @@
                                             <td><?php echo $data->getEmprunt_date()->format('d/m/y') ?></td>
                                             <td><?php echo $data->getMax_return_date()->format('d/m/y') ?></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                        <?php endforeach; ?>
+                                        <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
