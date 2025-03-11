@@ -1472,26 +1472,26 @@ ul.user-gestion-list > li:last-child > button,
   transform: translateX(-50%) scale(0.95);
 }
 
-#edit-form{
- visibility: hidden;
+.edit-form{
+ 
   position: absolute;
-  top: 5%;
+  top: 40%;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  max-width: 450px;
-  width: 100%;
-  background-color: rgba(255, 255, 255,);
+  max-width: 550px;
+  
+  background-color: rgb(255, 255, 255);
   padding: 10px 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  left: 38%;
+  left: 48%;
   transform: translate(-50% -50%);
   z-index: 500;
   border-radius: 5px;
 }
 
 
-#edit-form a > input{
+.edit-form a > input{
   margin: 10px;
 
 
@@ -1505,7 +1505,7 @@ ul.user-gestion-list > li:last-child > button,
   display: block;
 }
 
-#edit-form a > input.modifier {
+.edit-form > input.modifier {
   background-color:$color-button;
   color: #fff;
   z-index: 0;
@@ -1515,10 +1515,10 @@ ul.user-gestion-list > li:last-child > button,
   border: none;
   
 }
-#edit-form a > input.modifier:hover {
+.edit-form a > input.modifier:hover {
   background-color: $color-button-hover;
 }
-#edit-form a > input#annuler {
+.edit-form a > input#annuler {
   background-color: #f8f9fa;
   color: #000;
 }
@@ -1532,7 +1532,7 @@ ul.user-gestion-list > li:last-child > button,
   border-radius: 5px;
   border: none;
 }
-#edit-form a > input#supprimer:hover {
+.edit-form a > input#supprimer:hover {
   background-color: #c82333;
 }
 
@@ -1540,27 +1540,18 @@ ul.user-gestion-list > li:last-child > button,
   @include center-flex();
 }
 
-#edit-form label {
+.edit-form label {
   font-size: 12px;
   color: #555;
   margin-bottom: 5px;
   font-weight: 600;
+  width: 80%;
   font-family: 'Roboto', sans-serif;
 }
 
-#edit-form input {
-  padding: 7px 15px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  font-size: 14px;
-  color: #333;
-  
-  transition: all 0.3s ease-in-out;
-  font-family: 'Roboto', sans-serif;
-  margin-bottom: 5px;
-}
 
-#edit-form input:focus {
+
+.edit-form input:focus {
   border-color: #b66f03;
   outline: none;
   background-color: #fff;
@@ -2013,28 +2004,20 @@ ul.user-gestion-list > li:last-child > button,
   z-index: 1000;
  }
 
- .edit-form {
  
-  position: fixed; 
-  top: 50%;
-  width: 500px;
-  left: 50%;
-  translate: transform(50% 50%);
-  z-index: 1000;
-  margin: 20px 0;
-  padding: 20px;
+ .edit-form input {
+  padding: 7px 15px;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #ffffff;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #333;
+  width: 90%;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 5px;
 }
 
-.edit-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+
 .edit-form button {
   padding: 10px 20px;
   border: none;
@@ -2326,7 +2309,6 @@ ul.user-gestion-list > li:last-child > button,
           color: white;
       }
 
-
       .resa-user ul.resa-header li,
       .emprunt-user ul.emprunt-header li{
         margin: 15px;
@@ -2347,9 +2329,6 @@ ul.user-gestion-list > li:last-child > button,
       .resa-data li:last-child{
         color: orange;
       }
-
-
     }
-
   
   }
