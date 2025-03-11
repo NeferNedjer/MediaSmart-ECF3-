@@ -218,16 +218,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image" class="file-label">Image :</label>
-                    <div class="file-upload">
-                        <input type="file" name="image" id="image" class="file-input">
-                        <span class="file-custom">Choisir un fichier</span>
-                    </div>
+                    <label for="image_recto">Image recto :</label>
+                    <input type="text" name="image_recto" id="image_recto" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="image_verso">Image verso :</label>
+                    <input type="text" name="image_verso" id="image_verso" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label for="nbex">Nombre d'exemplaires :</label>
-                    <input type="number" name="nbex" id="nbex" class="form-control" >
+                    <input type="number" name="nbex" id="nbex" class="form-control" value="1" >
                 </div>
 
                 <div class="form-actions">
