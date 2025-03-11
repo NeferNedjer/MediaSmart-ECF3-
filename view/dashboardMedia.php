@@ -24,7 +24,7 @@
             <ul class="nav-menu">
             <li><a href="/"><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
                 <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
-                <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
+                <li><a href="https://mailtrap.io/inboxes/3460695/messages/4762720767" target="_blank"><img src="../assets/img/inbox-24.ico" alt=""> <span> Mail</span></a></li>
                 <li><a href="/dashboardEmployee/0"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
                 <li><a href="/dashboardMedia/0"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
@@ -86,7 +86,7 @@
 
                                 
                                 
-                                <button type="submit" id="more-dashboard">More</button>
+                                <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><button type="submit" id="more-dashboard">More</button></a>
                                 <img src="../assets/img/icons8-orange-edit-50 (1).png" alt="" style="height: 25px;">
                                
                                     
@@ -135,7 +135,7 @@
                             <?php $first = 1; ?>
                             <?php foreach ($exemplairemedia as $exemplaire): ?>
                                 <?php if ($first == 1) {; ?>
-                                <caption>Exemplaires du <?php echo ucfirst(strtolower($data->getName())).' : '.$data->getTitle() ?> </caption>
+                                <caption>Exemplaires du <?php echo ucfirst(strtolower($exemplaire->getName())).' : '.$exemplaire->getTitle() ?> </caption>
                                 <br>
                                 <caption>Disponibilités :  <?php echo ($exemplaire->getNb_exemplaires()-$exemplaire->getNb_emprunts()-$exemplaire->getNb_resa()).' / '. $exemplaire->getNb_exemplaires() ?> </caption>
                                 <thead>
@@ -171,7 +171,7 @@
 
     
 
-      <form action="mediasmart/media/create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form" style="display: none;">
+      <form action="/media-create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form" style="display: none;">
                 <h2 class="form-title">Ajouter un nouveau média</h2>
                 <div class="form-group">
                     <label for="title">Titre :</label>
@@ -180,7 +180,13 @@
 
                 <div class="form-group">
                     <label for="id_author">Auteur :</label>
-                    <input type="text" name="id_author" id="id_author" class="form-select">
+                    <!-- <input type="text" name="id_author" id="id_author" class="form-select"> -->
+                    <select name="id_author" id="id_author" class="form-select">
+                        <option value="">Sélectionner un auteur</option>
+                        <?php foreach ($authors as $author): ?>
+                            <option value="<?php echo $author->getId_author(); ?>" ><?php echo $author->getName(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
 
                 </div>
 
@@ -214,9 +220,14 @@
                 <div class="form-group">
                     <label for="image" class="file-label">Image :</label>
                     <div class="file-upload">
-                        <input type="file" name="image" id="image" class="file-input" required>
+                        <input type="file" name="image" id="image" class="file-input">
                         <span class="file-custom">Choisir un fichier</span>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nbex">Nombre d'exemplaires :</label>
+                    <input type="number" name="nbex" id="nbex" class="form-control" >
                 </div>
 
                 <div class="form-actions">
