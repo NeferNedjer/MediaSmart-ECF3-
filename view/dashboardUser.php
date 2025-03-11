@@ -46,48 +46,135 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         <section id="dashboard-user">
             <section id="grid-dash-user">
                 <div id="top-carousel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, hic. Dolore ab cupiditate assumenda nulla obcaecati vel deserunt ipsum, asperiores necessitatibus error, exercitationem, unde ut?</p>
+                    <section class="splide" aria-label="">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 59058.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 75358.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+                                <li class="splide__slide">
+                                    <figure><img src="" alt="">
+                                        <figcaption>La legende</figcaption>
+                                    </figure>
+                                </li>
+
+
+                            </ul>
+                            <h1>Les 10 livres les plus vendues</h1>
+                        </div>
+                    </section>
 
                 </div>
-                <div class="gestion-user2" role="region" tabindex="0">
-                    <table>
-                        <caption>Dernier emprunt</caption>
-                        <thead>
-                            <tr>
-                                <th>ID MEDIA</th>
-                                <th>TITRE</th>
-                                <th>CATEGORIES</th>
-                                <th>DATE EMPRUNT</th>
-                                <th>DATE RETOUR</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                <div id="infos-media">
+                    <figure>
+                        <img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 99256.jpg" alt="">
+                    </figure>
+                    <p class="title-infos">Company of One</p>
+                    <p class="auteur-infos">Paul Janis</p>
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
 
-                        </tbody>
-                    </table>
+                    <p class="description">Dans une petite ville côtière oubliée du temps, Clara, une jeune historienne, arrive pour découvrir les secrets enfouis d'une ancienne famille aristocratique. Lorsqu'elle tombe sur un vieux journal intime, des événements mystérieux, liés à une disparition vieille de plusieurs décennies, refont surface.</p>
+                    <button onclick="window.location.href = '#'" type="button" id="btn-resa-dash">
+                        Réserver maintenant
+                    </button>
                 </div>
-                </div>
-                <div id="recommendation">
 
-                </div>
-            </section>
-            <div id="last-add-user">
 
+                <div id="emprunt-resa">
+    <section id="grid-user-emprunt">
+        <section class="emprunt-user">
+            <h2>Vos Emprunts</h2>
+            <div class="emprunt-lists">
+                <ul class="emprunt-header">
+                    <li>MEDIA</li>
+                    <li>EXEMPLAIRE</li>
+                    <li>TITRE</li>
+                    <li>DATE D'EMPRUNT</li>
+                    <li>DATE DE RETOUR</li>
+                </ul>
+                <ul class="emprunt-data">
+                    <li>#5</li>
+                    <li>#5</li>
+                    <li>Company of One</li>
+                    <li>22/11/2024</li>
+                    <li>22/12/2024</li>
+                </ul>
             </div>
         </section>
+        <section class="resa-user">
+            <h2>Vos Réservations</h2>
+            <div class="resa-lists">
+                <ul class="resa-header">
+                    <li>ID MEDIA</li>
+                    <li>ID EXEMPLAIRE</li>
+                    <li>TITRE</li>
+                    <li>DATE DE LA DEMANDE</li>
+                    <li>STATUT</li>
+                </ul>
+                <ul class="resa-data">
+                    <li>#5</li>
+                    <li>#5</li>
+                    <li>Company of One</li>
+                    <li>22/11/2024</li>
+                    <li>En attente</li>
+                </ul>
+            </div>
+        </section>
+    </section>
+</div>
 
+
+            </section>
+
+
+        </section>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
         <script src="../assets/js/slider.js"></script>
-        <script src="
-https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
-"></script>
+
 </body>
 
 </html>
