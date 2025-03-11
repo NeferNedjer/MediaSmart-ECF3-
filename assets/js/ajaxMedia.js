@@ -1,5 +1,5 @@
 let searchFormMedia = document.getElementById("search_formMedia");
-let searchInputMedia = document.getElementById("searchMedia");
+let searchInputMedia = document.getElementById("search-product-dashboard");
 let responseMedia = document.getElementById("responseMedia");
 
 searchInputMedia.addEventListener('input', function(){
@@ -12,7 +12,6 @@ searchInputMedia.addEventListener('input', function(){
         })
         .then((datas) => datas.json())
         .then((datas) => {
-            console.log(datas);
             const ulDatas = document.createElement("ul");
             for (const data of datas){
                 const liData = document.createElement("li");
