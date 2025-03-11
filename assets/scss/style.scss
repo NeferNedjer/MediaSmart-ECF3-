@@ -246,6 +246,8 @@ section#product > div.product-keyword {
 
 }
 
+
+
 //--------------------------- carrousel ----------------------------
 
 .carrousel-container{
@@ -321,6 +323,7 @@ button:hover {
 .card-product > .card img {
     height: 100%;
     width: 100%;
+    object-fit: contain;
     @include border-radius(4px);
 }
 
@@ -331,6 +334,12 @@ button:hover {
 
 .flex-product {
   @include center-flex();
+
+  h1 {
+    align-items: baseline ;
+    margin-top: 20px 0 20px 0;
+  }
+
 }
 
 .title-product,
@@ -343,21 +352,20 @@ button:hover {
 }
 // AJOUT RECENT -------------------
 
-#last-add > .card-product > .card > img {
-  max-height: 350px;
-  height: 100%;
+#last-add h1 {
+  margin : 0 0 20px 10px;
 }
-
 #last-add {
     display: $grid;
-
     grid-template-columns: 38% 62%;
+    gap: 20px;
 }
 
-#last-add h1 {
-    margin : 0 0 5px 2px;
+#last-add > .card-product > .card > img {
+  max-height: 100px;
+  height: 100%;
+  object-fit: contain;
 }
-
 
 
 .horizontal-lign {

@@ -67,9 +67,9 @@
         </div>
         <div class="carrousel-container">
             <div class="carrousel">
-                <div class="carrousel-item"><img src="assets\img\livre1 recto la femme de ménage.jpg" alt="couverture du livre la femme de ménage"></div>
+                <div class="carrousel-item"><img src="assets\img\livre1_recto_la_femme_de_ménage.jpg" alt="couverture du livre la femme de ménage"></div>
                 <div class="carrousel-item"><img src="assets\img\livre recto 12.jpg" alt="livre de mélissa da costa"></div>
-                <div class="carrousel-item"><img src="assets\img\livre3 recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre3_recto.jpg" alt=""></div>
                 <div class="carrousel-item"><img src="assets\img\livre4 recto.jpg" alt=""></div>
                 <div class="carrousel-item"><img src="assets\img\livre5 recto.jpg" alt=""></div>
                 <div class="carrousel-item"><img src="assets\img\livre6 recto.jpg" alt=""></div>
@@ -82,74 +82,55 @@
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
         </div>
 
-        <?php foreach ($datas as $data): ?>
+        <h1>Disponible :</h1>
         <div class="flex-product">
+            <?php foreach ($datas as $data): ?>
             <div class="card-product">
                 <div class="card">
                     
-                    <img src="assets\img\livre1 recto la femme de ménage.jpg" alt="">
+                    <img src="<?php echo $data->getImage_recto(); ?>" alt="">
                     <div class="title-product"><?php echo $data->getTitle(); ?></div>
                     <div class="auteur-product"><?php echo $data->getAuthor(); ?></div>
                 </div>
             </div>
-
-            <div class="card-product">
-                <div class="card">
-                    <img src="assets\img\livre4 recto.jpg" alt="">
-                    <div class="title-product"><?php echo $data->getTitle(); ?></div>
-                    <div class="auteur-product"><?php echo $data->getAuthor(); ?></div>
-                </div>
-            </div>
-
-            <div class="card-product">
-                <div class="card">
-                    <img src="./assets/img/livre-cuisine-tout-en-pot-jean-pierre-dezavelle.webp" alt="">
-                    <div class="title-product"><?php echo $data->getTitle(); ?></div>
-                    <div class="auteur-product"><?php echo $data->getAuthor(); ?></div>
-                </div>
-            </div>
+            <?php endforeach; ?>
+         
         </div>
         
-        <?php endforeach; ?>
+        
                                                 <!-- AJOUT RECENT -->
-
+        <h1>Ajout récent :</h1>
         <section id="last-add">
-                
-                <div class="card-product">
-                    <h1>Ajout récent</h1>
-                    <div class="card">
-                        <img src="./assets/img/livre-cuisine-tout-en-pot-jean-pierre-dezavelle.webp" alt="">
+                <?php foreach ($datas as $data): ?>
+                <div class="card-product"class="title-product-latest"><?php echo $data->getTitle(); ?>
+                <img src="<?php echo $data->getImage_recto(); ?>" alt="">
+                    <div class="card"class="description-product-latest"><?php echo $data->getDescription(); ?>
                     </div>
+                    <div class="auteur-product-latest"><?php echo $data->getAuthor(); ?></div>
                 </div>
-w
+               
+                
+<!--                        
                     <div class="right-last-add">
-                        <div class="title-product-latest"><?php echo $data->getTitle(); ?></div>
-                        <div class="auteur-product-latest">De '<?php echo $data->getAuthor(); ?>'</div>
+                        <div class="title-product-latest"><?php //echo $data->getTitle(); ?></div>
+                        <div class="auteur-product-latest">De '<?php //echo $data->getAuthor(); ?>'</div>
 
         
                       
                         <div class="horizontal-lign">  </div>
-                        <div class="description-product-latest"><?php echo $data->getDescription(); ?></div>
+                        <div class="description-product-latest"><?php //echo $data->getDescription(); ?></div>
                         </div>
 
                         <div class="card-product">
                     <h1>Ajout récent</h1>
                     <div class="card">
                         <img src="./assets/img/livre-cuisine-tout-en-pot-jean-pierre-dezavelle.webp" alt="">
-                    </div>
+                    </div> -->
+                    
 
                 </div>
 
-                    <div class="right-last-add">
-                        <div class="title-product-latest"><?php echo $data->getTitle(); ?></div>
-                        
-                        <div class="auteur-product-latest">De '<?php echo $data->getAuthor(); ?>'</div>
-
-                
-                
-                        <div class="horizontal-lign">  </div>
-                        <div class="description-product-latest"><?php echo $data->getDescription(); ?></div>
-                        </div>
+                <?php endforeach; ?>     
         </section>
         </section>
 
