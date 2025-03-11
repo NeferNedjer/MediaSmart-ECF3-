@@ -55,7 +55,7 @@
     } ?>
 
     <section id="product">
-        <h1>Produits en vedettes</h1>
+        <h1>Livre à la Une</h1>
         <div class="product-keyword">
             <ul class="list-keyword">
                 <li>Tous</li>
@@ -65,14 +65,29 @@
                 
             </ul>
         </div>
-
+        <div class="carrousel-container">
+            <div class="carrousel">
+                <div class="carrousel-item"><img src="assets\img\livre1 recto la femme de ménage.jpg" alt="couverture du livre la femme de ménage"></div>
+                <div class="carrousel-item"><img src="assets\img\livre recto 12.jpg" alt="livre de mélissa da costa"></div>
+                <div class="carrousel-item"><img src="assets\img\livre3 recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre4 recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre5 recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre6 recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre7 recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre8 recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre harry potter recto.jpg" alt="livre d'harry potter et le prisonnier d'azkaban"></div>
+                <div class="carrousel-item"><img src="assets\img\livre recto HG.jpg" alt=""></div>
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
 
         <?php foreach ($datas as $data): ?>
         <div class="flex-product">
             <div class="card-product">
                 <div class="card">
                     
-                    <img src="./assets/img/livre-cuisine-tout-en-pot-jean-pierre-dezavelle.webp" alt="">
+                    <img src="assets\img\livre1 recto la femme de ménage.jpg" alt="">
                     <div class="title-product"><?php echo $data->getTitle(); ?></div>
                     <div class="auteur-product"><?php echo $data->getAuthor(); ?></div>
                 </div>
@@ -80,7 +95,7 @@
 
             <div class="card-product">
                 <div class="card">
-                    <img src="./assets/img/livre-cuisine-tout-en-pot-jean-pierre-dezavelle.webp" alt="">
+                    <img src="assets\img\livre4 recto.jpg" alt="">
                     <div class="title-product"><?php echo $data->getTitle(); ?></div>
                     <div class="auteur-product"><?php echo $data->getAuthor(); ?></div>
                 </div>
@@ -160,5 +175,6 @@ w
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="../assets/js/ajaxMedia.js"></script>
+    <script src="../assets/js/carrousel.js"></script>
 </body>
 </html>
