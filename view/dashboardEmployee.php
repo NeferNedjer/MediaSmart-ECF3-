@@ -55,8 +55,8 @@
 
 
                     <form action="" method="post" id="search_formEmployee" >
-                        <label for="searchEmployee">Rechercher un utilisateur :</label>
-                        <input type="text" name="searchEmployee" id="searchEmployee">
+                        <label for="searchEmployee"></label>
+                        <input type="text" name="searchEmployee" id="searchEmployee" placeholder="Rechercher un utilisateur">
                     </form>
 
 
