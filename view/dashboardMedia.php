@@ -22,12 +22,11 @@
     <section id="side-bar-dash">
         <section id="navbar-left">
             <ul class="nav-menu">
-                <li><a href=""><img src="../assets/img/home-24.ico" alt=""><span>Home</span>  </a></li>
-                <li><a href=""><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span>  </a></li>
+            <li><a href="/"><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
                 <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
                 <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
-                
-                <li><a href="#"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
+                <li><a href="/dashboardEmployee/0"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
+                <li><a href="/dashboardMedia/0"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
                 <li><a href="#"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
                 <li>
@@ -57,12 +56,10 @@
                     </button>
                     <form action="" method="post" id="search_formMedia" >
                        
-                        <input type="text" placeholder="Recherchez des produits" id="search-product-dashboard">
+                        <input type="text" name="searchMedia"  placeholder="Recherchez des produits" id="search-product-dashboard">
 
                     </form>
-                    <div id="responseMedia" >
-                        <ul></ul>
-                    </div>
+                    
                     <div class="user-container">
                         <ul class="user-gestion-list">
                             <li>ID MEDIA</li>
@@ -71,7 +68,12 @@
                             <li>TITRE</li>  
                         </ul>
                     </div>
-                    <?php foreach ($datas as $data): ?> 
+
+
+                    <?php foreach ($datas as $data): ?>
+                        <a href="" id="responseMedia"></a>
+
+
                         <div class="user-row">
                             <div class="user-dashboard">
                             
@@ -79,7 +81,7 @@
                                 <p class="id-user-dashboard"><?php echo $data->getId_media() ?></p>
                                 </a>
                                 <p class="date-dashboard"><?php echo $data->getName() ?></p>
-                                <p class="livre-non"><?php echo $data->getId_subcategory() ?></p>
+                                <p class="livre-non"><?php echo $data->getTheme() ?></p>
                                 <p class="name-dashboard"><?php echo $data->getTitle() ?></p>
 
                                 
@@ -93,38 +95,49 @@
                     <?php endforeach; ?>
                 </section>
                 <section id="right-grid">
-              
+
+
                     <div class="<?php echo ($id_media == 0) ? 'activity-visible' : 'activity-hidden'; ?>">
-                        <div class="gestion-user" role="region" tabindex="0">
-                            <table>
-                                <caption>Derniers Medias</caption>
-                                <thead>
-                                    <tr>
-                                        <th>ID MEDIA</th>
-                                        <th>CATEGORIE</th>
-                                        <th>SOUS CATEGORIE</th>
-                                        <th>TITRE</th>
-                                        <th>NOMBRE EXEMPLAIRES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                   <?php foreach ($datas as $data): ?>
+                            <div class="gestion-user" role="region" tabindex="0">
+                                <table>
+                                    <caption>Dernier emprunt</caption>
+                                    <thead>
                                         <tr>
-                                            <td><?php echo $data->getId_media() ?></td>
-                                            <td><?php echo $data->getName() ?></td>
-                                            <td></td>
-                                            <td><?php echo $data->getTitle() ?></td>
-                                            <td></td>
+                                            <th>NOM UTILISATEUR</th>
+                                            <th>CATEGORIE</th>
+                                            <th>TITRE</th>
+                                            <th>DATE EMPRUNT</th>
+                                            <th>DATE RETOUR</th>
                                         </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($emprunts as $emprunt): ?>
+                                            <tr>
+                                                <td><?php echo $emprunt->getUser_name() ?> <?php echo $emprunt->getUser_first_name() ?></td>
+                                                <td><?php echo $emprunt->getName() ?></td>
+                                                <td><?php echo $emprunt->getTitle() ?></td>
+                                                <td><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></td>
+                                                <td><?php echo $emprunt->getMax_return_date()->format('d/m/y') ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+              
+
+                    
+
                     <div class="<?php echo ($id_media > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
-                                <caption>Exemplaires du média :<?php echo $data->getTitle() ?> </caption>
+                            <?php $first = 1; ?>
+                            <?php foreach ($exemplairemedia as $exemplaire): ?>
+                                <?php if ($first == 1) {; ?>
+                                <caption>Exemplaires du <?php echo ucfirst(strtolower($data->getName())).' : '.$data->getTitle() ?> </caption>
+                                <br>
+                                <caption>Disponibilités :  <?php echo ($exemplaire->getNb_exemplaires()-$exemplaire->getNb_emprunts()-$exemplaire->getNb_resa()).' / '. $exemplaire->getNb_exemplaires() ?> </caption>
                                 <thead>
                                     <tr>
                                         <th>ID EXEMPLAIRE</th>
@@ -134,14 +147,17 @@
                                         <th>NOM EMPRUNTEUR</th>
                                     </tr>
                                 </thead>
+                                <?php } ; 
+                                $first ++;
+                                ?>
                                 <tbody>
-                                    <?php foreach ($exemplaires as $exemplaire): ?>
+                                    <!-- <.... foreach ($exemplairemedia as $exemplaire): ?> -->
                                         <tr>
                                             <td><?php echo $exemplaire->getId_exemplaire() ?></td>
-                                            <td><?php echo $exemplaire->getStatus() ?></td>
+                                            <td><?php if ($exemplaire->getStatus()==1) {echo 'Neuf';} elseif ($exemplaire->getStatus()==2) {echo 'Bon';} elseif ($exemplaire->getStatus()==3) {echo 'Mauvais';} elseif ($exemplaire->getStatus()==4) {echo 'Déchiré';} elseif ($exemplaire->getStatus()==5) {echo 'A JETER !';}  ?></td>
                                             <td><?php echo $exemplaire->getCreation_date()->format('d/m/y') ?></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?php if ($exemplaire->getResa()==1) {echo 'Réservé';} elseif ($exemplaire->getResa()==0) {echo 'Emprunté';} else {echo 'Disponible';}  ?></td>
+                                            <td><?php echo $exemplaire->getUser_name() ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

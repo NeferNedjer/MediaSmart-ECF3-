@@ -22,7 +22,12 @@ console.log(activityVisible);
 // ----------------------------EDIT USER
 document.addEventListener('DOMContentLoaded', function() {
     
+
     const editLinks = document.querySelectorAll('.edit-user');
+
+    const editButtons = document.querySelectorAll('#edit-user');
+    const editForm = document.getElementById('edit-form' );
+
     
     editLinks.forEach(link => {
         link.addEventListener('click', function() {

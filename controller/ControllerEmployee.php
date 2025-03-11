@@ -81,20 +81,32 @@ class ControllerEmployee {
 
     }
 
-    public function dashboardMedia() {
+    public function dashboardMedia($id_media) {
 
         global $router;
         $model = new ModelMedia();
         $datas = $model->mediaHome();
-        $modelexemplaire = new ModelExemplaire();
-        $exemplaires = $modelexemplaire->exemplaireHome();
-        require_once('./view/dashboardMedia.php');
+        $modelemprunt = new ModelEmprunt();
+        $emprunts = $modelemprunt->empruntHome();
+        
         if($id_media == 0) {
             require_once('./view/dashboardMedia.php');
         } else {
-            $exemplairemedia = $modelexemplaire->getExemplaireById($id_media);
+            $exemplairemedia = $modelemprunt->getExemplaireById($id_media);
             require_once('./view/dashboardMedia.php');
         }
+    }
+
+    public function searchEmployee() {
+
+        global $router;
+
+        $model = new ModelUser();
+        $search = $_POST['searchEmployee'] . '%';
+        $searchEmployee = $model->getUtilisateur($search);
+        Header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode($searchEmployee);
+        
     }
 
 }

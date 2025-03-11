@@ -134,7 +134,17 @@ class ControllerMedia {
     }
 
 
+    public function searchMedia() {
 
+        global $router;
+
+        $model = new ModelMedia();
+        $search = $_POST['searchMedia'] . '%';
+        $searchMedia = $model->getMedia($search);
+        Header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode($searchMedia);
+        
+    }
 
 
 
