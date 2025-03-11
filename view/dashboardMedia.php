@@ -135,7 +135,7 @@
                             <?php $first = 1; ?>
                             <?php foreach ($exemplairemedia as $exemplaire): ?>
                                 <?php if ($first == 1) {; ?>
-                                <caption>Exemplaires du <?php echo ucfirst(strtolower($data->getName())).' : '.$data->getTitle() ?> </caption>
+                                <caption>Exemplaires du <?php echo ucfirst(strtolower($exemplaire->getName())).' : '.$exemplaire->getTitle() ?> </caption>
                                 <br>
                                 <caption>Disponibilités :  <?php echo ($exemplaire->getNb_exemplaires()-$exemplaire->getNb_emprunts()-$exemplaire->getNb_resa()).' / '. $exemplaire->getNb_exemplaires() ?> </caption>
                                 <thead>
@@ -171,7 +171,7 @@
 
     
 
-      <form action="mediasmart/media/create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form" style="display: none;">
+      <form action="/media-create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form" style="display: none;">
                 <h2 class="form-title">Ajouter un nouveau média</h2>
                 <div class="form-group">
                     <label for="title">Titre :</label>
@@ -180,7 +180,13 @@
 
                 <div class="form-group">
                     <label for="id_author">Auteur :</label>
-                    <input type="text" name="id_author" id="id_author" class="form-select">
+                    <!-- <input type="text" name="id_author" id="id_author" class="form-select"> -->
+                    <select name="id_author" id="id_author" class="form-select">
+                        <option value="">Sélectionner un auteur</option>
+                        <?php foreach ($authors as $author): ?>
+                            <option value="<?php echo $author->getId_author(); ?>" ><?php echo $author->getName(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
 
                 </div>
 
@@ -214,9 +220,14 @@
                 <div class="form-group">
                     <label for="image" class="file-label">Image :</label>
                     <div class="file-upload">
-                        <input type="file" name="image" id="image" class="file-input" required>
+                        <input type="file" name="image" id="image" class="file-input">
                         <span class="file-custom">Choisir un fichier</span>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nbex">Nombre d'exemplaires :</label>
+                    <input type="number" name="nbex" id="nbex" class="form-control" >
                 </div>
 
                 <div class="form-actions">

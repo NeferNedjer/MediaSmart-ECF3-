@@ -89,6 +89,12 @@ class ControllerEmployee {
         $modelemprunt = new ModelEmprunt();
         $emprunts = $modelemprunt->empruntHome();
         
+        
+        $categories = $model->getCategories();
+        $subcategories = $model->getSubcategories();
+        $authors = $model->getAuthors();
+
+
         if($id_media == 0) {
             require_once('./view/dashboardMedia.php');
         } else {

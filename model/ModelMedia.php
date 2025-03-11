@@ -115,6 +115,17 @@ class ModelMedia extends Model{
         $req->bindParam(':image_verso', $image_verso, PDO::PARAM_STR);
                
         $req->execute();
+
+        return $this->getDb()->lastInsertId();
+    }
+
+    public function createExemplaire(int $nbex, int $id_media){
+        for ($i=1; $i <= $nbex; $i++) { 
+            $req = $this->getDb()->prepare('INSERT INTO exemplaire (id_media, status, creation_date) 
+                                                VALUES (:id_media, 1, NOW());');
+            $req->bindParam(':id_media', $id_media, PDO::PARAM_INT);
+            $req->execute();
+        }
     }
 
     public function deleteMedia($id) {
