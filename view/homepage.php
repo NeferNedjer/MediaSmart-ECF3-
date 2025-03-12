@@ -42,11 +42,22 @@
         </ul>
     </nav>
 
-    <form action="" method="post" id="search_formMedia" >
+    <form action="/searchMediaHomepage" method="post" id="searchMediaHomepage" >
                        
-                        <input type="text" name="searchMedia"  placeholder="Recherchez des produits" id="search-product-dashboard">
+        <input type="text" name="searchMediaHomepage"  placeholder="Recherchez un titre" >
+        <input type="submit" value="chercher">
+    </form>
 
-                    </form>
+    <section class="response">
+        <?php if(isset($mediaHome)) { ?>
+        <?php foreach ($mediaHome as $media): ?>
+            <a href="<?php echo $router->generate('getMedia', ['id_media' => $media->getId_media()]); ?>"><p><?php echo $media->getTitle() ?></p></a>
+            
+        <?php endforeach; ?>
+        <?php }else { ?>
+            <p>Aucun titre ne correspond à votre recherche.</p>
+        <?php } ?>
+    </section>
 
                             <!-- PRODUIT EN VEDETEES -->
 
@@ -67,6 +78,7 @@
         </div>
         <div class="carrousel-container">
             <div class="carrousel">
+
                 <div class="carrousel-item"><img src="assets\img\livre1_recto_la_femme_de_ménage.webp" alt="couverture du livre la femme de ménage"></div>
                 <div class="carrousel-item"><img src="assets\img\livre recto_12.webp" alt="livre de mélissa da costa"></div>
                 <div class="carrousel-item"><img src="assets\img\livre3_recto.webp" alt=""></div>
@@ -77,6 +89,7 @@
                 <div class="carrousel-item"><img src="assets\img\livre8_recto.webp" alt=""></div>
                 <div class="carrousel-item"><img src="assets\img\livre-harry-potter-recto.webp" alt="livre d'harry potter et le prisonnierd'azkaban"></div>
                 <div class="carrousel-item"><img src="assets\img\livre recto_HG.webp" alt=""></div>
+
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
             <button class="next" onclick="moveSlide(1)">&#10095;</button>

@@ -75,6 +75,7 @@
                     </div>
 
                     <?php foreach ($datas as $data): ?>
+                        <a href="" id="responseEmployee"></a>
     <div class="user-row">
         <div class="user-dashboard">
             <a href="<?php echo $router->generate('dashboard-employee', ['id_user' => $data->getId_user()]); ?>">
@@ -257,7 +258,7 @@
     <script src="./../assets/js/dashboard.js"></script>
 
 
-    <script src="../assets/js/ajaxEmployee.js"></script>
+    <script src="./../assets/js/ajaxEmployee.js"></script>
 </body>
 
 </html>
