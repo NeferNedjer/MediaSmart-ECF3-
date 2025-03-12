@@ -258,7 +258,10 @@ class ControllerUser {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['update'])) {
-                if(!empty($_POST['name_user']) && !empty($_POST['first_name_user']) && !empty($_POST['email']) && !empty($_POST['adress']) && !empty($_POST['phone']) && !empty($_POST['statut'])){   
+
+               
+                if(!empty($_POST['name_user']) && !empty($_POST['first_name_user']) && !empty($_POST['email']) && !empty($_POST['adress']) && !empty($_POST['phone']) && !empty($_POST['statut'])){
+              
                     $model = new ModelUser();
                     $model->updateUser($_POST['name_user'], $_POST['first_name_user'], $_POST['email'], $_POST['adress'], $_POST['phone'], $_POST['statut'], $_POST['id_user']);
                     header('Location: dashboardEmployee/0');

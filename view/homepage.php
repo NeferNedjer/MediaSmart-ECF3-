@@ -13,8 +13,8 @@
 
     <div id="top-mobile">
         <figure>
-            <img src="./assets/img/logo2.png
-            " alt="Logo" id="logo" style="height: 150px;">
+            <img src="../assets/img/Capture d'écran 2025-03-12 092131.png" alt="">
+            
         </figure>
 
         <ul class="flex">
