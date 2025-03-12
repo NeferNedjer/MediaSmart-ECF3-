@@ -42,11 +42,22 @@
         </ul>
     </nav>
 
-    <form action="" method="post" id="search_formMedia" >
+    <form action="/searchMediaHomepage" method="post" id="searchMediaHomepage" >
                        
-                        <input type="text" name="searchMedia"  placeholder="Recherchez des produits" id="search-product-dashboard">
+        <input type="text" name="searchMediaHomepage"  placeholder="Recherchez un titre" >
+        <input type="submit" value="chercher">
+    </form>
 
-                    </form>
+    <section class="response">
+        <?php if(isset($mediaHome)) { ?>
+        <?php foreach ($mediaHome as $media): ?>
+            <a href="<?php echo $router->generate('getMedia', ['id_media' => $media->getId_media()]); ?>"><p><?php echo $media->getTitle() ?></p></a>
+            
+        <?php endforeach; ?>
+        <?php }else { ?>
+            <p>Aucun titre ne correspond à votre recherche.</p>
+        <?php } ?>
+    </section>
 
                             <!-- PRODUIT EN VEDETEES -->
 
@@ -70,12 +81,12 @@
                 <div class="carrousel-item"><img src="assets\img\livre1_recto_la_femme_de_ménage.jpg" alt="couverture du livre la femme de ménage"></div>
                 <div class="carrousel-item"><img src="assets\img\livre recto 12.jpg" alt="livre de mélissa da costa"></div>
                 <div class="carrousel-item"><img src="assets\img\livre3_recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre4 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre5 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre6 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre7 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre8 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre harry potter recto.jpg" alt="livre d'harry potter et le prisonnier d'azkaban"></div>
+                <div class="carrousel-item"><img src="assets\img\livre4_recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre5_recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre6_recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre7_recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre8_recto.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre_harry_potter_recto.jpg" alt="livre d'harry potter et le prisonnier d'azkaban"></div>
                 <div class="carrousel-item"><img src="assets\img\livre recto HG.jpg" alt=""></div>
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>

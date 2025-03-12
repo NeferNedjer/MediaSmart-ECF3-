@@ -209,6 +209,21 @@ class ModelMedia extends Model{
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getsearchMediaHomepage($searchMediaHomepage){
+
+        $search = '%' . $searchMediaHomepage . '%';
+        $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :search');
+        $req->bindParam(':search', $search, PDO::PARAM_STR);
+        $req->execute();
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Media($data);
+        }
+
+        return $arrayobj;
+    }
+
 }
 
 
