@@ -1136,11 +1136,21 @@ div.user-info > .user-info {
   max-height: 97vh;
 }
 
-#grid-user-gestion {
-  display: grid;
-  margin: 10px;
-  width: 100%;
-  grid-template-columns: 55% 45%;
+div.user-dashboard a {
+  width: 5px;
+}
+
+.user-dashboard > form > .supprimer {
+  background-color: #f44336;
+  background-color: #dc3545;
+  color: #fff;
+  height: 25px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+.user-dashboard > form > .supprimer .user-dashboard form input#supprimer:hover {
+  background-color: #c82333;
 }
 
 #left-grid {
@@ -1165,12 +1175,15 @@ div.user-info > .user-info {
 ul.user-gestion-list > li {
   font-weight: 700;
   color: rgb(122, 121, 121);
-  margin: 15px 25px 0 25px;
+  margin: 5px;
 }
 
 .id-user-dashboard {
   text-decoration: underline;
   font-weight: 700;
+  color: black;
+  text-align: center;
+  margin-left: 15px;
 }
 
 ul.user-gestion-list > li:last-child > button,
@@ -1294,22 +1307,64 @@ ul.user-gestion-list > li:last-child > button,
 
 .edit-form {
   position: absolute;
-  top: 40%;
+  top: 21%;
   display: flex;
   flex-direction: column;
-  gap: 18px;
   max-width: 550px;
   background-color: rgb(255, 255, 255);
   padding: 10px 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  left: 48%;
+  left: 38%;
   transform: translate(-50% -50%);
   z-index: 500;
   border-radius: 5px;
 }
-
-.edit-form a > input {
+.edit-form input {
   margin: 10px;
+}
+.edit-form .edit-form input:focus {
+  border-color: #b66f03;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(182, 111, 3, 0.3);
+}
+.edit-form label.form-label {
+  margin-bottom: 5px;
+  display: flex;
+  color: #555;
+  font-weight: 700;
+  flex-direction: column;
+}
+.edit-form .input-group input {
+  width: 100%;
+}
+.edit-form label {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 600;
+  width: 80%;
+  font-family: "Roboto", sans-serif;
+}
+.edit-form .edit-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.edit-form .modifier {
+  background-color: #4CAF50; /* Green for modifier */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .activity-hidden {
@@ -1320,73 +1375,10 @@ ul.user-gestion-list > li:last-child > button,
   display: block;
 }
 
-.edit-form > input.modifier {
-  background-color: #b66f03;
-  color: #fff;
-  z-index: 0;
-  padding: 5px;
-  border-radius: 5px;
-  height: 25px;
-  border: none;
-}
-
-.edit-form a > input.modifier:hover {
-  background-color: #d98e21;
-}
-
-.edit-form a > input#annuler {
-  background-color: #f8f9fa;
-  color: #000;
-}
-
-#edit-form a > input#annuler:hover {
-  background-color: #e2e6ea;
-}
-
-#edit-form a > input#supprimer {
-  background-color: #dc3545;
-  color: #fff;
-  height: 25px;
-  border-radius: 5px;
-  border: none;
-}
-
-.edit-form a > input#supprimer:hover {
-  background-color: #c82333;
-}
-
 .edit-flex {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.edit-form label {
-  font-size: 12px;
-  color: #555;
-  margin-bottom: 5px;
-  font-weight: 600;
-  width: 80%;
-  font-family: "Roboto", sans-serif;
-}
-
-.edit-form input:focus {
-  border-color: #b66f03;
-  outline: none;
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(182, 111, 3, 0.3);
-}
-
-label.form-label {
-  margin-bottom: 5px;
-  display: flex;
-  color: #555;
-  font-weight: 700;
-  flex-direction: column;
-}
-
-.input-group input {
-  width: 100%;
 }
 
 .switch {
@@ -1568,7 +1560,7 @@ label.form-label {
 
 .user-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   align-items: center;
   padding: 10px;
@@ -1588,7 +1580,7 @@ label.form-label {
 
 .user-row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   align-items: center;
   padding: 10px;

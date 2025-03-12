@@ -89,44 +89,47 @@
                                     <button type="submit" id="more-dashboard">More</button>
                                 </a>
 
-
                                 <a href="javascript:void(0)" data-id="<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-user">
                                     <img src="../assets/img/icons8-orange-edit-50 (1).png" alt="Edit">
                                 </a>
 
-                                <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="<?php echo $router->generate('update-user'); ?>" style="display: none;">
+                                <form action="/update" method="POST" style="display: inline;">
                                     <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($data->getId_user()); ?>">
-
-                                    <label for="name_user">Nom :</label>
-                                    <input type="text" name="name_user" id="name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getName()); ?>" required><br>
-
-                                    <label for="first_name_user">Prénom :</label>
-                                    <input type="text" name="first_name_user" id="first_name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getFirst_name()); ?>" required><br>
-
-                                    <label for="adress">Adresse :</label>
-                                    <input type="text" name="adress" id="adress-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getAdress()); ?>" required><br>
-
-                                    <label for="phone">Téléphone :</label>
-                                    <input type="text" name="phone" id="phone-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getPhone()); ?>" required><br>
-
-                                    <label for="email">Email :</label>
-                                    <input type="email" name="email" id="email-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getEmail()); ?>" required><br>
-
-                                    <label for="statut">Statut :</label>
-                                    <input type="number" id="statut-<?php echo htmlspecialchars($data->getId_user()); ?>" name="statut" value="<?php echo htmlspecialchars($data->getStatut()); ?>"><br>
-
-
-                                    
-                                    <div class="edit-flex">
-                                        <a href="/update"><input type="submit " name="update" class="modifier">Enregistrer les modifications</a>
-                                        <a href="/update"><input type="submit " name="delete" class="supprimer">Supprimer</a>
-
-                                        <button type="button" onclick="hideEditForm(<?php echo htmlspecialchars($data->getId_user()); ?>)">Annuler</button>
-                                    </div>
+                                    <input type="submit" name="delete" class="supprimer" value="Supprimer">
                                 </form>
                             </div>
                         </div>
+
+                        <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="/update">
+                            <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($data->getId_user()); ?>">
+
+                            <label for="name_user">Nom :</label>
+                            <input type="text" name="name_user" id="name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getName()); ?>" required><br>
+
+                            <label for="first_name_user">Prénom :</label>
+                            <input type="text" name="first_name_user" id="first_name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getFirst_name()); ?>" required><br>
+
+                            <label for="adress">Adresse :</label>
+                            <input type="text" name="adress" id="adress-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getAdress()); ?>" required><br>
+
+                            <label for="phone">Téléphone :</label>
+                            <input type="text" name="phone" id="phone-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getPhone()); ?>" required><br>
+
+                            <label for="email">Email :</label>
+                            <input type="email" name="email" id="email-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getEmail()); ?>" required><br>
+
+                            <label for="statut">Statut :</label>
+                            <input type="number" id="statut-<?php echo htmlspecialchars($data->getId_user()); ?>" name="statut" value="<?php echo htmlspecialchars($data->getStatut()); ?>"><br>
+
+                            <div class="edit-flex">
+                                <input type="submit" name="update" class="modifier" value="Enregistrer les modifications">
+                                <button type="button" onclick="hideEditForm(<?php echo htmlspecialchars($data->getId_user()); ?>)">Annuler</button>
+                            </div>
+                        </form>
                     <?php endforeach; ?>
+
+
+
 
                 </section>
                 <section id="right-grid">
