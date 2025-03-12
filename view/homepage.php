@@ -55,7 +55,7 @@
     } ?>
 
     <section id="product">
-        <h1>Livre à la Une</h1>
+        <h1>Livre à la Une :</h1>
         <div class="product-keyword">
             <ul class="list-keyword">
                 <li>Tous</li>
@@ -67,16 +67,16 @@
         </div>
         <div class="carrousel-container">
             <div class="carrousel">
-                <div class="carrousel-item"><img src="assets\img\livre1_recto_la_femme_de_ménage.jpg" alt="couverture du livre la femme de ménage"></div>
-                <div class="carrousel-item"><img src="assets\img\livre recto 12.jpg" alt="livre de mélissa da costa"></div>
-                <div class="carrousel-item"><img src="assets\img\livre3_recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre4 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre5 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre6 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre7 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre8 recto.jpg" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre harry potter recto.jpg" alt="livre d'harry potter et le prisonnier d'azkaban"></div>
-                <div class="carrousel-item"><img src="assets\img\livre recto HG.jpg" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre1_recto_la_femme_de_ménage.webp" alt="couverture du livre la femme de ménage"></div>
+                <div class="carrousel-item"><img src="assets\img\livre recto_12.webp" alt="livre de mélissa da costa"></div>
+                <div class="carrousel-item"><img src="assets\img\livre3_recto.webp" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre4_recto.webp" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre5_recto.webp" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre6_recto.webp" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre7_recto.webp" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre8_recto.webp" alt=""></div>
+                <div class="carrousel-item"><img src="assets\img\livre-harry-potter-recto.webp" alt="livre d'harry potter et le prisonnierd'azkaban"></div>
+                <div class="carrousel-item"><img src="assets\img\livre recto_HG.webp" alt=""></div>
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
@@ -102,12 +102,28 @@
         <h1>Ajout récent :</h1>
         <section id="last-add">
                 <?php foreach ($datas as $data): ?>
-                <div class="card-product"class="title-product-latest"><?php echo $data->getTitle(); ?>
-                <img src="<?php echo $data->getImage_recto(); ?>" alt="">
-                    <div class="card"class="description-product-latest"><?php echo $data->getDescription(); ?>
+                    <section class="img-last-add"><img src="<?php echo $data->getImage_recto(); ?>" alt="">
+                    </section>
+                    <section class="details-last-add"><div class="card-product"class="title-product-latest"><?php echo $data->getTitle(); ?>
+                
+                <div class="card"class="description-product-latest">
+                    
+                    <div class="details">
+                        <p><?php echo $data->getDescription(); ?></p>
+                        <div class="auteur-product-latest"><?php echo $data->getAuthor(); ?></div>
                     </div>
-                    <div class="auteur-product-latest"><?php echo $data->getAuthor(); ?></div>
-                </div>
+                </div></section>
+                <!-- <div class="card-product"class="title-product-latest"><?php //echo $data->getTitle(); ?> -->
+                
+                    <!-- <div class="card"class="description-product-latest">
+                        <img src="<?php //echo $data->getImage_recto(); ?>" alt="">
+                        <div class="details">
+                            <p><?php //echo $data->getDescription(); ?></p>
+                            <div class="auteur-product-latest"><?php //echo $data->getAuthor(); ?></div>
+                        </div>
+                    </div>
+                     -->
+                
                
                 
 <!--                        
@@ -128,7 +144,7 @@
                     </div> -->
                     
 
-                </div>
+            
 
                 <?php endforeach; ?>     
         </section>

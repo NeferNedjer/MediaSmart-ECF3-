@@ -287,7 +287,11 @@ button:hover {
   gap: 20px;
 }
 
-#last-add > .card-product > .card > img {
+#last-add > .card-product > .card {
+  display: flex;
+}
+
+#last-add > .img-last-add {
   max-height: 100px;
   height: 100%;
   -o-object-fit: contain;
