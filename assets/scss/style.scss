@@ -356,12 +356,16 @@ button:hover {
   margin : 0 0 20px 10px;
 }
 #last-add {
-    display: $grid;
+    display: grid;
     grid-template-columns: 38% 62%;
     gap: 20px;
 }
 
-#last-add > .card-product > .card > img {
+#last-add> .card-product> .card{
+  display: flex;
+}
+
+#last-add > .img-last-add{
   max-height: 100px;
   height: 100%;
   object-fit: contain;
