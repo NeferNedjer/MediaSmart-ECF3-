@@ -48,13 +48,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 
-    function hideEditForm(userId) {
-        const form = document.getElementById('edit-form-' + userId);
-        if (form) {
-            form.style.display = 'none'; // Masquer le formulaire
-        }
-    }
+    
 });
+function hideEditForm(userId) {
+    const form = document.getElementById('edit-form-' + userId);
+    if (form) {
+        form.style.display = 'none'; // Masquer le formulaire
+    }
+}
 
 
 
