@@ -100,7 +100,7 @@
                             </div>
                         </div>
 
-                        <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="/update">
+                        <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="/update" style="display:none;">
                             <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($data->getId_user()); ?>">
 
                             <label for="name_user">Nom :</label>
