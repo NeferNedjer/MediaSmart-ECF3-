@@ -44,8 +44,8 @@
 
     <form action="/searchMediaHomepage" method="post" id="searchMediaHomepage" >
                        
-        <input type="text" name="searchMediaHomepage"  placeholder="Recherchez un titre" >
-        <input type="submit" value="chercher">
+        <input id="searchbar" type="text" name="searchMediaHomepage"  placeholder="Recherchez un titre" >
+        <input id="btn" type="submit" value="chercher">
     </form>
 
     <section class="response">
@@ -113,12 +113,12 @@
         <h1>Ajout récent :</h1>
         <section id="last-add">
                 <?php foreach ($datas as $data): ?>
-                <div class="card-product"class="title-product-latest">
-                    <p><?php echo $data->getTitle(); ?></p>
+                <div class="card-product title-product-latest">
+                    <p><?php echo $data->getTitle(); ?><br><br></p>
                     <img src="<?php echo $data->getImage_recto(); ?>" alt="">
                 </div>
                 
-                    <div class="card"class="description-product-latest"><?php echo $data->getDescription(); ?>
+                    <div class="card description-product-latest"><?php echo $data->getDescription(); ?>
                     <div class="auteur-product-latest"><?php echo $data->getAuthor(); ?></div>
                 </div>
                     
