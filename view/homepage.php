@@ -113,12 +113,16 @@
         <h1>Ajout récent :</h1>
         <section id="last-add">
                 <?php foreach ($datas as $data): ?>
-                <div class="card-product"class="title-product-latest"><?php echo $data->getTitle(); ?>
+                <div class="card-product"class="title-product-latest">
+                    <p><?php echo $data->getTitle(); ?></p>
+                    <img src="<?php echo $data->getImage_recto(); ?>" alt="">
+                </div>
                 
-                    <div class="card"class="description-product-latest"><?php echo $data->getDescription(); ?><img src="<?php echo $data->getImage_recto(); ?>" alt="">
-                    </div>
+                    <div class="card"class="description-product-latest"><?php echo $data->getDescription(); ?>
                     <div class="auteur-product-latest"><?php echo $data->getAuthor(); ?></div>
                 </div>
+                    
+                
                
                 
 <!--                        
