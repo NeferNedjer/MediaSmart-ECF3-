@@ -17,11 +17,11 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         <section id="navbar-left">
             <ul class="nav-menu">
                 <li><a href=""><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
-                <li><a href=""><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
-                <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
+                
+             
                 <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
 
-                <li><a href="#"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
+               
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
                 <li><a href="#"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
                 <li>
@@ -161,6 +161,9 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li>En attente</li>
                 </ul>
             </div>
+
+
+        
         </section>
     </section>
 </div>
@@ -171,7 +174,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
         </section>
 
-
+        <script src="../assets/js/theme-toggle.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
         <script src="../assets/js/slider.js"></script>
 

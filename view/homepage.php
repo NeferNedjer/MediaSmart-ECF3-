@@ -13,11 +13,12 @@
 
     <div id="top-mobile">
         <figure>
-            <img src="../assets/img/Capture d'écran 2025-03-12 092131.png" alt="">
+            <img src="../assets/img/Group 46.png" alt="">
             
         </figure>
 
         <ul class="flex">
+            
 
             <!-- EN FONCTION DE LA SESSION AFFICHER L'UN ou L'AUTRE -->
              
@@ -150,7 +151,7 @@ w
         <span>+</span>
     </button>
 </div>
-
+            
     <script src="./assets/js/burger.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
