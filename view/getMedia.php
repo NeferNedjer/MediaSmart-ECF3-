@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="backround" class='flex-container'></div>
+
         <div id="media">
             <div class="media-detail">
                 <div >

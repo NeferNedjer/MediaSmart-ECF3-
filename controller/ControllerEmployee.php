@@ -93,7 +93,7 @@ class ControllerEmployee {
         $categories = $model->getCategories();
         $subcategories = $model->getSubcategories();
         $authors = $model->getAuthors();
-
+        $users = $model->getUsers();
 
         if($id_media == 0) {
             require_once('./view/dashboardMedia.php');

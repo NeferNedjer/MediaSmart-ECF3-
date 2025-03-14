@@ -106,5 +106,21 @@ class ModelEmprunt extends Model {
 
     }
 
+    public function updateEmprunt(int $id_exemplaire) {
+        
+        $req = $this->getDb()->prepare('UPDATE emprunt_resa SET resa = 0 WHERE id_exemplaire = :id_exemplaire');
+        $req->bindParam(':id_exemplaire', $id_exemplaire, PDO::PARAM_INT);
+        $req->execute();
+
+    }
+
+    public function deleteResa(int $id_exemplaire) {
+        
+        $req = $this->getDb()->prepare('DELETE emprunt_resa WHERE id_exemplaire = :id_exemplaire');
+        $req->bindParam(':id_exemplaire', $id_exemplaire, PDO::PARAM_INT);
+        $req->execute();
+
+    }
+
 
 }

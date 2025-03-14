@@ -220,19 +220,6 @@ section#product > div.product-keyword {
   border-radius: 10px;
 }
 
-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  z-index: 1;
-}
-
 button.prev {
   left: 0;
 }
@@ -958,7 +945,7 @@ input#adress {
   z-index: 1100;
   max-width: 800px;
   margin: 0 auto;
-  max-height: 700px;
+  max-height: 1200px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1247,6 +1234,17 @@ div.user-info > .user-info {
   max-height: 97vh;
 }
 
+
+.overflow-y {
+  overflow-y: auto;
+}
+
+#grid-user-gestion {
+  display: grid;
+  margin: 10px;
+  width: 100%;
+  grid-template-columns: 55% 45%;
+
 div.user-dashboard a {
   width: 5px;
 }
@@ -1262,6 +1260,7 @@ div.user-dashboard a {
 }
 .user-dashboard > form > .supprimer .user-dashboard form input#supprimer:hover {
   background-color: #c82333;
+
 }
 
 #left-grid {
@@ -1691,6 +1690,7 @@ ul.user-gestion-list > li:last-child > button,
 
 .user-row {
   display: grid;
+
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   align-items: center;
@@ -1865,6 +1865,7 @@ ul.user-gestion-list > li:last-child > button,
   margin: 25px 10px;
   border: 1px solid rgb(223, 223, 223);
   height: 3vh;
+  text-align: center;
 }
 
 ::-moz-placeholder {
