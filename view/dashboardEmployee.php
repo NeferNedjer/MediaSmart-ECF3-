@@ -101,7 +101,7 @@
                             </div>
                         </div>
 
-                        <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="/update">
+                        <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="/update" style="display:none;">
                             <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($data->getId_user()); ?>">
 
                             <label for="name_user">Nom :</label>
@@ -237,7 +237,7 @@
 
                 <div class="form-group submit-btn" id="submit-btn-group">
                     <input type="submit" value="Valider" id="submit-btn" class="submit-input">
-
+                    <button type="button" id="cancel-btn" class="cancel-input">Annuler</button>
                 </div>
             </form>
         </div>
@@ -250,7 +250,8 @@
 
 
     <script src="./../assets/js/dashboard.js"></script>
-
+                                            
+        <script src="../assets/js/theme-toggle.js"></script>
 
     <script src="./../assets/js/ajaxEmployee.js"></script>
 </body>

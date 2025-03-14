@@ -5,7 +5,9 @@ class ModelMedia extends Model{
     public function mediaHome(){
 
         $req = $this->getDb()->query('SELECT    c.id_category, c.name, s.id_subcategory, s.theme, 
+
                                                 id_media, title, m.id_author, description, image_recto, image_verso, a.name as author
+
                                         FROM    category c, subcategory s, media m, author a 
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory

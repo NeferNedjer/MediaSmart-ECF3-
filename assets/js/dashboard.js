@@ -58,11 +58,7 @@ function hideEditForm(userId) {
 }
 
 
-
-
-
-
-
+// ---------------------------- ADD EMPLOYEE
 
 document.addEventListener("DOMContentLoaded", function() {
  
@@ -82,42 +78,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// ----------------------ADD USER 
-document.addEventListener("DOMContentLoaded", function(){
-    const addEmploye = document.querySelector('.btn-add-user');
-    const formEmploye = document.getElementById('employee-form');
 
-    addEmploye.addEventListener('click', function(){
-        if(formEmploye.style.display === 'none' || formEmploye.style.display === ''){
-            formEmploye.style.display = 'block';
 
-        }else{
-            formEmploye.style.display = 'none';
-        }
-    })
-})
-
-// -----------------------Show detail user 
-
-    // document.addEventListener('DOMContentLoaded', function () {
-     
-    //     const moreDashboardButton = document.getElementById('more-dashboard');
-    //     const userDetails = document.getElementById('user-details');
-    //     const backButton = document.getElementById('back-button');
-        
-       
-    //     moreDashboardButton.addEventListener('click', function() {
-    //         userDetails.style.display = 'block'; 
-    //         backButton.style.display = 'none';    
-    //         moreDashboardButton.style.display = 'none'; 
-    //     });
-
-        
-    //     backButton.addEventListener('click', function(e) {
-    //         e.preventDefault(); 
-    //         userDetails.style.display = 'none';  
-    //         backButton.style.display = 'none';  
-    //         moreDashboardButton.style.display = 'block'; 
-    //     });
-    // });
 
