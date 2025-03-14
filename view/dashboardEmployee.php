@@ -67,8 +67,8 @@
                     <div class="user-container">
                         <ul class="user-gestion-list">
                             <li>id</li>
-                            <li>Name</li>
-                            <li>Date</li>
+                            <li>Nom utilisateur</li>
+                            <li>Dernière connexion</li>
                             <li>Livre non retourné</li>
 
                         </ul>

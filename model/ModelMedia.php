@@ -24,7 +24,7 @@ class ModelMedia extends Model{
         return $arrayobj;
     }
 
-    public function getMediaById(int $id){
+    public function getMediaById(int $id_media){
 
         $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
                                                 id_media, title, m.id_author, image_recto, image_verso, description, a.name as author
@@ -32,8 +32,8 @@ class ModelMedia extends Model{
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory 
                                         AND     m.id_author = a.id_author
-                                        AND     id_media = :id;');
-        $req->bindParam(':id', $id, PDO::PARAM_INT);
+                                        AND     id_media = :id_media;');
+        $req->bindParam(':id_media', $id_media, PDO::PARAM_INT);
         $req->execute();
 
         $data = $req->fetch(PDO::FETCH_ASSOC);
@@ -147,8 +147,6 @@ class ModelMedia extends Model{
         $req->bindParam(':image_recto', $image_recto, PDO::PARAM_STR);
         $req->bindParam(':image_verso', $image_verso, PDO::PARAM_STR);
         $req->bindParam(':id_media', $id_media, PDO::PARAM_INT);
-
-
         $req->execute();
     }
 

@@ -32,7 +32,9 @@ $router->map('GET|POST', '/searchAuthor', 'ControllerAuthor#searchAuthor', 'sear
 
 $router->map('POST', '/media/delete', 'ControllerMedia#delete', 'deleteMedia');
 
-$router->map('GET|POST', '/media/update/[i:id]', 'ControllerMedia#update', 'updateMedia');
+$router->map('GET|POST', '/updateMedia', 'ControllerMedia#updateMedia', 'updateMedia');
+
+$router->map('GET|POST', '/modifMedia/[i:id_media]', 'ControllerMedia#modifMedia', 'modif-media');
 
 $router->map('GET', '/404', 'ControllerMedia#notfound', 'notfound');
 

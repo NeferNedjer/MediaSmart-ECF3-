@@ -89,7 +89,7 @@
                                 
                                 
                                 <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><button type="submit" id="more-dashboard">More</button></a>
-                                <img src="../assets/img/icons8-orange-edit-50 (1).png" alt="" style="height: 25px;">
+                                <a href="<?php echo $router->generate('modif-media', ['id_media' => $data->getId_media()]); ?>"><img src="../assets/img/icons8-orange-edit-50 (1).png" alt="" style="height: 25px;"></a>
                                
                                     
                             </div>
