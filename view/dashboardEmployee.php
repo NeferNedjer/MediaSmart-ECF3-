@@ -23,13 +23,13 @@
     <section id="side-bar-dash">
         <section id="navbar-left">
             <ul class="nav-menu">
-                <li><a href="/"><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
+                <li><a href=""><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
                 <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
-                <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Mail</span></a></li>
-                <li><a href="/dashboardEmployee/0"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
-                <li><a href="/dashboardMedia/0"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
+                <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
+                <li><a href="#"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
+                <li><a href="#"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
-                <li><a href="/logout"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
+                <li><a href="#"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
                 <li>
                     <label class="switch">
                         <input checked="true" id="checkbox" type="checkbox" />
@@ -75,7 +75,6 @@
                     </div>
 
                     <?php foreach ($datas as $data): ?>
-
                         <div class="user-row">
                             <div class="user-dashboard">
                                 <a href="<?php echo $router->generate('dashboard-employee', ['id_user' => $data->getId_user()]); ?>">
@@ -131,19 +130,6 @@
 
 
 
-
-                    <button type="button" onclick="hideEditForm(<?php echo htmlspecialchars($data->getId_user()); ?>)">Annuler</button>
-                </div>
-            </form>
-        </div>
-    </div>
-<?php endforeach; ?>
-
-
-                                <a href="<?php echo $router->generate('modif-user', ['id_user' => $data->getId_user()]); ?>"><img id="edit-user" src="../assets/img/icons8-orange-edit-50 (1).png" alt=""></a>
-                            </div>
-                        </div>
-            
 
                 </section>
                 <section id="right-grid">
@@ -253,7 +239,7 @@
                                             
         <script src="../assets/js/theme-toggle.js"></script>
 
-    <script src="./../assets/js/ajaxEmployee.js"></script>
+    <script src="../assets/js/ajaxEmployee.js"></script>
 </body>
 
 </html>

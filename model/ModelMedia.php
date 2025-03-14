@@ -243,25 +243,6 @@ class ModelMedia extends Model{
 
     public function updateImageMedia(string $image_recto, string $image_verso, int $id_media){
         $req = $this->getDb()->prepare('UPDATE media SET image_recto=:image_recto, image_verso=:image_verso WHERE id_media=:id_media ;');
-
-    public function getsearchMediaHomepage($searchMediaHomepage){
-
-        $search = '%' . $searchMediaHomepage . '%';
-        $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :search');
-        $req->bindParam(':search', $search, PDO::PARAM_STR);
-        $req->execute();
-        $arrayobj = [];
-
-        while($data = $req->fetch(PDO::FETCH_ASSOC)){
-            $arrayobj[] = new Media($data);
-        }
-
-        return $arrayobj;
-    }
-
-}
-
-
         $req->bindParam(':image_recto', $image_recto, PDO::PARAM_STR);
         $req->bindParam(':image_verso', $image_verso, PDO::PARAM_STR);
         $req->bindParam(':id_media', $id_media, PDO::PARAM_INT);
@@ -277,6 +258,19 @@ class ModelMedia extends Model{
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getsearchMediaHomepage($searchMediaHomepage){
 
+        $search = '%' . $searchMediaHomepage . '%';
+        $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :search');
+        $req->bindParam(':search', $search, PDO::PARAM_STR);
+        $req->execute();
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Media($data);
+        }
+
+        return $arrayobj;
+    }
 
 }
