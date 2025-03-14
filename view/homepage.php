@@ -21,12 +21,15 @@
             
 
             <!-- EN FONCTION DE LA SESSION AFFICHER L'UN ou L'AUTRE -->
-             
-            <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
+            <?php if(empty($_SESSION['name'])): ?>
             <li><a id="connexion-home" href="login">Connexion</a></li>
+            <li><a id="connexion-home" href="/register">Inscription</a></li>
+            <?php else: ?>
+            <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
+            
             <li><a id="connexion-home" href="/dashboardEmployee/0">Employee</a></li>
             <li><a id="connexion-home" href="/dashboardMedia/0">Media</a></li>
-            
+            <?php endif;  ?>
         </ul>
         <a href="#">
             <img src="./assets/img/menu.png" alt="" id="burger" style="height: 50px;">
