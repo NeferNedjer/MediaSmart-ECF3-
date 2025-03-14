@@ -209,21 +209,43 @@ $none: none;
 
 // ---------------------------- #search-product ----------------------------
 
-#search-product {
-    width: 85%;
+// #searchMediaHomepage  > #searchbar{
+//     width: 85%;
+//     @include center-flex();
+//     margin: $spacing-small;
+//     border: 1px solid rgb(223, 223, 223);
+//     height: 3vh;
+// }
+
+#searchMediaHomepage > #btn{
+    width: 5%;
     @include center-flex();
     margin: $spacing-small;
-    border: 1px solid rgb(223, 223, 223);
+    border: 1px solid grey;
     height: 3vh;
+    background-color: var(--color-primary);
+    color: white;
+    @include border-radius(5px);
+    cursor: pointer;
 }
+
+
 
 div.search {
     @include center-flex();
+
+        #search-product{
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+        }
+
 }
 
 // ---------------------------- section#product ----------------------------
-
-
 
 section#product{
   height: 150vh;
@@ -267,6 +289,68 @@ section#product > div.product-keyword {
 
 }
 
+
+
+//--------------------------- carrousel ----------------------------
+
+.carrousel-container{
+  position: relative;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px 0 0 0;
+  overflow: hidden;
+
+}
+
+.carrousel{
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carrousel-item{
+  min-width: 100%;
+  box-sizing: border-box;
+  
+}
+
+.carrousel-item img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  @include border-radius(10px)
+
+}
+
+//  button{
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   background-color: rgba(0, 0, 0, 0.5);
+//   color: white;
+//   border: none;
+//   padding: 10px;
+//   cursor: pointer;
+//   transition: background-color 0.3s;
+//   z-index: 1;
+// }
+
+button.prev {
+  left: 0;
+}
+
+button.next {
+  right: 0;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carrousel-item img {
+  transition: transform 0.5s ease-in-out;
+}
+
 // ---------------------------- .card-product ----------------------------
 .card-product {
     margin: $spacing-medium;
@@ -283,6 +367,7 @@ section#product > div.product-keyword {
 .card-product > .card img {
     height: 100%;
     width: 100%;
+    object-fit: contain;
     @include border-radius(4px);
 }
 
@@ -293,6 +378,12 @@ section#product > div.product-keyword {
 
 .flex-product {
   @include center-flex();
+
+  h1 {
+    align-items: baseline ;
+    margin-top: 20px 0 20px 0;
+  }
+
 }
 
 .title-product,
@@ -305,50 +396,52 @@ section#product > div.product-keyword {
 }
 // AJOUT RECENT -------------------
 
-#last-add > .card-product > .card > img {
-  max-height: 350px;
-  height: 100%;
+#last-add h1 {
+  margin: 0 0 20px 10px;
 }
 
 #last-add {
-    display: $grid;
-
-    grid-template-columns: 38% 62%;
+  display: grid;
+  grid-template-columns: 38% 62%;
+  gap: 20px;
+  align-items: center;
 }
 
-#last-add h1 {
-    margin : 0 0 5px 2px;
+#last-add > .card-product > .card {
+  display: flex;
 }
 
-
+#last-add > .card-product > img {
+  max-height: 100px;
+  height: 100%;
+  object-fit: contain;
+}
 
 .horizontal-lign {
   border-top: 1px solid rgb(215, 213, 213);
   width: 100%;
   margin-top: 22px;
-
 }
 
-.auteur-product-latest{
-  margin: 3px 0 0 17px;
+.auteur-product-latest {
+  margin: 25px 0 0 25px;
   font-size: 12px;
+
 }
 
-.title-product-latest{
-  margin: 15px 0 0 15px;
-  font-style: 13px;
-  
+.title-product-latest {
+  margin: 30px 0 0 30px;
+  font-size: 13px;
 }
 
-.description-product-latest{
-  font-size: 11px;
-  margin: 3px 0 0 15px;
+.description-product-latest {
+  font-size: 12px;
+  margin: 30px 0 0 30px;
+
 }
 
-
-.right-last-add{
-  margin: 25px;
-
+.right-last-add {
+  margin: 30px;
 }
 
 // --------------------Responsive Desktop
@@ -1055,7 +1148,7 @@ input#adress{
   z-index: 1100;
   max-width: 800px;
   margin: 0 auto;
-  max-height: 700px;
+  max-height: 1200px;
   position: absolute; 
   top: 50%;
   left: 50%; 
@@ -1221,7 +1314,6 @@ input#adress{
   position: absolute;
   @include border-radius(5px);
   box-shadow: var(--shadow-standard);
-  top: 20%;
   font-family: 'Arial', sans-serif;
   padding: 15px;
   background-color:#2c3e50;
@@ -1295,6 +1387,47 @@ div.user-info > .user-info{
 
 }
 
+//--------------------MEDIA-DETAIL
+
+#media {
+  display: flex;
+  justify-content: center;
+
+  .media-detail {
+    display: flex;
+    flex-direction: column;
+    border: #333;
+
+    img {
+      width: 20rem;
+      height: 30rem;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #333;
+      padding: .5rem;
+    }
+
+    p {
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      padding: .5rem;
+    }
+  
+  }
+  
+}
+
+
+
 // ---------------------------- DASHBOARD EMPLOYE
 
 #side-bar-dash {
@@ -1303,9 +1436,9 @@ div.user-info > .user-info{
   background-color:#2c3e50 ;
 }
 
-#search-user,
+
 #searchEmployee{
-  width: 98%;
+    width: 97%;
     border-radius: 5px;
     margin: 25px 10px;
     border: 1px solid rgb(223, 223, 223);
@@ -1323,6 +1456,21 @@ div.user-info > .user-info{
  
   max-height: 97vh;
 }
+
+
+
+.overflow-y{
+  overflow-y: auto;
+}
+
+#grid-user-gestion{
+  display: $grid;
+  margin: 10px;
+  // max-height: 95vh;
+  width: 100%;
+  grid-template-columns: 55% 45%;
+}
+
 
 
 .user-dashboard > form > .supprimer {
@@ -1350,7 +1498,9 @@ div.user-info > .user-info{
   overflow-y: auto;
   box-shadow: var(--shadow-standard);
   height: 95vh;
-  
+
+  // overflow-y: auto;
+
   border-top-left-radius: 28px;
   border-bottom-left-radius: 8px;
   
@@ -1415,6 +1565,7 @@ ul.user-gestion-list > li:last-child > button,
   z-index: 10;
 }
 
+
 .nav-menu {
   height: 100vh;
   display: $flex;
@@ -1422,6 +1573,7 @@ ul.user-gestion-list > li:last-child > button,
   list-style-type: none;
   padding: 0;
   margin: 0;
+  
   text-align: center;
 }
 
@@ -1508,6 +1660,7 @@ ul.user-gestion-list > li:last-child > button,
 .btn-add-user:active {
   transform: translateX(-50%) scale(0.95);
 }
+
 
 .edit-form{
   position: absolute;
@@ -1808,8 +1961,8 @@ ul.user-gestion-list > li:last-child > button,
 
 .user-row {
   display: grid;
+  width: 95%;
   grid-template-columns: repeat(7, 1fr);
-  
   gap: 10px;
   align-items: center;
   padding: 10px;
@@ -1987,6 +2140,7 @@ ul.user-gestion-list > li:last-child > button,
   margin: 25px 10px;
   border: 1px solid rgb(223, 223, 223);
   height: 3vh;
+  text-align: center;
 }
 
 ::placeholder {         
@@ -2367,7 +2521,66 @@ ul.user-gestion-list > li:last-child > button,
   
   }
 
+
 // ----------------------detail produits
+
+div#top-hidden-resa-bar{
+  display: none;
+  opacity: 0;
+  position: sticky;
+  top: 0;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  border-bottom: solid 1px #cc8c2d6d;
+    #btn-resa-hidden{
+      display: $flex;
+      justify-content: end;
+      margin: 25px;
+      padding: 15px;
+
+        figure img {
+                position: absolute;
+                left: 0;
+                margin: 0 10px;
+        }
+          #resa-btn-hidden{
+            padding: 10px;
+            margin: 0 20px;
+            height: 45px;
+            background-color:#b66f03;
+            color:white;
+            font-size: 16px;
+            @include border-radius(10px);
+            border: none;
+            cursor: pointer;
+            transition: 0.5s ease;
+          }
+
+          #emprunt-btn-hidden{
+            padding: 10px;
+            height: 45px;
+            background-color:#ffffff;
+            color:#b66f03;
+            font-size: 16px;
+            @include border-radius(10px);
+            border: solid;
+            border-color: #b66f03;
+            cursor: pointer;
+            transition: 0.5s ease;
+          }
+
+          #emprunt-btn-hidden:hover,
+          #resa-btn-hidden:hover{
+            transform: scale(1.1);
+          }
+      }
+
+
+}
+
+
 
 .product-detail{
   
@@ -2419,7 +2632,7 @@ ul.user-gestion-list > li:last-child > button,
   bottom: 0;
   width: 100%;
   text-align: center;
-  max-height: 19vh;
+  max-height: 25vh;
   z-index: 1000;
 
   .footer-content {
@@ -2579,7 +2792,7 @@ ul.user-gestion-list > li:last-child > button,
 }
 
 .related-products {
-  max-width: 1200px;
+  max-width: 1150px;
   margin: 40px auto;
   padding: 20px;
   background-color: $color-card-background;
@@ -2606,6 +2819,8 @@ ul.user-gestion-list > li:last-child > button,
   .swiper-slide {
       background-color: #fff;
       border-radius: 5px;
+      max-height: 250px;
+      max-width: 190px;
       box-shadow: var(--shadow-standard);
       text-align: center;
       padding: 10px;
@@ -2647,8 +2862,143 @@ ul.user-gestion-list > li:last-child > button,
 
   }
 
-
   .swiper-pagination-bullet {
       background: $color-button;
   }
 } 
+
+
+// -----------------------------HISTORIC USER
+
+
+.container {
+  overflow-y: auto;
+  width: 91vw;
+  min-height: 86vh;
+  margin: 2rem auto;
+  padding: 0 1rem;
+    .card {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+
+      .card-header h2 {
+        font-size: 1.15rem;
+        font-weight: 400;
+        margin: 5px;
+        color: #2d3748;
+      }
+    
+      .card-header {
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+       
+        
+        #search-historic-user{
+          width: 25%;
+          margin: 5px 15px;
+          padding: 4px;
+          background-color: rgb(248, 247, 247);
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+          box-sizing: border-box;
+        }
+        
+      
+    }
+    
+  }
+    
+
+}
+
+.card-body {
+  padding: 1rem;
+  overflow-x: auto;
+      table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+        
+      thead {
+        background-color: #e67e22;
+      
+      } 
+   
+       th {
+          padding: 0.75rem 1rem;
+          text-align: left;
+          font-size: 0.75rem;
+          font-weight: 500;
+          color: #000000;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          border-bottom: 1px solid #e9ecef;
+          cursor: pointer;
+        }
+
+        th:hover {
+          background-color: #f1f5f9;
+        }
+
+        td {
+          padding: 0.75rem 1rem;
+          font-size: 0.875rem;
+          color: #4b5563;
+          border-bottom: 1px solid #e9ecef;
+          white-space: nowrap;
+        }
+
+        tbody tr:hover {
+          background-color: #f9fafb;
+        
+          th::after {
+            content: "";
+            margin-left: 0.25rem;
+            display: inline-block;
+          }
+          
+          th.sort-asc::after {
+            content: "↑";
+          }
+          
+          th.sort-desc::after {
+            content: "↓";
+          }
+          }
+
+    }
+
+}
+
+
+/* Statut badges */
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-jaune {
+  background-color: #dbeafe;
+  color: #ffe711;
+}
+
+.badge-green {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badge-red {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+
+
+
+
