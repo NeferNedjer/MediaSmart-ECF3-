@@ -61,7 +61,7 @@ class ModelEmprunt extends Model {
 
         $req = $this->getDb()->prepare('
         SELECT  c.id_category, c.name, s.id_subcategory, s.theme, m.id_media, 
-                title, m.id_author, description, image, e.id_exemplaire, status, creation_date,
+                title, m.id_author, description, image_recto, image_verso, e.id_exemplaire, status, creation_date,
                 COALESCE(er.id_user, 0) AS id_user, 
                 COALESCE(u.name, "") AS user_name, 
                 COALESCE(u.first_name, "") AS user_first_name, 
@@ -103,6 +103,22 @@ class ModelEmprunt extends Model {
         }
 
         return $arrayobj;
+
+    }
+
+    public function updateEmprunt(int $id_exemplaire) {
+        
+        $req = $this->getDb()->prepare('UPDATE emprunt_resa SET resa = 0 WHERE id_exemplaire = :id_exemplaire');
+        $req->bindParam(':id_exemplaire', $id_exemplaire, PDO::PARAM_INT);
+        $req->execute();
+
+    }
+
+    public function deleteResa(int $id_exemplaire) {
+        
+        $req = $this->getDb()->prepare('DELETE emprunt_resa WHERE id_exemplaire = :id_exemplaire');
+        $req->bindParam(':id_exemplaire', $id_exemplaire, PDO::PARAM_INT);
+        $req->execute();
 
     }
 

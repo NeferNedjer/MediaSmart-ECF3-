@@ -6,6 +6,8 @@
     <title>Dashboard Media</title>
     <link rel="stylesheet" href="../assets/scss/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> <!-- Correction ici -->
+
 </head>
 
 <body>
@@ -49,6 +51,7 @@
         </section>
         <section id="dashboard">
             <section id="grid-user-gestion">
+
                 <section id="left-grid">
                     <h1>Gestion des Medias</h1>
                     <button class="btn-add-dashboard">
@@ -57,7 +60,7 @@
                     <form action="" method="post" id="search_formMedia" >
                        
                         <input type="text" name="searchMedia"  placeholder="Recherchez des produits" id="search-product-dashboard">
-
+                        <div id="search-results-popup" class="search-results-popup"></div>
                     </form>
                     
                     <div class="user-container">
@@ -69,10 +72,9 @@
                         </ul>
                     </div>
 
-
+            <div class="overflow-y">
                     <?php foreach ($datas as $data): ?>
-                        <a href="" id="responseMedia"></a>
-
+                        <div id="responseMedia"></div>
 
                         <div class="user-row">
                             <div class="user-dashboard">
@@ -93,9 +95,9 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
+                    </div>
                 </section>
                 <section id="right-grid">
-
 
                     <div class="<?php echo ($id_media == 0) ? 'activity-visible' : 'activity-hidden'; ?>">
                             <div class="gestion-user" role="region" tabindex="0">
@@ -132,6 +134,9 @@
 
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
+                                <?php if (empty($exemplairemedia)) : ?>
+                                    <caption>Aucun exemplaire pour ce média</caption>
+                                <?php else : ?>
                             <?php $first = 1; ?>
                             <?php foreach ($exemplairemedia as $exemplaire): ?>
                                 <?php if ($first == 1) {; ?>
@@ -145,22 +150,82 @@
                                         <th>DATE DE CREATION</th>
                                         <th>DISPO</th>
                                         <th>NOM EMPRUNTEUR</th>
+                                        <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <?php } ; 
                                 $first ++;
                                 ?>
                                 <tbody>
-                                    <!-- <.... foreach ($exemplairemedia as $exemplaire): ?> -->
                                         <tr>
-                                            <td><?php echo $exemplaire->getId_exemplaire() ?></td>
-                                            <td><?php if ($exemplaire->getStatus()==1) {echo 'Neuf';} elseif ($exemplaire->getStatus()==2) {echo 'Bon';} elseif ($exemplaire->getStatus()==3) {echo 'Mauvais';} elseif ($exemplaire->getStatus()==4) {echo 'Déchiré';} elseif ($exemplaire->getStatus()==5) {echo 'A JETER !';}  ?></td>
-                                            <td><?php echo $exemplaire->getCreation_date()->format('d/m/y') ?></td>
-                                            <td><?php if ($exemplaire->getResa()==1) {echo 'Réservé';} elseif ($exemplaire->getResa()==0) {echo 'Emprunté';} else {echo 'Disponible';}  ?></td>
-                                            <td><?php echo $exemplaire->getUser_name() ?></td>
+                                        <form method="POST" action="/actionMedia">
+                                            <td>
+                                                <?php echo $exemplaire->getId_exemplaire() ?>
+                                                <input type="hidden" name="id_exemplaire" value="<?php echo $exemplaire->getId_exemplaire(); ?>">
+                                                <input type="hidden" name="id_media" value="<?php echo $exemplaire->getId_media(); ?>">
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                if ($exemplaire->getStatus()==1) {
+                                                    echo 'Neuf';
+                                                    } elseif ($exemplaire->getStatus()==2) {
+                                                        echo 'Bon';
+                                                    } elseif ($exemplaire->getStatus()==3) {
+                                                        echo 'Mauvais';
+                                                    } elseif ($exemplaire->getStatus()==4) {
+                                                        echo 'Déchiré';
+                                                    } elseif ($exemplaire->getStatus()==5) {
+                                                        echo 'A JETER !';
+                                                    }  
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $exemplaire->getCreation_date()->format('d/m/y') ?>
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                if ($exemplaire->getResa()==1) {
+                                                    echo 'Réservé';
+                                                } elseif ($exemplaire->getResa()==0) {
+                                                    echo 'Emprunté';
+                                                } else {
+                                                    echo 'Disponible';
+                                                }  
+                                                ?>
+                                            </td>
+                                            <?php if(!empty($exemplaire->getUser_name())) { ?>
+                                            <td>
+                                                <?php echo $exemplaire->getUser_name().' '.$exemplaire->getUser_first_name() ?>
+                                            </td>
+                                            <?php } else { ?>
+                                            <td>
+                                            <input list="users" name="user" id="user" class="form-input">
+                                            <datalist id="users">
+                                                <?php foreach ($users as $user): ?>
+                                                    <option value="<?php echo $user->getName() . ' ' . $user->getFirst_name(); ?>" data-id="<?php echo $user->getId_user(); ?>">
+                                                <?php endforeach; ?>
+                                            </datalist>
+                                            </td>
+                                            <?php } ?>
+                                            <td>
+                                                <?php 
+                                                if ($exemplaire->getResa()==1) {
+                                                    echo '<button type="submit" name="action" value="Valider">V</button>';
+                                                    echo '     ';
+                                                    echo '<button type="submit" name="action" value="Annuler">A</button>';
+                                                } elseif ($exemplaire->getResa()==0) {
+                                                    echo '<button type="submit" name="action" value="Retour">R</button>';
+                                                } else {
+                                                    echo '<button type="submit" name="action" value="Emprunt">E</button>';
+                                                }  
+                                                ?>
+                                                
+                                            </td>
+                                            </form>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
+                                <?php endif; ?>
                             </table>
                         </div>
                     </div>
@@ -172,74 +237,91 @@
     
 
       <form action="/media-create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form" style="display: none;">
-                <h2 class="form-title">Ajouter un nouveau média</h2>
-                <div class="form-group">
-                    <label for="title">Titre :</label>
-                    <input type="text" name="title" id="title" class="form-control" required>
+            <h2 class="form-title">Ajouter un nouveau média</h2>
+            <div class="form-group">
+                <label for="title">Titre :</label>
+                <input type="text" name="title" id="title" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="author">Auteur :</label>
+                <input list="authors" name="author" id="author" class="form-input">
+                <datalist id="authors">
+                    <?php foreach ($authors as $author): ?>
+                        <option value="<?php echo $author->getName(); ?>" data-id="<?php echo $author->getId_author(); ?>">
+                    <?php endforeach; ?>
+                </datalist>
+            </div>
+ 
+            <div class="form-group category-group">
+                <label class="group-label" for="id_category">Catégorie :</label>
+                <div class="radio-container">
+                    <?php foreach ($categories as $category): ?>
+                        <div class="radio-item">
+                            <input type="radio" name="id_category" id="id_category_<?php echo $category->getId_category(); ?>" value="<?php echo $category->getId_category(); ?>" class="radio-input">
+                            <label for="id_category_<?php echo $category->getId_category(); ?>" class="radio-label"><?php echo $category->getName(); ?></label>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
+            </div>
+                
 
-                <div class="form-group">
-                    <label for="id_author">Auteur :</label>
-                    <!-- <input type="text" name="id_author" id="id_author" class="form-select"> -->
-                    <select name="id_author" id="id_author" class="form-select">
-                        <option value="">Sélectionner un auteur</option>
-                        <?php foreach ($authors as $author): ?>
-                            <option value="<?php echo $author->getId_author(); ?>" ><?php echo $author->getName(); ?></option>
-                        <?php endforeach; ?>
-                    </select>
+            <div class="form-group">
+                <label for="id_subcategory">Genre :</label>
+                <select name="id_subcategory" id="id_subcategory" class="form-select">
+                    <option value="">Sélectionner un genre</option>
+                    <?php foreach ($subcategories as $subcategory): ?>
+                        <option value="<?php echo $subcategory->getId_subcategory(); ?>" data-category-id="<?php echo $subcategory->getId_category(); ?>"><?php echo $subcategory->getTheme(); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
+            <div class="form-group">
+                <label for="description">Description :</label>
+                <textarea name="description" id="description" class="form-textarea" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image_recto" class="file-label">Image recto :</label>
+                <div class="file-upload">
+                    <input type="file" name="image_recto" id="image_recto" class="file-input">
+                    <span class="file-custom">Choisir un fichier</span>
                 </div>
+            </div>
 
-                <div class="form-group category-group">
-                    <label class="group-label">Catégorie :</label>
-                    <div class="radio-container">
-                        <?php foreach ($categories as $category): ?>
-                            <div class="radio-item">
-                                <input type="radio" name="id_category" id="id_category_<?php echo $category->getId_category(); ?>" value="<?php echo $category->getId_category(); ?>" class="radio-input">
-                                <label for="id_category_<?php echo $category->getId_category(); ?>" class="radio-label"><?php echo $category->getName(); ?></label>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
+            <div class="form-group">
+                <label for="image_verso" class="file-label">Image verso :</label>
+                <div class="file-upload">
+                    <input type="file" name="image_verso" id="image_verso" class="file-input">
+                    <span class="file-custom">Choisir un fichier</span>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="id_subcategory">Genre :</label>
-                    <select name="id_subcategory" id="id_subcategory" class="form-select">
-                        <option value="">Sélectionner un genre</option>
-                        <?php foreach ($subcategories as $subcategory): ?>
-                            <option value="<?php echo $subcategory->getId_subcategory(); ?>" data-category-id="<?php echo $subcategory->getId_category(); ?>"><?php echo $subcategory->getTheme(); ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="nbex">Nombre d'exemplaires :</label>
+                <input type="number" name="nbex" id="nbex" class="form-control" >
+            </div>
 
-                <div class="form-group">
-                    <label for="description">Description :</label>
-                    <textarea name="description" id="description" class="form-textarea" required></textarea>
-                </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Créer</button>
+            </div>
+        </form>
 
-                <div class="form-group">
-                    <label for="image" class="file-label">Image :</label>
-                    <div class="file-upload">
-                        <input type="file" name="image" id="image" class="file-input">
-                        <span class="file-custom">Choisir un fichier</span>
-                    </div>
-                </div>
+<?php
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+ini_set('display_errors', 0); ?>
 
-                <div class="form-group">
-                    <label for="nbex">Nombre d'exemplaires :</label>
-                    <input type="number" name="nbex" id="nbex" class="form-control" >
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn-submit">Créer</button>
-                </div>
-            </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 
-
-
-    <script src="../assets/js/ajaxMedia.js"></script>
+    <script src="../assets/js/ajaxMedia2.js"></script>
     <script src="../assets/js/newmedia.js"></script>
     <script src="../assets/js/dashboard.js"></script>
+
 </body>
 </html>

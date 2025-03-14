@@ -10,8 +10,8 @@
     <div id="backround" class='flex-container'></div>
         <div id="user-details">
             <div class="user-info">
-                <img src="<?php echo $media->getImage_recto() ?>" alt="couverture du livre" width="150px" height="200px">
-                <img src="<?php echo $media->getImage_verso() ?>" alt="couverture du livre" width="150px" height="200px">
+                <img src="<?php echo '.'.$media->getImage_recto() ?>" alt="couverture du livre" width="150px" height="200px">
+                <img src="<?php echo '.'.$media->getImage_verso() ?>" alt="couverture du livre" width="150px" height="200px">
                 <h1><?php echo $media->getTitle() ?></h1><br>
                 <p>Chemin de l'image recto : <?php echo $media->getImage_recto() ?></p>
                 <p>Chemin de l'image verso : <?php echo $media->getImage_verso() ?></p>

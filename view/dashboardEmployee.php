@@ -128,7 +128,7 @@
                                 <a href="<?php echo $router->generate('modif-user', ['id_user' => $data->getId_user()]); ?>"><img id="edit-user" src="../assets/img/icons8-orange-edit-50 (1).png" alt=""></a>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+              
 
                 </section>
                 <section id="right-grid">

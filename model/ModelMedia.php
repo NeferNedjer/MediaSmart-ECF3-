@@ -10,7 +10,7 @@ class ModelMedia extends Model{
                                         WHERE   c.id_category = s.id_category 
                                         AND     s.id_subcategory = m.id_subcategory
                                         AND     m.id_author = a.id_author
-                                        ORDER BY id_media DESC LIMIT 10;');
+                                        ORDER BY id_media ;');
 
 
         $arrayobj = [];
@@ -103,16 +103,14 @@ class ModelMedia extends Model{
         return $arrayobj;
     }
 
-    public function createMedia(int $id_subcategory, string $title, int $id_author, string $description, string $image_recto, string $image_verso){
-        $req = $this->getDb()->prepare('INSERT INTO media (id_subcategory, title, id_author, description,  image_recto, image_verso) 
-                                                VALUES (:id_subcategory, :title, :id_author, :description, :image_recto, :image_verso);');
+    public function createMedia(int $id_subcategory, string $title, int $id_author, string $description){
+        $req = $this->getDb()->prepare('INSERT INTO media (id_subcategory, title, id_author, description) 
+                                                VALUES (:id_subcategory, :title, :id_author, :description);');
 
         $req->bindParam(':id_subcategory', $id_subcategory, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
         $req->bindParam(':id_author', $id_author, PDO::PARAM_INT);
         $req->bindParam(':description', $description, PDO::PARAM_STR);
-        $req->bindParam(':image_recto', $image_recto, PDO::PARAM_STR);
-        $req->bindParam(':image_verso', $image_verso, PDO::PARAM_STR);
                
         $req->execute();
 
@@ -191,6 +189,22 @@ class ModelMedia extends Model{
         return $arrayobj;
     }
 
+    public function getUsers(){
+
+        $req = $this->getDb()->query('SELECT * FROM user;');
+
+        $arrayobj = [];
+
+        while($user = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new User($user);
+        }
+
+        return $arrayobj;
+    }
+
+
+
+
     public function getSearchAuthors($search){
         
         $req = $this->getDb()->prepare('SELECT * FROM author WHERE name LIKE :search ORDER BY name LIMIT 10;');
@@ -201,19 +215,47 @@ class ModelMedia extends Model{
 
     }
 
+    // public function getMedia($search) {
+
+    //     $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :search');
+    //     $req->bindParam('search', $search, PDO::PARAM_STR);
+    //     $req->execute();
+    //     return $req->fetchAll(PDO::FETCH_ASSOC);
+    // }
+
     public function getMedia($search) {
 
-        $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :search');
+        $req = $this->getDb()->prepare('SELECT    c.id_category, c.name, s.id_subcategory, s.theme, 
+                                                id_media, title, m.id_author, description, image_recto, image_verso, a.name as author
+                                        FROM    category c, subcategory s, media m, author a 
+                                        WHERE   c.id_category = s.id_category 
+                                        AND     s.id_subcategory = m.id_subcategory
+                                        AND     m.id_author = a.id_author
+                                        AND     title LIKE :search
+                                        ORDER BY id_media ;');
         $req->bindParam('search', $search, PDO::PARAM_STR);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function updateImageMedia(string $image_recto, string $image_verso, int $id_media){
+        $req = $this->getDb()->prepare('UPDATE media SET image_recto=:image_recto, image_verso=:image_verso WHERE id_media=:id_media ;');
+
+        $req->bindParam(':image_recto', $image_recto, PDO::PARAM_STR);
+        $req->bindParam(':image_verso', $image_verso, PDO::PARAM_STR);
+        $req->bindParam(':id_media', $id_media, PDO::PARAM_INT);
+
+        $req->execute();
+    }
+
+    public function searchMedia($query) {
+
+        $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :query ORDER BY title LIMIT 15;');
+        $req->bindParam(':query', '%' . $query . '%', PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
 }
-
-
-
-
-
-
- 
