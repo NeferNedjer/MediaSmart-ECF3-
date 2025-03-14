@@ -221,7 +221,7 @@ $none: none;
     width: 5%;
     @include center-flex();
     margin: $spacing-small;
-    border: 1px solid rgb();
+    border: 1px solid grey;
     height: 3vh;
     background-color: var(--color-primary);
     color: white;
@@ -1461,10 +1461,11 @@ div.user-info > .user-info{
   // max-height: 95vh;
   width: 100%;
   grid-template-columns: 55% 45%;
+}
 
 div.user-dashboard a {
   width: 5px;
-
+ height:0;
 }
 
 .user-dashboard > form > .supprimer {
@@ -1566,6 +1567,7 @@ ul.user-gestion-list > li:last-child > button,
   list-style-type: none;
   padding: 0;
   margin: 0;
+  
   text-align: center;
 }
 

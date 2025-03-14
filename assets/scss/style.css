@@ -129,23 +129,13 @@
   opacity: 0.9;
 }
 
-#searchMediaHomepage input {
-  width: 85%;
+#searchMediaHomepage > #btn {
+  width: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 8px;
-  border: 1px solid rgb(223, 223, 223);
-  height: 3vh;
-}
-
-#searchMediaHomepage button {
-  width: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 8px;
-  border: 1px solid rgb(22, 22, 22);
+  border: 1px solid grey;
   height: 3vh;
   background-color: var(--color-primary);
   color: white;
@@ -1244,8 +1234,6 @@ div.user-info > .user-info {
   max-height: 97vh;
 }
 
-
-
 .overflow-y {
   overflow-y: auto;
 }
@@ -1255,11 +1243,12 @@ div.user-info > .user-info {
   margin: 10px;
   width: 100%;
   grid-template-columns: 55% 45%;
+}
 
 div.user-dashboard a {
   width: 5px;
+  height: 0;
 }
-
 
 .user-dashboard > form > .supprimer {
   background-color: #f44336;
@@ -1272,10 +1261,10 @@ div.user-dashboard a {
 }
 .user-dashboard > form > .supprimer .user-dashboard form input#supprimer:hover {
   background-color: #c82333;
-
 }
 
 #left-grid {
+  overflow-y: auto;
   box-shadow: var(--shadow-standard);
   height: 95vh;
   border-top-left-radius: 28px;
@@ -1285,6 +1274,7 @@ div.user-dashboard a {
 #right-grid {
   box-shadow: var(--shadow-standard);
   height: 91vh;
+  overflow-y: auto;
   border-top-left-radius: 28px;
   border-bottom-left-radius: 8px;
 }
@@ -1700,7 +1690,7 @@ ul.user-gestion-list > li:last-child > button,
 
 .user-row {
   display: grid;
-
+  width: 95%;
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   align-items: center;
