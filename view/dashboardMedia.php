@@ -294,13 +294,15 @@
                 <div class="file-upload">
                     <input type="file" name="image_verso" id="image_verso" class="file-input">
                     <span class="file-custom">Choisir un fichier</span>
+
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="nbex">Nombre d'exemplaires :</label>
-                <input type="number" name="nbex" id="nbex" class="form-control" >
-            </div>
+
+                <div class="form-group">
+                    <label for="nbex">Nombre d'exemplaires :</label>
+                    <input type="number" name="nbex" id="nbex" class="form-control" value="1" >
+                </div>
 
             <div class="form-actions">
                 <button type="submit" class="btn-submit">Créer</button>

@@ -38,6 +38,8 @@ $router->map('GET', '/404', 'ControllerMedia#notfound', 'notfound');
 
 $router->map('GET', '/getMedia/[i:id_media]', 'ControllerMedia#getMedia', 'getMedia');
 
+$router->map('POST', '/searchMediaHomepage', 'ControllerMedia#searchMediaHomepage', 'search-media-homepage');
+
 /*----------USER----------*/
 
 

@@ -25,7 +25,7 @@
             <ul class="nav-menu">
                 <li><a href="/"><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
                 <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
-                <li><a href="https://mailtrap.io/inboxes/3460695/messages/4762720767" target="_blank"><img src="../assets/img/inbox-24.ico" alt=""> <span> Mail</span></a></li>
+                <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Mail</span></a></li>
                 <li><a href="/dashboardEmployee/0"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
                 <li><a href="/dashboardMedia/0"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
@@ -54,9 +54,9 @@
                     <h1>Gestion des Utilisateurs</h1>
 
 
-                    <form action="" method="post" id="search_formEmployee" >
-                        <label for="searchEmployee">Rechercher un utilisateur :</label>
-                        <input type="text" name="searchEmployee" id="searchEmployee">
+                    <form action="" method="post" id="search_formEmployee">
+                        <label for="searchEmployee"></label>
+                        <input type="text" name="searchEmployee" id="searchEmployee" placeholder="Rechercher un utilisateur">
                     </form>
 
 
@@ -76,46 +76,61 @@
 
                     <?php foreach ($datas as $data): ?>
 
-                        <a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>" id="responseEmployee"></a>
                         <div class="user-row">
                             <div class="user-dashboard">
+                                <a href="<?php echo $router->generate('dashboard-employee', ['id_user' => $data->getId_user()]); ?>">
+                                    <p class="id-user-dashboard"><?php echo $data->getId_user() ?></p>
+                                </a>
 
-            <p class="name-dashboard"><?php echo $data->getName() ?> <?php echo $data->getFirst_name() ?></p>
-            <p class="date-dashboard"><?php echo $data->getLast_connexion()->format('d/m/y') ?></p>
-            <p class="livre-non"><?php echo $data->getNb_outdated_emprunt() !== null ? $data->getNb_outdated_emprunt() : 0 ?></p>
+                                <p class="name-dashboard"><?php echo $data->getName() ?> <?php echo $data->getFirst_name() ?></p>
+                                <p class="date-dashboard"><?php echo $data->getLast_connexion()->format('d/m/y') ?></p>
+                                <p class="livre-non"><?php echo $data->getNb_outdated_emprunt() !== null ? $data->getNb_outdated_emprunt() : 0 ?></p>
 
-            <a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>">
-                <button type="submit" id="more-dashboard">More</button>
-            </a>
+                                <a href="<?php echo $router->generate('getUser', ['id' => $data->getId_user()]); ?>">
+                                    <button type="submit" id="more-dashboard">More</button>
+                                </a>
 
-          
-            <a href="javascript:void(0)" data-id="<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-user">
-                <img src="../assets/img/icons8-orange-edit-50 (1).png" alt="Edit">
-            </a>
+                                <a href="javascript:void(0)" data-id="<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-user">
+                                    <img src="../assets/img/icons8-orange-edit-50 (1).png" alt="Edit">
+                                </a>
 
-            <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="<?php echo $router->generate('update-user'); ?>" style="display: none;">
-                <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($data->getId_user()); ?>">
+                                <form action="/update" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($data->getId_user()); ?>">
+                                    <input type="submit" name="delete" class="supprimer" value="Supprimer">
+                                </form>
+                            </div>
+                        </div>
 
-                <label for="name">Nom :</label>
-                <input type="text" name="name" id="name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getName()); ?>" required><br>
+                        <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="/update">
+                            <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($data->getId_user()); ?>">
 
-                <label for="first_name">Prénom :</label>
-                <input type="text" name="first_name" id="first_name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getFirst_name()); ?>" required><br>
+                            <label for="name_user">Nom :</label>
+                            <input type="text" name="name_user" id="name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getName()); ?>" required><br>
 
-                <label for="adress">Adresse :</label>
-                <input type="text" name="adress" id="adress-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getAdress()); ?>" required><br>
+                            <label for="first_name_user">Prénom :</label>
+                            <input type="text" name="first_name_user" id="first_name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getFirst_name()); ?>" required><br>
 
-                <label for="phone">Téléphone :</label>
-                <input type="text" name="phone" id="phone-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getPhone()); ?>" required><br>
+                            <label for="adress">Adresse :</label>
+                            <input type="text" name="adress" id="adress-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getAdress()); ?>" required><br>
 
-                <label for="email">Email :</label>
-                <input type="email" name="email" id="email-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getEmail()); ?>" required><br>
+                            <label for="phone">Téléphone :</label>
+                            <input type="text" name="phone" id="phone-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getPhone()); ?>" required><br>
 
-                <label for="statut">Statut :</label>
-                <input type="number" id="statut-<?php echo htmlspecialchars($data->getId_user()); ?>" name="statut" value="<?php echo htmlspecialchars($data->getStatut()); ?>"><br>
+                            <label for="email">Email :</label>
+                            <input type="email" name="email" id="email-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getEmail()); ?>" required><br>
 
-                <div class="edit-flex">
-                <button type="submit" name="submit">Enregistrer les modifications</button>
+                            <label for="statut">Statut :</label>
+                            <input type="number" id="statut-<?php echo htmlspecialchars($data->getId_user()); ?>" name="statut" value="<?php echo htmlspecialchars($data->getStatut()); ?>"><br>
+
+                            <div class="edit-flex">
+                                <input type="submit" name="update" class="modifier" value="Enregistrer les modifications">
+                                <button type="button" onclick="hideEditForm(<?php echo htmlspecialchars($data->getId_user()); ?>)">Annuler</button>
+                            </div>
+                        </form>
+                    <?php endforeach; ?>
+
+
+
 
                     <button type="button" onclick="hideEditForm(<?php echo htmlspecialchars($data->getId_user()); ?>)">Annuler</button>
                 </div>
@@ -128,7 +143,7 @@
                                 <a href="<?php echo $router->generate('modif-user', ['id_user' => $data->getId_user()]); ?>"><img id="edit-user" src="../assets/img/icons8-orange-edit-50 (1).png" alt=""></a>
                             </div>
                         </div>
-              
+            
 
                 </section>
                 <section id="right-grid">
@@ -175,19 +190,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <?php if (isset($empruntsuser)) : ?>
-                                    <?php foreach ($empruntsuser as $data): ?>
-
-                                        <tr>
-                                            <td><?php echo $dataM->getId_media() ?></td>
-                                            <td><?php echo $dataM->getTitle() ?></td>
-                                            <td><?php echo $dataM->getStatus() ?></td>
-                                            <td><?php echo $dataM->getEmprunt_date()->format('d/m/y') ?></td>
-                                            <td><?php echo $dataM->getMax_return_date()->format('d/m/y') ?></td>
-                                        </tr>
+                                        <?php foreach ($empruntsuser as $data): ?>
+                                            <tr>
+                                                <td><?php echo $data->getId_media() ?></td>
+                                                <td><?php echo $data->getTitle() ?></td>
+                                                <td><?php echo $data->getStatus() ?></td>
+                                                <td><?php echo $data->getEmprunt_date()->format('d/m/y') ?></td>
+                                                <td><?php echo $data->getMax_return_date()->format('d/m/y') ?></td>
+                                            </tr>
                                         <?php endforeach; ?>
-                                        <?php endif; ?>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -196,67 +209,40 @@
             </section>
         </section>
 
-        <div class="form-container" id="form-container" style="display :none"> 
+        <div class="form-container" id="form-container" style="display :none">
 
-        <form action="/createEmployee" method="POST" id="employee-form">
-            <h2 class="text-center" id="form-title">Création d'un Employé</h2>
-            
-            <div class="form-group" id="name-group">
-                <label for="name" class="form-label">Nom :</label>
-                <input type="text" name="name" id="name" class="form-input" placeholder="Entrez le nom" required>
-            </div>
+            <form action="/createEmployee" method="POST" id="employee-form">
+                <h2 class="text-center" id="form-title">Création d'un Employé</h2>
 
-            <div class="form-group" id="first-name-group">
-                <label for="first_name" class="form-label">Prénom :</label>
-                <input type="text" name="first_name" id="first_name" class="form-input" placeholder="Entrez le prénom" required>
-            </div>
+                <div class="form-group" id="name-group">
+                    <label for="name" class="form-label">Nom :</label>
+                    <input type="text" name="name" id="name" class="form-input" placeholder="Entrez le nom" required>
+                </div>
 
-            <div class="form-group" id="password-group">
-                <label for="password" class="form-label">Mot de passe :</label>
-                <input type="password" name="password" id="password" class="form-input" placeholder="Entrez le mot de passe" required>
-            </div>
+                <div class="form-group" id="first-name-group">
+                    <label for="first_name" class="form-label">Prénom :</label>
+                    <input type="text" name="first_name" id="first_name" class="form-input" placeholder="Entrez le prénom" required>
+                </div>
 
-            <div class="form-group" id="confpassword-group">
-                <label for="confpassword" class="form-label">Confirmez le mot de passe :</label>
-                <input type="password" name="confpassword" id="confpassword" class="form-input" placeholder="Confirmez le mot de passe" required>
-                <span id="password-error" class="error-message"></span>
-            </div>
+                <div class="form-group" id="password-group">
+                    <label for="password" class="form-label">Mot de passe :</label>
+                    <input type="password" name="password" id="password" class="form-input" placeholder="Entrez le mot de passe" required>
+                </div>
 
-            <div class="form-group submit-btn" id="submit-btn-group">
-                <input type="submit" value="Valider" id="submit-btn" class="submit-input">
-                
-            </div>
-        </form>
-    </div>
+                <div class="form-group" id="confpassword-group">
+                    <label for="confpassword" class="form-label">Confirmez le mot de passe :</label>
+                    <input type="password" name="confpassword" id="confpassword" class="form-input" placeholder="Confirmez le mot de passe" required>
+                    <span id="password-error" class="error-message"></span>
+                </div>
 
-         <form id="edit-form-<?php echo htmlspecialchars($data->getId_user()); ?>" class="edit-form" method="POST" action="<?php echo $router->generate('update-user'); ?>" style="display:none ;">
-    <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($data->getId_user()); ?>">
+                <div class="form-group submit-btn" id="submit-btn-group">
+                    <input type="submit" value="Valider" id="submit-btn" class="submit-input">
+
+                </div>
+            </form>
+        </div>
 
 
-    <label for="name">Nom :</label>
-    <input type="text" name="name" id="name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getName()); ?>" required><br>
-
-    <label for="first_name">Prénom :</label>
-    <input type="text" name="first_name" id="first_name2-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getFirst_name()); ?>" required><br>
-
-
-    <label for="adress">Adresse :</label>
-    <input type="text" name="adress" id="adress-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getAdress()); ?>" required><br>
-
-    <label for="phone">Téléphone :</label>
-    <input type="text" name="phone" id="phone-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getPhone()); ?>" required><br>
-
-    <label for="email">Email :</label>
-    <input type="email" name="email" id="email-<?php echo htmlspecialchars($data->getId_user()); ?>" value="<?php echo htmlspecialchars($data->getEmail()); ?>" required><br>
-
-    <label for="statut">Statut :</label>
-    <input type="number" id="statut-<?php echo htmlspecialchars($data->getId_user()); ?>" name="statut" value="<?php echo htmlspecialchars($data->getStatut()); ?>"><br>
-
-    <div class="edit-flex">
-        <button type="submit">Enregistrer les modifications</button>
-        <button type="button" onclick="hideEditForm(<?php echo htmlspecialchars($data->getId_user()); ?>)">Annuler</button>
-    </div>
-</form>
 
 
     </section>
@@ -266,7 +252,7 @@
     <script src="./../assets/js/dashboard.js"></script>
 
 
-    <script src="../assets/js/ajaxEmployee.js"></script>
+    <script src="./../assets/js/ajaxEmployee.js"></script>
 </body>
 
 </html>

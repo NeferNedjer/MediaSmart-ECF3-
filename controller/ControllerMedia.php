@@ -179,6 +179,7 @@ class ControllerMedia {
 
         require_once('./view/getMedia.php');
     }
+
     
     function convertWebp($id_media, $face, $source, $destination, $qualite = 80) {
         // Vérifier le type MIME du fichier source
@@ -243,6 +244,32 @@ class ControllerMedia {
             }
         }     
     }
+
+
+    public function searchMediaHomepage() {
+
+        global $router;
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchMediaHomepage'])) {
+            $searchMediaHomepage = $_POST['searchMediaHomepage'];
+            $model = new ModelMedia();
+            $mediaHome = $model->getsearchMediaHomepage($searchMediaHomepage);
+            $datas = $model->mediaHome();
+            if (!empty($mediaHome)) {
+                require_once('./view/homepage.php');
+            } else {
+                echo "Aucun titre ne correspond à votre recherche.";
+                header('Location: /');
+                exit();
+            }
+        } else {
+            echo "Aucun titre ne correspond à votre recherche.";
+            header('Location: /');
+            exit();
+        }
+    }
+
+
 
 
 }

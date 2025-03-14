@@ -8,24 +8,21 @@
 </head>
 <body>
     <div id="backround" class='flex-container'></div>
-        <div id="user-details">
-            <div class="user-info">
-                <img src="<?php echo '.'.$media->getImage_recto() ?>" alt="couverture du livre" width="150px" height="200px">
-                <img src="<?php echo '.'.$media->getImage_verso() ?>" alt="couverture du livre" width="150px" height="200px">
+
+        <div id="media">
+            <div class="media-detail">
+                <div >
+                    <img class="img-media" src="<?php echo $media->getImage_recto() ?>" alt="couverture du livre" >
+                    <img class="img-media" src="<?php echo $media->getImage_verso() ?>" alt="couverture du livre" >
+                </div>
                 <h1><?php echo $media->getTitle() ?></h1><br>
-                <p>Chemin de l'image recto : <?php echo $media->getImage_recto() ?></p>
-                <p>Chemin de l'image verso : <?php echo $media->getImage_verso() ?></p>
-                <p>Identifiant : <?php echo $media->getId_media(); ?></p><br>
-                <p>Auteur : <?php echo $media->getAuthor(); ?></p><br>
-                <p>Categorie : <?php echo $media->getId_category(); ?></p><br>
-                <p>sous-categorie : <?php echo $media->getId_subcategory(); ?></p><br>
-                <p>Description : <?php echo $media->getDescription(); ?></p><br>
-               
-        </ul>
+                <h2>Identifiant : </h2> <p> <?php echo $media->getId_media(); ?></p>
+                <h2>Auteur : </h2> <p><?php echo $media->getAuthor(); ?></p>
+                <h2>Categorie : </h2><p><?php echo $media->getId_category(); ?></p>
+                <h2>sous-categorie : </h2><p><?php echo $media->getId_subcategory(); ?></p>
+                <h2>Description : </h2><p><?php echo $media->getDescription(); ?></p>
 
                 <a href="<?php echo $router->generate('dashboard-media', ['id_media' => 0]) ?>">retour</a>
-
-
             </div>
         </div>
     </div>
