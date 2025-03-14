@@ -209,13 +209,27 @@ $none: none;
 
 // ---------------------------- #search-product ----------------------------
 
-#search-product {
-    width: 85%;
+// #searchMediaHomepage  > #searchbar{
+//     width: 85%;
+//     @include center-flex();
+//     margin: $spacing-small;
+//     border: 1px solid rgb(223, 223, 223);
+//     height: 3vh;
+// }
+
+#searchMediaHomepage > #btn{
+    width: 5%;
     @include center-flex();
     margin: $spacing-small;
-    border: 1px solid rgb(223, 223, 223);
+    border: 1px solid rgb();
     height: 3vh;
+    background-color: var(--color-primary);
+    color: white;
+    @include border-radius(5px);
+    cursor: pointer;
 }
+
+
 
 div.search {
     @include center-flex();
@@ -267,6 +281,68 @@ section#product > div.product-keyword {
 
 }
 
+
+
+//--------------------------- carrousel ----------------------------
+
+.carrousel-container{
+  position: relative;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px 0 0 0;
+  overflow: hidden;
+
+}
+
+.carrousel{
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carrousel-item{
+  min-width: 100%;
+  box-sizing: border-box;
+  
+}
+
+.carrousel-item img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  @include border-radius(10px)
+
+}
+
+//  button{
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   background-color: rgba(0, 0, 0, 0.5);
+//   color: white;
+//   border: none;
+//   padding: 10px;
+//   cursor: pointer;
+//   transition: background-color 0.3s;
+//   z-index: 1;
+// }
+
+button.prev {
+  left: 0;
+}
+
+button.next {
+  right: 0;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carrousel-item img {
+  transition: transform 0.5s ease-in-out;
+}
+
 // ---------------------------- .card-product ----------------------------
 .card-product {
     margin: $spacing-medium;
@@ -283,6 +359,7 @@ section#product > div.product-keyword {
 .card-product > .card img {
     height: 100%;
     width: 100%;
+    object-fit: contain;
     @include border-radius(4px);
 }
 
@@ -293,6 +370,12 @@ section#product > div.product-keyword {
 
 .flex-product {
   @include center-flex();
+
+  h1 {
+    align-items: baseline ;
+    margin-top: 20px 0 20px 0;
+  }
+
 }
 
 .title-product,
@@ -305,50 +388,52 @@ section#product > div.product-keyword {
 }
 // AJOUT RECENT -------------------
 
-#last-add > .card-product > .card > img {
-  max-height: 350px;
-  height: 100%;
+#last-add h1 {
+  margin: 0 0 20px 10px;
 }
 
 #last-add {
-    display: $grid;
-
-    grid-template-columns: 38% 62%;
+  display: grid;
+  grid-template-columns: 38% 62%;
+  gap: 20px;
+  align-items: center;
 }
 
-#last-add h1 {
-    margin : 0 0 5px 2px;
+#last-add > .card-product > .card {
+  display: flex;
 }
 
-
+#last-add > .card-product > img {
+  max-height: 100px;
+  height: 100%;
+  object-fit: contain;
+}
 
 .horizontal-lign {
   border-top: 1px solid rgb(215, 213, 213);
   width: 100%;
   margin-top: 22px;
-
 }
 
-.auteur-product-latest{
-  margin: 3px 0 0 17px;
+.auteur-product-latest {
+  margin: 25px 0 0 25px;
   font-size: 12px;
+
 }
 
-.title-product-latest{
-  margin: 15px 0 0 15px;
-  font-style: 13px;
-  
+.title-product-latest {
+  margin: 30px 0 0 30px;
+  font-size: 13px;
 }
 
-.description-product-latest{
-  font-size: 11px;
-  margin: 3px 0 0 15px;
+.description-product-latest {
+  font-size: 12px;
+  margin: 30px 0 0 30px;
+
 }
 
-
-.right-last-add{
-  margin: 25px;
-
+.right-last-add {
+  margin: 30px;
 }
 
 // --------------------Responsive Desktop
@@ -1055,7 +1140,7 @@ input#adress{
   z-index: 1100;
   max-width: 800px;
   margin: 0 auto;
-  max-height: 700px;
+  max-height: 1200px;
   position: absolute; 
   top: 50%;
   left: 50%; 
@@ -1221,7 +1306,6 @@ input#adress{
   position: absolute;
   @include border-radius(5px);
   box-shadow: var(--shadow-standard);
-  top: 20%;
   font-family: 'Arial', sans-serif;
   padding: 15px;
   background-color:#2c3e50;
@@ -1295,6 +1379,47 @@ div.user-info > .user-info{
 
 }
 
+//--------------------MEDIA-DETAIL
+
+#media {
+  display: flex;
+  justify-content: center;
+
+  .media-detail {
+    display: flex;
+    flex-direction: column;
+    border: #333;
+
+    img {
+      width: 20rem;
+      height: 30rem;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #333;
+      padding: .5rem;
+    }
+
+    p {
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      padding: .5rem;
+    }
+  
+  }
+  
+}
+
+
+
 // ---------------------------- DASHBOARD EMPLOYE
 
 #side-bar-dash {
@@ -1303,9 +1428,9 @@ div.user-info > .user-info{
   background-color:#2c3e50 ;
 }
 
-#search-user,
+
 #searchEmployee{
-  width: 98%;
+    width: 97%;
     border-radius: 5px;
     margin: 25px 10px;
     border: 1px solid rgb(223, 223, 223);
@@ -1324,6 +1449,23 @@ div.user-info > .user-info{
   max-height: 97vh;
 }
 
+
+
+.overflow-y{
+  overflow-y: auto;
+}
+
+#grid-user-gestion{
+  display: $grid;
+  margin: 10px;
+  // max-height: 95vh;
+  width: 100%;
+  grid-template-columns: 55% 45%;
+
+div.user-dashboard a {
+  width: 5px;
+
+}
 
 .user-dashboard > form > .supprimer {
     background-color: #f44336; 
@@ -1350,7 +1492,9 @@ div.user-info > .user-info{
   overflow-y: auto;
   box-shadow: var(--shadow-standard);
   height: 95vh;
-  
+
+  // overflow-y: auto;
+
   border-top-left-radius: 28px;
   border-bottom-left-radius: 8px;
   
@@ -1508,6 +1652,7 @@ ul.user-gestion-list > li:last-child > button,
 .btn-add-user:active {
   transform: translateX(-50%) scale(0.95);
 }
+
 
 .edit-form{
   position: absolute;
@@ -1808,8 +1953,8 @@ ul.user-gestion-list > li:last-child > button,
 
 .user-row {
   display: grid;
+  width: 95%;
   grid-template-columns: repeat(7, 1fr);
-  
   gap: 10px;
   align-items: center;
   padding: 10px;
@@ -1987,6 +2132,7 @@ ul.user-gestion-list > li:last-child > button,
   margin: 25px 10px;
   border: 1px solid rgb(223, 223, 223);
   height: 3vh;
+  text-align: center;
 }
 
 ::placeholder {         
@@ -2367,6 +2513,7 @@ ul.user-gestion-list > li:last-child > button,
   
   }
 
+
 // ----------------------detail produits
 
 .product-detail{
@@ -2652,3 +2799,4 @@ ul.user-gestion-list > li:last-child > button,
       background: $color-button;
   }
 } 
+
