@@ -87,6 +87,12 @@ $router->map('POST', '/createSubCategory', 'ControllerMedia#createSubCategory', 
 
 $router->map('GET', '/getCategory', 'ControllerMedia#getCategory', 'getCategory');
 
+$router->map('GET|POST', '/modifEmployee/[i:id_employee]', 'Controlleremployee#modifemployee', 'modif-employee');
+
+$router->map('GET', '/getEmployee', 'ControllerEmployee#getEmployee', 'getEmployee');
+
+$router->map('GET|POST', '/deleteEmployee', 'ControllerEmployee#deleteEmployee', 'deleteEmployee');
+
 $match = $router->match();
 
 // var_dump($router);
