@@ -1,6 +1,6 @@
 let splide = new Splide( '.splide', {
   perPage: 3,
-  gap    : '2rem',
+  gap    : '5rem',
   type:'loop',
   pagination: false,
   autoplay: true,

@@ -283,7 +283,33 @@ class ControllerMedia {
          
     }
 
+    public function createCategory() {
 
+        global $router;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nameCategory = $_POST['nameCategory'];
+            $modelCategory = new ModelCategory();
+            $modelCategory->updateCategory($nameCategory);
+            header('Location: /dashboardMedia/0');
+            exit();
+            
+        }
+    }
+
+    public function createSubcategory() {
+
+        global $router;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+           
+            $nameSubCategory = $_POST['nameSubCategory'];
+            $modelSubCategory = new ModelSubCategory();
+            $modelSubCategory->updateSubCategory($nameSubCategory);
+            header('Location: /dashboardMedia/0');
+            exit();
+        }
+    }
 
 
 }

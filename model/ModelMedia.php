@@ -271,4 +271,11 @@ class ModelMedia extends Model{
         return $arrayobj;
     }
 
+    public function getLastMedia() {
+        
+        $req = $this->getDb()->query('SELECT * FROM media ORDER BY id_media DESC LIMIT 1');
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        return new Media($data);
+    }
+
 }
