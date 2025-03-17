@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -16,14 +16,14 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     <section id="side-bar-dash">
         <section id="navbar-left">
             <ul class="nav-menu">
-                <li><a href=""><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
+                <li><a href="/"><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
                 
              
-                <li><a href="#"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
+                <li><a href="" target="_blank"><img src="../assets/img/inbox-24.ico" alt=""> <span> Mail</span></a></li>
 
                
                 <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
-                <li><a href="#"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
+                <li><a href="/logout"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
                 <li>
                     <label class="switch">
                         <input checked="true" id="checkbox" type="checkbox" />
@@ -49,70 +49,27 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <section class="splide" aria-label="">
                         <div class="splide__track">
                             <ul class="splide__list">
+                                <?php foreach ($medias as $media): ?>
                                 <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 59058.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
+                                
+                                    <figure><img src="<?php echo $media->getImage_recto(); ?>" alt="">
+                                        <figcaption><?php echo $media->getTitle(); ?></figcaption>
                                     </figure>
                                 </li>
-                                <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 75358.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-                                <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-                                <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-                                <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-                                <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-                                <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-                                <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-                                <li class="splide__slide">
-                                    <figure><img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-                                <li class="splide__slide">
-                                    <figure><img src="" alt="">
-                                        <figcaption>La legende</figcaption>
-                                    </figure>
-                                </li>
-
+                               <?php endforeach; ?>
 
                             </ul>
-                            <h1>Les 10 livres les plus vendues</h1>
+                            <h1>Les livres les plus empruntés</h1>
                         </div>
                     </section>
 
                 </div>
                 <div id="infos-media">
                     <figure>
-                        <img src="../assets/img/Firefly génère moi des images de couverture de livre différente , merci 99256.jpg" alt="">
+                        <img src="<?php echo $lastmedia->getImage_recto(); ?>" alt="">
                     </figure>
-                    <p class="title-infos">Company of One</p>
-                    <p class="auteur-infos">Paul Janis</p>
+                    <p class="title-infos"><?php echo $lastmedia->getTitle(); ?></p>
+                    <p class="auteur-infos"><?php echo $lastmedia->getAuthor(); ?></p>
 
 
                     <p class="description">Dans une petite ville côtière oubliée du temps, Clara, une jeune historienne, arrive pour découvrir les secrets enfouis d'une ancienne famille aristocratique. Lorsqu'elle tombe sur un vieux journal intime, des événements mystérieux, liés à une disparition vieille de plusieurs décennies, refont surface.</p>
@@ -127,7 +84,8 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         <section class="emprunt-user">
             <h2>Vos Emprunts</h2>
             <div class="emprunt-lists">
-                <ul class="emprunt-header">
+                <?php foreach($emprunts as $emprunt): ?>
+                <ul class="emprunt-header">  
                     <li>MEDIA</li>
                     <li>EXEMPLAIRE</li>
                     <li>TITRE</li>
@@ -135,12 +93,13 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li>DATE DE RETOUR</li>
                 </ul>
                 <ul class="emprunt-data">
-                    <li>#5</li>
-                    <li>#5</li>
-                    <li>Company of One</li>
-                    <li>22/11/2024</li>
-                    <li>22/12/2024</li>
+                    <li><?php echo $emprunt->getId_media(); ?></li>
+                    <li><?php echo $emprunt->getId_exemplaire(); ?></li>
+                    <li><?php echo $emprunt->getTitle(); ?></li>
+                    <li><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></li>
+                    <li><?php echo $emprunt->getMax_return_date()->format('d/m/y'); ?></li>
                 </ul>
+                
             </div>
         </section>
         <section class="resa-user">
@@ -154,12 +113,13 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li>STATUT</li>
                 </ul>
                 <ul class="resa-data">
-                    <li>#5</li>
-                    <li>#5</li>
-                    <li>Company of One</li>
-                    <li>22/11/2024</li>
-                    <li>En attente</li>
+                    <li><?php echo $emprunt->getId_media(); ?></li>
+                    <li><?php echo $emprunt->getId_exemplaire(); ?></li>
+                    <li><?php echo $emprunt->getTitle(); ?></li>
+                    <li><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></li>
+                    <li><?php echo $emprunt->getResa() ?></li>
                 </ul>
+                <?php endforeach;  ?>
             </div>
 
 

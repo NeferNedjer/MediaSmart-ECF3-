@@ -43,6 +43,7 @@
                     <p>En savoir plus</p>
 
 
+
                 </div>
             </div>
             <img src="../assets/img/header (2).jpg" alt="">
@@ -68,6 +69,18 @@
                 <li><a href="#">BANDE DESSINEE</a></li>
                 <li><a href="#">JEUNESSE</a></li>
             </ul>
+
+            <!-- EN FONCTION DE LA SESSION AFFICHER L'UN ou L'AUTRE -->
+            <?php if(empty($_SESSION['name'])): ?>
+            <li><a id="connexion-home" href="login">Connexion</a></li>
+            <li><a id="connexion-home" href="/register">Inscription</a></li>
+            <?php else: ?>
+            <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
+            <li><a id="connexion-home" href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">User</a></li>
+            <li><a id="connexion-home" href="/dashboardEmployee/0">Employee</a></li>
+            <li><a id="connexion-home" href="/dashboardMedia/0">Media</a></li>
+            <?php endif;  ?>
+
         </ul>
 
         <ul class="dvd-categorie">
@@ -158,16 +171,9 @@
         </div>
         <div class="carrousel-container">
             <div class="carrousel">
-                <div class="carrousel-item"><img src="assets\img\livre1_recto_la_femme_de_ménage.webp" alt="couverture du livre la femme de ménage"></div>
-                <div class="carrousel-item"><img src="assets\img\livre recto_12.webp" alt="livre de mélissa da costa"></div>
-                <div class="carrousel-item"><img src="assets\img\livre3_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre4_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre5_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre6_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre7_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre8_recto.webp" alt="assets\img\livre8_recto.webp"></div>
-                <div class="carrousel-item"><img src="assets\img\livre_harry_potter_recto.webp" alt="livre d'harry potter et le prisonnier d'azkaban"></div>
-                <div class="carrousel-item"><img src="assets\img\livre recto_HG.webp" alt=""></div>
+            <?php foreach ($datas as $data): ?>
+                <div class="carrousel-item"><img src="<?php echo $data->getImage_recto(); ?>" alt="<?php echo $data->getTitle() ?>"></div>
+            <?php endforeach; ?>  
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
@@ -182,9 +188,11 @@
         <?php foreach ($datas as $data): ?>
             <div class="card-product">
                 <div class="card">
-                    <img src="<?php echo $data->getImage_recto(); ?>" alt="">
+
+                    <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
                     <div class="title-product1"><?php echo $data->getTitle(); ?></div>
                     <div class="auteur-product1"><?php echo $data->getAuthor(); ?></div>
+
                 </div>
             </div>
         <?php endforeach; ?>
@@ -199,10 +207,12 @@
         <!-- AJOUT RECENT -->
         <h1>Ajout récent :</h1>
         <section id="last-add">
+
             <?php foreach ($datas as $data): ?>
                 <div class="cards-product title-product-latest">
 
                     <img src="<?php echo $data->getImage_recto(); ?>" alt="">
+
                 </div>
                 <div class="right">
                     <p class="title-product"><?php echo $data->getTitle(); ?></p>

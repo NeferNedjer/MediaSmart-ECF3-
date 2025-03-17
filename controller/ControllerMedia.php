@@ -68,7 +68,7 @@ class ControllerMedia {
 
                 if(!empty($_FILES['image_recto']['tmp_name'])) {
                     $source = $_FILES['image_recto']['tmp_name'];
-                    $destination = './assets/img/';
+                    $destination = 'assets/img/';
                     $image_recto = $this->convertWebp($id_media, $face='recto', $source, $destination, $qualite = 80);
                 } else {
                     $image_recto = "";
@@ -76,7 +76,7 @@ class ControllerMedia {
                 
                 if(!empty($_FILES['image_verso']['tmp_name'])) {
                     $source = $_FILES['image_verso']['tmp_name'];
-                    $destination = './assets/img/';
+                    $destination = 'assets/img/';
                     $image_verso = $this->convertWebp($id_media, $face='verso', $source, $destination, $qualite = 80);
                 }else {
                     $image_verso = "";
@@ -176,8 +176,10 @@ class ControllerMedia {
         global $router;
         $model = new ModelMedia();
         $media = $model->getMediaById($id_media);
+        $medias = $model->mediaHome();
+        //$searchmedia = $model->getMedia($search);
 
-        require_once('./view/getMedia.php');
+        require_once('./view/detailMedia.php');
     }
 
     
@@ -238,9 +240,27 @@ class ControllerMedia {
                     header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
                     exit();
             } elseif ($action == 'Retour') {
-                
+                    $modelEmprunt = new ModelEmprunt();
+                    $modelEmprunt->deleteResa($_POST['id_exemplaire'], $_POST['status']);
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                    exit();
             } elseif ($action == 'Emprunt') {
-                
+                if(isset($_POST['user_id']) && !empty($_POST['user']) && !empty($_POST['user_id'])) {
+                    var_dump($_POST);
+                    $modelEmprunt = new ModelEmprunt();
+                    $modelEmprunt->createEmprunt($_POST['id_exemplaire'], $_POST['user_id']);
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                    exit();
+                } else {
+                    $error = "Vous devez sélectionner un utilisateur";
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                    exit();
+                }
+            } elseif ($action == 'Modifier') {
+                $modelExemplaire = new ModelExemplaire();
+                $modelExemplaire->updateExemplaire($_POST['id_exemplaire'], $_POST['status']);
+                header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                exit();    
             }
         }     
     }
@@ -283,7 +303,33 @@ class ControllerMedia {
          
     }
 
+    public function createCategory() {
 
+        global $router;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nameCategory = $_POST['nameCategory'];
+            $modelCategory = new ModelCategory();
+            $modelCategory->updateCategory($nameCategory);
+            header('Location: /dashboardMedia/0');
+            exit();
+            
+        }
+    }
+
+    public function createSubcategory() {
+
+        global $router;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+           
+            $nameSubCategory = $_POST['nameSubCategory'];
+            $modelSubCategory = new ModelSubCategory();
+            $modelSubCategory->updateSubCategory($nameSubCategory);
+            header('Location: /dashboardMedia/0');
+            exit();
+        }
+    }
 
 
 }

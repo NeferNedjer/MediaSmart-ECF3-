@@ -46,5 +46,24 @@ class ModelEmployee extends Model {
         return $arrayobj;
     }
 
+    public function getEmployee() {
+
+        $req = $this->getdb()->query('SELECT `id_employee`, `name`, `first_name` FROM `employee`');
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[]= new Employee($data);
+        }
+        return $arrayobj;
+
+    }
+
+    public function deleteEmployee(int $id_employee) {
+
+        $req = $this->getDb()->prepare('DELETE FROM employee WHERE id_employee = :id_employee');
+        $req->bindParam(':id_employee', $id_employee, PDO::PARAM_INT);
+        $req->execute();
+    }
+
     
 }
