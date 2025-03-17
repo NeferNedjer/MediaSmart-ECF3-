@@ -140,9 +140,9 @@
                             <?php $first = 1; ?>
                             <?php foreach ($exemplairemedia as $exemplaire): ?>
                                 <?php if ($first == 1) {; ?>
-                                <caption>Exemplaires du <?php echo ucfirst(strtolower($exemplaire->getName())).' : '.$exemplaire->getTitle() ?> </caption>
+                                <caption>Exemplaires du <?php echo ucfirst(strtolower($exemplaire->getName())).' : '.$exemplaire->getTitle() ?> 
                                 <br>
-                                <caption>Disponibilités :  <?php echo ($exemplaire->getNb_exemplaires()-$exemplaire->getNb_emprunts()-$exemplaire->getNb_resa()).' / '. $exemplaire->getNb_exemplaires() ?> </caption>
+                                Disponibilités :  <?php echo ($exemplaire->getNb_exemplaires()-$exemplaire->getNb_emprunts()-$exemplaire->getNb_resa()).' / '. $exemplaire->getNb_exemplaires() ?> </caption>
                                 <thead>
                                     <tr>
                                         <th>ID EXEMPLAIRE</th>
@@ -166,18 +166,15 @@
                                             </td>
                                             <td>
                                                 <?php 
-                                                if ($exemplaire->getStatus()==1) {
-                                                    echo 'Neuf';
-                                                    } elseif ($exemplaire->getStatus()==2) {
-                                                        echo 'Bon';
-                                                    } elseif ($exemplaire->getStatus()==3) {
-                                                        echo 'Mauvais';
-                                                    } elseif ($exemplaire->getStatus()==4) {
-                                                        echo 'Déchiré';
-                                                    } elseif ($exemplaire->getStatus()==5) {
-                                                        echo 'A JETER !';
-                                                    }  
+                                                    // var_dump($exemplaire->getStatus()); 
                                                 ?>
+                                                <select name="status" id="status">
+                                                    <option value="1" <?php echo ($exemplaire->getStatus() == 1) ? 'selected' : ''; ?>>Neuf</option>
+                                                    <option value="2" <?php echo ($exemplaire->getStatus() == 2) ? 'selected' : ''; ?>>Bon</option>
+                                                    <option value="3" <?php echo ($exemplaire->getStatus() == 3) ? 'selected' : ''; ?>>Mauvais</option>
+                                                    <option value="4" <?php echo ($exemplaire->getStatus() == 4) ? 'selected' : ''; ?>>Déchiré</option>
+                                                    <option value="5" <?php echo ($exemplaire->getStatus() == 5) ? 'selected' : ''; ?>>A JETER !</option>
+                                                </select>
                                             </td>
                                             <td>
                                                 <?php echo $exemplaire->getCreation_date()->format('d/m/y') ?>
@@ -200,11 +197,15 @@
                                             <?php } else { ?>
                                             <td>
                                             <input list="users" name="user" id="user" class="form-input">
+                                            
                                             <datalist id="users">
                                                 <?php foreach ($users as $user): ?>
                                                     <option value="<?php echo $user->getName() . ' ' . $user->getFirst_name(); ?>" data-id="<?php echo $user->getId_user(); ?>">
+                                                   
                                                 <?php endforeach; ?>
+                                                
                                             </datalist>
+                                            <input type="hidden" name="user_id" id="user_id">
                                             </td>
                                             <?php } ?>
                                             <td>
@@ -213,10 +214,14 @@
                                                     echo '<button type="submit" name="action" value="Valider">V</button>';
                                                     echo '     ';
                                                     echo '<button type="submit" name="action" value="Annuler">A</button>';
+                                                    echo '     ';
+                                                    echo '<button type="submit" name="action" value="Modifier">M</button>';
                                                 } elseif ($exemplaire->getResa()==0) {
                                                     echo '<button type="submit" name="action" value="Retour">R</button>';
                                                 } else {
                                                     echo '<button type="submit" name="action" value="Emprunt">E</button>';
+                                                    echo '     ';
+                                                    echo '<button type="submit" name="action" value="Modifier">M</button>';
                                                 }  
                                                 ?>
                                                 
@@ -312,6 +317,37 @@
 <?php
 error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 ini_set('display_errors', 0); ?>
+
+
+
+
+
+<script>
+
+document.getElementById('user').addEventListener('input', function(event) {
+    const inputValue = event.target.value;
+    const options = document.querySelectorAll('#users option');
+    let userId = null;
+
+    options.forEach(option => {
+        if (option.value === inputValue) {
+            userId = option.dataset.id; // Récupère l'id associé à l'utilisateur
+        }
+    });
+
+    if (userId) {
+        document.getElementById('user_id').value = userId; // Met à jour le champ caché avec l'ID de l'utilisateur
+        console.log(`Utilisateur sélectionné: ${inputValue}, ID: ${userId}`);
+    } else {
+        document.getElementById('user_id').value = ''; // Réinitialise le champ caché si aucun utilisateur correspondant n'est trouvé
+        console.log(`Aucun utilisateur correspondant trouvé pour: ${inputValue}`);
+    }
+});
+
+</script>
+
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
