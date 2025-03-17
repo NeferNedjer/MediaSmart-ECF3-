@@ -32,9 +32,15 @@ $router->map('GET|POST', '/searchAuthor', 'ControllerAuthor#searchAuthor', 'sear
 
 $router->map('POST', '/media/delete', 'ControllerMedia#delete', 'deleteMedia');
 
-$router->map('GET|POST', '/media/update/[i:id]', 'ControllerMedia#update', 'updateMedia');
+$router->map('GET|POST', '/updateMedia', 'ControllerMedia#updateMedia', 'updateMedia');
+
+$router->map('GET|POST', '/modifMedia/[i:id_media]', 'ControllerMedia#modifMedia', 'modif-media');
 
 $router->map('GET', '/404', 'ControllerMedia#notfound', 'notfound');
+
+$router->map('GET', '/getMedia/[i:id_media]', 'ControllerMedia#getMedia', 'getMedia');
+
+$router->map('POST', '/searchMediaHomepage', 'ControllerMedia#searchMediaHomepage', 'search-media-homepage');
 
 /*----------USER----------*/
 
@@ -59,15 +65,19 @@ $router->map('GET|POST', '/dashboardEmployee/[i:id_user]', 'ControllerEmployee#d
 
 $router->map('GET', '/getUser/[i:id]' ,'ControllerEmployee#getUser', 'getUser' );
 
-$router->map('GET|POST', '/modif-user/[i:id_user]', 'ControllerUser#modifUser', 'modif-user');
+$router->map('GET|POST', '/modifUser/[i:id_user]', 'ControllerUser#modifUser', 'modif-user');
 
 $router->map('GET|POST', '/update','ControllerUser#update', 'update-user' );
 
 $router->map('GET|POST', '/delete', 'ControllerUser#delete', 'delete-user');
 
-$router->map('GET|POST', '/dashboardMedia', 'ControllerEmployee#dashboardMedia', 'dashboard-media');
+$router->map('GET|POST', '/dashboardMedia/[i:id_media]', 'ControllerEmployee#dashboardMedia', 'dashboard-media');
 
 $router->map('GET|POST', '/searchMedia', 'ControllerMedia#searchMedia', 'search-media');
+
+$router->map('GET|POST', '/searchEmployee', 'ControllerEmployee#searchEmployee', 'search-Employee');
+
+$router->map('GET|POST', '/actionMedia', 'ControllerMedia#actionMedia', 'actionMedia');
 
 $match = $router->match();
 
