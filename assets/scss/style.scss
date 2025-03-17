@@ -233,11 +233,19 @@ $none: none;
 
 div.search {
     @include center-flex();
+
+        #search-product{
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+        }
+
 }
 
 // ---------------------------- section#product ----------------------------
-
-
 
 section#product{
   height: 150vh;
@@ -1463,7 +1471,6 @@ div.user-info > .user-info{
   grid-template-columns: 55% 45%;
 }
 
-
 .user-dashboard > form > .supprimer {
     background-color: #f44336; 
     background-color: #dc3545;
@@ -1555,6 +1562,7 @@ ul.user-gestion-list > li:last-child > button,
   border-bottom-left-radius: 8px;
   z-index: 10;
 }
+
 
 .nav-menu {
   height: 100vh;
@@ -2514,6 +2522,64 @@ ul.user-gestion-list > li:last-child > button,
 
 // ----------------------detail produits
 
+div#top-hidden-resa-bar{
+  display: none;
+  opacity: 0;
+  position: sticky;
+  top: 0;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  border-bottom: solid 1px #cc8c2d6d;
+    #btn-resa-hidden{
+      display: $flex;
+      justify-content: end;
+      margin: 25px;
+      padding: 15px;
+
+        figure img {
+                position: absolute;
+                left: 0;
+                margin: 0 10px;
+        }
+          #resa-btn-hidden{
+            padding: 10px;
+            margin: 0 20px;
+            height: 45px;
+            background-color:#b66f03;
+            color:white;
+            font-size: 16px;
+            @include border-radius(10px);
+            border: none;
+            cursor: pointer;
+            transition: 0.5s ease;
+          }
+
+          #emprunt-btn-hidden{
+            padding: 10px;
+            height: 45px;
+            background-color:#ffffff;
+            color:#b66f03;
+            font-size: 16px;
+            @include border-radius(10px);
+            border: solid;
+            border-color: #b66f03;
+            cursor: pointer;
+            transition: 0.5s ease;
+          }
+
+          #emprunt-btn-hidden:hover,
+          #resa-btn-hidden:hover{
+            transform: scale(1.1);
+          }
+      }
+
+
+}
+
+
+
 .product-detail{
   
     max-width: 800px;
@@ -2564,7 +2630,7 @@ ul.user-gestion-list > li:last-child > button,
   bottom: 0;
   width: 100%;
   text-align: center;
-  max-height: 19vh;
+  max-height: 25vh;
   z-index: 1000;
 
   .footer-content {
@@ -2724,7 +2790,7 @@ ul.user-gestion-list > li:last-child > button,
 }
 
 .related-products {
-  max-width: 1200px;
+  max-width: 1150px;
   margin: 40px auto;
   padding: 20px;
   background-color: $color-card-background;
@@ -2751,6 +2817,8 @@ ul.user-gestion-list > li:last-child > button,
   .swiper-slide {
       background-color: #fff;
       border-radius: 5px;
+      max-height: 250px;
+      max-width: 190px;
       box-shadow: var(--shadow-standard);
       text-align: center;
       padding: 10px;
@@ -2792,9 +2860,145 @@ ul.user-gestion-list > li:last-child > button,
 
   }
 
-
   .swiper-pagination-bullet {
       background: $color-button;
   }
 } 
+
+
+
+// -----------------------------HISTORIC USER
+
+
+.container {
+  overflow-y: auto;
+  width: 91vw;
+  min-height: 86vh;
+  margin: 2rem auto;
+  padding: 0 1rem;
+    .card {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+
+      .card-header h2 {
+        font-size: 1.15rem;
+        font-weight: 400;
+        margin: 5px;
+        color: #2d3748;
+      }
+    
+      .card-header {
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+       
+        
+        #search-historic-user{
+          width: 25%;
+          margin: 5px 15px;
+          padding: 4px;
+          background-color: rgb(248, 247, 247);
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+          box-sizing: border-box;
+        }
+        
+      
+    }
+    
+  }
+    
+
+}
+
+.card-body {
+  padding: 1rem;
+  overflow-x: auto;
+      table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+        
+      thead {
+        background-color: #e67e22;
+      
+      } 
+   
+       th {
+          padding: 0.75rem 1rem;
+          text-align: left;
+          font-size: 0.75rem;
+          font-weight: 500;
+          color: #000000;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          border-bottom: 1px solid #e9ecef;
+          cursor: pointer;
+        }
+
+        th:hover {
+          background-color: #f1f5f9;
+        }
+
+        td {
+          padding: 0.75rem 1rem;
+          font-size: 0.875rem;
+          color: #4b5563;
+          border-bottom: 1px solid #e9ecef;
+          white-space: nowrap;
+        }
+
+        tbody tr:hover {
+          background-color: #f9fafb;
+        
+          th::after {
+            content: "";
+            margin-left: 0.25rem;
+            display: inline-block;
+          }
+          
+          th.sort-asc::after {
+            content: "↑";
+          }
+          
+          th.sort-desc::after {
+            content: "↓";
+          }
+          }
+
+    }
+
+}
+
+
+/* Statut badges */
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-jaune {
+  background-color: #dbeafe;
+  color: #ffe711;
+}
+
+.badge-green {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badge-red {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+
+
+
+
 

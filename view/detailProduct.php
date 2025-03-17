@@ -31,6 +31,22 @@
         </a>
     </div>
 
+
+    
+    <div id="top-hidden-resa-bar">
+        <section id="btn-resa-hidden">
+            <figure>
+                <img src="../assets/img/Group 46.png" alt="">
+             </figure>
+            <button type="submit" id="resa-btn-hidden">Réserver</button>
+            <button type="submit" id="emprunt-btn-hidden">Emprunter</button>
+        </section>
+        
+
+        
+    </div>
+
+
     <nav id="burger-menu" style="display:none">
         <ul>
             <li><a href="#">Accueil</a></li>
@@ -51,7 +67,7 @@
         <h1 id="product-title">Titre</h1>
         <div class="product-info">
             <img src="../assets/img//Firefly génère moi des images de couverture de livre différente , merci 83764.jpg" alt="Couverture du Livre" id="product-image">
-            <button class="btn-emprunter">Emprunter</button>
+            
             <div class="product-meta">
                 <p>Type:</p>
                 <p>Genre:</p>
