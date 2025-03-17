@@ -25,7 +25,7 @@
         <section id="navbar-left">
             <ul class="nav-menu">
                 <li><a href="/"><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
-                <li><a href="media-create"><img src="../assets/img/icons8-add-25.png" alt=""><span>Ajouter un média</span></a></li>
+                <li><a href="/getEmployee"><img src="../assets/img/icons8-add-25.png" alt=""><span>Liste des employés</span></a></li>
                 <li><a href="https://mailtrap.io/inboxes/3460695/messages" target="_blank"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
                 <li><a href="/dashboardEmployee/0"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
                 <li><a href="/dashboardMedia/0"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
