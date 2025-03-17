@@ -22,9 +22,11 @@
         <ul class="flex">
 
             <!-- EN FONCTION DE LA SESSION AFFICHER L'UN ou L'AUTRE -->
-             
+             <?php if(isset($_SESSION['id_user'])): ?>
             <li><a id="deconnexion-home" href="/logout">Déconnexion</a></li>
+            <?php else: ?>
             <li><a id="connexion-home" href="/login">Connexion</a></li>
+            <?php endif; ?>
         </ul>
         <a href="#">
             <img src="./assets/img/menu.png" alt="" id="burger" style="height: 50px;">
@@ -50,18 +52,11 @@
     <nav id="burger-menu" style="display:none">
         <ul>
             <li><a href="/">Accueil</a></li>
-            <li><a href="#">Produits</a></li>
+            <li><a href="#">Media</a></li>
             <li><a href="#">Contact</a></li>
             <li><a id="deconnexion-home" href="/logout">Déconnexion</a></li>
         </ul>
     </nav>
-
-    <div class="search">
-        <input type="text" placeholder="Recherchez des produits" id="search-product">
-        <label for="search-product"></label>
-    </div>
-
-   
 
     <div class="product-detail">
         <h1 id="product-title"><?php echo $media->getTitle() ?></h1>
@@ -72,7 +67,8 @@
                 <p>Type: <?php echo $media->getName() ?></p>
                 <p>Genre: <?php echo $media->getTheme() ?></p>
                 <p id="product-author">De "<?php echo $media->getAuthor() ?>"</p>
-                <p class="dispo-product">Diponibilité: Oui</p>
+                <p class="dispo-product">Diponibilité: <?php echo ($media->getNb_emprunts() + $media->getNb_resa() < $media->getNb_exemplaires()) ? "oui" : "non"; ?>
+            </p>
                 <div class="horizontal-lign"></div>
                 <p id="product-description"><?php echo $media->getDescription() ?></p>
             
@@ -91,7 +87,7 @@
             <?php foreach ($medias as $media): ?>
                 <div class="swiper-slide">
                 
-                    <img src="<?php echo $media->getImage_recto(); ?>" alt="Book 1">
+                    <img src="<?php echo $media->getImage_recto(); ?>" alt="<?php echo $media->getTitle(); ?>">
                     <p><?php echo $media->getTitle(); ?></p>
                     
                 </div>
@@ -141,7 +137,11 @@
                     <a href="/"><li>Accueil</li></a>
                     <a href="#"><li>Media</li></a>
                     <a href="#"><li>Contact</li></a>
+                    <?php if(isset($_SESSION['id_user'])): ?>
                     <a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>"><li>Dashboard</li></a>
+                    <?php else : ?>
+                        <a href="/login">Connexion</a>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="footer-section contact-form">
