@@ -115,4 +115,20 @@ class ControllerEmployee {
         
     }
 
+    public function getEmployee() {
+
+        global $router;
+        $model = new ModelEmployee;
+        $employees = $model->getEmployee();
+        require_once('./view/getEmployee.php');
+    }
+
+    public function deleteEmployee() {
+
+        global $router;
+        $model = new ModelEmployee();
+        $model->deleteEmployee($_POST['id_employee']);
+        header('Location: getEmployee');
+    }
+
 }
