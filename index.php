@@ -55,6 +55,8 @@ $router->map('POST', '/verify-token', 'ControllerUser#verify', 'verify-token');
 
 $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 
+$router->map('GET|POST', '/dashboardUser/[i:id_user]', 'ControllerUser#dashboardUser', 'dashboard-user');
+
 /*----------EMPLOYEE----------*/
 
 $router->map('GET|POST', '/createEmployee', 'ControllerEmployee#create', 'create-employee');
@@ -78,6 +80,12 @@ $router->map('GET|POST', '/searchMedia', 'ControllerMedia#searchMedia', 'search-
 $router->map('GET|POST', '/searchEmployee', 'ControllerEmployee#searchEmployee', 'search-Employee');
 
 $router->map('GET|POST', '/actionMedia', 'ControllerMedia#actionMedia', 'actionMedia');
+
+$router->map('POST', '/createCategory', 'ControllerMedia#createCategory', 'create-category');
+
+$router->map('POST', '/createSubCategory', 'ControllerMedia#createSubCategory', 'create-subcategory');
+
+$router->map('GET', '/getCategory', 'ControllerMedia#getCategory', 'getCategory');
 
 $match = $router->match();
 

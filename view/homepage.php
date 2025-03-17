@@ -26,7 +26,7 @@
             <li><a id="connexion-home" href="/register">Inscription</a></li>
             <?php else: ?>
             <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
-            
+            <li><a id="connexion-home" href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">User</a></li>
             <li><a id="connexion-home" href="/dashboardEmployee/0">Employee</a></li>
             <li><a id="connexion-home" href="/dashboardMedia/0">Media</a></li>
             <?php endif;  ?>

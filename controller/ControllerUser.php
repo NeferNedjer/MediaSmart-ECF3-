@@ -278,6 +278,22 @@ class ControllerUser {
          }      
     }
 
+    public function dashboardUser($id_user) {
+
+        global $router;
+        $modelmedia = new ModelMedia();
+        $medias = $modelmedia->mediaHome();
+        $modellastmedia = new ModelMedia();
+        $lastmedia = $modellastmedia->getLastMedia();
+        $modelemployee = new ModelEmployee();
+        $users = $modelemployee->employeeHome();
+        $modelemprunts = new ModelEmprunt();
+        $emprunts = $modelemprunts->getEmpruntByUser($id_user);
+        
+        require_once('./view/dashboardUser.php');
+        
+    }
+
     
 }
 

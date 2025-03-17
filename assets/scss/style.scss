@@ -2300,12 +2300,16 @@ ul.user-gestion-list > li:last-child > button,
   height:100%;  
 }
 
+section.splide > div.splide__track >  ul.splide__list {
+gap: 25px;
+}
+
 #top-carousel {
   
   img{
     
     max-height: 100px;
-    width: 100%;
+   
     margin: 10px 20px;
     object-fit: contain;
     border-radius: 15px;
