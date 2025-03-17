@@ -148,6 +148,14 @@ div.search {
   justify-content: center;
   align-items: center;
 }
+div.search #search-product {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
 
 section#product {
   height: 150vh;
@@ -2213,6 +2221,57 @@ section#cardd .contain-product {
   color: orange;
 }
 
+div#top-hidden-resa-bar {
+  display: none;
+  opacity: 0;
+  position: sticky;
+  top: 0;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  border-bottom: solid 1px rgba(204, 140, 45, 0.4274509804);
+}
+div#top-hidden-resa-bar #btn-resa-hidden {
+  display: flex;
+  justify-content: end;
+  margin: 25px;
+  padding: 15px;
+}
+div#top-hidden-resa-bar #btn-resa-hidden figure img {
+  position: absolute;
+  left: 0;
+  margin: 0 10px;
+}
+div#top-hidden-resa-bar #btn-resa-hidden #resa-btn-hidden {
+  padding: 10px;
+  margin: 0 20px;
+  height: 45px;
+  background-color: #b66f03;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+div#top-hidden-resa-bar #btn-resa-hidden #emprunt-btn-hidden {
+  padding: 10px;
+  height: 45px;
+  background-color: #ffffff;
+  color: #b66f03;
+  font-size: 16px;
+  border-radius: 10px;
+  border: solid;
+  border-color: #b66f03;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+div#top-hidden-resa-bar #btn-resa-hidden #emprunt-btn-hidden:hover,
+div#top-hidden-resa-bar #btn-resa-hidden #resa-btn-hidden:hover {
+  transform: scale(1.1);
+}
+
 .product-detail {
   max-width: 800px;
   margin: 0 auto;
@@ -2254,7 +2313,7 @@ section#cardd .contain-product {
   bottom: 0;
   width: 100%;
   text-align: center;
-  max-height: 19vh;
+  max-height: 25vh;
   z-index: 1000;
 }
 #footer .footer-content {
@@ -2377,7 +2436,7 @@ section#cardd .contain-product {
   }
 }
 .related-products {
-  max-width: 1200px;
+  max-width: 1150px;
   margin: 40px auto;
   padding: 20px;
   background-color: #FFFFFF;
@@ -2401,6 +2460,8 @@ section#cardd .contain-product {
 .related-products .swiper-slide {
   background-color: #fff;
   border-radius: 5px;
+  max-height: 250px;
+  max-width: 190px;
   box-shadow: var(--shadow-standard);
   text-align: center;
   padding: 10px;
@@ -2434,4 +2495,110 @@ section#cardd .contain-product {
 }
 .related-products .swiper-pagination-bullet {
   background: #b66f03;
+}
+
+.container {
+  overflow-y: auto;
+  width: 91vw;
+  min-height: 86vh;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.container .card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.container .card .card-header h2 {
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin: 5px;
+  color: #2d3748;
+}
+.container .card .card-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.container .card .card-header #search-historic-user {
+  width: 25%;
+  margin: 5px 15px;
+  padding: 4px;
+  background-color: rgb(248, 247, 247);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.card-body {
+  padding: 1rem;
+  overflow-x: auto;
+}
+.card-body table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+.card-body table thead {
+  background-color: #e67e22;
+}
+.card-body table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #e9ecef;
+  cursor: pointer;
+}
+.card-body table th:hover {
+  background-color: #f1f5f9;
+}
+.card-body table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+  border-bottom: 1px solid #e9ecef;
+  white-space: nowrap;
+}
+.card-body table tbody tr:hover {
+  background-color: #f9fafb;
+}
+.card-body table tbody tr:hover th::after {
+  content: "";
+  margin-left: 0.25rem;
+  display: inline-block;
+}
+.card-body table tbody tr:hover th.sort-asc::after {
+  content: "↑";
+}
+.card-body table tbody tr:hover th.sort-desc::after {
+  content: "↓";
+}
+
+/* Statut badges */
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-jaune {
+  background-color: #dbeafe;
+  color: #ffe711;
+}
+
+.badge-green {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badge-red {
+  background-color: #fee2e2;
+  color: #b91c1c;
 }/*# sourceMappingURL=style.css.map */

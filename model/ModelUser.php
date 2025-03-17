@@ -34,7 +34,7 @@ class ModelUser extends Model {
         }
     }
 
-    public function createUser(string $name, string $first_name, string $email, string $password, string $adress, int $phone, string $token) {
+    public function createUser(string $name, string $first_name, string $email, string $password, string $adress, string $phone, string $token) {
 
         $user  = $this->getDb()->prepare('INSERT INTO `user` (`name`, `first_name`, `email`, `password`, `adress`, `phone`, token, inscription_date, last_connexion) VALUES (:name, :first_name, :email, :password, :adress, :phone, :token, NOW(), NOW())');
         $password = password_hash($password, PASSWORD_BCRYPT);
@@ -43,7 +43,7 @@ class ModelUser extends Model {
         $user->bindParam(':email', $email, PDO::PARAM_STR);
         $user->bindParam(':password', $password, PDO::PARAM_STR);
         $user->bindParam(':adress', $adress, PDO::PARAM_STR);
-        $user->bindParam(':phone', $phone, PDO::PARAM_INT);
+        $user->bindParam(':phone', $phone, PDO::PARAM_STR);
         $user->bindParam(':token', $token, PDO::PARAM_STR);
         $user->execute();
     }

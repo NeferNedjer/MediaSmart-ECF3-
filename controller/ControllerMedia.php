@@ -119,21 +119,21 @@ class ControllerMedia {
         }
     }
 
-    public function update($id) {
+    public function updateMedia() {
         global $router;
-        $model = new ModelMedia();
-        $data = $model->getMediaById($id);
-        require_once('./view/updatemedia.php');
 
-        if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])){
-            if(!empty($_POST['id_subcategory']) && !empty($_POST['title']) && !empty($_POST['id_author']) && !empty($_POST['description'])) {
-                $model = new ModelMedia();
-                $model->updateMedia($_POST['id'], $_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'], $_POST['image_recto'], $_POST['image_verso']);
-                header('Location: /');
+        if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_media'])){
+            $id_media = $_POST['id_media'];
+            $model = new ModelMedia();   
+            $data = $model->getMediaById($id_media);
+            if(!empty($_POST['id_subcategory']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['description'])) {
+                
+                $model->updateMedia($_POST['id_media'], $_POST['id_subcategory'], $_POST['title'], $_POST['id_author'], $_POST['description'], $_POST['image_recto'], $_POST['image_verso']);
+                header('Location: /dashboardMedia/0');
                 exit();
             } else {
                 $error = "Tous les champs doivent être remplis (hormis l'image)";
-                require_once('./view/updatemedia.php');
+                require_once('./view/modifMedia.php');
             }
         }
     }
@@ -176,8 +176,10 @@ class ControllerMedia {
         global $router;
         $model = new ModelMedia();
         $media = $model->getMediaById($id_media);
+        $medias = $model->mediaHome();
+        //$searchmedia = $model->getMedia($search);
 
-        require_once('./view/getMedia.php');
+        require_once('./view/detailMedia.php');
     }
 
     
@@ -287,7 +289,47 @@ class ControllerMedia {
         }
     }
 
+    public function modifMedia($id_media) {
 
+        global $router;
+
+        $model = new ModelMedia();
+
+        $data = $model->getMediaById($id_media);
+        
+        require_once './view/modifMedia.php';
+
+        exit();
+         
+    }
+
+    public function createCategory() {
+
+        global $router;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nameCategory = $_POST['nameCategory'];
+            $modelCategory = new ModelCategory();
+            $modelCategory->updateCategory($nameCategory);
+            header('Location: /dashboardMedia/0');
+            exit();
+            
+        }
+    }
+
+    public function createSubcategory() {
+
+        global $router;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+           
+            $nameSubCategory = $_POST['nameSubCategory'];
+            $modelSubCategory = new ModelSubCategory();
+            $modelSubCategory->updateSubCategory($nameSubCategory);
+            header('Location: /dashboardMedia/0');
+            exit();
+        }
+    }
 
 
 }
