@@ -82,16 +82,9 @@
         </div>
         <div class="carrousel-container">
             <div class="carrousel">
-                <div class="carrousel-item"><img src="assets\img\livre1_recto_la_femme_de_ménage.webp" alt="couverture du livre la femme de ménage"></div>
-                <div class="carrousel-item"><img src="assets\img\livre recto_12.webp" alt="livre de mélissa da costa"></div>
-                <div class="carrousel-item"><img src="assets\img\livre3_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre4_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre5_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre6_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre7_recto.webp" alt=""></div>
-                <div class="carrousel-item"><img src="assets\img\livre8_recto.webp" alt="assets\img\livre8_recto.webp"></div>
-                <div class="carrousel-item"><img src="assets\img\livre_harry_potter_recto.webp" alt="livre d'harry potter et le prisonnier d'azkaban"></div>
-                <div class="carrousel-item"><img src="assets\img\livre recto_HG.webp" alt=""></div>
+            <?php foreach ($datas as $data): ?>
+                <div class="carrousel-item"><img src="<?php echo $data->getImage_recto(); ?>" alt="<?php echo $data->getTitle() ?>"></div>
+            <?php endforeach; ?>  
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
@@ -103,8 +96,8 @@
             <div class="card-product">
                 <div class="card">
                     
-                    <img src="<?php echo $data->getImage_recto(); ?>" alt="">
-                    <div class="title-product"><?php echo $data->getTitle(); ?></div>
+                    <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
+                    <div class="title-product"><?php echo $data->getTitle(); ?></div></a>
                     <div class="auteur-product"><?php echo $data->getAuthor(); ?></div>
                 </div>
             </div>
@@ -119,7 +112,7 @@
                 <?php foreach ($datas as $data): ?>
                 <div class="card-product title-product-latest">
                     <p><?php echo $data->getTitle(); ?><br><br></p>
-                    <img src="<?php echo $data->getImage_recto(); ?>" alt="">
+                    <img src="<?php echo $data->getImage_recto(); ?>" alt="<?php echo $data->getTitle() ?>">
                 </div>
                 
                     <div class="card description-product-latest"><?php echo $data->getDescription(); ?>

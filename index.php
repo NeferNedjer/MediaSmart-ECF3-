@@ -38,7 +38,7 @@ $router->map('GET|POST', '/modifMedia/[i:id_media]', 'ControllerMedia#modifMedia
 
 $router->map('GET', '/404', 'ControllerMedia#notfound', 'notfound');
 
-$router->map('GET', '/getMedia/[i:id_media]', 'ControllerMedia#getMedia', 'getMedia');
+$router->map('GET', '/detailMedia/[i:id_media]', 'ControllerMedia#getMedia', 'getMedia');
 
 $router->map('POST', '/searchMediaHomepage', 'ControllerMedia#searchMediaHomepage', 'search-media-homepage');
 

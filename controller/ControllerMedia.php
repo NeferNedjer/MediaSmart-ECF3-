@@ -176,8 +176,10 @@ class ControllerMedia {
         global $router;
         $model = new ModelMedia();
         $media = $model->getMediaById($id_media);
+        $medias = $model->mediaHome();
+        //$searchmedia = $model->getMedia($search);
 
-        require_once('./view/getMedia.php');
+        require_once('./view/detailMedia.php');
     }
 
     
