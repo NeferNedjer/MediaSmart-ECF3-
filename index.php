@@ -44,6 +44,9 @@ $router->map('POST', '/searchMediaHomepage', 'ControllerMedia#searchMediaHomepag
 
 /*----------USER----------*/
 
+$router->map('GET|POST', '/compteUser/[i:id_user]', 'ControllerUser#compteUser', 'compte-user');
+
+$router->map('POST', '/compteUserModif', 'ControllerUser#compteUserModif', 'compteUserModif');
 
 $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 

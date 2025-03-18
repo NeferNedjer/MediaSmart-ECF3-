@@ -215,10 +215,11 @@
 
                 </div>
                 <div class="right">
-                    <p class="title-product"><?php echo $data->getTitle(); ?></p>
-                    <a href="">
-                        <div class="auteur-product-latest">De <span> <?php echo $data->getAuthor(); ?> </span> (Auteur)</div>
+                    <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>">
+                        <p class="title-product"><?php echo $data->getTitle(); ?></p><br>
                     </a>
+                    <div class="auteur-product-latest">De <span> <?php echo $data->getAuthor(); ?> </span> (Auteur)</div>
+                    
                     <div class="horizontal-lign"> </div>
                     <div class="card description-product-latest"><?php echo $data->getDescription(); ?>
 
