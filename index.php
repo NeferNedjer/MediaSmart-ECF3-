@@ -95,6 +95,8 @@ $router->map('GET', '/getEmployee', 'ControllerEmployee#getEmployee', 'getEmploy
 
 $router->map('GET|POST', '/deleteEmployee', 'ControllerEmployee#deleteEmployee', 'deleteEmployee');
 
+$router->map('GET|POST', '/dashboardHistoric', 'ControllerEmployee#dashboardHistoric', 'dashboardHistoric');
+
 $match = $router->match();
 
 // var_dump($router);

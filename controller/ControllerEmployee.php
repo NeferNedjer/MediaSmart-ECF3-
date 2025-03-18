@@ -131,4 +131,11 @@ class ControllerEmployee {
         header('Location: getEmployee');
     }
 
+    public function dashboardHistoric() {
+
+        global $router;
+        $modelHistoric = new ModelHistoric();
+        $historics = $modelHistoric->historicHome();
+        require_once('./view/dashboardHistoric.php');
+    }
 }

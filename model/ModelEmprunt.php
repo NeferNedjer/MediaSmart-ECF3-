@@ -90,9 +90,9 @@ class ModelEmprunt extends Model {
 
     public function getExemplaireById(int $id_media) {
 
-        $req = $this->getDb()->prepare('
-        SELECT  c.id_category, c.name, s.id_subcategory, s.theme, m.id_media, 
-                title, m.id_author, description, image_recto, image_verso, e.id_exemplaire, status, creation_date,
+        $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, m.id_media, 
+                                                title, m.id_author, description, image_recto, image_verso, 
+                                                e.id_exemplaire, status, creation_date,
                 COALESCE(er.id_user, 0) AS id_user, 
                 COALESCE(u.name, "") AS user_name, 
                 COALESCE(u.first_name, "") AS user_first_name, 
