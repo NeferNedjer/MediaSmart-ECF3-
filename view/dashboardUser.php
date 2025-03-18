@@ -74,7 +74,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
 
 
-                    <p class="description">Dans une petite ville côtière oubliée du temps, Clara, une jeune historienne, arrive pour découvrir les secrets enfouis d'une ancienne famille aristocratique. Lorsqu'elle tombe sur un vieux journal intime, des événements mystérieux, liés à une disparition vieille de plusieurs décennies, refont surface.</p>
+                    <p class="description"><?php echo $lastmedia->getDescription(); ?></p>
                     <form action="/resaUser" method="POST">
                         <input type="hidden" name="id_media" value="<?php echo $lastmedia->getId_media(); ?>">
                     <button onclick="window.location.href = '#'" type="submit" id="btn-resa-dash">
