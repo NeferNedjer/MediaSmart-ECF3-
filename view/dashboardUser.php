@@ -23,7 +23,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                 <li><a href="" target="_blank"><img src="../assets/img/inbox-24.ico" alt=""> <span> Mail</span></a></li>
 
                
-                <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Mes infos</span> </a></li>
+                <li id="settings-dashboard"><a href="<?php echo $router->generate('compte-user', ['id_user' => $_SESSION['id_user']]); ?>"><img src="../assets/img/settings-19-24.ico" alt=""> <span>Mes infos</span> </a></li>
                 <li><a href="/logout"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Se déconnecter</span></a></li>
                 <li>
                     <label class="switch">
