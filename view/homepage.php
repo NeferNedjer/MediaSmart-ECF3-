@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -50,7 +52,7 @@
         </div>
     </section>
 
-    <div id="sidebar" >
+    <div id="sidebar">
         <button class="close-sidebar">X</button>
         <h2>Catégories</h2>
         <ul class="livre-categorie">
@@ -69,17 +71,6 @@
                 <li><a href="#">BANDE DESSINEE</a></li>
                 <li><a href="#">JEUNESSE</a></li>
             </ul>
-
-            <!-- EN FONCTION DE LA SESSION AFFICHER L'UN ou L'AUTRE -->
-            <?php if(empty($_SESSION['name'])): ?>
-            <li><a id="connexion-home" href="login">Connexion</a></li>
-            <li><a id="connexion-home" href="/register">Inscription</a></li>
-            <?php else: ?>
-            <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
-            <li><a id="connexion-home" href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">User</a></li>
-            <li><a id="connexion-home" href="/dashboardEmployee/0">Employee</a></li>
-            <li><a id="connexion-home" href="/dashboardMedia/0">Media</a></li>
-            <?php endif;  ?>
 
         </ul>
 
@@ -101,30 +92,49 @@
         </ul>
 
         <div id="author-cate">
-            <h3>Recherche par Auteur:</h3>
-            <div class="checkbox-wrapper">
-                <label class="checkbox-label">
-                    <input type="checkbox" name="Valérie Perrin">
-                    <span class="checkbox-custom"></span>
-                    <span class="label-text">Valérie Perrin</span>
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" name="Anna Stuart">
-                    <span class="checkbox-custom"></span>
-                    <span class="label-text">Anna Stuart</span>
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" name="Claire McGowan">
-                    <span class="checkbox-custom"></span>
-                    <span class="label-text">Claire McGowan</span>
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" name="Xavier Poussard">
-                    <span class="checkbox-custom"></span>
-                    <span class="label-text">Xavier Poussard</span>
-                </label>
-            </div>
+            <h3>Recherche par Auteur: <span class="arrow">▼</span></h3>
+            <section class="author-hidden">
+                <div class="checkbox-wrapper">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Valérie Perrin">
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">Valérie Perrin</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Anna Stuart">
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">Anna Stuart</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Claire McGowan">
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">Claire McGowan</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Xavier Poussard">
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">Xavier Poussard</span>
+                    </label>
+                </div>
+            </section>
         </div>
+
+
+
+        <section id="user-cate">
+            <figure>
+                <img src="../assets/img/icons8-nom-50.png" alt="">
+                <p style="white-space :nowrap"><?php if (isset($_SESSION['first_name'])) {
+                echo 'Bonjour '.$_SESSION['first_name'];
+                            } else {
+                                echo 'Bonjour visiteur';
+                            } ?> </p>
+            </figure>
+            <figure>
+            <a href="logout"><img id="logout-cate" src="../assets/img/icons8-logout-64.png" alt=""></a>
+            
+        </figure>
+        </section>
 
     </div>
 
@@ -137,6 +147,8 @@
 
         </button>
     </form>
+
+    <div id="show-cate"></div>
 
     <section class="response">
         <?php if (isset($mediaHome)) { ?>
@@ -153,27 +165,17 @@
 
     <!-- PRODUIT EN VEDETEES -->
 
-    <?php if ($_SESSION) {
-        echo "bonjour " . $_SESSION['first_name'];
-    } ?>
+
 
     <section id="product">
 
         <h1>Livre à la Une :</h1>
-        <div class="product-keyword">
-            <ul class="list-keyword">
-                <li>Tous</li>
-                <li>Romans</li>
-                <li>Science</li>
-                <li>BD</li>
-
-            </ul>
-        </div>
+        
         <div class="carrousel-container">
             <div class="carrousel">
-            <?php foreach ($datas as $data): ?>
-                <div class="carrousel-item"><img src="<?php echo $data->getImage_recto(); ?>" alt="<?php echo $data->getTitle() ?>"></div>
-            <?php endforeach; ?>  
+                <?php foreach ($datas as $data): ?>
+                    <div class="carrousel-item"><img src="<?php echo $data->getImage_recto(); ?>" alt="<?php echo $data->getTitle() ?>"></div>
+                <?php endforeach; ?>
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
@@ -181,24 +183,24 @@
 
         <h1>Disponible :</h1>
 
-        
+
         <div class="carousel-product-container">
-    <button class="carousel-prev">❮</button>
-    <div class="flex-product">
-        <?php foreach ($datas as $data): ?>
-            <div class="card-product">
-                <div class="card">
+            <button class="carousel-prev">❮</button>
+            <div class="flex-product">
+                <?php foreach ($datas as $data): ?>
+                    <div class="card-product">
+                        <div class="card">
 
-                    <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
-                    <div class="title-product1"><?php echo $data->getTitle(); ?></div>
-                    <div class="auteur-product1"><?php echo $data->getAuthor(); ?></div>
+                            <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
+                            <div class="title-product1"><?php echo $data->getTitle(); ?></div>
+                            <div class="auteur-product1"><?php echo $data->getAuthor(); ?></div>
 
-                </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
-    </div>
-    <button class="carousel-next">❯</button>
-</div>
+            <button class="carousel-next">❯</button>
+        </div>
 
 
 
@@ -313,6 +315,8 @@
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="../assets/js/ajaxMedia.js"></script>
+    <script src="../assets/js/slider-home-dispo.js"></script>
+    <script src="../assets/js/redirection-home.js"></script>
     <script src="../assets/js/category.js"></script>
     <script src="../assets/js/footer.js"></script>
     <script src="../assets/js/carrousel.js"></script>
