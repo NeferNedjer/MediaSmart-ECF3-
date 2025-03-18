@@ -22,8 +22,8 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                 <li><a href="" target="_blank"><img src="../assets/img/inbox-24.ico" alt=""> <span> Mail</span></a></li>
 
                
-                <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
-                <li><a href="/logout"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
+                <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Mes infos</span> </a></li>
+                <li><a href="/logout"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Se déconnecter</span></a></li>
                 <li>
                     <label class="switch">
                         <input checked="true" id="checkbox" type="checkbox" />
@@ -72,7 +72,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <p class="auteur-infos"><?php echo $lastmedia->getAuthor(); ?></p>
 
 
-                    <p class="description">Dans une petite ville côtière oubliée du temps, Clara, une jeune historienne, arrive pour découvrir les secrets enfouis d'une ancienne famille aristocratique. Lorsqu'elle tombe sur un vieux journal intime, des événements mystérieux, liés à une disparition vieille de plusieurs décennies, refont surface.</p>
+                    <p class="description"><?php echo $lastmedia->getDescription(); ?></p>
                     <button onclick="window.location.href = '#'" type="button" id="btn-resa-dash">
                         Réserver maintenant
                     </button>
