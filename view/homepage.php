@@ -217,10 +217,11 @@
 
                 </div>
                 <div class="right">
-                    <p class="title-product"><?php echo $data->getTitle(); ?></p>
-                    <a href="">
-                        <div class="auteur-product-latest">De <span> <?php echo $data->getAuthor(); ?> </span> (Auteur)</div>
+                    <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>">
+                        <p class="title-product"><?php echo $data->getTitle(); ?></p><br>
                     </a>
+                    <div class="auteur-product-latest">De <span> <?php echo $data->getAuthor(); ?> </span> (Auteur)</div>
+                    
                     <div class="horizontal-lign"> </div>
                     <div class="card description-product-latest"><?php echo $data->getDescription(); ?>
 
@@ -242,10 +243,14 @@
 
     <div id="bottom-nav">
         <ul class="bottom-nav-list">
-            <li><a href="#"> <img src="./assets/img/home (2).png" alt="" height="20px">Accueil</a> </li>
+            <li><a href="/"> <img src="./assets/img/home (2).png" alt="" height="20px">Accueil</a> </li>
             <li><a href="#"> Catégories</a></li>
             <li><a href="#"><img src="./assets/img/icons8-basket-64.png" alt="" height="20px">Panier</a></li>
-            <li><a href="#"> <img src="./assets/img/icons8-user-50.png" alt="" height="20px">Mon Compte</a></li>
+            <?php if (isset($_SESSION['id_user'])):  ?>
+            <li><a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>"> <img src="./assets/img/icons8-user-50.png" alt="" height="20px">Mon Compte</a></li>
+            <?php else : ?>
+            <li><a href="/login">Connexion</a></li>
+            <?php endif;  ?>
         </ul>
         <button class="btn-add">
             <span>+</span>
@@ -271,18 +276,22 @@
                 <h2>Liens rapides</h2>
                 <br>
                 <ul>
-                    <a href="#">
+                    <a href="/">
                         <li>Accueil</li>
                     </a>
                     <a href="#">
-                        <li>Produits</li>
+                        <li>Média</li>
                     </a>
                     <a href="#">
                         <li>Contact</li>
                     </a>
-                    <a href="#">
+                    <?php if (isset($_SESSION['id_user'])):  ?>
+                    <a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">
                         <li>Dashboard</li>
                     </a>
+                    <?php else: ?>
+                        <a href="/login"><li>Connexion</li></a>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="footer-section contact-form">

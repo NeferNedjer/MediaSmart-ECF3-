@@ -288,12 +288,70 @@ class ControllerUser {
         $modelemployee = new ModelEmployee();
         $users = $modelemployee->employeeHome();
         $modelemprunts = new ModelEmprunt();
-        $emprunts = $modelemprunts->getEmpruntByUser($id_user);
+        $emprunts = $modelemprunts->getEmpruntResaByUser($id_user);
         
         require_once('./view/dashboardUser.php');
         
     }
 
+    public function resaUser() {
+
+        global $router;
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $model = new ModelEmprunt();
+            $id_user = $_SESSION['id_user'];
+            $id_media = $_POST['id_media'];
+
+            if($model->nbResaByUser($id_user) < 3) {
+                $id_exemplaire = $model->exemplaireDispo($id_media);
+            
+                if($id_exemplaire > 0) {
+
+                    $model->createResa($id_user, $id_exemplaire);
+                    header('Location: ' . $router->generate('dashboard-user', ['id_user' => $id_user]));
+                    exit();
+                } else {
+                    $message= "Il n'y a plus d'exemplaire disponible.";
+                    
+                }
+
+                header('Location: ' . $router->generate('dashboard-user', ['id_user' => $id_user]));
+                exit();
+            } else {
+                $message= "Vous avez déjà 3 réservations en cours.";
+                header('Location: ' . $router->generate('dashboard-user', ['id_user' => $id_user]));
+                exit();
+            }
+        }
+    }
+
+    public function compteUser($id_user) {
+
+        global $router;
+        $model = new ModelUser();
+        $data = $model->getUserById($id_user);
+        require_once './view/compteUser.php';
+        exit();
+
+    }
+
+    public function compteUserModif() {
+
+        global $router;
+        $id_user = $_SESSION['id_user'];
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+            if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['adress']) && !empty($_POST['phone']) && !empty($_POST['statut'])){
+              
+                $model = new ModelUser();
+                $model->updateUser($_POST['name'], $_POST['first_name'], $_POST['email'], $_POST['adress'], $_POST['phone'], $_POST['statut'], $_POST['id_user']);
+                header('Location: ' . $router->generate('dashboard-user', ['id_user' => $id_user]));
+                exit();
+            }
+        } else {
+            echo "Tous les champs doivent être remplis.";
+        }
+    }
     
 }
 

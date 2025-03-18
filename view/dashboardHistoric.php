@@ -62,27 +62,35 @@
                             <table id="historique-table">
                                 <thead>
                                     <tr>
-                                        <th data-sort="id_user">ID Utilisateur</th>
+                                        <th data-sort="id_user">Utilisateur</th>
                                         <th data-sort="titre">Titre du média</th>
                                         <th data-sort="exemplaire">Exemplaire</th>
                                         <th data-sort="categorie">Catégorie</th>
                                         <th data-sort="sousCategorie">Sous-catégorie</th>
                                         <th data-sort="date">Date</th>
                                         <th data-sort="type">Emprunt/Retour</th>
-                                        <th data-sort="statut">Statut</th>
+                                        <th data-sort="status">Status</th>
                                     </tr>
                                 </thead>
+                                <?php if (!empty($historics) && is_array($historics)): ?>
+                                <?php foreach ($historics as $histo): ?>
                                 <tbody id="historique-tbody">
-                                    <th id="id-user-historic"></th>
-                                    <th id="titre-media-historic"></th>
-                                    <th id="exemplaire-media-historic"></th>
-                                    <th id="categorie-media-historic"></th>
-                                    <th id="sous-categorie-historic"></th>
-                                    <th id="date-historic"></th>
-                                    <th id="emprunt-resa-historic"></th>
-                                    <th id="statut-media-historic"></th>
+                                    <th id="id-user-historic"><?php echo $histo->getUser_name().' '.$histo->getUser_first_name() ?></th>
+                                    <th id="titre-media-historic"><?php echo $histo->getTitle() ?></th>
+                                    <th id="exemplaire-media-historic"><?php echo $histo->getId_exemplaire() ?></th>
+                                    <th id="categorie-media-historic"><?php echo $histo->getName() ?></th>
+                                    <th id="sous-categorie-historic"><?php echo $histo->getTheme() ?></th>
+                                    <th id="date-historic"><?php if($histo->getType_histo()==1):echo $histo->getEmprunt_date()->format('d/m/y'); else: echo $histo->getReturn_date()->format('d/m/y'); endif;   ?></th>
+                                    <th id="emprunt-resa-historic"><?php if($histo->getType_histo()==1):echo 'EMPRUNT'; else: echo 'RETOUR'; endif;   ?></th>
+                                    <th id="statut-media-historic"><?php if($histo->getExemplaire_status()==1):echo 'Neuf'; elseif($histo->getExemplaire_status()==2): echo 'Bon'; elseif($histo->getExemplaire_status()==3): echo 'Mauvais'; elseif($histo->getExemplaire_status()==4): echo 'Déchiré'; elseif($histo->getExemplaire_status()==5): echo 'A JETER !'; endif;   ?></th>
                                 </tbody>
-                                
+                                <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="5">Aucun historique disponible.</td>
+                                    </tr>
+                                <?php endif;  ?>
+
                             </table>
 
                         </div>
@@ -93,7 +101,7 @@
         </section>
 
 
-        <script src="../assets/js/historicDash.js"></script>
+        <script src="./assets/js/historicDash.js"></script>
 </body>
 
 </html>

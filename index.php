@@ -44,6 +44,9 @@ $router->map('POST', '/searchMediaHomepage', 'ControllerMedia#searchMediaHomepag
 
 /*----------USER----------*/
 
+$router->map('GET|POST', '/compteUser/[i:id_user]', 'ControllerUser#compteUser', 'compte-user');
+
+$router->map('POST', '/compteUserModif', 'ControllerUser#compteUserModif', 'compteUserModif');
 
 $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 
@@ -56,6 +59,8 @@ $router->map('POST', '/verify-token', 'ControllerUser#verify', 'verify-token');
 $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 
 $router->map('GET|POST', '/dashboardUser/[i:id_user]', 'ControllerUser#dashboardUser', 'dashboard-user');
+
+$router->map('GET|POST', '/resaUser', 'ControllerUser#resaUser', 'resaUser');
 
 /*----------EMPLOYEE----------*/
 
@@ -92,6 +97,8 @@ $router->map('GET|POST', '/modifEmployee/[i:id_employee]', 'Controlleremployee#m
 $router->map('GET', '/getEmployee', 'ControllerEmployee#getEmployee', 'getEmployee');
 
 $router->map('GET|POST', '/deleteEmployee', 'ControllerEmployee#deleteEmployee', 'deleteEmployee');
+
+$router->map('GET|POST', '/dashboardHistoric', 'ControllerEmployee#dashboardHistoric', 'dashboardHistoric');
 
 $match = $router->match();
 
