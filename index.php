@@ -57,6 +57,8 @@ $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 
 $router->map('GET|POST', '/dashboardUser/[i:id_user]', 'ControllerUser#dashboardUser', 'dashboard-user');
 
+$router->map('GET|POST', '/resaUser', 'ControllerUser#resaUser', 'resaUser');
+
 /*----------EMPLOYEE----------*/
 
 $router->map('GET|POST', '/createEmployee', 'ControllerEmployee#create', 'create-employee');

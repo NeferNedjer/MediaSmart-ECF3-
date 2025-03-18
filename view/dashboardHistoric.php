@@ -73,15 +73,26 @@
                                     </tr>
                                 </thead>
                                 <tbody id="historique-tbody">
-                                    <th id="id-user-historic"></th>
-                                    <th id="titre-media-historic"></th>
-                                    <th id="exemplaire-media-historic"></th>
-                                    <th id="categorie-media-historic"></th>
-                                    <th id="sous-categorie-historic"></th>
-                                    <th id="date-historic"></th>
-                                    <th id="emprunt-resa-historic"></th>
-                                    <th id="statut-media-historic"></th>
+                                    <th id="id-user-historic">zz</th>
+                                    <th id="titre-media-historic">zz</th>
+                                    <th id="exemplaire-media-historic">zz</th>
+                                    <th id="categorie-media-historic">zz</th>
+                                    <th id="sous-categorie-historic">zz</th>
+                                    <th id="date-historic">zz</th>
+                                    <th id="emprunt-resa-historic">zz</th>
+                                    <th id="statut-media-historic">zz</th>
                                 </tbody>
+                                <tbody id="historique-tbody">
+                                    <th id="id-user-historic">zz</th>
+                                    <th id="titre-media-historic">zz</th>
+                                    <th id="exemplaire-media-historic">zz</th>
+                                    <th id="categorie-media-historic">zz</th>
+                                    <th id="sous-categorie-historic">zz</th>
+                                    <th id="date-historic">zz</th>
+                                    <th id="emprunt-resa-historic">zz</th>
+                                    <th id="statut-media-historic">zz</th>
+                                </tbody>
+
                                 
                             </table>
 
