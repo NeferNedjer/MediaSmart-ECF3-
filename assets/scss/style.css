@@ -478,13 +478,26 @@ button:hover {
 }
 #sidebar button.close-sidebar {
   color: white;
-  padding: 10px;
+  padding: 6px;
   cursor: pointer;
   position: relative;
-  left: 250px;
+  left: 275px;
   border: none;
   border-radius: 2px;
   background-color: #b66f03;
+}
+#sidebar button.close-sidebar:hover {
+  background-color: #d98e21;
+}
+#sidebar button.close-sidebar.active {
+  transform: translateX(0);
+}
+#sidebar button.close-sidebar:not(.active) {
+  transform: translateX(-100%);
+}
+#sidebar .open-sidebar.visible {
+  display: flex !important;
+  animation: fadeIn 0.3s ease;
 }
 #sidebar h2 {
   font-size: 1.8rem;
@@ -526,6 +539,98 @@ button:hover {
   color: #d98e21;
   border-left: 3px solid #d98e21;
   font-weight: 600;
+}
+#sidebar .open-sidebar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1002;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #d98e21;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+#sidebar .open-sidebar:hover {
+  background-color: #ad711a;
+  transform: scale(1.1);
+}
+#sidebar .open-sidebar:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(217, 142, 33, 0.3);
+}
+@media (max-width: 768px) {
+  #sidebar .open-sidebar {
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#sidebar #user-cate {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1001;
+}
+#sidebar #user-cate figure {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: -10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#sidebar #user-cate figure p {
+  margin-top: 10px;
+}
+#sidebar #user-cate figure img,
+#sidebar #user-cate figure p {
+  width: 25px;
+  height: 25px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-right: 5px;
+}
+#sidebar #user-cate figure #logout-cate {
+  width: 25px;
+  height: 25px;
+  transition: all 0.3s ease;
+  margin-right: 50px;
+}
+#sidebar #user-cate figure #logout-cate:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+#sidebar #user-cate figure:hover {
+  transform: scale(1.1);
 }
 
 #livre-cate,
@@ -573,10 +678,18 @@ button:hover {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+#author-cate .arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+#author-cate .arrow.active {
+  transform: rotate(180deg);
+}
 #author-cate h3 {
   color: #2c3e50;
   font-size: 1.1rem;
   margin-bottom: 15px;
+  cursor: pointer;
   padding-bottom: 8px;
   border-bottom: 2px solid #e0e0e0;
 }
@@ -754,18 +867,61 @@ button:hover {
     margin: 20px;
   }
   #product .card-product .card {
-    width: 220px;
-    height: 280px;
+    width: 200px;
+    height: 400px;
   }
   #product .card-product .card img {
     height: 70%;
   }
   #product #last-add {
-    grid-template-columns: 29% 71%;
-    margin: 20px;
+    display: grid;
+    grid-template-columns: 34% 66%;
+    gap: 30px;
+    align-items: start;
+    padding: 20px;
+  }
+  #product #last-add .title-product-latest {
+    margin: 0;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+  }
+  #product #last-add .cards-product {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    perspective: 1000px;
   }
   #product #last-add .cards-product img {
-    height: 220px;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+  }
+  #product #last-add .cards-product img:hover {
+    transform: translateY(-10px) rotateY(5deg);
+  }
+  #product #last-add .cards-product::after {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    filter: blur(8px);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  #product #last-add .cards-product:hover::after {
+    width: 85%;
+    opacity: 0.8;
   }
   #product #last-add .right {
     margin: 20px;
@@ -1040,7 +1196,7 @@ input#adress {
   display: block;
   margin-bottom: 5px;
   display: flex;
-  flex-direction: column; /* Ajouté pour disposer le label et input en colonne */
+  flex-direction: column;
 }
 
 .input-group input {
@@ -2424,6 +2580,10 @@ section#cardd .contain-product {
   height: 100%;
 }
 
+section.splide > div.splide__track > ul.splide__list {
+  gap: 25px;
+}
+
 #top-carousel {
   grid-column: 1;
   grid-row: 1;
@@ -2436,7 +2596,6 @@ section#cardd .contain-product {
 }
 #top-carousel img {
   max-height: 100px;
-  width: 100%;
   margin: 10px 20px;
   -o-object-fit: contain;
      object-fit: contain;
