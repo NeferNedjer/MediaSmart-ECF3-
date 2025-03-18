@@ -30,6 +30,35 @@ class ModelEmprunt extends Model {
 
     }
 
+    public function getEmpruntResaByUser($id_user) {
+
+        $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
+                                                m.id_media, title, m.id_author, description, image_recto, image_verso , a.name as author,
+                                                e.id_exemplaire, emprunt_date, max_return_date, resa, mail_sent,
+                                                er.id_user, u.name as user_name, u.first_name as user_first_name, status
+                                        FROM    category c, subcategory s, media m, author a, emprunt_resa er, exemplaire e, user u
+                                        WHERE   c.id_category = s.id_category 
+                                        AND     s.id_subcategory = m.id_subcategory 
+                                        AND     m.id_author = a.id_author
+                                        AND     e.id_media = m.id_media
+                                        AND     e.id_exemplaire = er.id_exemplaire
+                                        AND     er.id_user = u.id_user
+                                        AND     er.id_user = :id_user
+                                        ORDER BY emprunt_date;');
+        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $req->execute();
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Emprunt($data);
+        }
+
+        return $arrayobj;
+
+    }
+
+
+
     public function empruntHome() {
 
         $req = $this->getDb()->prepare('SELECT  c.id_category, c.name, s.id_subcategory, s.theme, 
@@ -183,5 +212,42 @@ class ModelEmprunt extends Model {
         $req->execute();
         
     }
+
+    public function nbResaByUser(int $id_user) {
+        
+        $req = $this->getDb()->prepare('SELECT COUNT(*) AS nb_resa FROM emprunt_resa WHERE id_user = :id_user AND resa = 1');
+        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $req->execute();
+        $nb_resa = $req->fetch(PDO::FETCH_ASSOC);
+
+        return $nb_resa['nb_resa'];
+        
+    }
+
+    public function exemplaireDispo(int $id_media) {
+
+        $req = $this->getDb()->prepare('SELECT id_exemplaire 
+                                        FROM exemplaire 
+                                        WHERE id_media=:id_media 
+                                        AND id_exemplaire NOT IN(SELECT id_exemplaire FROM emprunt_resa) 
+                                        ORDER BY `status`');
+        $req->bindParam(':id_media', $id_media, PDO::PARAM_INT);
+        $req->execute();
+        $id_exemplaire = $req->fetch(PDO::FETCH_ASSOC);
+
+        return $id_exemplaire['id_exemplaire'];
+    }
+
+    public function createResa(int $id_user, int $id_exemplaire) {
+
+        // 1_ Créer un nouvel enregistrement RESA dans la table emprunt_resa :
+        
+        $req = $this->getDb()->prepare('INSERT INTO emprunt_resa (id_exemplaire, id_user, resa, emprunt_date, max_return_date) VALUES (:id_exemplaire, :id_user, 1, NOW(), DATE_ADD(NOW(), INTERVAL 21 DAY))');
+        $req->bindParam(':id_exemplaire', $id_exemplaire, PDO::PARAM_INT);
+        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    
 
 }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -72,10 +73,15 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <p class="auteur-infos"><?php echo $lastmedia->getAuthor(); ?></p>
 
 
-                    <p class="description"><?php echo $lastmedia->getDescription(); ?></p>
-                    <button onclick="window.location.href = '#'" type="button" id="btn-resa-dash">
+
+                    <p class="description">Dans une petite ville côtière oubliée du temps, Clara, une jeune historienne, arrive pour découvrir les secrets enfouis d'une ancienne famille aristocratique. Lorsqu'elle tombe sur un vieux journal intime, des événements mystérieux, liés à une disparition vieille de plusieurs décennies, refont surface.</p>
+                    <form action="/resaUser" method="POST">
+                        <input type="hidden" name="id_media" value="<?php echo $lastmedia->getId_media(); ?>">
+                    <button onclick="window.location.href = '#'" type="submit" id="btn-resa-dash">
                         Réserver maintenant
                     </button>
+                    </form>
+                    <p><?php if(isset($message)):echo $message; endif; ?></p>
                 </div>
 
 
@@ -84,7 +90,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         <section class="emprunt-user">
             <h2>Vos Emprunts</h2>
             <div class="emprunt-lists">
-                <?php foreach($emprunts as $emprunt): ?>
+                
                 <ul class="emprunt-header">  
                     <li>MEDIA</li>
                     <li>EXEMPLAIRE</li>
@@ -92,6 +98,9 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li>DATE D'EMPRUNT</li>
                     <li>DATE DE RETOUR</li>
                 </ul>
+                <?php foreach($emprunts as $emprunt): 
+                    if($emprunt->getResa() == 0):
+                    ?>
                 <ul class="emprunt-data">
                     <li><?php echo $emprunt->getId_media(); ?></li>
                     <li><?php echo $emprunt->getId_exemplaire(); ?></li>
@@ -99,7 +108,8 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></li>
                     <li><?php echo $emprunt->getMax_return_date()->format('d/m/y'); ?></li>
                 </ul>
-                
+                <?php endif; 
+                endforeach;  ?>
             </div>
         </section>
         <section class="resa-user">
@@ -112,6 +122,8 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li>DATE DE LA DEMANDE</li>
                     <li>STATUT</li>
                 </ul>
+                <?php foreach($emprunts as $emprunt): 
+                    if($emprunt->getResa() == 1):?>
                 <ul class="resa-data">
                     <li><?php echo $emprunt->getId_media(); ?></li>
                     <li><?php echo $emprunt->getId_exemplaire(); ?></li>
@@ -119,7 +131,8 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></li>
                     <li><?php echo $emprunt->getResa() ?></li>
                 </ul>
-                <?php endforeach;  ?>
+                <?php endif; 
+            endforeach;  ?>
             </div>
 
 
