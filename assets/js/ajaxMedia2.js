@@ -46,7 +46,7 @@ searchInputMedia.addEventListener('input', function() {
                 nameDashboard.textContent = data.title;
 
                 const moreLink = document.createElement("a");
-                moreLink.href = `/getMedia/${data.id_media}`;
+                moreLink.href = `/detailMedia/${data.id_media}`;
                 const moreButton = document.createElement("button");
                 moreButton.type = "submit";
                 moreButton.id = "more-dashboard";
@@ -102,7 +102,7 @@ searchInputMedia.addEventListener('input', function() {
             nameDashboard.textContent = data.title;
 
             const moreLink = document.createElement("a");
-            moreLink.href = `/getMedia/${data.id_media}`;
+            moreLink.href = `/detailMedia/${data.id_media}`;
             const moreButton = document.createElement("button");
             moreButton.type = "submit";
             moreButton.id = "more-dashboard";

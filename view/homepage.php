@@ -213,7 +213,7 @@
             <?php foreach ($datas as $data): ?>
                 <div class="cards-product title-product-latest">
 
-                    <img src="<?php echo $data->getImage_recto(); ?>" alt="">
+                    <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
 
                 </div>
                 <div class="right">
