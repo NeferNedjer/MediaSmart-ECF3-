@@ -72,11 +72,18 @@
                 <div class="horizontal-lign"></div>
                 <p id="product-description"><?php echo $media->getDescription() ?></p>
             
-
+                
             </div>
-        </div>
+            
+        </div><br>
+        <form action="/resaUser" method="POST">
+            <input type="hidden" name="id_media" value="<?php echo $media->getId_media(); ?>">
+            <button onclick="window.location.href = '#'" type="submit" id="btn-resa-dash">
+                Réserver maintenant
+            </button>
+        </form>
     </div>
-
+    
     <div class="related-products">
     
         <h2>Produits liés</h2>
@@ -161,7 +168,6 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="../assets/js/slider-details.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    
     <script src="../assets/js/burger.js"></script>
     <script src="../assets/js/footer.js"></script>
     
