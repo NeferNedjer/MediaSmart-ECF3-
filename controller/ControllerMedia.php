@@ -236,7 +236,7 @@ class ControllerMedia {
                     exit();
             } elseif ($action == 'Annuler') {
                     $modelEmprunt = new ModelEmprunt();
-                    $modelEmprunt->deleteResa($_POST['id_exemplaire']);
+                    $modelEmprunt->deleteResa($_POST['id_exemplaire'], $_POST['status']);
                     header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
                     exit();
             } elseif ($action == 'Retour') {
