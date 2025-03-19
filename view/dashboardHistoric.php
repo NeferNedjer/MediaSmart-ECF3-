@@ -37,66 +37,77 @@
                 </li>
             </ul>
         </section>
-        <section id="dashboard">
-            <!DOCTYPE html>
-            <html lang="fr">
-
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Dashboard Admin - Historique Bibliothèque</title>
-            </head>
-
-            <body>
-                <div class="container">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="flex">
+        <section id="dashboard2">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="flex">
                             <h2>Historique:</h2>
-                                
-                                    <label for="search" name="search-historic-user"></label>
-                                    <input type="text" name="search-historic-user" placeholder="Rechercher un utilisateur" id="search-historic-user">
-                                </div>
-                        </div>
-                        <div class="card-body">
-                            <table id="historique-table">
-                                <thead>
-                                    <tr>
-                                        <th data-sort="id_user">Utilisateur</th>
-                                        <th data-sort="titre">Titre du média</th>
-                                        <th data-sort="exemplaire">Exemplaire</th>
-                                        <th data-sort="categorie">Catégorie</th>
-                                        <th data-sort="sousCategorie">Sous-catégorie</th>
-                                        <th data-sort="date">Date</th>
-                                        <th data-sort="type">Emprunt/Retour</th>
-                                        <th data-sort="status">Status</th>
-                                    </tr>
-                                </thead>
-                                <?php if (!empty($historics) && is_array($historics)): ?>
-                                <?php foreach ($historics as $histo): ?>
-                                <tbody id="historique-tbody">
-                                    <th id="id-user-historic"><?php echo $histo->getUser_name().' '.$histo->getUser_first_name() ?></th>
-                                    <th id="titre-media-historic"><?php echo $histo->getTitle() ?></th>
-                                    <th id="exemplaire-media-historic"><?php echo $histo->getId_exemplaire() ?></th>
-                                    <th id="categorie-media-historic"><?php echo $histo->getName() ?></th>
-                                    <th id="sous-categorie-historic"><?php echo $histo->getTheme() ?></th>
-                                    <th id="date-historic"><?php if($histo->getType_histo()==1):echo $histo->getEmprunt_date()->format('d/m/y'); else: echo $histo->getReturn_date()->format('d/m/y'); endif;   ?></th>
-                                    <th id="emprunt-resa-historic"><?php if($histo->getType_histo()==1):echo 'EMPRUNT'; else: echo 'RETOUR'; endif;   ?></th>
-                                    <th id="statut-media-historic"><?php if($histo->getExemplaire_status()==1):echo 'Neuf'; elseif($histo->getExemplaire_status()==2): echo 'Bon'; elseif($histo->getExemplaire_status()==3): echo 'Mauvais'; elseif($histo->getExemplaire_status()==4): echo 'Déchiré'; elseif($histo->getExemplaire_status()==5): echo 'A JETER !'; endif;   ?></th>
-                                </tbody>
-                                <?php endforeach; ?>
-                                <?php else: ?>
-                                    <tr>
-                                        <td colspan="5">Aucun historique disponible.</td>
-                                    </tr>
-                                <?php endif;  ?>
 
-                            </table>
-
+                            <label for="search" name="search-historic-user"></label>
+                            <input type="text" name="search-historic-user" placeholder="Recherchez" id="search-historic-user">
                         </div>
                     </div>
+                    <div class="card-body">
+                        <table id="historique-table">
+                            <thead>
+                                <tr>
+                                    <th data-sort="id_user">Utilisateur</th>
+                                    <th data-sort="titre">Titre du média</th>
+                                    <th data-sort="exemplaire">Exemplaire</th>
+                                    <th data-sort="categorie">Catégorie</th>
+                                    <th data-sort="sousCategorie">Sous-catégorie</th>
+                                    <th data-sort="date">Date</th>
+                                    <th data-sort="type">Emprunt/Retour</th>
+                                    <th data-sort="status">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historique-tbody">
+                                <?php if (!empty($historics) && is_array($historics)): ?>
+                                    <?php foreach ($historics as $histo): ?>
+                                        <tr>
+                                            <td><?php echo $histo->getUser_name() . ' ' . $histo->getUser_first_name() ?></td>
+                                            <td><?php echo $histo->getTitle() ?></td>
+                                            <td><?php echo $histo->getId_exemplaire() ?></td>
+                                            <td><?php echo $histo->getName() ?></td>
+                                            <td><?php echo $histo->getTheme() ?></td>
+                                            <td><?php echo ($histo->getType_histo() == 1) ? $histo->getEmprunt_date()->format('d/m/y') : $histo->getReturn_date()->format('d/m/y'); ?></td>
+                                            <td><?php echo ($histo->getType_histo() == 1) ? 'EMPRUNT' : 'RETOUR'; ?></td>
+                                            <td class="status-cell"><?php
+                                                                    $status = '';
+                                                                    switch ($histo->getExemplaire_status()) {
+                                                                        case 1:
+                                                                            $status = 'Neuf';
+                                                                            break;
+                                                                        case 2:
+                                                                            $status = 'Bon';
+                                                                            break;
+                                                                        case 3:
+                                                                            $status = 'Mauvais';
+                                                                            break;
+                                                                        case 4:
+                                                                            $status = 'Déchiré';
+                                                                            break;
+                                                                        case 5:
+                                                                            $status = 'A JETER !';
+                                                                            break;
+                                                                    }
+                                                                    echo $status;
+                                                                    ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="8">Aucun historique disponible.</td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
-                </div>
+            </div>
+            </div>
 
         </section>
 

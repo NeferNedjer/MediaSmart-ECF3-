@@ -291,4 +291,44 @@ class ModelMedia extends Model{
         return new Media($data);
     }
 
+    public function getMainCategories() {
+        $req = $this->getDb()->query('SELECT id_category, name FROM category ORDER BY id_category');
+        $arrayobj = [];
+        while($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            $arrayobj[] = new Category($data);
+        }
+        return $arrayobj;
+    }
+
+    public function getSubcategoriesByCategory($categoryId) {
+        $sql = "SELECT id_subcategory, theme FROM subcategory WHERE id_category = :category_id ORDER BY theme";
+        $stmt = $this->getDb()->prepare($sql);
+        $stmt->execute(['category_id' => $categoryId]);
+        
+        $arrayobj = [];
+        while($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $arrayobj[] = new Subcategory($data);
+        }
+        return $arrayobj;
+    }
+
+    
+
+    public function getMediaBySubcategory2($subcategoryId) {
+        $sql = "SELECT m.*, a.name as author 
+                FROM media m 
+                JOIN author a ON m.id_author = a.id_author 
+                WHERE m.id_subcategory = :subcategory_id";
+                
+        $stmt = $this->getDb()->prepare($sql);
+        $stmt->execute(['subcategory_id' => $subcategoryId]);
+        
+        $arrayobj = [];
+        while($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $arrayobj[] = new Media($data);
+        }
+        return $arrayobj;
+    }
+
+
 }

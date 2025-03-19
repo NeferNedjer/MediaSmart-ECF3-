@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -55,86 +53,88 @@
     <div id="sidebar">
         <button class="close-sidebar">X</button>
         <h2>Catégories</h2>
-        <ul class="livre-categorie">
-            <li class="category-header">Livres <span class="arrow">▼</span></li>
-            <ul id="livre-cate">
-                <li><a href="#">ROMAN</a></li>
-                <li><a href="#">NOUVELLE</a></li>
-                <li><a href="#">POLAR</a></li>
-                <li><a href="#">FANTASTIQUE</a></li>
-                <li><a href="#">FICTION</a></li>
-                <li><a href="#">MANGA</a></li>
-                <li><a href="#">BIOGRAPHIE</a></li>
-                <li><a href="#">POESIE</a></li>
-                <li><a href="#">ESSAI</a></li>
-                <li><a href="#">CONTE ET LEGENDE</a></li>
-                <li><a href="#">BANDE DESSINEE</a></li>
-                <li><a href="#">JEUNESSE</a></li>
-            </ul>
 
-        </ul>
-
-        <ul class="dvd-categorie">
-
-            <li class="category-header-dvd">DVD <span class="arrow">▼</span></li>
-            <ul id="dvd-cate">
-                <li><a href="#">ACTION</a></li>
-                <li><a href="#">AVENTURE</a></li>
-                <li><a href="#">COMEDIE</a></li>
-                <li><a href="#">DRAME</a></li>
-                <li><a href="#">FANTASTIQUE</a></li>
-                <li><a href="#">GUERRE</a></li>
-                <li><a href="#">POLICIER</a></li>
-                <li><a href="#">
-                        SCIENCE FICTION</a></li>
-
-            </ul>
+        <ul class="categories-list">
+            <?php
+            $mainCategories = $model->getMainCategories();
+            foreach ($mainCategories as $category):
+            ?>
+                <li class="category-header" data-category="<?php echo $category->getId_category(); ?>">
+                    <?php echo $category->getName(); ?> <span class="arrow">▼</span>
+                    <ul class="subcategory-list hidden">
+                        <?php
+                        $subcategories = $model->getSubcategoriesByCategory($category->getId_category());
+                        foreach ($subcategories as $subcategory):
+                        ?>
+                            <li class="subcategory-item">
+                                <a href="#disponibilite-cate"
+                                    data-category="<?php echo $category->getId_category(); ?>"
+                                    data-subcategory="<?php echo $subcategory->getId_subcategory(); ?>">
+                                    <?php echo $subcategory->getTheme(); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+            <?php endforeach; ?>
         </ul>
 
         <div id="author-cate">
-            <h3>Recherche par Auteur: <span class="arrow">▼</span></h3>
-            <section class="author-hidden">
-                <div class="checkbox-wrapper">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="Valérie Perrin">
-                        <span class="checkbox-custom"></span>
-                        <span class="label-text">Valérie Perrin</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="Anna Stuart">
-                        <span class="checkbox-custom"></span>
-                        <span class="label-text">Anna Stuart</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="Claire McGowan">
-                        <span class="checkbox-custom"></span>
-                        <span class="label-text">Claire McGowan</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="Xavier Poussard">
-                        <span class="checkbox-custom"></span>
-                        <span class="label-text">Xavier Poussard</span>
-                    </label>
-                </div>
-            </section>
-        </div>
-
-
-
-        <section id="user-cate">
-            <figure>
-                <img src="../assets/img/icons8-nom-50.png" alt="">
-                <p style="white-space :nowrap"><?php if (isset($_SESSION['first_name'])) {
-                echo 'Bonjour '.$_SESSION['first_name'];
-                            } else {
-                                echo 'Bonjour visiteur';
-                            } ?> </p>
-            </figure>
-            <figure>
-            <a href="logout"><img id="logout-cate" src="../assets/img/icons8-logout-64.png" alt=""></a>
-            
-        </figure>
+        <h3>Recherche par Auteur: <span class="arrow">▼</span></h3>
+        <section class="author-hidden">
+            <div class="checkbox-wrapper">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="Valérie Perrin">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Valérie Perrin</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="Anna Stuart">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Anna Stuart</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="Claire McGowan">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Claire McGowan</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="Xavier Poussard">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Xavier Poussard</span>
+                </label>
+            </div>
         </section>
+    </div>
+
+
+
+    <section id="user-cate">
+        <figure>
+            <img src="../assets/img/icons8-nom-50.png" alt="">
+            <p style="white-space :nowrap"><?php if (isset($_SESSION['first_name'])) {
+                                                echo 'Bonjour ' . $_SESSION['first_name'];
+                                            } else {
+                                                echo 'Bonjour visiteur';
+                                            } ?> </p>
+        </figure>
+        <figure>
+            <a href="logout"><img id="logout-cate" src="../assets/img/icons8-logout-64.png" alt=""></a>
+
+        </figure>
+    </section>
+
+
+
+
+
+    </div>
+
+
+
+
+
+    
 
     </div>
 
@@ -170,7 +170,7 @@
     <section id="product">
 
         <h1>Livre à la Une :</h1>
-        
+
         <div class="carrousel-container">
             <div class="carrousel">
                 <?php foreach ($datas as $data): ?>
@@ -181,28 +181,32 @@
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
         </div>
 
-        <h1>Disponible :</h1>
 
 
-        <div class="carousel-product-container">
-            <button class="carousel-prev">❮</button>
-            <div class="flex-product">
-                <?php foreach ($datas as $data): ?>
-                    <div class="card-product">
-                        <div class="card">
 
-                            <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
-                            <div class="title-product1"><?php echo $data->getTitle(); ?></div>
-                            <div class="auteur-product1"><?php echo $data->getAuthor(); ?></div>
+        <section id="disponibilite-cate">
+            <h1>Disponible :</h1>
 
+
+            <div class="carousel-product-container">
+                <button class="carousel-prev">❮</button>
+                <div class="flex-product">
+                    <?php foreach ($datas as $data): ?>
+                        <div class="card-product">
+                            <div class="card">
+
+                                <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
+                                <div class="title-product1"><?php echo $data->getTitle(); ?></div>
+                                <div class="auteur-product1"><?php echo $data->getAuthor(); ?></div>
+
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
+                <button class="carousel-next">❯</button>
             </div>
-            <button class="carousel-next">❯</button>
-        </div>
 
-
+        </section>
 
 
 
@@ -221,7 +225,7 @@
                         <p class="title-product"><?php echo $data->getTitle(); ?></p><br>
                     </a>
                     <div class="auteur-product-latest">De <span> <?php echo $data->getAuthor(); ?> </span> (Auteur)</div>
-                    
+
                     <div class="horizontal-lign"> </div>
                     <div class="card description-product-latest"><?php echo $data->getDescription(); ?>
 
@@ -247,9 +251,9 @@
             <li><a href="#"> Catégories</a></li>
             <li><a href="#"><img src="./assets/img/icons8-basket-64.png" alt="" height="20px">Panier</a></li>
             <?php if (isset($_SESSION['id_user'])):  ?>
-            <li><a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>"> <img src="./assets/img/icons8-user-50.png" alt="" height="20px">Mon Compte</a></li>
+                <li><a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>"> <img src="./assets/img/icons8-user-50.png" alt="" height="20px">Mon Compte</a></li>
             <?php else : ?>
-            <li><a href="/login">Connexion</a></li>
+                <li><a href="/login">Connexion</a></li>
             <?php endif;  ?>
         </ul>
         <button class="btn-add">
@@ -286,11 +290,13 @@
                         <li>Contact</li>
                     </a>
                     <?php if (isset($_SESSION['id_user'])):  ?>
-                    <a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">
-                        <li>Dashboard</li>
-                    </a>
+                        <a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">
+                            <li>Dashboard</li>
+                        </a>
                     <?php else: ?>
-                        <a href="/login"><li>Connexion</li></a>
+                        <a href="/login">
+                            <li>Connexion</li>
+                        </a>
                     <?php endif; ?>
                 </ul>
             </div>
