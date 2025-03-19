@@ -15,7 +15,7 @@
 <body>
 <div id="top-mobile">
         <figure>
-            <img src="../assets/img/Group 46.png" alt="">
+            <a href="/" class=""><img src="../assets/img/Group 46.png" alt=""></a>
             
         </figure>
 
