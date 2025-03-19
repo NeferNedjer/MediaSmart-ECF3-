@@ -15,6 +15,8 @@ $router = new AltoRouter();
 
 
 /*----------MEDIA----------*/
+$router->map('POST', '/filterMediaByCategory', 'ControllerMedia#filterMediaByCategory', 'filter-media-by-category');
+
 
 $router->map('GET', '/', 'ControllerMedia#home', 'home');
 
@@ -61,6 +63,8 @@ $router->map('GET', '/resend-token', 'ControllerUser#resend', 'resend-token');
 $router->map('GET|POST', '/dashboardUser/[i:id_user]', 'ControllerUser#dashboardUser', 'dashboard-user');
 
 $router->map('GET|POST', '/resaUser', 'ControllerUser#resaUser', 'resaUser');
+
+$router->map('POST', '/searchHistoricUser', 'ControllerEmployee#searchHistoricUser', 'search-historic-user');
 
 /*----------EMPLOYEE----------*/
 

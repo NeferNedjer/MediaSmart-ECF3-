@@ -332,4 +332,38 @@ class ControllerMedia {
     }
 
 
+    public function filterMediaByCategory() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = json_decode(file_get_contents('php://input'), true);
+            
+            if (isset($data['subcategory_id'])) {
+                $model = new ModelMedia();
+                $medias = $model->getMediaBySubcategory2($data['subcategory_id']);
+                
+                $formattedMedias = array_map(function($media) {
+                    return [
+                        'id_media' => $media->getId_media(),
+                        'title' => $media->getTitle(),
+                        'author' => $media->getAuthor(),
+                        'image_recto' => $media->getImage_recto()
+                    ];
+                }, $medias);
+                
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'success' => true,
+                    'medias' => $formattedMedias
+                ]);
+                exit;
+            }
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => false,
+            'message' => 'Invalid request'
+        ]);
+        exit;
+    }
+
 }

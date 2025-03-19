@@ -611,6 +611,39 @@ button:hover {
 
 
 // --------------------------------SIDEBAR-CATEGORY
+.hidden {
+    display: none;
+}
+
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.category-header {
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subcategory-list {
+    margin-left: 20px;
+    transition: all 0.3s ease;
+}
+
+.subcategory-item {
+    padding: 5px 0;
+}
+
+.subcategory-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 5px 0;
+} 
+
 #sidebar {
   position: fixed;
   top: 0;
@@ -646,7 +679,6 @@ button:hover {
      
   }
 
-  
 
 .open-sidebar.visible {
     display: flex !important;
@@ -2098,23 +2130,29 @@ div.user-info > .user-info{
   position: absolute;
   left: 100px;
   top: 25px;
- 
-  max-height: 97vh;
+  
+   max-height: 97vh;
 }
 
+
+#dashboard2{
+  background: #ecf0f1;
+  max-width: 93vw;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 8px;
+  position: absolute;
+  left: 100px;
+  top: 25px;
+  overflow-y: auto;
+   max-height: 97vh;
+}
 
 
 .overflow-y{
   overflow-y: auto;
 }
 
-#grid-user-gestion{
-  display: $grid;
-  margin: 10px;
-  // max-height: 95vh;
-  width: 100%;
-  grid-template-columns: 55% 45%;
-}
+
 
 .user-dashboard > form > .supprimer {
     background-color: #f44336; 
@@ -2131,11 +2169,9 @@ div.user-info > .user-info{
     }
 
 #left-grid{
-  overflow-y: auto;
+  
   box-shadow: var(--shadow-standard);
   height: 95vh;
-
-  // overflow-y: auto;
 
   border-top-left-radius: 28px;
   border-bottom-left-radius: 8px;
@@ -2214,7 +2250,6 @@ ul.user-gestion-list > li:last-child > button,
 }
 
 .nav-menu a span {
-  margin-left: 10px;
   opacity: 0;
   display: block;
   margin-top: 5px;
@@ -2261,7 +2296,7 @@ ul.user-gestion-list > li:last-child > button,
 .btn-add-user {
   position: absolute;
   top: 30px;
-  left: 48%;
+  left: 45%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   color: var(--color-text-light);
@@ -2563,8 +2598,8 @@ ul.user-gestion-list > li:last-child > button,
 
 #grid-user-gestion {
   display: grid;
-  grid-template-columns: 50% 50%;
-  gap: 10px;
+  grid-template-columns: 49% 50%;
+  gap: 8px;
   width: 100%;
   
 }
@@ -2734,17 +2769,18 @@ ul.user-gestion-list > li:last-child > button,
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   color: var(--color-text-light);
   font-size: 24px;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  display: flex;
+  display: flex
+;
   justify-content: center;
   align-items: center;
   box-shadow: var(--shadow-standard);
   border: 2px solid rgba(255, 255, 255, 0.8);
   cursor: pointer;
   transition: var(--transition-standard);
-  z-index: 100;
+  z-index: 1001;
 }
 
 .btn-add-dashboard span {
@@ -3515,8 +3551,8 @@ div#top-hidden-resa-bar{
 
 .container {
   overflow-y: auto;
-  width: 91vw;
-  min-height: 86vh;
+  width: 90vw;
+  max-height: 87vh;
   margin: 2rem auto;
   padding: 0 1rem;
     .card {
@@ -3546,14 +3582,36 @@ div#top-hidden-resa-bar{
           border-radius: 4px;
           font-size: 1rem;
           box-sizing: border-box;
+
+              
+              &:focus {
+                outline: none;
+                border-color: #d98e21;
+                box-shadow: 0 0 5px rgba(217, 142, 33, 0.3);
+            }
         }
         
       
     }
     
-  }
-    
+  }   
+}
 
+
+#historique-table {
+  tbody {
+      transition: all 0.3s ease;
+      
+      &:hover {
+          background-color: #f5f5f5;
+      }
+  }
+
+  th {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+  }
 }
 
 .card-body {
@@ -3566,8 +3624,11 @@ div#top-hidden-resa-bar{
         
       thead {
         background-color: #e67e22;
-      
       } 
+
+      tr{
+        text-transform: uppercase;
+      }
    
        th {
           padding: 0.75rem 1rem;
@@ -3575,7 +3636,8 @@ div#top-hidden-resa-bar{
           font-size: 0.75rem;
           font-weight: 500;
           color: #000000;
-          text-transform: uppercase;
+          
+          text-transform: capitalize;
           letter-spacing: 0.05em;
           border-bottom: 1px solid #e9ecef;
           cursor: pointer;
@@ -3615,8 +3677,6 @@ div#top-hidden-resa-bar{
 
 }
 
-
-
 /* Statut badges */
 .badge {
   padding: 0.25rem 0.5rem;
@@ -3627,8 +3687,8 @@ div#top-hidden-resa-bar{
 }
 
 .badge-jaune {
-  background-color: #dbeafe;
-  color: #ffe711;
+  background-color: #d8d925;
+  color: #262522;
 }
 
 .badge-green {

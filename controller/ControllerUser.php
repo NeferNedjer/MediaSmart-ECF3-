@@ -353,6 +353,25 @@ class ControllerUser {
         }
     }
     
+
+    public function searchHistoricUser() {
+        if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['search'])) {
+            try {
+                $modelHistoric = new ModelHistoric();
+                $search = $_POST['search'] . '%';
+                $results = $modelHistoric->searchUserHistoric($search);
+                
+                Header('Content-Type: application/json; charset=UTF-8');
+                echo json_encode($results, JSON_THROW_ON_ERROR);
+            } catch (Exception $e) {
+                http_response_code(500);
+                echo json_encode(['error' => 'Une erreur est survenue lors de la recherche']);
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(['error' => 'Paramètres de recherche invalides']);
+        }
+    }
 }
 
 
