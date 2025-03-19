@@ -6,36 +6,49 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!carousel || !prevBtn || !nextBtn) return;
 
     let position = 0;
-    const cardWidth = document.querySelector('.card-product').offsetWidth + 20; 
+    const cardWidth = document.querySelector('.card-product').offsetWidth + 20;
     let autoplayInterval;
-    const autoplayDelay = 3700; 
-
-    function updateButtonsState() {
-        const maxScroll = -(carousel.scrollWidth - carousel.parentElement.offsetWidth);
-        prevBtn.disabled = position === 0;
-        nextBtn.disabled = position <= maxScroll;
-    }
-
+    const autoplayDelay = 3700;
+    
     function moveCarousel(direction) {
         const containerWidth = carousel.parentElement.offsetWidth;
-        const maxScroll = -(carousel.scrollWidth - containerWidth);
+        const totalWidth = carousel.scrollWidth;
+        const maxScroll = -(totalWidth - containerWidth);
         
         if (direction === 'next') {
-            position = Math.max(position - cardWidth, maxScroll);
+            position -= cardWidth;
             
-            if (position <= maxScroll) {
-                position = 0;
+            // Si on atteint la fin
+            if (position < maxScroll) {
+                // Copier le premier élément à la fin
+                const firstCard = carousel.firstElementChild;
+                carousel.appendChild(firstCard.cloneNode(true));
+                carousel.removeChild(firstCard);
+                
+                // Réinitialiser la position
+                position += cardWidth;
             }
         } else {
-            position = Math.min(position + cardWidth, 0);
+            position += cardWidth;
+            
+            // Si on est au début
+            if (position > 0) {
+                // Copier le dernier élément au début
+                const lastCard = carousel.lastElementChild;
+                carousel.insertBefore(lastCard.cloneNode(true), carousel.firstElementChild);
+                carousel.removeChild(lastCard);
+                
+                // Ajuster la position
+                position -= cardWidth;
+            }
         }
 
+        carousel.style.transition = 'transform 0.3s ease-in-out';
         carousel.style.transform = `translateX(${position}px)`;
-        updateButtonsState();
     }
 
     function startAutoplay() {
-        stopAutoplay(); 
+        stopAutoplay();
         autoplayInterval = setInterval(() => {
             moveCarousel('next');
         }, autoplayDelay);
@@ -47,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-   
+    // Event Listeners
     prevBtn.addEventListener('click', () => {
         moveCarousel('prev');
         stopAutoplay();
@@ -58,23 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
         stopAutoplay();
     });
 
-   
     carousel.addEventListener('mouseenter', stopAutoplay);
-    // Reprendre l'autoplay quand la souris quitte le carousel
     carousel.addEventListener('mouseleave', startAutoplay);
 
-    
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            position = 0;
-            carousel.style.transform = `translateX(0)`;
-            updateButtonsState();
-        }, 250);
-    });
-
-    
-    updateButtonsState();
-    startAutoplay(); 
+    // Initialize
+    startAutoplay();
 });

@@ -64,7 +64,7 @@ class ControllerMedia {
                 $modelAuthor = new ModelAuthor();
                 $id_author = $modelAuthor->getIdByAuthor($_POST['author']);
 
-                $id_media = $model->createMedia($_POST['id_subcategory'], $_POST['title'], $id_author, $_POST['description'],  $_FILES['image_recto']['name'], $_FILES['image_verso']['name']);
+                $id_media = $model->createMedia($_POST['id_subcategory'], $_POST['title'], $id_author, $_POST['description']);
 
                 if(!empty($_FILES['image_recto']['tmp_name'])) {
                     $source = $_FILES['image_recto']['tmp_name'];
@@ -246,7 +246,7 @@ class ControllerMedia {
                     exit();
             } elseif ($action == 'Emprunt') {
                 if(isset($_POST['user_id']) && !empty($_POST['user']) && !empty($_POST['user_id'])) {
-                    var_dump($_POST);
+                    
                     $modelEmprunt = new ModelEmprunt();
                     $modelEmprunt->createEmprunt($_POST['id_exemplaire'], $_POST['user_id']);
                     header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
