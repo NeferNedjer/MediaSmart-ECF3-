@@ -169,7 +169,7 @@
 
     <section id="product">
 
-        <h1>Livre à la Une :</h1>
+        <h1>Média à la Une :</h1>
 
         <div class="carrousel-container">
             <div class="carrousel">
