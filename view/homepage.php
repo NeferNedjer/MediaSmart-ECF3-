@@ -169,12 +169,12 @@
 
     <section id="product">
 
-        <h1>Livre à la Une :</h1>
+        <h1>Média à la Une :</h1>
 
         <div class="carrousel-container">
             <div class="carrousel">
                 <?php foreach ($datas as $data): ?>
-                    <div class="carrousel-item"><img src="<?php echo $data->getImage_recto(); ?>" alt="<?php echo $data->getTitle() ?>"></div>
+                    <div class="carrousel-item"><a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt="<?php echo $data->getTitle() ?>"></a></div>
                 <?php endforeach; ?>
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>

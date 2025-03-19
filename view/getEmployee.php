@@ -26,10 +26,10 @@
             <ul class="nav-menu">
                 <li><a href="/"><img src="../assets/img/home-24.ico" alt=""><span>Home</span> </a></li>
                 <li><a href=""><img src="../assets/img/icons8-add-25.png" alt=""><span>Liste des employés</span></a></li>
-                <li><a href="https://mailtrap.io/inboxes/3460695/messages" target="_blank"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
+                <li><a href="https://mailtrap.io/inboxes/3538112/messages" target="_blank"><img src="../assets/img/inbox-24.ico" alt=""> <span> Inbox</span></a></li>
                 <li><a href="/dashboardEmployee/0"><img src="../assets/img/conference-24.ico" alt=""><span>Gestion Utilisateurs</span> </a></li>
                 <li><a href="/dashboardMedia/0"> <img src="../assets/img/icons8-book-30.png" alt=""><span>Gestion Medias</span> </a></li>
-                <li id="settings-dashboard"><a href=""><img src="../assets/img/settings-19-24.ico" alt=""> <span>Settings</span> </a></li>
+                <li id="settings-dashboard"><a href="/dashboardHistoric"><img src="../assets/img/settings-19-24.ico" alt=""> <span>Statistiques</span> </a></li>
                 <li><a href="/logout"><img src="../assets/img/icons8-logout-25.png" alt=""> <span>Logout</span></a></li>
                 <li>
                     <label class="switch">

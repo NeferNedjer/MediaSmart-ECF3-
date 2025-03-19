@@ -16,7 +16,7 @@
 <body>
 <div id="top-mobile">
         <figure>
-            <img src="../assets/img/Group 46.png" alt="">
+            <a href="/" class=""><img src="../assets/img/Group 46.png" alt=""></a>
             
         </figure>
 
@@ -83,7 +83,15 @@
             </div>
             
         </div><br>
-        
+
+        <?php if($media->getNb_emprunts() + $media->getNb_resa() < $media->getNb_exemplaires() && isset($_SESSION['id_user'])): ?>
+        <form action="/resaUser" method="POST">
+            <input type="hidden" name="id_media" value="<?php echo $media->getId_media(); ?>">
+            <button onclick="window.location.href = '#'" type="submit" id="btn-resa-dash">
+                Réserver maintenant
+            </button>
+        </form>
+        <?php endif; ?>
     </div>
     
     <div class="related-products">

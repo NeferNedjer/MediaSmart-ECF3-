@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const html = medias.map(media => `
             <div class="card-product">
                 <div class="card">
-                    <a href="/media/${media.id_media}">
+                    <a href="/detailMedia/${media.id_media}">
                         <img src="${media.image_recto}" alt="${media.title}">
                     </a>
                     <div class="title-product1">${media.title}</div>
