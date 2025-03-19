@@ -248,6 +248,35 @@ class ModelEmprunt extends Model {
         $req->execute();
     }
 
-    
+    public function getRetardEmprunt() {
+
+        $req = $this->getDb()->query('SELECT CONCAT("Bonjour ", u.first_name) AS text1, CONCAT(" vous deviez nous rendre le ", c.name, " ", m.title, DATE_FORMAT(er.max_return_date, " avant le : %d/%m/%Y.")) AS text2, "Nous vous attendons avec impatience dans votre mediatheque preferee !" AS text3, "Cordialement," AS text4, "L equipe MediaSmart." AS text5, u.email, u.first_name, er.id_exemplaire
+            FROM emprunt_resa er, user u, exemplaire e, media m, subcategory s, category c
+            WHERE c.id_category = s.id_category
+            AND s.id_subcategory = m.id_subcategory
+            AND m.id_media = e.id_media
+            AND e.id_exemplaire = er.id_exemplaire
+            AND er.id_user = u.id_user
+            AND resa = 0
+            AND DATE(max_return_date) < CURDATE()
+            AND DATE(mail_sent_date) < CURDATE()
+            ;');
+        
+        $reqER = $this->getDb()->prepare('UPDATE emprunt_resa SET mail_sent = mail_sent + 1 , mail_sent_date = NOW() WHERE id_exemplaire = :id_exemplaire');
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $controllerEmployee = new ControllerEmployee();
+            $controllerEmployee->sendRetardEmprunt($data['text1'], $data['text2'], $data['text3'], $data['text4'], $data['text5'], $data['email'], $data['first_name']);
+
+            $reqER->bindParam(':id_exemplaire', $data['id_exemplaire'], PDO::PARAM_INT);
+            $reqER->execute();
+
+        }
+
+        
+    }
+
+
+
 
 }
