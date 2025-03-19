@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Media Smart</title>
+    <link rel="icon" href="../assets/img/logoM.png">
     <link rel="stylesheet" href="./assets/scss/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
 </head>
 
 <body>
@@ -36,11 +38,12 @@
         </div>
         <div class="background-home">
             <div class="overlay">
-                <p class="discover">Découvrez nos dernières nouveautés. <span>Découvrir plus.</span></p>
+                <p class="discover">Découvrez nos dernières nouveautés. <span>Découvrir plus. </span></p>
                 <h1>Bienvenue sur Media Smart</h1>
                 <div class="flex">
                     <button id="explore">Explorer nos livres</button>
-                    <p>En savoir plus</p>
+                    <p>En savoir plus </p>
+                    
 
 
 
@@ -50,95 +53,87 @@
         </div>
     </section>
 
-    <div id="sidebar">
-        <button class="close-sidebar">X</button>
-        <h2>Catégories</h2>
-
-        <ul class="categories-list">
-            <?php
-            $mainCategories = $model->getMainCategories();
-            foreach ($mainCategories as $category):
-            ?>
-                <li class="category-header" data-category="<?php echo $category->getId_category(); ?>">
-                    <?php echo $category->getName(); ?> <span class="arrow">▼</span>
-                    <ul class="subcategory-list hidden">
-                        <?php
-                        $subcategories = $model->getSubcategoriesByCategory($category->getId_category());
-                        foreach ($subcategories as $subcategory):
-                        ?>
-                            <li class="subcategory-item">
-                                <a href="#disponibilite-cate"
-                                    data-category="<?php echo $category->getId_category(); ?>"
-                                    data-subcategory="<?php echo $subcategory->getId_subcategory(); ?>">
-                                    <?php echo $subcategory->getTheme(); ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-
-        <div id="author-cate">
-        <h3>Recherche par Auteur: <span class="arrow">▼</span></h3>
-        <section class="author-hidden">
-            <div class="checkbox-wrapper">
-                <label class="checkbox-label">
-                    <input type="checkbox" name="Valérie Perrin">
-                    <span class="checkbox-custom"></span>
-                    <span class="label-text">Valérie Perrin</span>
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" name="Anna Stuart">
-                    <span class="checkbox-custom"></span>
-                    <span class="label-text">Anna Stuart</span>
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" name="Claire McGowan">
-                    <span class="checkbox-custom"></span>
-                    <span class="label-text">Claire McGowan</span>
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" name="Xavier Poussard">
-                    <span class="checkbox-custom"></span>
-                    <span class="label-text">Xavier Poussard</span>
-                </label>
-            </div>
-        </section>
-    </div>
-
-
-
-    <section id="user-cate">
-        <figure>
-            <img src="../assets/img/icons8-nom-50.png" alt="">
-            <p style="white-space :nowrap"><?php if (isset($_SESSION['first_name'])) {
-                                                echo 'Bonjour ' . $_SESSION['first_name'];
-                                            } else {
-                                                echo 'Bonjour visiteur';
-                                            } ?> </p>
-        </figure>
-        <figure>
-            <a href="logout"><img id="logout-cate" src="../assets/img/icons8-logout-64.png" alt=""></a>
-
-        </figure>
-    </section>
-
-
-
-
-
-    </div>
-
-
-
-
-
     
+ <div id="sidebar">
+            <button class="close-sidebar">X</button>
+            <h2>Catégories</h2>
 
-    </div>
+            <ul class="categories-list">
+                <?php
+                $mainCategories = $model->getMainCategories();
+                foreach ($mainCategories as $category):
+                ?>
+                    <li class="category-header" data-category="<?php echo $category->getId_category(); ?>">
+                        <?php echo $category->getName(); ?> <span class="arrow">▼</span>
+                        <ul class="subcategory-list hidden">
+                            <?php
+                            $subcategories = $model->getSubcategoriesByCategory($category->getId_category());
+                            foreach ($subcategories as $subcategory):
+                            ?>
+                                <li class="subcategory-item">
+                                    <a href="#disponibilite-cate"
+                                        data-category="<?php echo $category->getId_category(); ?>"
+                                        data-subcategory="<?php echo $subcategory->getId_subcategory(); ?>">
+                                        <?php echo $subcategory->getTheme(); ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+            <div id="author-cate">
+                <h3>Recherche par Auteur: <span class="arrow">▼</span></h3>
+                <section class="author-hidden">
+                    <div class="checkbox-wrapper">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="Valérie Perrin">
+                            <span class="checkbox-custom"></span>
+                            <span class="label-text">Valérie Perrin</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="Anna Stuart">
+                            <span class="checkbox-custom"></span>
+                            <span class="label-text">Anna Stuart</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="Claire McGowan">
+                            <span class="checkbox-custom"></span>
+                            <span class="label-text">Claire McGowan</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="Xavier Poussard">
+                            <span class="checkbox-custom"></span>
+                            <span class="label-text">Xavier Poussard</span>
+                        </label>
+                    </div>
+                </section>
 
 
+
+
+                <section id="user-cate">
+                    <figure>
+                        <img src="../assets/img/icons8-nom-50.png" alt="">
+                        <p style="white-space :nowrap"><?php if (isset($_SESSION['first_name'])) {
+                                                            echo 'Bonjour ' . $_SESSION['first_name'];
+                                                        } else {
+                                                            echo 'Bonjour visiteur';
+                                                        } ?> </p>
+                    </figure>
+                    <figure>
+                        <a href="logout"><img id="logout-cate" src="../assets/img/icons8-logout-64.png" alt=""></a>
+
+                    </figure>
+                </section>
+
+
+
+            </div>
+
+        </div>
+    <div class="main-container">
     <form action="/searchMediaHomepage" method="post" id="searchMediaHomepage">
         <div class="search">
             <input id="searchbar" type="text" name="searchMediaHomepage" placeholder="Recherchez un titre">
@@ -147,6 +142,11 @@
 
         </button>
     </form>
+       
+    </div>
+
+
+   
 
     <div id="show-cate"></div>
 
@@ -196,9 +196,10 @@
                             <div class="card">
 
                                 <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
+                            <div id="title-and-author">
                                 <div class="title-product1"><?php echo $data->getTitle(); ?></div>
                                 <div class="auteur-product1"><?php echo $data->getAuthor(); ?></div>
-
+                            </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -227,7 +228,7 @@
                     <div class="auteur-product-latest">De <span> <?php echo $data->getAuthor(); ?> </span> (Auteur)</div>
 
                     <div class="horizontal-lign"> </div>
-                    <div class="card description-product-latest"><?php echo $data->getDescription(); ?>
+                    <div class="description-product-latest"><?php echo $data->getDescription(); ?>
 
                     </div>
                 </div>

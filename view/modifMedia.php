@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modification Utilisateur</title>
     <link rel="stylesheet" href="../assets/scss/style.css">
+    <link rel="icon" href="../assets/img/logoM.png">
 </head>
 <body>
 <?php if (isset($error)): ?>
@@ -13,7 +14,7 @@
 
 
    
-    <section id="grid-signup">
+
     
     <form action="<?php echo $router->generate('updateMedia');  ?>" method="POST" id="form-signup">
        
@@ -47,10 +48,8 @@
         <a href="/dashboardMedia/0">retour</a>
     </form>
     
-    <section id="right-signup">
-        <img src="../assets/img/signup.jpg" alt="Image d'inscription">
-    </section>
-    </section> 
+    
+   
 </div> 
 </body>
 </html>

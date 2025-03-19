@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Media</title>
     <link rel="stylesheet" href="../assets/scss/style.css">
+    <link rel="icon" href="../assets/img/logoM.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> <!-- Correction ici -->
 
@@ -243,74 +244,70 @@
 
       <form action="/media-create" method="POST" enctype="multipart/form-data" id="form-create-media" class="media-form" style="display: none;">
             <h2 class="form-title">Ajouter un nouveau média</h2>
-            <div class="form-group">
-                <label for="title">Titre :</label>
-                <input type="text" name="title" id="title" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-                <label for="author">Auteur :</label>
-                <input list="authors" name="author" id="author" class="form-input">
-                <datalist id="authors">
-                    <?php foreach ($authors as $author): ?>
-                        <option value="<?php echo $author->getName(); ?>" data-id="<?php echo $author->getId_author(); ?>">
-                    <?php endforeach; ?>
-                </datalist>
-            </div>
- 
-            <div class="form-group category-group">
-                <label class="group-label" for="id_category">Catégorie :</label>
-                <div class="radio-container">
-                    <?php foreach ($categories as $category): ?>
-                        <div class="radio-item">
-                            <input type="radio" name="id_category" id="id_category_<?php echo $category->getId_category(); ?>" value="<?php echo $category->getId_category(); ?>" class="radio-input">
-                            <label for="id_category_<?php echo $category->getId_category(); ?>" class="radio-label"><?php echo $category->getName(); ?></label>
-                        </div>
-                    <?php endforeach; ?>
+            
+            <div class="form-group two-columns">
+                <div>
+                    <label for="title">Titre :</label>
+                    <input type="text" name="title" id="title" class="form-control" required>
+                </div>
+                <div>
+                    <label for="author">Auteur :</label>
+                    <input list="authors" name="author" id="author" class="form-input">
+                    <datalist id="authors">
+                        <?php foreach ($authors as $author): ?>
+                            <option value="<?php echo $author->getName(); ?>" data-id="<?php echo $author->getId_author(); ?>">
+                        <?php endforeach; ?>
+                    </datalist>
                 </div>
             </div>
-                
-
-            <div class="form-group">
-                <label for="id_subcategory">Genre :</label>
-                <select name="id_subcategory" id="id_subcategory" class="form-select">
-                    <option value="">Sélectionner un genre</option>
-                    <?php foreach ($subcategories as $subcategory): ?>
-                        <option value="<?php echo $subcategory->getId_subcategory(); ?>" data-category-id="<?php echo $subcategory->getId_category(); ?>"><?php echo $subcategory->getTheme(); ?></option>
-                    <?php endforeach; ?>
-                </select>
+        
+            <div class="form-group two-columns">
+                <div>
+                    <label class="group-label" for="id_category">Catégorie :</label>
+                    <div class="radio-container">
+                        <?php foreach ($categories as $category): ?>
+                            <div class="radio-item">
+                                <input type="radio" name="id_category" id="id_category_<?php echo $category->getId_category(); ?>" value="<?php echo $category->getId_category(); ?>" class="radio-input">
+                                <label for="id_category_<?php echo $category->getId_category(); ?>" class="radio-label"><?php echo $category->getName(); ?></label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div>
+                    <label for="id_subcategory">Genre :</label>
+                    <select name="id_subcategory" id="id_subcategory" class="form-select">
+                        <option value="">Sélectionner un genre</option>
+                        <?php foreach ($subcategories as $subcategory): ?>
+                            <option value="<?php echo $subcategory->getId_subcategory(); ?>" data-category-id="<?php echo $subcategory->getId_category(); ?>"><?php echo $subcategory->getTheme(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </div>
-
+        
             <div class="form-group">
                 <label for="description">Description :</label>
                 <textarea name="description" id="description" class="form-textarea" required></textarea>
             </div>
-
-            <div class="form-group">
-                <label for="image_recto" class="file-label">Image recto :</label>
-                <div class="file-upload">
-                    <input type="file" name="image_recto" id="image_recto" class="file-input">
-                    <span class="file-custom">Choisir un fichier</span>
+        
+            <div class="form-group two-columns">
+                <div>
+                    <label for="image_recto" class="file-label">Image recto :</label>
+                    <input type="file" name="image_recto" id="image_recto" class="form-control">
+                </div>
+                <div>
+                    <label for="image_verso" class="file-label">Image verso :</label>
+                    <input type="file" name="image_verso" id="image_verso" class="form-control">
                 </div>
             </div>
-
+        
             <div class="form-group">
-                <label for="image_verso" class="file-label">Image verso :</label>
-                <div class="file-upload">
-                    <input type="file" name="image_verso" id="image_verso" class="file-input">
-                    <span class="file-custom">Choisir un fichier</span>
-
-                </div>
+                <label for="nbex">Nombre d'exemplaires :</label>
+                <input type="number" name="nbex" id="nbex" class="form-control" value="1" >
             </div>
-
-
-                <div class="form-group">
-                    <label for="nbex">Nombre d'exemplaires :</label>
-                    <input type="number" name="nbex" id="nbex" class="form-control" value="1" >
-                </div>
-
+        
             <div class="form-actions">
                 <button type="submit" class="btn-submit">Créer</button>
+                <button type="button" class="btn-cancel" onclick="window.location.href='/dashboardMedia/0'">Annuler</button>
             </div>
         </form>
 
