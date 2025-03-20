@@ -21,17 +21,19 @@
                 <img src="../assets/img/Group 46.png" alt="">
             </figure>
             <ul class="flex">
-                <li><a href="/">Accueil</a></li>
-                <li><a href="#">Catégorie</a></li>
-                <li><a href="#"></a></li>
-                <?php if (empty($_SESSION['name'])): ?>
+                <?php if (empty($_SESSION['id_user']) && empty($_SESSION['id_employee'])): ?>
                     <li><a id="connexion-home" href="login">Connexion</a></li>
                     <li><a id="connexion-home" href="/register">Inscription</a></li>
-                <?php else: ?>
+                    <?php else: ?>
+                    <?php if (!empty($_SESSION['id_user'])): ?>
                     <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
-                    <li><a id="connexion-home" href="/dashboardEmployee/0">Employee</a></li>
-                    <li><a id="connexion-home" href="/dashboardMedia/0">Media</a></li>
-
+                    <li><a id="connexion-home" href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">Tableau de bord</a></li>
+                    
+                    <?php elseif (!empty($_SESSION['id_employee'])): ?>
+                    <li><a id="deconnexion-home" href="logout">Déconnexion</a></li>
+                    <li><a id="connexion-home" href="/dashboardEmployee/0">Gestion des utilisateurs</a></li>
+                    <li><a id="connexion-home" href="/dashboardMedia/0">Gestion des  médias</a></li>
+                    <?php endif; ?>
                 <?php endif; ?>
             </ul>
 
