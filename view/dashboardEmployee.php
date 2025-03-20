@@ -138,6 +138,9 @@
                         <div class="gestion-user" role="region" tabindex="0">
                             <table>
                                 <caption>Dernier emprunt</caption>
+                                <form method="POST" action="/retardEmprunt">
+                                <button type="submit" name="envoiemail" value="envoiemail">Alerte Mail Retard</button>
+                                </form>
                                 <thead>
                                     <tr>
                                         <th>NOM UTILISATEUR</th>

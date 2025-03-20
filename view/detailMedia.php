@@ -68,7 +68,7 @@
     <div class="product-detail">
         <h1 id="product-title"><?php echo $media->getTitle() ?></h1>
         <div class="product-info">
-            <img src="<?php echo $media->getImage_recto() ?>" alt="Couverture du Livre" id="product-image">
+            <img src="<?php echo '../'.$media->getImage_recto() ?>" alt="Couverture du Livre" id="product-image">
             
             <div class="product-meta">
                 <p>Type: <?php echo $media->getName() ?></p>
@@ -104,7 +104,7 @@
             <?php foreach ($medias as $media): ?>
                 <div class="swiper-slide">
                 
-                    <img src="<?php echo $media->getImage_recto(); ?>" alt="<?php echo $media->getTitle(); ?>">
+                    <img src="<?php echo '../'.$media->getImage_recto(); ?>" alt="<?php echo $media->getTitle(); ?>">
                     <p><?php echo $media->getTitle(); ?></p>
                     
                 </div>

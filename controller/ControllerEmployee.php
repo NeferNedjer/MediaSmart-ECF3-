@@ -1,5 +1,8 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class ControllerEmployee {
 
     public function create() {
@@ -138,4 +141,61 @@ class ControllerEmployee {
         $historics = $modelHistoric->historicHome();
         require_once('./view/dashboardHistoric.php');
     }
+
+    public function retardEmprunt() {
+
+        global $router;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $model = new ModelEmprunt();
+        $retards = $model->getRetardEmprunt();
+        header('Location: ' . $router->generate('dashboard-employee', ['id_user' => 0]));
+        exit();
+        }
+    }
+
+    public function sendRetardEmprunt($text1, $text2, $text3, $text4, $text5, $email, $first_name) {
+  
+        global $router;
+
+            require 'vendor/autoload.php';
+
+            $mail = new PHPMailer(true);
+    
+            try {
+                // Configuration de l'expéditeur
+                $mail->setFrom('no-reply@mediasmart.com', 'Votre Site');
+    
+                // Configuration du destinataire
+                $mail->addAddress($email, $first_name);
+    
+                 // Configuration du contenu de l'email
+                $mail->isHTML(true); // Indique que le contenu de l'email est en HTML
+                $mail->Subject = 'Rappel sur votre emprunt de chez MediaSmart';
+                $mail->Body    = "<h2>$text1</h2><br><br>
+                                <h3>$text2</h3><br>
+                                <h3>$text3</h3><br>
+                                <h3>$text4</h3><br><br>
+                                <h3>$text5</h3>
+                ";
+    
+                // Configuration du serveur SMTP (Mailtrap)
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.mailtrap.io';
+                $mail->Port       = 2525; // Port de Mailtrap
+                $mail->SMTPAuth   = true;
+                $mail->Username   = '73e55a41723c3d'; // Remplacez par votre nom d'utilisateur Mailtrap
+                $mail->Password   = '644a45bfe892be'; // Remplacez par votre mot de passe Mailtrap
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    
+                $mail->send();
+                echo 'Email envoyé avec succès';
+            } catch (Exception $e) {
+                echo "L'envoi de l'email a échoué: {$mail->ErrorInfo}";
+            }
+        
+    }
+
+
+
 }

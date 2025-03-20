@@ -54,7 +54,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                 <?php foreach ($medias as $media): ?>
                                 <li class="splide__slide">
                                 
-                                    <figure><img src="<?php echo $media->getImage_recto(); ?>" alt="">
+                                    <figure><img src="<?php echo '../'.$media->getImage_recto(); ?>" alt="">
                                         <figcaption><?php echo $media->getTitle(); ?></figcaption>
                                     </figure>
                                 </li>
@@ -68,7 +68,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                 </div>
                 <div id="infos-media">
                     <figure>
-                        <img src="<?php echo $lastmedia->getImage_recto(); ?>" alt="">
+                        <img src="<?php echo '../'.$lastmedia->getImage_recto(); ?>" alt="">
                     </figure>
                     <p class="title-infos"><?php echo $lastmedia->getTitle(); ?></p>
                     <p class="auteur-infos"><?php echo $lastmedia->getAuthor(); ?></p>

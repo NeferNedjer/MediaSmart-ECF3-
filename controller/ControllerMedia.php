@@ -184,8 +184,13 @@ class ControllerMedia {
 
     
     function convertWebp($id_media, $face, $source, $destination, $qualite = 80) {
-        // Vérifier le type MIME du fichier source
-        $info = getimagesize($source);
+        try {
+            // Vérifier le type MIME du fichier source
+            $info = getimagesize($source);
+            if ($info === false) {
+                // Si getimagesize échoue, retourner une image par défaut
+                return 'assets/img/default.webp';
+            }
         $mime = $info['mime'];
     
         // Charger l'image source selon son type
@@ -202,10 +207,22 @@ class ControllerMedia {
             case 'image/gif':
                 $image = imagecreatefromgif($source);
                 break;
+            case 'image/avif':
+                $image = imagecreatefromavif($source);
+                break;
+                case 'image/webp':
+                    $image = imagecreatefromwebp($source);
+                    break;
             default:
-                throw new Exception("Format d'image non pris en charge : $mime");
+                // Retourner une image par défaut si le format n'est pas supporté
+                return 'assets/img/default.webp';
         }
     
+        if ($image === false) {
+            // Si la création de l'image a échoué
+            return 'assets/img/default.webp';
+        }
+
         //Création du nom de l'image de destination :
         $model = new ModelMedia();
         $cat = $model->getMediaById($id_media);
@@ -213,12 +230,22 @@ class ControllerMedia {
         $newdestination = $destination . $newname;
 
         // Convertir en WebP et enregistrer le fichier
-        imagewebp($image, $newdestination, $qualite);
+        if (!imagewebp($image, $newdestination, $qualite)) {
+            imagedestroy($image);
+            return 'assets/img/default.webp';
+        }
     
         // Libérer la mémoire
         imagedestroy($image);
     
         return $newdestination;
+        
+        } catch (Exception $e) {
+            // Log l'erreur pour le débogage
+            error_log("Erreur de conversion d'image: " . $e->getMessage());
+            // Retourner une image par défaut en cas d'erreur
+            return 'assets/img/default.webp';
+        }
     }
     
     public function actionMedia() {
@@ -246,7 +273,7 @@ class ControllerMedia {
                     exit();
             } elseif ($action == 'Emprunt') {
                 if(isset($_POST['user_id']) && !empty($_POST['user']) && !empty($_POST['user_id'])) {
-                    
+
                     $modelEmprunt = new ModelEmprunt();
                     $modelEmprunt->createEmprunt($_POST['id_exemplaire'], $_POST['user_id']);
                     header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
