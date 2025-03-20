@@ -55,60 +55,78 @@ class ControllerUser {
         global $router;
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['password'])) {
-                if($_POST['password'] === $_POST['confpassword']) {
-                    $model = new ModelUser();
-                    if($model->checkUserMail($_POST['email'])) {
 
-                        $token = bin2hex(random_bytes(16));
+                // Vérification de la validité de l'adresse e-mail
+                if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+
+                    if($_POST['password'] === $_POST['confpassword']) {
+
+                        // Définir l'expression régulière pour le mot de passe
+                        $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+                        // Vérifier si le mot de passe respecte les critères
+                        if (preg_match($passwordPattern, $_POST['password'])) {
+
+                            $model = new ModelUser();
+                            if($model->checkUserMail($_POST['email'])) {
+
+                                $token = bin2hex(random_bytes(16));
 
 
-                        $model->createUser($_POST['name'], $_POST['first_name'], $_POST['email'], $_POST['password'], $_POST['adress'], $_POST['phone'], $token);
-                        $error =  "Compte créé avec succès. Un email de confirmation vous a été envoyé.";
+                                $model->createUser($_POST['name'], $_POST['first_name'], $_POST['email'], $_POST['password'], $_POST['adress'], $_POST['phone'], $token);
+                                $error =  "Compte créé avec succès. Un email de confirmation vous a été envoyé.";
 
-                        require 'vendor/autoload.php';
-                        
-                            $first_name = $_POST['first_name'];
-                            $email = $_POST['email'];
+                                require 'vendor/autoload.php';
+                                
+                                    $first_name = $_POST['first_name'];
+                                    $email = $_POST['email'];
 
-                            $verificationLink = "http://mediasmart/view/verify-token.php?token=$token";
+                                    $verificationLink = "http://mediasmart/view/verify-token.php?token=$token";
 
-                        $mail = new PHPMailer(true);
-                        
-                        try {
-                            // Configuration de l'expéditeur
-                            $mail->setFrom('no-reply@mediasmart.com', 'Votre Site');
-                        
-                            // Configuration du destinataire
-                            $mail->addAddress($email, $first_name);
-                        
-                            // Configuration du contenu de l'email
-                            $mail->isHTML(true); // Indique que le contenu de l'email est en HTML
-                            $mail->Subject = 'Vérifiez votre adresse email';
-                            $mail->Body    = "Bonjour $first_name, \n\nPour vérifier votre inscription, cliquez sur le lien suivant : <a href=\"" . $verificationLink . "\">Confirmation de votre adresse mail</a>";
-                        
-                            // Configuration du serveur SMTP (Mailtrap)
-                            $mail->isSMTP();
-                            $mail->Host       = 'smtp.mailtrap.io';
-                            $mail->Port       = 2525; // Port de Mailtrap
-                            $mail->SMTPAuth   = true;
-                            $mail->Username   = '73e55a41723c3d'; // Remplacez par votre nom d'utilisateur Mailtrap
-                            $mail->Password   = '644a45bfe892be'; // Remplacez par votre mot de passe Mailtrap
-                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                        
-                            $mail->send();
-                            echo 'Email envoyé avec succès';
-                        } catch (Exception $e) {
-                            echo "L'envoi de l'email a échoué: {$mail->ErrorInfo}";
+                                $mail = new PHPMailer(true);
+                                
+                                try {
+                                    // Configuration de l'expéditeur
+                                    $mail->setFrom('no-reply@mediasmart.com', 'Votre Site');
+                                
+                                    // Configuration du destinataire
+                                    $mail->addAddress($email, $first_name);
+                                
+                                    // Configuration du contenu de l'email
+                                    $mail->isHTML(true); // Indique que le contenu de l'email est en HTML
+                                    $mail->Subject = 'Vérifiez votre adresse email';
+                                    $mail->Body    = "Bonjour $first_name, \n\nPour vérifier votre inscription, cliquez sur le lien suivant : <a href=\"" . $verificationLink . "\">Confirmation de votre adresse mail</a>";
+                                
+                                    // Configuration du serveur SMTP (Mailtrap)
+                                    $mail->isSMTP();
+                                    $mail->Host       = 'smtp.mailtrap.io';
+                                    $mail->Port       = 2525; // Port de Mailtrap
+                                    $mail->SMTPAuth   = true;
+                                    $mail->Username   = '73e55a41723c3d'; // Remplacez par votre nom d'utilisateur Mailtrap
+                                    $mail->Password   = '644a45bfe892be'; // Remplacez par votre mot de passe Mailtrap
+                                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                                
+                                    $mail->send();
+                                    echo 'Email envoyé avec succès';
+                                } catch (Exception $e) {
+                                    echo "L'envoi de l'email a échoué: {$mail->ErrorInfo}";
+                                }
+                                require_once './view/login.php';
+                            }else {
+                                $error = "Email déjà utilisé.";
+                                require_once './view/signup.php';
+                            }
+                        } else {
+                            $error = "Le mot de passe doit contenir au moins 8 caractères, dont une lettre majuscule, une lettre minuscule, un chiffre, et un caractère spécial.";
+                            require_once './view/signup.php';
                         }
-                        require_once './view/login.php';
                     }else {
-                        $error = "Email déjà utilisé.";
+                        $error = "Les mots de passe ne correspondent pas.";
                         require_once './view/signup.php';
                     }
-                }else {
-                    $error = "Les mots de passe ne correspondent pas.";
+                } else {
+                    $error = "Adresse e-mail invalide.";
                     require_once './view/signup.php';
-                }
+                }    
             }else {
                 $error = "Toutes les cases doivent être remplies";
             }

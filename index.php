@@ -90,6 +90,8 @@ $router->map('GET|POST', '/searchEmployee', 'ControllerEmployee#searchEmployee',
 
 $router->map('GET|POST', '/actionMedia', 'ControllerMedia#actionMedia', 'actionMedia');
 
+$router->map('GET|POST', '/retourMedia', 'ControllerMedia#retourMedia', 'retourMedia');
+
 $router->map('POST', '/createCategory', 'ControllerMedia#createCategory', 'create-category');
 
 $router->map('POST', '/createSubCategory', 'ControllerMedia#createSubCategory', 'create-subcategory');

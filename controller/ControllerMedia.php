@@ -71,7 +71,7 @@ class ControllerMedia {
                     $destination = 'assets/img/';
                     $image_recto = $this->convertWebp($id_media, $face='recto', $source, $destination, $qualite = 80);
                 } else {
-                    $image_recto = "";
+                    $image_recto = "assets/img/default.webp";
                 }
                 
                 if(!empty($_FILES['image_verso']['tmp_name'])) {
@@ -79,7 +79,7 @@ class ControllerMedia {
                     $destination = 'assets/img/';
                     $image_verso = $this->convertWebp($id_media, $face='verso', $source, $destination, $qualite = 80);
                 }else {
-                    $image_verso = "";
+                    $image_verso = "assets/img/default.webp";
                 }
 
                 $model->updateImageMedia($image_recto, $image_verso, $id_media);
@@ -392,5 +392,24 @@ class ControllerMedia {
         ]);
         exit;
     }
+
+    public function retourMedia() {
+        global $router;
+        
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_exemplaire = $_POST['id_exemplaire'];
+            $id_user = $_POST['id_user'];
+            $action = $_POST['action'];
+            $status = $_POST['status'];
+
+            if($action == 'Retour') {
+                    $modelEmprunt = new ModelEmprunt();
+                    $modelEmprunt->deleteResa($id_exemplaire , $status);
+                    header('Location: ' . $router->generate('dashboard-employee', ['id_user' => $id_user]));
+                    exit();  
+            }
+        }     
+    }
+
 
 }
