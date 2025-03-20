@@ -37,5 +37,22 @@ class ModelAuthor extends Model{
         return $this->getDb()->lastInsertId();
     }
 
+
+    public function searchAuthors($search) {
+        $query = "SELECT 
+                    a.id_author,
+                    a.name,
+                    COUNT(m.id_media) as works_count
+                 FROM author a
+                 LEFT JOIN media m ON a.id_author = m.id_author
+                 WHERE a.name LIKE :search
+                 GROUP BY a.id_author, a.name
+                 LIMIT 5";
+        
+        $stmt = $this->getDb()->prepare($query);
+        $stmt->execute(['search' => '%' . $search . '%']);
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 

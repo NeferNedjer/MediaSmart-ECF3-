@@ -346,13 +346,13 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-
+    <script src="../assets/js/searchHomeNav.js"></script>
     <script src="./assets/js/navBar.js"></script>
     <script src="./assets/js/burger.js"></script>
 
 
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
-    <script src="../assets/js/ajaxMedia.js"></script>
+    <!-- <script src="../assets/js/ajaxMedia.js"></script> -->
     <script src="../assets/js/slider-home-dispo.js"></script>
     <script src="../assets/js/redirection-home.js"></script>
     <script src="../assets/js/category.js"></script>

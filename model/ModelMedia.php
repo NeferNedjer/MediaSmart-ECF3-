@@ -230,6 +230,34 @@ class ModelMedia extends Model{
 
     }
 
+    public function getsearchMediaHomepage($searchTerm) {
+    $search = '%' . $searchTerm . '%';
+    
+    $sql = "SELECT m.id_media, m.title, m.image_recto, a.name as author 
+            FROM media m
+            JOIN author a ON m.id_author = a.id_author
+            WHERE m.title LIKE :search 
+            ORDER BY m.title
+            LIMIT 5";
+            
+    $stmt = $this->getDb()->prepare($sql);
+    $stmt->bindParam(':search', $search, PDO::PARAM_STR);
+    $stmt->execute();
+    
+    $results = [];
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $results[] = [
+            'id_media' => $row['id_media'],
+            'title' => $row['title'],
+            'author' => $row['author'],
+            'image_recto' => $row['image_recto'],
+            'type' => 'media'
+        ];
+    }
+    
+    return $results;
+}
+
     // public function getMedia($search) {
 
     //     $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :search');
@@ -271,19 +299,37 @@ class ModelMedia extends Model{
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getsearchMediaHomepage($searchMediaHomepage){
-
-        $search = '%' . $searchMediaHomepage . '%';
-        $req = $this->getDb()->prepare('SELECT * FROM media WHERE title LIKE :search');
-        $req->bindParam(':search', $search, PDO::PARAM_STR);
-        $req->execute();
-        $arrayobj = [];
-
-        while($data = $req->fetch(PDO::FETCH_ASSOC)){
-            $arrayobj[] = new Media($data);
+    public function searchMediaHomepage($searchTerm) {
+        // Search for media with title matching the search term
+        $searchWildcard = '%' . $searchTerm . '%';
+        
+        $mediaQuery = $this->getDb()->prepare('
+            SELECT m.id_media, m.title, m.image_recto, a.name as author
+            FROM media m
+            JOIN author a ON m.id_author = a.id_author
+            WHERE m.title LIKE :search
+            ORDER BY m.title
+            LIMIT 5
+        ');
+        
+        $mediaQuery->bindParam(':search', $searchWildcard, PDO::PARAM_STR);
+        $mediaQuery->execute();
+        
+        $media = $mediaQuery->fetchAll(PDO::FETCH_ASSOC);
+        
+        // Format results with type identifier
+        $mediaResults = [];
+        foreach ($media as $item) {
+            $mediaResults[] = [
+                'type' => 'media',
+                'id_media' => $item['id_media'],
+                'title' => $item['title'],
+                'author' => $item['author'],
+                'image_recto' => $item['image_recto']
+            ];
         }
-
-        return $arrayobj;
+        
+        return $mediaResults;
     }
 
     public function getLastMedia() {
