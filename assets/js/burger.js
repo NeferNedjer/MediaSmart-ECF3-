@@ -1,4 +1,4 @@
-const burgerIcon = document.getElementById('burger');
+const burgerIcon = document.querySelector('.burger-button');
 const burgerVisible = document.getElementById('burger-menu');
 let menuIsOpen = false; 
 

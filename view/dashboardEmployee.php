@@ -194,6 +194,35 @@
                             </table>
                         </div>
                     </div>
+                    
+                    <div class="gestion-resa" role="region" tabindex="0">
+                        <div class="horizontal-lign"></div>
+                            <table>
+                                <caption>Réservation</caption>
+                                <thead>
+                                    <tr>
+                                        <th>NOM D'UTILISATEUR</th>
+                                        <th>STATUT</th>
+                                        <th>CATEGORIE</th>
+                                        <th>TITRE</th>
+                                        <th>EXEMPLAIRE</th>
+                                        <th>DATE RETOUR</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                           <td></td>
+                                           <td></td>
+                                           <td></td>
+                                           <td></td>
+                                           <td></td>
+                                           <td></td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
                 </section>
             </section>
         </section>
