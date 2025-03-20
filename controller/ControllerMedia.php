@@ -294,28 +294,37 @@ class ControllerMedia {
 
 
     public function searchMediaHomepage() {
-
-        global $router;
-    
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchMediaHomepage'])) {
-            $searchMediaHomepage = $_POST['searchMediaHomepage'];
-            $model = new ModelMedia();
-            $mediaHome = $model->getsearchMediaHomepage($searchMediaHomepage);
-            $datas = $model->mediaHome();
-            if (!empty($mediaHome)) {
-                require_once('./view/homepage.php');
-            } else {
-                echo "Aucun titre ne correspond à votre recherche.";
-                header('Location: /');
-                exit();
+            $search = $_POST['searchMediaHomepage'];
+            
+            // Get media results
+            $modelMedia = new ModelMedia();
+            $mediaResults = $modelMedia->searchMediaHomepage($search);
+            
+            // Get author results
+            $modelAuthor = new ModelAuthor();
+            $authorResults = $modelAuthor->searchAuthors($search);
+            
+            // Format author results to match our expected structure
+            $formattedAuthorResults = [];
+            foreach ($authorResults as $author) {
+                $formattedAuthorResults[] = [
+                    'type' => 'artist',
+                    'id_author' => $author['id_author'],
+                    'name' => $author['name'],
+                    'works_count' => $author['works_count']
+                ];
             }
-        } else {
-            echo "Aucun titre ne correspond à votre recherche.";
-            header('Location: /');
+            
+            // Combine results
+            $combinedResults = array_merge($mediaResults, $formattedAuthorResults);
+            
+            header('Content-Type: application/json');
+            echo json_encode(!empty($combinedResults) ? $combinedResults : ['error' => 'Aucun résultat']);
             exit();
         }
     }
-
+    
     public function modifMedia($id_media) {
 
         global $router;

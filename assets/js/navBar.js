@@ -103,3 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Vérifier périodiquement l'état de la sidebar pour plus de fiabilité
     setInterval(updateNavPosition, 500);
 });
+
+
+
+
