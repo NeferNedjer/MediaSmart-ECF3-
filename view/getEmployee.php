@@ -105,6 +105,7 @@
                 <div class="form-group" id="password-group">
                     <label for="password" class="form-label">Mot de passe :</label>
                     <input type="password" name="password" id="password" class="form-input" placeholder="Entrez le mot de passe" required>
+                    <span class="help-block">Mot de passe : minimum 8 caractères, avec au moins une majuscule, une minuscule, un chiffre, et un caractère spécial</span>
                 </div>
 
                 <div class="form-group" id="confpassword-group">

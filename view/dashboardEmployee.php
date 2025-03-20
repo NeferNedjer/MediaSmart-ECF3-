@@ -173,20 +173,36 @@
                                     <tr>
                                         <th>ID MEDIA</th>
                                         <th>TITRE</th>
-                                        <th>ETAT A L'EMPRUNT</th>
+                                        <th>ETAT</th>
                                         <th>DATE D'EMPRUNT</th>
                                         <th>DATE DE RETOUR</th>
+                                        <th>RETOUR</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php if (isset($empruntsuser)) : ?>
                                         <?php foreach ($empruntsuser as $data): ?>
                                             <tr>
+                                            <form method="POST" action="/retourMedia">
+                                            <input type="hidden" name="id_exemplaire" value="<?php echo $data->getId_exemplaire(); ?>">
+                                            <input type="hidden" name="id_user" value="<?php echo $data->getId_user(); ?>">
                                                 <td><?php echo $data->getId_media() ?></td>
                                                 <td><?php echo $data->getTitle() ?></td>
-                                                <td><?php echo $data->getStatus() ?></td>
+                                                <td>
+                                                    <select name="status" id="status">
+                                                        <option value="1" <?php echo ($data->getStatus() == 1) ? 'selected' : ''; ?>>Neuf</option>
+                                                        <option value="2" <?php echo ($data->getStatus() == 2) ? 'selected' : ''; ?>>Bon</option>
+                                                        <option value="3" <?php echo ($data->getStatus() == 3) ? 'selected' : ''; ?>>Mauvais</option>
+                                                        <option value="4" <?php echo ($data->getStatus() == 4) ? 'selected' : ''; ?>>Déchiré</option>
+                                                        <option value="5" <?php echo ($data->getStatus() == 5) ? 'selected' : ''; ?>>A JETER !</option>
+                                                    </select>
+                                                </td>
                                                 <td><?php echo $data->getEmprunt_date()->format('d/m/y') ?></td>
                                                 <td><?php echo $data->getMax_return_date()->format('d/m/y') ?></td>
+                                                <td>
+                                                    <button type="submit" name="action" value="Retour">Retour</button>
+                                                </td>
+                                            </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
@@ -216,6 +232,7 @@
                 <div class="form-group" id="password-group">
                     <label for="password" class="form-label">Mot de passe :</label>
                     <input type="password" name="password" id="password" class="form-input" placeholder="Entrez le mot de passe" required>
+                    <span class="help-block">Mot de passe : minimum 8 caractères, avec au moins une majuscule, une minuscule, un chiffre, et un caractère spécial</span>
                 </div>
 
                 <div class="form-group" id="confpassword-group">

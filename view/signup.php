@@ -37,13 +37,15 @@
          </div>
 
         <label for="email">Email :</label>
-        <input type="text" name="email" id="email" value="<?php if (!empty($_POST)) echo $_POST['email']; ?>" required>
+        <input type="email" name="email" id="email" value="<?php if (!empty($_POST)) echo $_POST['email']; ?>" required>
         <label for="password">Mot de passe :</label>
         <input type="password" name="password" id="password" required>
+        <span class="help-block">Mot de passe : minimum 8 caractères, avec au moins une majuscule, une minuscule, un chiffre, et un caractère spécial</span>
+
 
         <label for="confmotdepasse">Confirmer le mot de passe :</label>
         <input type="password" id="confmotdepasse" name="confpassword" required>
-
+        
         <input id="submit-signup" type="submit" name="submit" value="inscription">
     </form>
     <section id="right-signup">

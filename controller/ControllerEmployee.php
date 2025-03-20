@@ -13,11 +13,21 @@ class ControllerEmployee {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(!empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['password'])) {
                 if($_POST['password'] === $_POST['confpassword']) {
-                    $model = new ModelEmployee();
-                    $model->createEmployee($_POST['name'], $_POST['first_name'], $_POST['password']);
-                    // require_once './view/homepage.php';
-                    header('Location: /');
-                    exit();
+
+                    // Définir l'expression régulière pour le mot de passe
+                    $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+
+                    // Vérifier si le mot de passe respecte les critères
+                    if (preg_match($passwordPattern, $_POST['password'])) {
+
+                        $model = new ModelEmployee();
+                        $model->createEmployee($_POST['name'], $_POST['first_name'], $_POST['password']);
+                        // require_once './view/homepage.php';
+                        header('Location: /');
+                        exit();
+                    } else {
+                        echo "Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre, et un caractère spécial.";
+                    }
                 }else {
                     echo "Les mots de pass ne correspondent pas.";
                 }
