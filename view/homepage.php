@@ -8,12 +8,10 @@
     <link rel="icon" href="../assets/img/logoM.png">
     <link rel="stylesheet" href="./assets/scss/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
+
 </head>
 
 <body>
-
-
 
     <section id="header-home">
         <div id="top-mobile">
@@ -43,7 +41,7 @@
                 <div class="flex">
                     <button id="explore">Explorer nos livres</button>
                     <p>En savoir plus </p>
-                    
+
 
 
 
@@ -53,104 +51,131 @@
         </div>
     </section>
 
-    
- <div id="sidebar">
-            <button class="close-sidebar">X</button>
-            <h2>Catégories</h2>
-
-            <ul class="categories-list">
-                <?php
-                $mainCategories = $model->getMainCategories();
-                foreach ($mainCategories as $category):
-                ?>
-                    <li class="category-header" data-category="<?php echo $category->getId_category(); ?>">
-                        <?php echo $category->getName(); ?> <span class="arrow">▼</span>
-                        <ul class="subcategory-list hidden">
-                            <?php
-                            $subcategories = $model->getSubcategoriesByCategory($category->getId_category());
-                            foreach ($subcategories as $subcategory):
-                            ?>
-                                <li class="subcategory-item">
-                                    <a href="#disponibilite-cate"
-                                        data-category="<?php echo $category->getId_category(); ?>"
-                                        data-subcategory="<?php echo $subcategory->getId_subcategory(); ?>">
-                                        <?php echo $subcategory->getTheme(); ?>
-                                    </a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-
-            <div id="author-cate">
-                <h3>Recherche par Auteur: <span class="arrow">▼</span></h3>
-                <section class="author-hidden">
-                    <div class="checkbox-wrapper">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="Valérie Perrin">
-                            <span class="checkbox-custom"></span>
-                            <span class="label-text">Valérie Perrin</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="Anna Stuart">
-                            <span class="checkbox-custom"></span>
-                            <span class="label-text">Anna Stuart</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="Claire McGowan">
-                            <span class="checkbox-custom"></span>
-                            <span class="label-text">Claire McGowan</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="Xavier Poussard">
-                            <span class="checkbox-custom"></span>
-                            <span class="label-text">Xavier Poussard</span>
-                        </label>
-                    </div>
-                </section>
-
-
-
-
-                <section id="user-cate">
-                    <figure>
-                        <img src="../assets/img/icons8-nom-50.png" alt="">
-                        <p style="white-space :nowrap"><?php if (isset($_SESSION['first_name'])) {
-                                                            echo 'Bonjour ' . $_SESSION['first_name'];
-                                                        } else {
-                                                            echo 'Bonjour visiteur';
-                                                        } ?> </p>
-                    </figure>
-                    <figure>
-                        <a href="logout"><img id="logout-cate" src="../assets/img/icons8-logout-64.png" alt=""></a>
-
-                    </figure>
-                </section>
-
-
-
+    <nav class="floating-nav" id="floating-nav">
+        <div class="nav-content">
+            <div class="nav-left">
+                <a href="/" class="nav-logo">
+                    <img src="../assets/img/Group 46.png" alt="Logo" height="40">
+                </a>
             </div>
 
+            <div class="nav-center">
+                <form action="/searchMediaHomepage" method="post" id="searchMediaHomepage">
+                    <div class="search">
+                        <input id="searchbar" type="text" name="searchMediaHomepage" placeholder="Recherchez un titre">
+                    </div>
+                    <button type="submit" id="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="nav-right">
+                <button id="burger-button" class="burger-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
-    <div class="main-container">
-    <form action="/searchMediaHomepage" method="post" id="searchMediaHomepage">
+    </nav>
+
+
+    <div id="sidebar">
+        <button class="close-sidebar">X</button>
+        <h2>Catégories</h2>
+
+        <ul class="categories-list">
+            <?php
+            $mainCategories = $model->getMainCategories();
+            foreach ($mainCategories as $category):
+            ?>
+                <li class="category-header" data-category="<?php echo $category->getId_category(); ?>">
+                    <?php echo $category->getName(); ?> <span class="arrow">▼</span>
+                    <ul class="subcategory-list hidden">
+                        <?php
+                        $subcategories = $model->getSubcategoriesByCategory($category->getId_category());
+                        foreach ($subcategories as $subcategory):
+                        ?>
+                            <li class="subcategory-item">
+                                <a href="#disponibilite-cate"
+                                    data-category="<?php echo $category->getId_category(); ?>"
+                                    data-subcategory="<?php echo $subcategory->getId_subcategory(); ?>">
+                                    <?php echo $subcategory->getTheme(); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+
+        <div id="author-cate">
+            <h3>Recherche par Auteur: <span class="arrow">▼</span></h3>
+            <section class="author-hidden">
+                <div class="checkbox-wrapper">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Valérie Perrin">
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">Valérie Perrin</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Anna Stuart">
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">Anna Stuart</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Claire McGowan">
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">Claire McGowan</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Xavier Poussard">
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">Xavier Poussard</span>
+                    </label>
+                </div>
+            </section>
+        </div>
+
+
+
+        <section id="user-cate">
+            <div class="user-profile">
+                <figure>
+                    <img src="../assets/img/icons8-user-60.png" alt="">
+                    <p><?php echo isset($_SESSION['first_name']) ? 'Bonjour ' . $_SESSION['first_name'] : 'Bonjour visiteur'; ?></p>
+                </figure>
+                <figure>
+                    <a href="logout"><img id="logout-cate" src="../assets/img/icons8-logout-64.png" alt="Déconnexion"></a>
+                </figure>
+            </div>
+        </section>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <!-- <form action="/searchMediaHomepage" method="post" id="searchMediaHomepage">
         <div class="search">
             <input id="searchbar" type="text" name="searchMediaHomepage" placeholder="Recherchez un titre">
         </div>
         <button type="submit" id="search-button">
 
         </button>
-    </form>
-       
-    </div>
-
-
-   
+    </form> -->
 
     <div id="show-cate"></div>
 
-    <section class="response">
+
+    <section class="response" style="display:none">
         <?php if (isset($mediaHome)) { ?>
             <?php foreach ($mediaHome as $media): ?>
                 <a href="<?php echo $router->generate('getMedia', ['id_media' => $media->getId_media()]); ?>">
@@ -196,10 +221,10 @@
                             <div class="card">
 
                                 <a href="<?php echo $router->generate('getMedia', ['id_media' => $data->getId_media()]); ?>"><img src="<?php echo $data->getImage_recto(); ?>" alt=""></a>
-                            <div id="title-and-author">
-                                <div class="title-product1"><?php echo $data->getTitle(); ?></div>
-                                <div class="auteur-product1"><?php echo $data->getAuthor(); ?></div>
-                            </div>
+                                <div id="title-and-author">
+                                    <div class="title-product1"><?php echo $data->getTitle(); ?></div>
+                                    <div class="auteur-product1"><?php echo $data->getAuthor(); ?></div>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -316,11 +341,15 @@
 
     </footer>
 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
+    <script src="./assets/js/navBar.js"></script>
     <script src="./assets/js/burger.js"></script>
 
 
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="../assets/js/ajaxMedia.js"></script>
     <script src="../assets/js/slider-home-dispo.js"></script>
     <script src="../assets/js/redirection-home.js"></script>
@@ -330,3 +359,4 @@
 </body>
 
 </html>
+
