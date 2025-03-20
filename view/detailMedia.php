@@ -95,7 +95,7 @@
     
     <div class="related-products">
     
-        <h2>Produits liés</h2>
+        <h2>Suggestions :</h2>
         
         <div class="swiper-container">
         
@@ -103,8 +103,8 @@
             <?php foreach ($medias as $media): ?>
                 <div class="swiper-slide">
                 
-                    <img src="<?php echo '../'.$media->getImage_recto(); ?>" alt="<?php echo $media->getTitle(); ?>">
-                    <p><?php echo $media->getTitle(); ?></p>
+                    <a href="<?php echo $router->generate('getMedia', ['id_media' => $media->getId_media()]); ?>"><img src="<?php echo '../'.$media->getImage_recto(); ?>" alt="<?php echo $media->getTitle(); ?>">
+                    <p><?php echo $media->getTitle(); ?></p></a>
                     
                 </div>
             <?php endforeach; ?>    
