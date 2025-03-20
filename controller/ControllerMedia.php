@@ -273,6 +273,7 @@ class ControllerMedia {
                     exit();
             } elseif ($action == 'Emprunt') {
                 if(isset($_POST['user_id']) && !empty($_POST['user']) && !empty($_POST['user_id'])) {
+
                     $modelEmprunt = new ModelEmprunt();
                     $modelEmprunt->createEmprunt($_POST['id_exemplaire'], $_POST['user_id']);
                     header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));

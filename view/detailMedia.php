@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>détail Media</title>
     <link rel="stylesheet" href="../assets/scss/style.css">
+    <link rel="icon" href="../assets/img/logoM.png">
     <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -21,7 +22,6 @@
 
         <ul class="flex">
 
-            <!-- EN FONCTION DE LA SESSION AFFICHER L'UN ou L'AUTRE -->
              <?php if(isset($_SESSION['id_user'])): ?>
             <li><a id="deconnexion-home" href="/logout">Déconnexion</a></li>
             <?php else: ?>
@@ -39,9 +39,16 @@
         <section id="btn-resa-hidden">
             <figure>
                 <img src="../assets/img/Group 46.png" alt="">
-             </figure>
-            <button type="submit" id="resa-btn-hidden">Réserver</button>
-            <button type="submit" id="emprunt-btn-hidden">Emprunter</button>
+             </figure> 
+        <form action="/resaUser" method="POST">
+            <input type="hidden" name="id_media" value="<?php echo $media->getId_media(); ?>">
+            <button onclick="window.location.href = '#'" type="submit" id="resa-btn-hidden">
+                Réserver maintenant
+            </button>
+        
+            
+          
+            </form>
         </section>
         
 
@@ -76,12 +83,15 @@
             </div>
             
         </div><br>
+
+        <?php if($media->getNb_emprunts() + $media->getNb_resa() < $media->getNb_exemplaires() && isset($_SESSION['id_user'])): ?>
         <form action="/resaUser" method="POST">
             <input type="hidden" name="id_media" value="<?php echo $media->getId_media(); ?>">
             <button onclick="window.location.href = '#'" type="submit" id="btn-resa-dash">
                 Réserver maintenant
             </button>
         </form>
+        <?php endif; ?>
     </div>
     
     <div class="related-products">
@@ -167,6 +177,7 @@
     </footer>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="../assets/js/slider-details.js"></script>
+    <script src="../assets/js/detailProduct.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="../assets/js/burger.js"></script>
     <script src="../assets/js/footer.js"></script>

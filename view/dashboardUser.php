@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard User</title>
     <link rel="stylesheet" href="../assets/scss/style.css">
+    <link rel="icon" href="../assets/img/logoM.png">
     <link href="
 https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 " rel="stylesheet">

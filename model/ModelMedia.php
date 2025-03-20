@@ -118,14 +118,16 @@ class ModelMedia extends Model{
         return $arrayobj;
     }
 
-    public function createMedia(int $id_subcategory, string $title, int $id_author, string $description){
-        $req = $this->getDb()->prepare('INSERT INTO media (id_subcategory, title, id_author, description) 
-                                                VALUES (:id_subcategory, :title, :id_author, :description);');
+    public function createMedia(int $id_subcategory, string $title, int $id_author, string $description, string $image_recto = '', string $image_verso = '') {
+        $req = $this->getDb()->prepare('INSERT INTO media (id_subcategory, title, id_author, description, image_recto, image_verso) 
+                                                VALUES (:id_subcategory, :title, :id_author, :description, :image_recto, :image_verso);');
 
         $req->bindParam(':id_subcategory', $id_subcategory, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
         $req->bindParam(':id_author', $id_author, PDO::PARAM_INT);
         $req->bindParam(':description', $description, PDO::PARAM_STR);
+        $req->bindParam(':image_recto', $image_recto, PDO::PARAM_STR);
+        $req->bindParam(':image_verso', $image_verso, PDO::PARAM_STR);
                
         $req->execute();
 

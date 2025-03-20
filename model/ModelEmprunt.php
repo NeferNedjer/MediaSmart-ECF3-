@@ -200,8 +200,8 @@ class ModelEmprunt extends Model {
         $req->bindParam(':id_exemplaire', $id_exemplaire, PDO::PARAM_INT);
         $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $req->execute();
-
         // 2_ Je récupère les données de l'enregistrement EMPRUNT nouvellement créé, ainsi que celles de l'utilisateur et de l'exemplaire emprunté, pour créer un enregistrement dans le fichier d'historisation:
+      
         $req = $this->getDb()->prepare('INSERT INTO historic (id_user, id_exemplaire, type_histo, emprunt_date, return_date, user_statut, exemplaire_status) 
                     SELECT er.id_user, er.id_exemplaire, 1, er.emprunt_date, er.max_return_date, u.statut, e.status 
                     FROM emprunt_resa er, user u, exemplaire e
@@ -211,7 +211,7 @@ class ModelEmprunt extends Model {
         $req->bindParam(':id_exemplaire', $id_exemplaire, PDO::PARAM_INT);
         $req->execute();
         
-    }
+    } 
 
     public function nbResaByUser(int $id_user) {
         
