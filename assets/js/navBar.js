@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
         checkSidebarState();
         
         if (sidebarVisible) {
-            floatingNav.style.left = 'calc(100%' + sidebarWidth + ' + 5px)';
-            // floatingNav.style.right = 'calc(' + sidebarWidth + ' + 25px)';
-            floatingNav.style.width = 'calc(98% - ' + sidebarWidth + ' - 3px)';
+            // Correction ici - ajout du "+" entre 0% et sidebarWidth
+            floatingNav.style.left = 'calc(0% + ' + sidebarWidth + ' + 5px)';
+            floatingNav.style.width = 'calc(100% - ' + sidebarWidth + ' - 34px)'; // Ajusté pour maintenir les marges
         } else {
-            floatingNav.style.left = '20px';
-            floatingNav.style.width = 'calc(100% - 30px)';
+            floatingNav.style.left = '17px'; // Ajout d'une marge explicite à gauche
+            floatingNav.style.width = 'calc(100% - 34px)'; // 17px à gauche + 17px à droite
         }
     }
     
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         observer.observe(sidebar, { attributes: true, attributeFilter: ['style'] });
         
-        // Écouter les événements de transition
+        
         sidebar.addEventListener('transitionend', updateNavPosition);
         
         // Ajouter également un écouteur pour le bouton qui contrôle la sidebar
@@ -103,7 +103,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // Vérifier périodiquement l'état de la sidebar pour plus de fiabilité
     setInterval(updateNavPosition, 500);
 });
-
-
-
-
