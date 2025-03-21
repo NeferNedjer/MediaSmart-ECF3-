@@ -315,7 +315,6 @@ div.search > input#searchbar {
 #deconnexion-home {
   padding: 8px 7px;
   font-size: 14px;
-  width: 24%;
   border-radius: 7px;
   text-decoration: none;
   background-color: var(--color-primary);
@@ -2759,7 +2758,6 @@ ul.user-gestion-list > li:last-child > button,
 .gestion-user table,
 .gestion-user2 table {
   border: 1px solid #dededf;
-  height: 100%;
   max-width: 800px;
   width: 100%;
   table-layout: fixed;

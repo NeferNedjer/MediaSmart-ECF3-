@@ -411,5 +411,27 @@ class ControllerMedia {
         }     
     }
 
+    public function actionResa() {
+        global $router;
+        
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $action = $_POST['action'];
+            $id_exemplaire = $_POST['id_exemplaire'];
+            $id_user = $_POST['id_user'];
+            $status = $_POST['status'];
+
+            if($action == 'Valider') {
+                    $modelEmprunt = new ModelEmprunt();
+                    $modelEmprunt->updateEmprunt($id_exemplaire);
+                    header('Location: ' . $router->generate('dashboard-employee', ['id_user' => $id_user]));
+                    exit();
+            } elseif ($action == 'Annuler') {
+                    $modelEmprunt = new ModelEmprunt();
+                    $modelEmprunt->deleteResa($id_exemplaire, $status);
+                    header('Location: ' . $router->generate('dashboard-employee', ['id_user' => $id_user]));
+                    exit();
+            } 
+        }     
+    }
 
 }
