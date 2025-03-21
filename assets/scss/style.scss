@@ -103,6 +103,7 @@ $none: none;
 }
 
 body{
+    background-color: rgb(184, 133, 39, 0.1);
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -117,7 +118,9 @@ body{
   }
 }
 
-
+div#top-mobile > figure#logo-detail-p > a > img{
+  padding: 15px;
+}
 
 // Media queries pour le mobile
 @media (max-width: 768px) {
@@ -126,6 +129,7 @@ body{
       top: 0;
       left: 0;
       width: 280px;
+
       height: 100vh;
       background: rgba(182, 111, 3, 0.2);
       transform: translateX(-100%);
@@ -253,10 +257,11 @@ body{
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       z-index: 1000;
-      
+        
 
      
   }
+
 
   #top-mobile figure {
       margin: 0;
@@ -588,25 +593,28 @@ section#product > div.product-keyword {
 
 }
 
-//  button{
-//   position: absolute;
-//   top: 50%;
-//   transform: translateY(-50%);
-//   background-color: rgba(0, 0, 0, 0.5);
-//   color: white;
-//   border: none;
-//   padding: 10px;
-//   cursor: pointer;
-//   transition: background-color 0.3s;
-//   z-index: 1;
-// }
 
 button.prev {
+  position:relative;
   left: 0;
+  background-color: $color-button;
+  border:none;
+  color: white;
+  border-radius: 2px;
+  padding: 5px;
+  cursor: pointer;
 }
 
 button.next {
+  cursor: pointer;
+  position: absolute;
   right: 0;
+  background-color: $color-button;
+  border:none;
+  color: white;
+  border-radius: 2px;
+  border-radius: 2px;
+  padding: 5px;
 }
 
 
@@ -784,7 +792,7 @@ button.next {
   height: 100vh;
   background: rgba(182, 111, 3, 0.2);
   color: white;
-  backdrop-filter: blur(10px) brightness(4.9);
+  backdrop-filter: blur(10px) ;
   padding: var(--sidebar-padding);
   box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2755,6 +2763,19 @@ div.user-info > .user-info{
   top: 25px;
   overflow-y: auto;
    max-height: 97vh;
+
+   &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
 }
 
 
@@ -4100,7 +4121,7 @@ div#top-hidden-resa-bar{
 #footer {
   background: #b66f03;
   color: #fff;
-  padding: 14px 0 ;
+  padding: 29px 0 ;
   position:sticky;
   bottom: -100%;
   width: 100%;
@@ -4348,7 +4369,7 @@ div#top-hidden-resa-bar{
 
 
 .container {
-  overflow-y: auto;
+  // overflow-y: auto;
   width: 90vw;
   max-height: 87vh;
   margin: 2rem auto;
@@ -4414,8 +4435,10 @@ div#top-hidden-resa-bar{
 
 .card-body {
   padding: 1rem;
+  overflow-y: auto;
   overflow-x: auto;
       table {
+        overflow-y: auto;
       width: 100%;
       border-collapse: collapse;
       min-width: 800px;

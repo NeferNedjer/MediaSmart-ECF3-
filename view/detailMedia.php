@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="top-mobile">
-        <figure>
+        <figure id="logo-detail-p">
             <a href="/" class=""><img src="../assets/img/Group 46.png" alt=""></a>
             
         </figure>
@@ -29,7 +29,7 @@
             <?php endif; ?>
         </ul>
         <a href="#">
-            <img src="./assets/img/menu.png" alt="" id="burger" style="height: 50px;">
+            <img src="../assets/img/menu.png" alt="" id="burger" style="height: 50px;">
         </a>
     </div>
 

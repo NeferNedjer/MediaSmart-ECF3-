@@ -32,6 +32,9 @@
   font-family: sans-serif;
 }
 
+body {
+  background-color: rgba(184, 133, 39, 0.1);
+}
 body::-webkit-scrollbar {
   width: 6px;
 }
@@ -41,6 +44,10 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background: var(--color-primary);
   border-radius: 3px;
+}
+
+div#top-mobile > figure#logo-detail-p > a > img {
+  padding: 15px;
 }
 
 @media (max-width: 768px) {
@@ -434,11 +441,26 @@ section#product > div.product-keyword {
 }
 
 button.prev {
+  position: relative;
   left: 0;
+  background-color: #b66f03;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  padding: 5px;
+  cursor: pointer;
 }
 
 button.next {
+  cursor: pointer;
+  position: absolute;
   right: 0;
+  background-color: #b66f03;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  border-radius: 2px;
+  padding: 5px;
 }
 
 .carrousel-item img {
@@ -594,8 +616,8 @@ button.next {
   height: 100vh;
   background: rgba(182, 111, 3, 0.2);
   color: white;
-  -webkit-backdrop-filter: blur(10px) brightness(4.9);
-          backdrop-filter: blur(10px) brightness(4.9);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   padding: var(--sidebar-padding);
   box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2329,6 +2351,16 @@ div.user-info > .user-info {
   overflow-y: auto;
   max-height: 97vh;
 }
+#dashboard2::-webkit-scrollbar {
+  width: 6px;
+}
+#dashboard2::-webkit-scrollbar-track {
+  background: transparent;
+}
+#dashboard2::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
 
 .overflow-y {
   overflow-y: auto;
@@ -3546,7 +3578,7 @@ div#top-hidden-resa-bar #btn-resa-hidden #resa-btn-hidden:hover {
 #footer {
   background: #b66f03;
   color: #fff;
-  padding: 14px 0;
+  padding: 29px 0;
   position: sticky;
   bottom: -100%;
   width: 100%;
@@ -3738,7 +3770,6 @@ div#top-hidden-resa-bar #btn-resa-hidden #resa-btn-hidden:hover {
 }
 
 .container {
-  overflow-y: auto;
   width: 90vw;
   max-height: 87vh;
   margin: 2rem auto;
@@ -3790,9 +3821,11 @@ div#top-hidden-resa-bar #btn-resa-hidden #resa-btn-hidden:hover {
 
 .card-body {
   padding: 1rem;
+  overflow-y: auto;
   overflow-x: auto;
 }
 .card-body table {
+  overflow-y: auto;
   width: 100%;
   border-collapse: collapse;
   min-width: 800px;
