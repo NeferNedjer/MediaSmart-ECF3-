@@ -315,7 +315,6 @@ div.search > input#searchbar {
 #deconnexion-home {
   padding: 8px 7px;
   font-size: 14px;
-  width: 24%;
   border-radius: 7px;
   text-decoration: none;
   background-color: var(--color-primary);
