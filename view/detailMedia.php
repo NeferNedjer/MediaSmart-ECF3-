@@ -21,8 +21,8 @@
         </figure>
 
         <ul class="flex">
-
-             <?php if(isset($_SESSION['id_user'])): ?>
+            <li><a id="connexion-home" href="/">Retour à l'Accueil</a></li>
+            <?php if(isset($_SESSION['id_user'])): ?>
             <li><a id="deconnexion-home" href="/logout">Déconnexion</a></li>
             <?php else: ?>
             <li><a id="connexion-home" href="/login">Connexion</a></li>
