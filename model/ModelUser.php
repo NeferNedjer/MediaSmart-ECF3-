@@ -120,12 +120,23 @@ class ModelUser extends Model {
     }
 
     public function getUtilisateur($search) {
-
-        $req = $this->getDb()->prepare('SELECT name FROM `user` WHERE `name` LIKE :search');
-        $req->bindParam('search', $search, PDO::PARAM_STR);
+        $req = $this->getDb()->prepare('
+            SELECT u.id_user, u.name, u.first_name, u.adress, u.phone, u.email, u.statut, 
+                   u.last_connexion,
+                   COALESCE((SELECT count(*) FROM emprunt_resa er 
+                    WHERE u.id_user = er.id_user AND max_return_date < NOW() AND resa=0 
+                    GROUP BY er.id_user),0) as nb_outdated_emprunt
+            FROM user u
+            WHERE u.name LIKE :search OR u.first_name LIKE :search
+        ');
+        $req->bindParam(':search', $search, PDO::PARAM_STR);
         $req->execute();
-        return $req->fetchAll(PDO::FETCH_ASSOC);
+        
+        $result = [];
+        while($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $data;
+        }
+        return $result;
     }
-    
 
 }

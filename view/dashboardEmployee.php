@@ -280,12 +280,12 @@
     </section>
 
 
-
+    <script src="../assets/js/ajaxUser.js"></script>
     <script src="./../assets/js/dashboard.js"></script>
 
     <script src="../assets/js/theme-toggle.js"></script>
 
-    <script src="../assets/js/ajaxEmployee.js"></script>
+    <!-- <script src="../assets/js/ajaxEmployee.js"></script> -->
 </body>
 
 </html>
