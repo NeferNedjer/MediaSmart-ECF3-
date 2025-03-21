@@ -65,5 +65,13 @@ class ModelEmployee extends Model {
         $req->execute();
     }
 
+    public function searchEmployee() {
+        global $router;
+        $model = new ModelUser();
+        $search = $_POST['searchEmployee'] . '%';
+        $searchEmployee = $model->getUtilisateur($search);
+        Header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode($searchEmployee);
+    }
     
 }
