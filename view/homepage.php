@@ -42,7 +42,7 @@
                 <h1>Bienvenue sur Media Smart</h1>
                 <div class="flex">
                     <button id="explore">Explorer nos livres</button>
-                    <p>En savoir plus </p>
+                    <p id="more">En savoir plus </p>
 
 
 
@@ -354,7 +354,7 @@
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
     <!-- <script src="../assets/js/ajaxMedia.js"></script> -->
     <script src="../assets/js/slider-home-dispo.js"></script>
-    <script src="../assets/js/redirection-home.js"></script>
+    <script src="./assets/js/redirection-home.js"></script>
     <script src="../assets/js/category.js"></script>
     <script src="../assets/js/footer.js"></script>
     <script src="../assets/js/carrousel.js"></script>

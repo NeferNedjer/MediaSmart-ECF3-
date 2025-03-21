@@ -212,17 +212,17 @@
                                             <td>
                                                 <?php 
                                                 if ($exemplaire->getResa()==1) {
-                                                    echo '<button type="submit" name="action" value="Valider">V</button>';
+                                                    echo '<button type="submit" name="action" value="Valider" class="validate-media"></button>';
                                                     echo '     ';
-                                                    echo '<button type="submit" name="action" value="Annuler">A</button>';
+                                                    echo '<button type="submit" name="action" value="Annuler" class="annuler-media"></button>';
                                                     echo '     ';
-                                                    echo '<button type="submit" name="action" value="Modifier">M</button>';
+                                                    echo '<button type="submit" name="action" value="Modifier"></button>';
                                                 } elseif ($exemplaire->getResa()==0) {
-                                                    echo '<button type="submit" name="action" value="Retour">R</button>';
+                                                    echo '<button type="submit" name="action" value="Retour" class="back-media"></button>';
                                                 } else {
-                                                    echo '<button type="submit" name="action" value="Emprunt">E</button>';
+                                                    echo '<button type="submit" name="action" value="Emprunt" class="emprunt-media"></button>';
                                                     echo '     ';
-                                                    echo '<button type="submit" name="action" value="Modifier">M</button>';
+                                                    echo '<button type="submit" name="action" value="Modifier"  class="edit-mediaa"></button>';
                                                 }  
                                                 ?>
                                                 

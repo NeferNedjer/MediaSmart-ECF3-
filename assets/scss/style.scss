@@ -595,9 +595,6 @@ button.next {
   right: 0;
 }
 
-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
 
 .carrousel-item img {
   transition: transform 0.5s ease-in-out;
@@ -1406,7 +1403,9 @@ button.close-sidebar{
   }
 }
 
-
+#more{
+  cursor: pointer;
+}
 
 @media (max-width: 768px) {
   .floating-nav {
@@ -3196,6 +3195,96 @@ ul.user-gestion-list > li:last-child > button,
   gap: 8px;
   width: 100%;
   
+}
+
+.emprunt-media{
+  background-image: url(../img/icons8-book-31.png);
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+  border: none;
+  
+}
+
+div#alert-retour{
+  position:relative;
+}
+
+
+
+#icon-alert{
+  background-image: url(../img/icons8-alert-35.png);
+  height: 35px;
+  width: 35px;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 40px;
+  
+}
+
+.edit-mediaa{
+  background-image: url(../img/icons8-edit-30.png);
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.annuler-media{
+  background-image: url(../img/icons8-cancel-30.png);
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  // color: white;
+  cursor: pointer;
+}
+
+.modifier-media{
+  background-image: url(../img/icons8-cancel-30.png);
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  // color: white;
+  // background-color: red;
+  cursor: pointer;
+}
+
+
+.validate-media{
+  
+    background-image: url(../img/icons8-checkbox-30.png);
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    background-color:green;
+    cursor: pointer;
+  
+}
+
+.back-media{
+  background-image: url(../img/icons8-back-30.png);
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  background-color:$color-button;
+  cursor: pointer;
 }
 
 #left-grid {

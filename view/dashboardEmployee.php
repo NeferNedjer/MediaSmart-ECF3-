@@ -139,8 +139,10 @@
                             <table>
                                 <caption>Dernier emprunt</caption>
                                 <form method="POST" action="/retardEmprunt">
-                                <button type="submit" name="envoiemail" value="envoiemail">Alerte Mail Retard</button>
+                                <div id="alert-retour">
+                                <button type="submit" name="envoiemail" value="envoiemail" id="icon-alert"></button>
                                 </form>
+                                </div>
                                 <thead>
                                     <tr>
                                         <th>NOM UTILISATEUR</th>
@@ -200,7 +202,7 @@
                                                 <td><?php echo $data->getEmprunt_date()->format('d/m/y') ?></td>
                                                 <td><?php echo $data->getMax_return_date()->format('d/m/y') ?></td>
                                                 <td>
-                                                    <button type="submit" name="action" value="Retour">Retour</button>
+                                                    <button type="submit" name="action" value="Retour" class="back-media"></button>
                                                 </td>
                                             </form>
                                             </tr>
