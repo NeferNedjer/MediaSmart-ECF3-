@@ -453,7 +453,6 @@ div.search > input#searchbar{
 #deconnexion-home {
   padding: 8px 7px;
   font-size: 14px;
-  width: 24%;
   border-radius: 7px;
   text-decoration:  none;
   
@@ -1968,6 +1967,11 @@ input#adress{
 
 #right-signup img:hover {
   transform: scale(1.02);
+}
+
+.help-block{
+  font-size: 12px;
+  color: #555;
 }
 
 

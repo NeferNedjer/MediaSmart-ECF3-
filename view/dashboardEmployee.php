@@ -153,7 +153,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($emprunts as $emprunt): ?>
+                                    <?php foreach ($emprunts as $emprunt): 
+                                        if ($emprunt->getResa() == 0): ?>
                                         <tr>
                                             <td><?php echo $emprunt->getUser_name() ?> <?php echo $emprunt->getUser_first_name() ?></td>
                                             <td><?php echo $emprunt->getName() ?></td>
@@ -161,7 +162,7 @@
                                             <td><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></td>
                                             <td><?php echo $emprunt->getMax_return_date()->format('d/m/y') ?></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endif; endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -183,7 +184,8 @@
                                 </thead>
                                 <tbody>
                                     <?php if (isset($empruntsuser)) : ?>
-                                        <?php foreach ($empruntsuser as $data): ?>
+                                        <?php foreach ($empruntsuser as $data): 
+                                            if ($emprunt->getResa() == 0): ?>
                                             <tr>
                                             <form method="POST" action="/retourMedia">
                                             <input type="hidden" name="id_exemplaire" value="<?php echo $data->getId_exemplaire(); ?>">
@@ -206,40 +208,97 @@
                                                 </td>
                                             </form>
                                             </tr>
-                                        <?php endforeach; ?>
+                                        <?php endif; endforeach; ?>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     
-                    <div class="gestion-resa" role="region" tabindex="0">
+                    <div class="<?php echo ($id_user == 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+                        <div class="gestion-resa" role="region" tabindex="0">
                         <div class="horizontal-lign"></div>
                             <table>
                                 <caption>Réservation</caption>
                                 <thead>
                                     <tr>
                                         <th>NOM D'UTILISATEUR</th>
-                                        <th>STATUT</th>
                                         <th>CATEGORIE</th>
                                         <th>TITRE</th>
                                         <th>EXEMPLAIRE</th>
-                                        <th>DATE RETOUR</th>
+                                        <th>DATE DE RESA</th>
+                                        <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    <?php foreach ($emprunts as $emprunt): 
+                                        if ($emprunt->getResa() == 1): ?>
                                         <tr>
-                                           <td></td>
-                                           <td></td>
-                                           <td></td>
-                                           <td></td>
-                                           <td></td>
-                                           <td></td>
+                                            <form method="POST" action="/actionResa">
+                                                <input type="hidden" name="id_exemplaire" value="<?php echo $emprunt->getId_exemplaire(); ?>">
+                                                <input type="hidden" name="status" value="<?php echo $emprunt->getStatus(); ?>">
+                                                <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+                                                
+                                                <td><?php echo $emprunt->getUser_name() ?> <?php echo $emprunt->getUser_first_name() ?></td>
+                                                <td><?php echo $emprunt->getName() ?></td>
+                                                <td><?php echo $emprunt->getTitle() ?></td>
+                                                <td><?php echo $emprunt->getId_exemplaire() ?></td>
+                                                <td><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></td>
+                                                <td>
+                                                    <button type="submit" name="action" value="Valider">V</button>
+                                                    <button type="submit" name="action" value="Annuler">A</button>
+                                                </td>
+                                            </form>
                                         </tr>
+                                    <?php endif; endforeach; ?>
                                     
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="<?php echo ($id_user > 0) ? 'activity-visible' : 'activity-hidden'; ?>">
+                        <div class="gestion-resa" role="region" tabindex="0">
+                        <div class="horizontal-lign"></div>
+                            <table>
+                                <caption>Réservation</caption>
+                                <thead>
+                                    <tr>
+                                        <th>NOM D'UTILISATEUR</th>
+                                        <th>CATEGORIE</th>
+                                        <th>TITRE</th>
+                                        <th>EXEMPLAIRE</th>
+                                        <th>DATE DE RESA</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <?php foreach ($emprunts as $emprunt): 
+                                        if ($emprunt->getResa() == 1 && $emprunt->getId_user() == $id_user): ?>
+                                        <tr>
+                                            <form method="POST" action="/actionResa">
+                                                <input type="hidden" name="id_exemplaire" value="<?php echo $emprunt->getId_exemplaire(); ?>">
+                                                <input type="hidden" name="status" value="<?php echo $emprunt->getStatus(); ?>">
+                                                <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+                                                
+                                                <td><?php echo $emprunt->getUser_name() ?> <?php echo $emprunt->getUser_first_name() ?></td>
+                                                <td><?php echo $emprunt->getName() ?></td>
+                                                <td><?php echo $emprunt->getTitle() ?></td>
+                                                <td><?php echo $emprunt->getId_exemplaire() ?></td>
+                                                <td><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></td>
+                                                <td>
+                                                    <button type="submit" name="action" value="Valider">V</button>
+                                                    <button type="submit" name="action" value="Annuler">A</button>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                    <?php endif; endforeach; ?>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                 </section>
             </section>

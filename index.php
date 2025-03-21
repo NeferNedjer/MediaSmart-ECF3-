@@ -92,6 +92,8 @@ $router->map('GET|POST', '/actionMedia', 'ControllerMedia#actionMedia', 'actionM
 
 $router->map('GET|POST', '/retourMedia', 'ControllerMedia#retourMedia', 'retourMedia');
 
+$router->map('GET|POST', '/actionResa', 'ControllerMedia#actionResa', 'actionResa');
+
 $router->map('POST', '/createCategory', 'ControllerMedia#createCategory', 'create-category');
 
 $router->map('POST', '/createSubCategory', 'ControllerMedia#createSubCategory', 'create-subcategory');

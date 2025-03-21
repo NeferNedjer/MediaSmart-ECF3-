@@ -74,7 +74,7 @@ class ModelEmprunt extends Model {
                                         AND     e.id_media = m.id_media
                                         AND     e.id_exemplaire = er.id_exemplaire
                                         AND     er.id_user = u.id_user
-                                        AND     er.resa = 0
+                                        -- AND     er.resa = 0
                                         ORDER BY max_return_date ;');
         
         $req->execute();
