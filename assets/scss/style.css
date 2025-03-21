@@ -3263,14 +3263,12 @@ section.splide > div.splide__track > ul.splide__list {
 }
 #emprunt-resa #grid-user-emprunt .resa-user ul,
 #emprunt-resa #grid-user-emprunt .emprunt-user ul {
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   border-radius: 5px;
+  display: grid;
   background-color: rgb(223, 223, 223);
   width: 95%;
   margin: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 12px;
   transition: 0.5s ease;
 }
@@ -3296,6 +3294,14 @@ section.splide > div.splide__track > ul.splide__list {
   color: #838383;
   margin: 15px;
   padding: 0 15px;
+}
+#emprunt-resa #grid-user-emprunt .emprunt-data li button.delete,
+#emprunt-resa #grid-user-emprunt .resa-data li button.delete {
+  padding: 3px;
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  border: none;
 }
 #emprunt-resa #grid-user-emprunt .resa-data li:last-child {
   color: orange;

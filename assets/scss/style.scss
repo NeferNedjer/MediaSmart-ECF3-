@@ -3759,12 +3759,13 @@ gap: 25px;
       }
       .resa-user ul,
       .emprunt-user ul{
-        grid-template-columns: repeat(5,1fr);
+        grid-template-columns: repeat(6,1fr);
         border-radius: 5px;
+        display: grid;
         background-color: rgb(223, 223, 223);
         width: 95%;
         margin: 12px;
-        @include center-flex();
+        
         font-size: 12px;
         transition: 0.5s ease;
       }
@@ -3781,6 +3782,8 @@ gap: 25px;
           color: white;
       }
 
+      
+
       .resa-user ul.resa-header li,
       .emprunt-user ul.emprunt-header li{
         margin: 15px;
@@ -3795,6 +3798,14 @@ gap: 25px;
         color: #838383;
         margin: 15px;
         padding: 0 15px;
+
+          button.delete{
+            padding: 3px;
+            color: white;
+            background-color: red;
+            @include border-radius(5px);
+            border: none;
+          }
         
       }
 

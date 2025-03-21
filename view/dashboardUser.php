@@ -122,6 +122,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li>TITRE</li>
                     <li>DATE DE LA DEMANDE</li>
                     <li>STATUT</li>
+                    <li>ANNULER</li>
                 </ul>
                 <?php foreach($emprunts as $emprunt): 
                     if($emprunt->getResa() == 1):?>
@@ -131,6 +132,14 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <li><?php echo $emprunt->getTitle(); ?></li>
                     <li><?php echo $emprunt->getEmprunt_date()->format('d/m/y') ?></li>
                     <li><?php echo $emprunt->getResa() ?></li>
+                    <li>
+                        <form method="POST" action="/annulResaUser">
+                            <input type="hidden" name="id_exemplaire" value="<?php echo $emprunt->getId_exemplaire(); ?>">
+                            <input type="hidden" name="status" value="<?php echo $emprunt->getStatus(); ?>">
+                            <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
+                            <button type="submit" name="action" value="Annuler" class="delete">Annuler</button>
+                        </form>
+                    </li>
                 </ul>
                 <?php endif; 
             endforeach;  ?>

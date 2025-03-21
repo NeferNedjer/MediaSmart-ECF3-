@@ -443,4 +443,22 @@ class ControllerMedia {
         }     
     }
 
+    public function annulResaUser() {
+        global $router;
+        
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $action = $_POST['action'];
+            $id_exemplaire = $_POST['id_exemplaire'];
+            $id_user = $_POST['id_user'];
+            $status = $_POST['status'];
+
+            if($action == 'Annuler') {
+                    $modelEmprunt = new ModelEmprunt();
+                    $modelEmprunt->deleteResa($id_exemplaire, $status);
+                    header('Location: ' . $router->generate('dashboard-user', ['id_user' => $id_user]));
+                    exit();
+            } 
+        }     
+    }
+
 }

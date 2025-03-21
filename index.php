@@ -94,6 +94,8 @@ $router->map('GET|POST', '/retourMedia', 'ControllerMedia#retourMedia', 'retourM
 
 $router->map('GET|POST', '/actionResa', 'ControllerMedia#actionResa', 'actionResa');
 
+$router->map('GET|POST', '/annulResaUser', 'ControllerMedia#annulResaUser', 'annulResaUser');
+
 $router->map('POST', '/createCategory', 'ControllerMedia#createCategory', 'create-category');
 
 $router->map('POST', '/createSubCategory', 'ControllerMedia#createSubCategory', 'create-subcategory');
