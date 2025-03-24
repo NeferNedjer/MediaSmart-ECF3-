@@ -5,13 +5,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryHeaders = document.querySelectorAll('.category-header, .category-header-dvd');
     const authorHeader = document.querySelector('#author-cate h3');
     const authorContent = document.querySelector('.author-hidden');
+
     const openSidebarBtn = document.createElement('button');
     openSidebarBtn.classList.add('open-sidebar');
     openSidebarBtn.innerHTML = '☰';
     openSidebarBtn.setAttribute('aria-label', 'Ouvrir le menu');
 
+
+
     function hiddenOpenBar(){ 
-        // Ajouter le bouton seulement s'il n'est pas déjà présent
         if (!showCate.contains(openSidebarBtn)) {
             showCate.appendChild(openSidebarBtn);
         }
@@ -28,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.classList.remove('active');
         openSidebarBtn.classList.add('visible');
     }
+    
+    
 
     function openSidebar() {
         sidebar.classList.add('active');
@@ -169,6 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialisation
+
     initializeCategories();
 });

@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function(){
    const product = document.getElementById('product');
    const footer = document.querySelector('.footer-content');
    const more = document.getElementById('more');
+   const cate = document.querySelector('.redi-categorie');
+   const contact = document.querySelector('.redi-contact');
+   const listCate = document.querySelector('categories-list');
+
 
    console.log(footer)
 
@@ -20,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function(){
         product.scrollIntoView({ behavior: 'smooth', block:'start'});
    });
 
+   contact.addEventListener('click', ()=>{
+     footer.scrollIntoView({ behavior: 'smooth', block: 'end'});
+
+   });
 
 
 })

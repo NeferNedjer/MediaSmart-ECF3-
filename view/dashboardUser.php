@@ -90,6 +90,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     <section id="grid-user-emprunt">
         <section class="emprunt-user">
             <h2>Vos Emprunts</h2>
+        <div class="overflow-y">
             <div class="emprunt-lists">
                 
                 <ul class="emprunt-header">  
@@ -112,9 +113,12 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                 <?php endif; 
                 endforeach;  ?>
             </div>
+
+            </div>
         </section>
         <section class="resa-user">
             <h2>Vos Réservations</h2>
+        <div class="overflow-y">
             <div class="resa-lists">
                 <ul class="resa-header">
                     <li>ID MEDIA</li>
@@ -135,7 +139,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                 <?php endif; 
             endforeach;  ?>
             </div>
-
+            </div>
 
         
         </section>
