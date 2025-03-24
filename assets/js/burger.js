@@ -1,37 +1,29 @@
-const burgerIcon = document.querySelector('.burger-button');
-const burgerVisible = document.getElementById('burger-menu');
-let menuIsOpen = false; 
+const burgerButton = document.getElementById('burger-button');
+const menuOverlay = document.querySelector('.menu-overlay');
+const menuContent = document.querySelector('.menu-content');
 
-gsap.set(burgerVisible, { 
-  y: -150,
-  opacity: 0, 
-  display: 'none' 
-});
+// Fonction pour ouvrir et fermer le menu avec animation
+function toggleMenu() {
+    menuOverlay.classList.toggle('active');
 
-burgerIcon.addEventListener('click', () => {
-  if (!menuIsOpen) {
-    burgerVisible.style.display = 'block';
-    
-    gsap.to(burgerVisible, {
-      y: 0, 
-      opacity: 1,
-      duration: 0.65,
-      ease: "slow.out",
-      onComplete: () => {
-        menuIsOpen = true; 
-      }
-    });
-  } else {
-    
-    gsap.to(burgerVisible, {
-      y: -150,
-      opacity: 0,
-      duration: 0.5,
-      ease: "power2.in",
-      onComplete: () => {
-        burgerVisible.style.display = 'none';
-        menuIsOpen = false; 
-      }
-    });
-  }
-});
+    // Si le menu est ouvert, on joue l'animation du menu
+    if (menuOverlay.classList.contains('active')) {
+        // On joue l'animation en faisant glisser le menu à gauche
+        menuContent.style.transform = 'translateX(0)';
+    } else {
+        // Si le menu se ferme, on le cache en dehors de l'écran
+        menuContent.style.transform = 'translateX(100%)';
+    }
+}
+
+// Fonction pour fermer le menu si on clique sur le fond sombre
+function closeMenu(event) {
+    if (event.target === menuOverlay) {
+        menuOverlay.classList.remove('active');
+        menuContent.style.transform = 'translateX(100%)';
+    }
+}
+
+burgerButton.addEventListener('click', toggleMenu);
+
+menuOverlay.addEventListener('click', closeMenu);
