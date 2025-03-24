@@ -57,9 +57,11 @@
     <div class="menu-content">
       <ul>
         <li><a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">Dashboard</a></li>
+
         <li class="redi-categorie"><a href="">Catégories</a></li>
         <li><a href="profile">Profil</a></li>
         <li class="redi-contact">Contact</li>
+
         <li><a href="/login">Connexion</a></li>
         <li><a href="/register">Inscription</a></li>
       </ul>
