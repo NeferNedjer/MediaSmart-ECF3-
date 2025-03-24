@@ -57,9 +57,11 @@
     <div class="menu-content">
       <ul>
         <li><a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">Dashboard</a></li>
-        <li><a href="#categories">Catégories</a></li>
-        <li><a href="#profile">Profil</a></li>
-        <li><a href="">Contact</a></li>
+
+        <li class="redi-categorie"><a href="">Catégories</a></li>
+        <li><a href="profile">Profil</a></li>
+        <li class="redi-contact">Contact</li>
+
         <li><a href="/login">Connexion</a></li>
         <li><a href="/register">Inscription</a></li>
       </ul>
@@ -289,7 +291,7 @@
     <div id="bottom-nav">
         <ul class="bottom-nav-list">
             <li><a href="/"> <img src="./assets/img/home (2).png" alt="" height="20px">Accueil</a> </li>
-            <li><a href="#"> Catégories</a></li>
+            <li class="redi-categorie"> <img src="../assets/img/icons8-subfolder-24.png" alt=""> Catégories</a></li>
             <li><a href="#"><img src="./assets/img/icons8-basket-64.png" alt="" height="20px">Panier</a></li>
             <?php if (isset($_SESSION['id_user'])):  ?>
                 <li><a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>"> <img src="./assets/img/icons8-user-50.png" alt="" height="20px">Mon Compte</a></li>
@@ -367,7 +369,7 @@
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
     <!-- <script src="../assets/js/ajaxMedia.js"></script> -->
     <script src="../assets/js/slider-home-dispo.js"></script>
-    <script src="./assets/js/redirection-home.js"></script>
+    <script type="module" src="./assets/js/redirection-home.js"></script>
     <script src="../assets/js/category.js"></script>
     <script src="../assets/js/footer.js"></script>
     <script src="../assets/js/carrousel.js"></script>

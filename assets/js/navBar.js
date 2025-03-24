@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const headerHome = document.querySelector('#header-home');
     
-    // Appliquer les styles supplémentaires pour les marges
+   
     floatingNav.style.width = 'calc(100% - 100px)';
     floatingNav.style.margin = '0 17px';
     floatingNav.style.borderRadius = '10px';
@@ -27,29 +27,28 @@ document.addEventListener('DOMContentLoaded', function() {
         checkSidebarState();
         
         if (sidebarVisible) {
-            // Correction ici - ajout du "+" entre 0% et sidebarWidth
-            floatingNav.style.left = 'calc(0% + ' + sidebarWidth + ' + 5px)';
-            floatingNav.style.width = 'calc(100% - ' + sidebarWidth + ' - 34px)'; // Ajusté pour maintenir les marges
+            floatingNav.style.left = 'calc(02% + ' + sidebarWidth + ' + 5px)';
+            floatingNav.style.width = 'calc(100% - ' + sidebarWidth + ' - 5px)'; 
         } else {
-            floatingNav.style.left = '17px'; // Ajout d'une marge explicite à gauche
+            floatingNav.style.left = '7px'; 
             floatingNav.style.width = 'calc(100% - 34px)'; // 17px à gauche + 17px à droite
         }
     }
     
-    // Fonction pour afficher la navigation
+    
     function showNav() {
         floatingNav.style.top = '20px';
     }
     
-    // Fonction pour masquer la navigation
+    
     function hideNav() {
         floatingNav.style.top = '-80px';
     }
     
     // Gestion du scroll 
     window.addEventListener('scroll', function() {
-        const headerHeight = headerHome ? headerHome.offsetHeight * 0.7 : 150;
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const headerHeight = headerHome ? headerHome.offsetHeight * 0.9 : window.innerHeight;
+        const scrollTop = window.pageYOffset;
         
         if (scrollTop > headerHeight) {
             showNav();
@@ -91,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateNavPosition();
         
         const initialScroll = window.pageYOffset || document.documentElement.scrollTop;
-        const headerHeight = headerHome ? headerHome.offsetHeight * 0.7 : 150;
+        const headerHeight = headerHome ? headerHome.offsetHeight * 0.9 : window.innerHeight;
         
         if (initialScroll > headerHeight) {
             showNav();

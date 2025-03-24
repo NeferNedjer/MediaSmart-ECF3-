@@ -17,7 +17,7 @@
     <section id="grid-signup">
     
     <form action="/register" method="POST" id="form-signup">
-        <h1>Bienvenue sur MediaSmart</h1>
+        <h1>Bienvenue</h1>
         <label for="name">Nom :</label>
         <input type="text" name="name" id="name" value="<?php if (!empty($_POST)) echo $_POST['name'] ;?>" required>
 

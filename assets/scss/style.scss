@@ -237,6 +237,90 @@ div#top-mobile > figure#logo-detail-p > a > img{
   }
 }
 
+#header-home2 {
+  position: relative;
+  height: 100px;
+  margin-bottom: 75px;
+  overflow: hidden;
+  z-index: 1002;
+
+  #top-mobile {
+      position: absolute;
+      top: 20px; 
+      height: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.308);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+        
+
+     
+  }
+
+
+  #top-mobile figure {
+      margin: 0;
+  }
+
+  #top-mobile figure img {
+      height: 50px;
+  }
+
+  #top-mobile ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+     
+      margin: 0;
+      padding: 0;
+  }
+
+  #top-mobile ul li {
+      margin: 0 15px; 
+      
+  }
+
+  #top-mobile ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+  }
+
+  #top-mobile ul li a:hover {
+      color: var(--color-primary);
+  }
+
+  #top-mobile #connexion-home,
+  #top-mobile #deconnexion-home {
+      background-color: var(--color-primary);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+  }
+
+  #top-mobile #connexion-home:hover,
+  #top-mobile #deconnexion-home:hover {
+      background-color: var(--color-secondary);
+  }
+
+  #top-mobile a#burger {
+      display: none; 
+  }
+
+}
+
+
 #header-home {
   position: relative;
   height: 100vh;
@@ -488,7 +572,8 @@ div#top-mobile > figure#logo-detail-p > a > img{
   padding-bottom: 0;
 }
 
-.menu-content a {
+.menu-content a,
+.menu-content li {
   text-decoration: none;
   color: #333;
   font-size: 18px;
@@ -498,7 +583,9 @@ div#top-mobile > figure#logo-detail-p > a > img{
   padding: 5px 0;
 }
 
-.menu-content a:hover {
+.menu-content a:hover, 
+.menu-content li:hover 
+  {
   color: $color-button;
   transform: translateX(5px);
   transition: transform 0.3s ease, color 0.2s ease;
@@ -1408,9 +1495,16 @@ button.close-sidebar{
 }
 
 // --------------------------------------NAVBAR
+.sidebar-closed {
+  transform: translateX(-100%); 
+  transition: transform 0.3s ease;
+}
+
+
+
 .floating-nav {
   position: fixed;
-  top: -80px; // Caché par défaut
+  top: -80px; 
   left: var(--sidebar-width);
   right: 0;
   height: 70px;
@@ -1423,6 +1517,8 @@ button.close-sidebar{
 
   &.sidebar-closed {
       left: 0;
+      
+    
   }
 
   .nav-content {
@@ -1484,7 +1580,7 @@ button.close-sidebar{
       }
   }
 
-  // Ajouter ces styles à votre fichier SCSS existant
+
 
 .search-results {
     position: absolute;
@@ -1917,6 +2013,7 @@ button.close-sidebar{
   align-items: center;
   justify-content: center;
   width: 25%;
+  color:#FFFFFF;
 }
 
 .bottom-nav-list li a {
@@ -2121,7 +2218,7 @@ button.close-sidebar{
 #form-signup input {
   padding: 4px 15px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 5px;
   font-size: 14px;
   color: #333;
   background-color: #f9f9f9;
@@ -2220,6 +2317,8 @@ input#adress{
   
     grid-template-columns: 1fr;
     padding: 30px 15px;
+
+      
   }
 
   // div.flex{
@@ -4019,7 +4118,7 @@ gap: 25px;
    
     margin: 10px 20px;
     object-fit: contain;
-    border-radius: 15px;
+    border-radius: 5px;
     z-index: 1000;
 
   }
@@ -4162,19 +4261,38 @@ gap: 25px;
 }
 
 #emprunt-resa {
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+  overflow-y: auto;
   grid-column: span 1;
   grid-row: 2;
   box-shadow: var(--shadow-standard);
   width: 97%;
   height: 97%;
   border-radius: 10px;
-  margin: 0px 25px 25px 25px;
+  margin: 0px 25px 25px 25px;  
+
+      
 
   
     #grid-user-emprunt{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-     
+      grid-template-rows: 1fr 1fr;
+            .emprunt-lists,
+            .resa-lists{
+              overflow-y: auto;
+            }
 
       h2{
         margin: 15px;
@@ -4189,7 +4307,7 @@ gap: 25px;
         background-color: rgb(223, 223, 223);
         width: 95%;
         margin: 12px;
-        @include center-flex();
+        @include center-grid();
         font-size: 12px;
         transition: 0.5s ease;
       }
@@ -4209,7 +4327,7 @@ gap: 25px;
       .resa-user ul.resa-header li,
       .emprunt-user ul.emprunt-header li{
         margin: 15px;
-        color: #838383;
+        color: #232121;
         font-size: 10px;
         font-weight: 700;
         padding: 0 10px;
@@ -4217,7 +4335,7 @@ gap: 25px;
 
       .emprunt-data li,
       .resa-data li{
-        color: #838383;
+        color: #444343;
         margin: 15px;
         padding: 0 15px;
         
@@ -4233,13 +4351,27 @@ gap: 25px;
 
 // ----------------------detail produits
 
+
+#resa-btn-hidden2{
+  padding: 10px;
+  margin: 0 20px;
+  height: 45px;
+  background-color:#b66f03;
+  color:white;
+  font-size: 16px;
+  @include border-radius(10px);
+  border: none;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
 div#top-hidden-resa-bar{
   display: none;
   opacity: 0;
   position: sticky;
   top: 0;
   height: 80px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.74);
   z-index: 1000;
   transition: opacity 0.3s ease;
   border-bottom: solid 1px #cc8c2d6d;
@@ -4520,6 +4652,7 @@ div#top-hidden-resa-bar{
 
   .swiper-container {
       width: 100%;
+      height: 100%;
       padding: 20px 0;
       overflow: hidden;
   }
@@ -4532,6 +4665,7 @@ div#top-hidden-resa-bar{
       background-color: #fff;
       border-radius: 5px;
       max-height: 290px;
+      
       max-width: 150px;
       box-shadow: var(--shadow-standard);
       text-align: center;
