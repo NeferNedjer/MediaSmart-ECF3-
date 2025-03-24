@@ -333,7 +333,7 @@
 
                 <div class="form-group submit-btn" id="submit-btn-group">
                     <input type="submit" value="Valider" id="submit-btn" class="submit-input">
-                    <button type="button" id="cancel-btn" class="cancel-input">Annuler</button>
+            
                 </div>
             </form>
         </div>
