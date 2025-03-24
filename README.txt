@@ -53,6 +53,9 @@ MédiaSmart est une application de gestion de médiathèque développée par une
 
 Les contributions sont les bienvenues ! Veuillez soumettre une pull request pour toute amélioration ou correction de bug.
 
+lien figma:
+
+https://www.figma.com/design/mDwVn7zC3EXE8ZSAWZva9j/Untitled?node-id=0-1&p=f&t=1BGmAS3ekMxNN9KX-0
 
 
 
