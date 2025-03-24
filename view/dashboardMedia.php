@@ -138,7 +138,7 @@
                                 <?php if (empty($exemplairemedia)) : ?>
                                     <caption>Aucun exemplaire pour ce média</caption>
                                 <?php else : ?>
-                            <?php $first = 1; ?>
+                            <?php $first = 1; $index = 0; ?>
                             <?php foreach ($exemplairemedia as $exemplaire): ?>
                                 <?php if ($first == 1) {; ?>
                                 <caption>Exemplaires du <?php echo ucfirst(strtolower($exemplaire->getName())).' : '.$exemplaire->getTitle() ?> 
@@ -166,9 +166,6 @@
                                                 <input type="hidden" name="id_media" value="<?php echo $exemplaire->getId_media(); ?>">
                                             </td>
                                             <td>
-                                                <?php 
-                                                    // var_dump($exemplaire->getStatus()); 
-                                                ?>
                                                 <select name="status" id="status">
                                                     <option value="1" <?php echo ($exemplaire->getStatus() == 1) ? 'selected' : ''; ?>>Neuf</option>
                                                     <option value="2" <?php echo ($exemplaire->getStatus() == 2) ? 'selected' : ''; ?>>Bon</option>
@@ -196,18 +193,19 @@
                                                 <?php echo $exemplaire->getUser_name().' '.$exemplaire->getUser_first_name() ?>
                                             </td>
                                             <?php } else { ?>
+
                                             <td>
-                                            <input list="users" name="user" id="user" class="form-input">
-                                            
-                                            <datalist id="users">
-                                                <?php foreach ($users as $user): ?>
-                                                    <option value="<?php echo $user->getName() . ' ' . $user->getFirst_name(); ?>" data-id="<?php echo $user->getId_user(); ?>">
-                                                   
-                                                <?php endforeach; ?>
+                                                <input list="users-<?php echo $index; ?>" name="user" id="user-<?php echo $index; ?>" class="form-input">
                                                 
-                                            </datalist>
-                                            <input type="hidden" name="user_id" id="user_id">
+                                                <datalist id="users-<?php echo $index; ?>">
+                                                    <?php foreach ($users as $user): ?>
+                                                        <option value="<?php echo $user->getName() . ' ' . $user->getFirst_name(); ?>" data-id="<?php echo $user->getId_user(); ?>">
+                                                    <?php endforeach; ?>
+                                                </datalist>
+                                                <input type="hidden" name="user_id" id="user_id-<?php echo $index; ?>"> 
                                             </td>
+                                            <?php $index++; ?>
+
                                             <?php } ?>
                                             <td>
                                                 <?php 
@@ -321,24 +319,28 @@ ini_set('display_errors', 0); ?>
 
 <script>
 
-document.getElementById('user').addEventListener('input', function(event) {
-    const inputValue = event.target.value;
-    const options = document.querySelectorAll('#users option');
-    let userId = null;
+document.querySelectorAll('[id^="user-"]').forEach(inputElement => {
+    inputElement.addEventListener('input', function(event) {
+        const inputValue = event.target.value;
+        const datalistId = event.target.getAttribute('list'); // Identifie le datalist correspondant
+        const options = document.querySelectorAll(`#${datalistId} option`);
+        const hiddenInputId = event.target.id.replace('user-', 'user_id-'); // Calculer l'ID du champ caché correspondant
+        let userId = null;
 
-    options.forEach(option => {
-        if (option.value === inputValue) {
-            userId = option.dataset.id; // Récupère l'id associé à l'utilisateur
+        options.forEach(option => {
+            if (option.value === inputValue) {
+                userId = option.dataset.id; // Récupère l'ID associé
+            }
+        });
+
+        if (userId) {
+            document.getElementById(hiddenInputId).value = userId; // Met à jour le champ caché
+            console.log(`Utilisateur sélectionné: ${inputValue}, ID: ${userId}`);
+        } else {
+            document.getElementById(hiddenInputId).value = ''; // Réinitialise si aucune correspondance
+            console.log(`Aucun utilisateur correspondant trouvé pour: ${inputValue}`);
         }
     });
-
-    if (userId) {
-        document.getElementById('user_id').value = userId; // Met à jour le champ caché avec l'ID de l'utilisateur
-        console.log(`Utilisateur sélectionné: ${inputValue}, ID: ${userId}`);
-    } else {
-        document.getElementById('user_id').value = ''; // Réinitialise le champ caché si aucun utilisateur correspondant n'est trouvé
-        console.log(`Aucun utilisateur correspondant trouvé pour: ${inputValue}`);
-    }
 });
 
 </script>
