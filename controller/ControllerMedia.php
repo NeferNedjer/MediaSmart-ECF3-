@@ -255,38 +255,39 @@ class ControllerMedia {
             $action = $_POST['action'];
             $id_exemplaire = $_POST['id_exemplaire'];
             $id_media = $_POST['id_media'];
+            $status = $_POST['status'];
 
             if($action == 'Valider') {
                     $modelEmprunt = new ModelEmprunt();
-                    $modelEmprunt->updateEmprunt($_POST['id_exemplaire']);
-                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                    $modelEmprunt->updateEmprunt($id_exemplaire);
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $id_media]));
                     exit();
             } elseif ($action == 'Annuler') {
                     $modelEmprunt = new ModelEmprunt();
-                    $modelEmprunt->deleteResa($_POST['id_exemplaire'], $_POST['status']);
-                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                    $modelEmprunt->deleteResa($id_exemplaire, $status);
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $id_media]));
                     exit();
             } elseif ($action == 'Retour') {
                     $modelEmprunt = new ModelEmprunt();
-                    $modelEmprunt->deleteResa($_POST['id_exemplaire'], $_POST['status']);
-                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                    $modelEmprunt->deleteResa($id_exemplaire, $status);
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $id_media]));
                     exit();
             } elseif ($action == 'Emprunt') {
                 if(isset($_POST['user_id']) && !empty($_POST['user']) && !empty($_POST['user_id'])) {
 
                     $modelEmprunt = new ModelEmprunt();
-                    $modelEmprunt->createEmprunt($_POST['id_exemplaire'], $_POST['user_id']);
-                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                    $modelEmprunt->createEmprunt($id_exemplaire, $_POST['user_id']);
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $id_media]));
                     exit();
                 } else {
                     $error = "Vous devez sélectionner un utilisateur";
-                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                    header('Location: ' . $router->generate('dashboard-media', ['id_media' => $id_media]));
                     exit();
                 }
             } elseif ($action == 'Modifier') {
                 $modelExemplaire = new ModelExemplaire();
-                $modelExemplaire->updateExemplaire($_POST['id_exemplaire'], $_POST['status']);
-                header('Location: ' . $router->generate('dashboard-media', ['id_media' => $_POST['id_media']]));
+                $modelExemplaire->updateExemplaire($id_exemplaire, $status);
+                header('Location: ' . $router->generate('dashboard-media', ['id_media' => $id_media]));
                 exit();    
             }
         }     
