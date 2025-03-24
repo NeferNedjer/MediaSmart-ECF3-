@@ -56,7 +56,8 @@
     <div class="menu-overlay">
     <div class="menu-content">
       <ul>
-        <li><a href="<?php echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">Dashboard</a></li>
+        
+        <li><a href="<?php if(isset($_SESSION['id_user']))echo $router->generate('dashboard-user', ['id_user' => $_SESSION['id_user']]); ?>">Dashboard</a></li>
 
         <li class="redi-categorie"><a href="">Catégories</a></li>
         <li><a href="profile">Profil</a></li>
