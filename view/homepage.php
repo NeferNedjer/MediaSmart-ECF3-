@@ -53,6 +53,19 @@
         </div>
     </section>
 
+    <div class="menu-overlay">
+    <div class="menu-content">
+      <ul>
+        <li><a href="dashboardUser">Dashboard</a></li>
+        <li><a href="#categories">Catégories</a></li>
+        <li><a href="#profile">Profil</a></li>
+        <li><a href="">Contact</a></li>
+        <li><a href="/login">Connexion</a></li>
+        <li><a href="/register">Inscription</a></li>
+      </ul>
+    </div>
+  </div>
+
     <nav class="floating-nav" id="floating-nav">
         <div class="nav-content">
             <div class="nav-left">
@@ -348,7 +361,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="../assets/js/searchHomeNav.js"></script>
     <script src="./assets/js/navBar.js"></script>
-    <script src="./assets/js/burger.js"></script>
+    <script src="/assets/js/burger.js"></script>
 
 
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
